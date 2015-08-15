@@ -1,10 +1,6 @@
 machine:
   timezone: Asia/Tokyo
 
-checkout:
-  post:
-    - git submodule update --init --recursive
-
 dependencies:
   pre:
     - go get -v github.com/spf13/hugo
