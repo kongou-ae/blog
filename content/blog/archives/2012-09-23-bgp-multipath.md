@@ -87,4 +87,4 @@ B     192.168.2.0/24 [20/0] via 10.0.2.1, 00:03:19
                      [20/0] via 10.0.1.1, 00:03:19
 </code></pre>
 
- [1]: http://aimless.jp/images/multipath.png
+ [1]: http://aimless.jp/blog/images/multipath.png
