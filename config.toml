@@ -2,6 +2,7 @@ baseurl = "http://aimless.jp/"
 languageCode = "ja"
 title = "Aimless"
 disqusShortname = "aimlessjpblog"
+rssuri = "feed"
 
 [Params]
 subtitle = "Powered by aimless emotion"
