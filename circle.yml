@@ -13,7 +13,8 @@ dependencies:
 
 test:
   post:
-      - ls
+      - pwd
+      - ls -la
       - cd $HOME/redpen-*
       - ./bin/redpen -v
 
