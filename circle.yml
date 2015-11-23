@@ -16,6 +16,8 @@ test:
   post:
       - pwd
       - ls -la
+      - mv redpen/blog.xml redpen-*/conf
+      - mv redpen/spellCheck.js redpen-*/js
       - cd redpen-* && ./bin/redpen -v
 
 deployment:
