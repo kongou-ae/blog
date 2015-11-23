@@ -16,10 +16,7 @@ test:
   post:
       - pwd
       - ls -la
-      - cd redpen-*
-      - pwd
-      - ls
-      - ./bin/redpen -v
+      - cd redpen-* && ./bin/redpen -v
 
 deployment:
   master:
