@@ -1,11 +1,21 @@
 machine:
   timezone: Asia/Tokyo
+  java:
+    version: openjdk8
 
 dependencies:
   pre:
     - go get -v github.com/spf13/hugo
     - git config --global user.name "CircleCI"
     - git config --global user.email "circleci@example.com"
+    - wget https://github.com/redpen-cc/redpen/releases/download/v1.4.1/redpen-1.4.1.tar.gz
+    - tar xvf redpen-1.4.1.tar.gz
+
+test:
+  post:
+      - ls
+      - cd $HOME/redpen-*
+      - ./bin/redpen -v
 
 deployment:
   master:
