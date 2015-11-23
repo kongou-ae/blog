@@ -17,6 +17,8 @@ test:
       - pwd
       - ls -la
       - cd redpen-*
+      - pwd
+      - ls
       - ./bin/redpen -v
 
 deployment:
