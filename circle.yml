@@ -16,7 +16,7 @@ test:
   post:
       - chmod 744 test-redpen.sh
       - git diff HEAD^ HEAD --name-only
-      - ./test-redpen.sh
+      - bash ./test-redpen.sh
 
 deployment:
   master:
