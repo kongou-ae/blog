@@ -2,7 +2,7 @@
 mv redpen/blog.xml redpen-*/conf
 mv redpen/spellCheck.js redpen-*/js
 
-filename=`git diff --name-only`
+filename=`git diff HEAD^ HEAD --name-only`
 
 if [[ $filename =~ .*.md$ ]] ;then
     echo "testing...$filename"
