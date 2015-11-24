@@ -4,6 +4,6 @@ mv redpen/spellCheck.js redpen-*/js
 
 filename=`git diff --name-only`
 
-if [[ ! $filename =~ .*.md$ ]] ;then
+if [[ $filename =~ .*.md$ ]] ;then
     redpen-*/bin/redpen -c conf/blog.xml -f markdown aimless.jp/content/blog/archives/$filename
 fi
