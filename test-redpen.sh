@@ -7,5 +7,5 @@ echo $filename
 
 if [[ $filename =~ .*\.md$ ]] ;then
     echo "testing...$filename"
-    redpen-*/bin/redpen -c conf/blog.xml -f markdown aimless.jp/content/blog/archives/$filename
+    redpen-*/bin/redpen -c conf/blog.xml -f markdown blog/archives/$filename
 fi
