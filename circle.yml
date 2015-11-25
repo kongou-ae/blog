@@ -15,7 +15,6 @@ dependencies:
 test:
   post:
       - chmod 744 test-redpen.sh
-      - git diff HEAD^ HEAD --name-only
       - bash ./test-redpen.sh
 
 deployment:
