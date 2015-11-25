@@ -42,7 +42,12 @@ function validateSentence(sentence) {
   ]
 
   for (var i = 0; i < sentence.tokens.length; i++) {
-    // 名詞だけを対象に
+    // HUGOの設定以外のセンテンスに対して、100文字を超えているかどうかチェック
+    if (sentence.content.match(/^---title.*categories:$/)){
+    } else if (sentence.content.length > 100){
+      addError('このセンテンスは100文字を超えています', sentence);
+    }
+    // 名詞だけを対象にスペルチェックを実施
     if (sentence.tokens[i].tags[0] == '名詞') {
       for (var j=0; j < checkKeywordArray.length; j++) {
         //console.log('checking : ' + sentence.tokens[i].surface + ' and ' + checkKeywordArray[j])
