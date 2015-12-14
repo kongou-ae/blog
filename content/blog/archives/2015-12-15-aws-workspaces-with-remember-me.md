@@ -8,7 +8,7 @@ categories:
   - AWS
 ---
 
-　Amazon WorkSpacesへの憧れが止まりません。BYOD＋WorkSpacesで仕事がしたい！とはいえ、いきなり会社でBYODはレベルが高すぎます。そこで、自宅からのリモートアクセス用途として会社に対してWorkSpacesを提案するために、色々と調べたのでメモしておきます。
+　Amazon WorkSpacesへの憧れが止まりません。BYOD＋WorkSpacesで仕事がしたい。とはいえ、レガシーSIerである弊社において、いきなりBYODはレベルが高すぎます。そこで、自宅からのリモートアクセス用途として会社に対してWorkSpacesを提案することにしました。そのために色々と調べたのでメモしておきます。
 
 ## MFAの罠
 
