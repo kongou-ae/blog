@@ -8,7 +8,7 @@ categories:
   - AWS
 ---
 
-　Amazon WorkSpacesへの憧れが止まりません。BYOD＋WorkSpacesで仕事がしたい。とはいえ、レガシーSIerである弊社において、いきなりBYODはレベルが高すぎます。そこで、自宅からのリモートアクセス用途として会社に対してWorkSpacesを提案することにしました。そのために色々と調べたのでメモしておきます。
+　Amazon WorkSpacesへの憧れが止まりません。BYOD＋WorkSpacesで仕事がしたい。とはいえ、古きSIerである弊社において、いきなりBYODはレベルが高すぎます。そこで、自宅からのリモートアクセス用途として会社に対してWorkSpacesを提案することにしました。そのために色々と調べたのでメモしておきます。
 
 ## MFAの罠
 
@@ -33,11 +33,7 @@ Amazon WorkSpaces 管理者が [Remember Me] 機能を無効にしていない�
 
 ## Remember Me無効後の動作
 
-WorkSpacesクライアントを利用してログインします
-
-![http://aimless.jp/blog/images/2015-12-15-001.png](http://aimless.jp/blog/images/2015-12-15-001.png)
-
-切断します。
+WorkSpacesクライアントを切断します。
 
 ![http://aimless.jp/blog/images/2015-12-15-002.png](http://aimless.jp/blog/images/2015-12-15-002.png)
 
