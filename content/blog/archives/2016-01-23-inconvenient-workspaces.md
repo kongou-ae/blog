@@ -39,7 +39,7 @@ CloudWatchにはWorkSpaces単位でメトリックが保存されます。原則
 
 デフォルトのAmazon WorkSpacesは、クリップボードのリダイレクトが有効になっています。WorkSpacesでコピーしたものを、WorkSpacesクライアントが動作するPCにペーストすることができます。リモートアクセス用途でWorkSpacesを利用している場合、技術的には、悪意あるユーザが情報を漏洩させることができます。
 
-Amazon WorkSpacesがAD ConnectorによってActive Directoryの管理下にある場合、グループポリシーを利用して以下の機能を制限することができます。これにより、WorkSpaces内のデータを外部に持ち出されるリスクを極小化することができます。
+Amazon WorkSpacesがAD ConnectorによってActive Directoryの管理下にある場合、グループポリシを利用して以下の機能を制限することができます。これにより、WorkSpaces内のデータを外部に持ち出されるリスクを極小化することができます。
 
 - クリップボードによるコピペ[(Clipboard Redirection)](http://docs.aws.amazon.com/workspaces/latest/adminguide/group_policy.html#gp_clipboard)
 - ローカルプリンタを利用した印刷[(Local Printer Support)](http://docs.aws.amazon.com/workspaces/latest/adminguide/group_policy.html#gp_local_printers)
@@ -48,7 +48,7 @@ Amazon WorkSpacesがAD ConnectorによってActive Directoryの管理下にあ�
 
 WorkSpacesクライアントは、ネットワークが切れない限りセッションを維持します。所謂アイドルタイムアウトがないようです。リモートアクセス用途の場合、使っていないのに社内LANへのアクセス口が有効になっていることはリスクです。
 
-現時点で、アイドルタイムアウトの設定は、WorkSpacesのサービス単体では実装できません。ただし、Amazon WorkSpacesがAD ConnectorによってActive Directoryの管理下にある場合、以下URLの通り、グループポリシーによってアイドルタイムアウトの設定を行うことが可能です。
+現時点で、アイドルタイムアウトの設定は、WorkSpacesのサービス単体では実装できません。ただし、WorkSpacesがAD ConnectorによってActive Directoryの管理下にある場合、グループポリシによってアイドルタイムアウトの設定を行うことが可能です。具体的な設定は以下URLを参照ください。
 
 [切断されたセッション、アクティブなセッション、およびアイドル状態のセッションに対するタイムアウト値を設定する](https://technet.microsoft.com/ja-jp/library/cc758177%28v=ws.10%29.aspx)
 
