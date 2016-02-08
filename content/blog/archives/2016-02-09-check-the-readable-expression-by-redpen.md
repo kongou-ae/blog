@@ -5,11 +5,10 @@ layout: post
 date: 2016-02-09
 url: /blog/archives/2016-02-09-check-the-readable-expression-by-redpen
 categories:
-  - asciidoc
   - redpen
 ---
 
-RedPenのJavascript拡張を利用して、[プロの編集が教える「開いた（平仮名）のほうが読みやすくなる表現一覧」が超勉強になると話題](http://www.danshihack.com/2015/06/04/junp/twitter-editter-kana.html)に乗っている修正事項をチェックしてみました。
+RedPenのJavaScript拡張を利用して、[プロの編集が教える「開いた（平仮名）のほうが読みやすくなる表現一覧」が超勉強になると話題](http://www.danshihack.com/2015/06/04/junp/twitter-editter-kana.html)に乗っている修正事項をチェックしてみました。
 
 ## Javascript拡張
 
