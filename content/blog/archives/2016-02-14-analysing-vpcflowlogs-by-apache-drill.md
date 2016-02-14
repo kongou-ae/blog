@@ -3,7 +3,7 @@ title: Apache Drill を使ってVPC Flow Logsを集計する
 author: kongou_ae
 layout: post
 date: 2016-02-14
-url: /blog/archives/2016-02-14-analysing-vpcflowlogs-by-apache-drill
+url: /blog/archives/2016-02-14-analysing-vpcflowlogs-by-Apache-drill
 categories:
   - aws
 ---
@@ -19,35 +19,35 @@ categories:
 とりあえず使うことを目的としますので、tar.gzをダウンロードして解凍するだけにします。
 
 ```
-$ wget http://ftp.jaist.ac.jp/pub/apache/drill/drill-1.4.0/apache-drill-1.4.0.tar.gz
---2016-02-14 19:37:02--  http://ftp.jaist.ac.jp/pub/apache/drill/drill-1.4.0/apache-drill-1.4.0.tar.gz
+$ wget http://ftp.jaist.ac.jp/pub/Apache/drill/drill-1.4.0/Apache-drill-1.4.0.tar.gz
+--2016-02-14 19:37:02--  http://ftp.jaist.ac.jp/pub/Apache/drill/drill-1.4.0/Apache-drill-1.4.0.tar.gz
 Resolving ftp.jaist.ac.jp (ftp.jaist.ac.jp)... 2001:df0:2ed:feed::feed, 150.65.7.130
 Connecting to ftp.jaist.ac.jp (ftp.jaist.ac.jp)|2001:df0:2ed:feed::feed|:80... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 202712816 (193M) [application/x-gzip]
-Saving to: ‘apache-drill-1.4.0.tar.gz’
+Saving to: ‘Apache-drill-1.4.0.tar.gz’
 
-apache-drill-1.4.0.tar.gz                 1%[>                                                                              ]   3.25M  5.33MB/s             
-apache-drill-1.4.0.tar.gz               100%[==============================================================================>] 193.32M   743KB/s   in 1m 55s
+Apache-drill-1.4.0.tar.gz                 1%[>                                                                              ]   3.25M  5.33MB/s             
+Apache-drill-1.4.0.tar.gz               100%[==============================================================================>] 193.32M   743KB/s   in 1m 55s
 
-2016-02-14 19:38:57 (1.68 MB/s) - ‘apache-drill-1.4.0.tar.gz’ saved [202712816/202712816]
+2016-02-14 19:38:57 (1.68 MB/s) - ‘Apache-drill-1.4.0.tar.gz’ saved [202712816/202712816]
 
 $
-$ tar xzvf apache-drill-1.4.0.tar.gz                                                                                                      
-apache-drill-1.4.0/KEYS
-apache-drill-1.4.0/LICENSE
-apache-drill-1.4.0/README.md
-apache-drill-1.4.0/NOTICE
+$ tar xzvf Apache-drill-1.4.0.tar.gz                                                                                                      
+Apache-drill-1.4.0/KEYS
+Apache-drill-1.4.0/LICENSE
+Apache-drill-1.4.0/README.md
+Apache-drill-1.4.0/NOTICE
 （中略）
-apache-drill-1.4.0/sample-data/regionsMF/regionsMF_Typed.parquet
-apache-drill-1.4.0/sample-data/regionsSF/regionsSF.parquet
-$ cd apache-drill-1.4.0/
-apache-drill-1.4.0]$
-apache-drill-1.4.0]$ bin/drill-embedded
+Apache-drill-1.4.0/sample-data/regionsMF/regionsMF_Typed.parquet
+Apache-drill-1.4.0/sample-data/regionsSF/regionsSF.parquet
+$ cd Apache-drill-1.4.0/
+Apache-drill-1.4.0]$
+Apache-drill-1.4.0]$ bin/drill-embedded
 OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=512M; support was removed in 8.0
 Feb 14, 2016 7:40:57 PM org.glassfish.jersey.server.ApplicationHandler initialize
 INFO: Initiating Jersey application, version Jersey: 2.8 2014-04-29 01:25:26...
-apache drill 1.4.0
+Apache drill 1.4.0
 "drill baby drill"
 ```
 
@@ -101,7 +101,7 @@ time,srcaddr,dstaddr,srcport,dstport,protocol,bytes,result
 2016002013 18:33:24 JST,172.20.0.10,50.112.250.150,49776,443,6,3262,ACCEPT
 ```
 
-また、ポート番号のフィールドに`-`が入っていると、ポート番号のフィールドを数値として扱えなくなるため、sedで`-`を0に置換しておきます。
+また、ポート番号の欄に`-`が入っていると、ポート番号を数値として扱えなくなるため、sedで`-`を0に置換しておきます。
 
 ```
 sed -i -e "s/-/0/g" /home/xxxxxxxx/result.csvh  
