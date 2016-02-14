@@ -12,7 +12,7 @@ categories:
 
 [flowlogs-readerを使って、VPC Flow Logsをコマンドラインで操作する](http://aimless.jp/blog/archives/2016-02-02-retrieving-aws-vpc-flow-logs-using-flowlogs-reader/)にて、flowlogs-readerの標準出力をawkで集計する方法を紹介しました。
 
-ですが、この方法は自分が意図するシェル芸を考えることが大変です。もう少しスマートなやり方はないものかと考えた結果、Apache Drillを使う方法を思いついたので試してみました。
+ですが、この方法は、自分が意図するシェル芸を考えることが大変です。もう少しスマートなやり方はないものかと考えた結果、Apache Drillを使う方法を思いついたので試してみました。
 
 ## Apache Drillのインストール
 
