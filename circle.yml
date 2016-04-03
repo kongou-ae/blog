@@ -22,6 +22,7 @@ deployment:
     branch: master
     commands:
       - git clone git@github.com:kongou-ae/kongou-ae.github.io.git public
+      - gem install asciidoctor
       - hugo -t angels-ladder-fork
       - rm -rf public/blog/categories
       - mv public/categories public/blog
