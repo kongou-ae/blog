@@ -14,7 +14,7 @@ Zabbix3.0からメールの暗号化方式にSTARTTLSとSSL/TLSが選択でき�
 
 ### 設定
 
-管理＞メディアタイプ＞Emailから以下の通り設定します。
+管理＞メディアタイプから以下の通り設定します。
 
 ![](http://aimless.jp/blog/images/2016-04-18-001.png)
 
