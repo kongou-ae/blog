@@ -1,42 +1,25 @@
 ---
-title: CircleCIでHugoが動かなくなった
+title: Gmailを使ってZabbix3.0のアラートメールを送る
 author: kongou_ae
 layout: post
-date: 2016-04-04
-url: /blog/archives/2016-04-04-hugo-dont-work-on-circleci
+date: 2016-04-18
+url: /blog/archives/2016-04-18-sending-zabbix-alert-mail-by-gmail
 categories:
-  - etc
+  - zabbix
 ---
 
-　このブログは、Markdownでエントリーを書いてGithubにPushすると、CircleCIが検知してHugoでビルドし、Github Pagesに公開するという仕組みになっています。
-　約2か月ぶりにブログを公開すべくGithubにPushしたところ、CircleCIによるビルドが失敗するようになっていました。
-　CircleCI上でのエラーメッセージは以下の通りです。
+Zabbix3.0からメールの暗号化方式にSTARTTLSとSSL/TLSが選択できるようになったようです。（[参考：1 E-mail](https://www.zabbix.com/documentation/3.0/manual/config/notifications/media/email)）
 
-```
-hugo -t angels-ladder-fork
-Started building site
-ERROR: 2016/04/03 22:46:28 content.go:480: exit status 1
-0 draft content
-0 future content
-157 pages created
-245 non-page files copied
-0 paginator pages created
-0 tags created
-19 categories created
+というわけで、GmailのSMTPサーバを使ってアラートメールを送信してみました。SMTP heloは適当です。
 
-hugo -t angels-ladder-fork returned exit code 255
-```
+### 設定
 
-　ヒントがなさすぎです。CircleCIのインスタンスにSSHでログインし、hugoをオプション付きで実行してみます。
+管理＞メディアタイプ＞Emailから以下の通り設定します。
 
-```
-ubuntu@box1910:~/blog$ hugo -t angels-ladder-fork -v
-INFO: 2016/04/03 23:45:15 hugo.go:454: Using config file: /home/ubuntu/blog/config.toml
-INFO: 2016/04/03 23:45:15 hugo.go:566: using a UnionFS for static directory comprised of:
-INFO: 2016/04/03 23:45:15 hugo.go:567: Base: /home/ubuntu/blog/themes/angels-ladder-fork/static
-INFO: 2016/04/03 23:45:15 hugo.go:568: Overlay: /home/ubuntu/blog/static/
-INFO: 2016/04/03 23:45:15 hugo.go:600: syncing static files to /home/ubuntu/blog/public/
-Started building site
-INFO: 2016/04/03 23:45:15 content.go:474: Rendering with /usr/bin/asciidoc ...
-ERROR: 2016/04/03 23:45:16 content.go:480: exit status 1
-```
+![](http://aimless.jp/blog/images/2016-04-18-001.png)
+
+### 動作確認
+
+無事メールが届きました。
+
+![](http://aimless.jp/blog/images/2016-04-18-002.png)
