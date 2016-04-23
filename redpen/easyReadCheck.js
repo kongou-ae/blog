@@ -1,35 +1,40 @@
 function validateSentence(sentence) {
+    // [開いたほうがよい記載,開いたあとの記載,対象を形態素分析までやるか]
+    // 事を正規表現だけで処理してしまうと、「事件」がエラーになってしまう
+    var checkKeywordObj = {
+        '更に' : ['さらに',false],
+        '殆ど' : ['ほとんど',false],
+        '下さい' : ['ください',false],
+        '事' : ['こと',true],
+        '何時か' : ['いつか',false],
+        '何処か' : ['どこか',false],
+        '何故か' : ['なぜか',false],
+        '後で' : ['あとで',true],
+        '出来るだけ' : ['できるだけ',false],
+        'ひと通り' : ['ひととおり',false],
+        '丁度' : ['ちょうど',false],
+        '時間が経つ' : ['時間がたつ',false],
+        '何でも' : ['なんでも',false]
+    };
 
-  var checkKeywordObj = {
-    '更に'          : 'さらに',
-    '殆ど'          : 'ほとんど',
-    '下さい'        : 'ください',
-    '何時か'        : 'いつか',
-    '事'            : 'こと',
-    '何時か'        : 'いつか',
-    '何処か'        : 'どこか',
-    '何故か'        : 'なぜか',
-    '後で'          : 'あとで',
-    '出来るだけ'    : 'できるだけ',
-    'ひと通り'      : 'ひととおり',
-    '丁度'          : 'ちょうど',
-    '時間が経つ'    : '時間がたつ',
-    '何でも'        : 'なんでも',
-  }
-
-  // checkKeywordObj分処理を実施
-  for (var i = 0; i < Object.keys(checkKeywordObj).length; i++) {
-    // キーワードを正規表現にセット
-    var regex = new RegExp(Object.keys(checkKeywordObj)[i])
-    // もしセンテンスの文章がcheckKeywordObjにマッチしたら
-    if ( sentence.content.match(regex) ){
-      // そのセンテンスが自然言語処理された結果を総当たり
-      for (var j = 0; j < sentence.tokens.length; j++) {
-        // 自然言語解析の結果とキーワードが一致したらエラーメッセージを出力
-        if ( sentence.tokens[j].surface == Object.keys(checkKeywordObj)[i] ){
-          addError('「' + sentence.tokens[j].surface + '」を「' + checkKeywordObj[Object.keys(checkKeywordObj)[i]] + '」に修正してください', sentence);            
-        }
-      }
-    }
-  }
-}
+    // 各センテンスに対して、checkKeywordObj分処理を実施
+    for (var i = 0; i < Object.keys(checkKeywordObj).length; i++) {
+        // 開くべきキーワードを正規表現にセット
+        var regex = new RegExp(Object.keys(checkKeywordObj)[i]);
+        // もしセンテンスの文章がcheckKeywordObjのキーにマッチしたら
+        if ( sentence.content.match(regex) ){
+            // 形態素分析が必要であればtokenまで見る
+            if ( checkKeywordObj[Object.keys(checkKeywordObj)[i]][1] == true){
+                for (var j = 0; j < sentence.tokens.length; j++) {
+                    // 自然言語解析の結果とキーワードが一致したらエラーメッセージを出力
+                    if ( sentence.tokens[j].surface == Object.keys(checkKeywordObj)[i] ){
+                        addError('「' + sentence.tokens[j].surface + '」を「' + checkKeywordObj[Object.keys(checkKeywordObj)[i]][0] + '」に修正してください', sentence);
+                    };
+                };
+            // 形態素分析が不要なキーワードであれば、正規表現だけでにエラーにする
+            } else {
+                addError('「' + Object.keys(checkKeywordObj)[i] + '」を「' + checkKeywordObj[Object.keys(checkKeywordObj)[i]][0] + '」に修正してください', sentence);
+            };
+        };
+    };
+};
