@@ -7,7 +7,7 @@ filename=`git diff HEAD^ HEAD --name-only`
 commitMassage=`git log -n 1 --oneline --pretty=format:"%s"`
 
 if [[ $filename =~ .*\.md$ ]] ;then
-    if [[ "$commitMassage" =~ \[skip test\] ]]; then
+    if [[ "$commitMassage" =~ \["skip test"\] ]]; then
         echo "redpen test is skipped."
     else
         echo "start to test $filename...."
