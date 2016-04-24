@@ -8,7 +8,7 @@ commitMassage=`git log -n 1 --oneline --pretty=format:"%s"`
 
 if [[ $filename =~ .*\.md$ ]] ;then
     if [[ "$commitMassage" =~ \[skip test\] ]]; then
-        echo "redpen test is skipped"
+        echo "redpen test is skipped."
     else
         echo "start to test $filename...."
         redpen-*/bin/redpen -c redpen-*/conf/blog.xml -f markdown $filename
