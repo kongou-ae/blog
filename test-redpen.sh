@@ -1,6 +1,7 @@
 #!/bin/sh
 mv redpen/blog.xml redpen-*/conf
-mv redpen/spellCheck.js redpen-*/js
+mv redpen/*.js redpen-*/js
+
 
 filename=`git diff HEAD^ HEAD --name-only`
 

@@ -29,7 +29,7 @@ function validateSentence(sentence) {
         var regex = new RegExp(Object.keys(checkKeywordObj)[i]);
         // もしセンテンスの文章がcheckKeywordObjのキーにマッチしたら
         if ( sentence.content.match(regex) ){
-            // 形態素分析が必要であればtokenまで見る
+            // 誤検知が多いものは、形態素分析が必要であればtokenまで見る
             if ( checkKeywordObj[Object.keys(checkKeywordObj)[i]][1] == true){
                 for (var j = 0; j < sentence.tokens.length; j++) {
                     // 自然言語解析の結果とキーワードが一致したらエラーメッセージを出力
