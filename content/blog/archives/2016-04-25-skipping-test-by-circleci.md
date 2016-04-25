@@ -14,7 +14,7 @@ categories:
 
 ![](http://aimless.jp/blog/images/2016-04-25-001.png)
 
-RedPenのJavascript拡張を利用して実装したスペルチェックのロジックがイマイチなのか、前回のエントリー作成時に「Email」を「Gmail」や「Emacs」のスペルミスと判定する悲劇が起きました。
+RedPenのJavaScript拡張を利用して実装したスペルチェックのロジックがイマイチなのか、前回のエントリ作成時に「Email」を「Gmail」や「Emacs」のスペルミスと判定する悲劇が起きました。
 
 ```
 2016-04-18-sending-zabbix-alert-mail-by-gmail.md:17: ValidationError[JavaScript], [spellCheck.js] Emailはスペルミスの可能性があります。Emacsではありませんか？ at line: 管理＞メディアタイプ＞Emailから以下の通り設定します。
@@ -31,7 +31,7 @@ bash ./test-redpen.sh returned exit code 1
 
 CircleCIに標準実装されている機能は`[skip ci]`です。コミットログに`[skip ci]`を含めると、CircleCIによる処理が行われません。
 
-私の場合、③テストだけをスキップしたいので、`[skip ci]`はやりすぎです。CircleCIによる処理が行われない場合、HUGOによるビルトやGithub Pagesへの公開がなされないためです。
+私の場合、③テストだけをスキップしたいので、`[skip ci]`はやりすぎです。CircleCIによる処理が行われない場合、HUGOによるビルトやGitHub Pagesへの公開がなされないためです。
 
 ## 実装
 
@@ -76,7 +76,7 @@ fi
 
 ![](http://aimless.jp/blog/images/2016-04-25-002.png)
 
-コミットメッセージを「update [skip test]」とすると、CircleCIによるRedPenのテストは実行されず、スクリプトで設定した`redpen test is skipped."`が表示されます。
+コミットメッセージを「update [skip test]」とすると、CircleCIによるRedPenのテストは実行されません。そのかわりに、スクリプトで設定した`redpen test is skipped.`が表示されます。
 
 ![](http://aimless.jp/blog/images/2016-04-25-003.png)
 
