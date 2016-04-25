@@ -29,7 +29,7 @@ bash ./test-redpen.sh returned exit code 1
 
 ## CircleCI標準のスキップ機能
 
-CircleCIに標準実装されている機能は`[skip ci]`です。コミットログに`[skip ci]`を含めると、CircleCIによる処理が行われません。
+CircleCIに標準実装されている機能は`[skip ci]`です。コミットログに`[skip ci]`を含めるとCircleCIによる処理が行われません。
 
 私の場合、③テストだけをスキップしたいので、`[skip ci]`はやりすぎです。CircleCIによる処理が行われない場合、HUGOによるビルトやGitHub Pagesへの公開がなされないためです。
 
