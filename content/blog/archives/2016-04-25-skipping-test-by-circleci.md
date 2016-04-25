@@ -14,7 +14,7 @@ categories:
 
 ![](http://aimless.jp/blog/images/2016-04-25-001.png)
 
-RedPenのJavaScript拡張を利用して実装したスペルチェックのロジックがイマイチなのか、前回のエントリ作成時に「Email」を「Gmail」や「Emacs」のスペルミスと判定する悲劇が起きました。
+RedPenのJavaScript拡張を利用したスペルチェックのロジックがイマイチなのか、前回のエントリ作成時に「Email」を「Gmail」や「Emacs」のスペルミスと判定する悲劇が起きました。
 
 ```
 2016-04-18-sending-zabbix-alert-mail-by-gmail.md:17: ValidationError[JavaScript], [spellCheck.js] Emailはスペルミスの可能性があります。Emacsではありませんか？ at line: 管理＞メディアタイプ＞Emailから以下の通り設定します。
