@@ -447,7 +447,7 @@
       error: print
   };
 
-  // 辞書によるスペルチェック
+  // 辞書によるスペルチェック 
   for (var i = 0; i < sentence.tokens.length; i++) {
     // 名詞だけを対象に
     if (sentence.tokens[i].tags[0] == '名詞') {
