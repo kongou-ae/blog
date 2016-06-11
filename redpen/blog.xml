@@ -6,6 +6,7 @@
         </validator>
         <validator name="ParagraphNumber"/>
         <validator name="SuccessiveWord" />
+        <validator name="JapaneseStyle"/>
         <validator name="JavaScript" />
     </validators>
 </redpen-conf>

@@ -1,7 +1,7 @@
 #!/bin/sh
 mv redpen/blog.xml redpen-*/conf
 mv redpen/*.js redpen-*/js
-
+mv redpen-validator/*.js redpen-*/js
 
 filename=`git diff HEAD^ HEAD --name-only`
 

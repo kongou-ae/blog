@@ -11,6 +11,7 @@ dependencies:
     - wget https://github.com/redpen-cc/redpen/releases/download/v1.4.1/redpen-1.4.1.tar.gz
     - tar xvf redpen-1.4.1.tar.gz
     - rm redpen-1.4.1.tar.gz
+    - git clone https://github.com/kongou-ae/redpen-validator.git
 
 test:
   post:
