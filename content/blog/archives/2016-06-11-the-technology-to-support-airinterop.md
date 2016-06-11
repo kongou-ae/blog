@@ -38,6 +38,7 @@ API Gatewayが返すデータはMockを使いました。DynamoDBやLambdaから
 
 初めてaws-sdkでAPI Gatewayを操作したので、updateIntegrationResponseしたあとにcreateDeploymentすることに気が付くのに時間がかかりました。その結果、Mockのデータは更新されているのにAPI Gatewayが返すデータが古いままという事象に数時間悩みました。
 
+
 ```javascript
 function(body,callback){
   var apigateway = new AWS.APIGateway();
