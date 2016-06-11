@@ -18,9 +18,7 @@ categories:
 
 今年のairinterop.jpは、S3の静的ウェブサイトホスティングを利用しました。
 
-去年までのairInterop.jpはConoHaで稼働していました。ですが、経費節約を目的にConoHaを解約したため、apacheやnginxに頼ることができません。（ConoHaに保存されていたairinteop.jpの存在を完全に失念していたため、airinteop.jpの過去コンテンツは電子の藻屑になりました。。。）
-
-現時点で常時稼働しているVPSは、リモート艦これ用のさくらのVPS for Windows Serverだけです。ですが、このVPSは、艦これのせいでCPUが常時90%を超えているため、サービスを公開するのに不向きです。
+去年までのairInterop.jpはConoHaで稼働していました。ですが、経費節約を目的にConoHaを解約したため、Apacheやnginxに頼ることができません。現時点で常時稼働しているVPSは、リモート艦これ用のさくらのVPS for Windows Serverだけです。ですが、このVPSは、艦これのせいでCPUが常時90%を超えているため、サービスを公開するのに不向きです。
 
 ![](http://aimless.jp/blog/images/2016-06-11-01.png)
 
@@ -36,9 +34,9 @@ categories:
 
 ![](http://aimless.jp/blog/images/2016-06-11-04.png)
 
-API Gatewayが返すデータはMockを使いました。DynamoDBやLambdaからデータを返すよりも安上がりで実装も簡単です。。Lambdaを利用して参加者一覧（＝#airinteropのハッシュタグをツイートした人）のデータを作成し、そのデータを使ってAPI GatewayのMock を更新することで、API Gatewayの返すデータが変化するようにしました。
+API Gatewayが返すデータはMockを使いました。DynamoDBやLambdaからデータを返すよりも安上がりで実装も簡単です。Lambdaを利用して#airinteropのハッシュタグをツイートした人のデータを作成し、そのデータを使ってAPI GatewayのMock を更新しました。
 
-updateIntegrationResponseしたあとにcreateDeploymentしなければならないことに気が付かず、Mockのデータは更新されているのにAPI Gatewayが返すデータが古いままという事象に数時間悩みました。。。
+初めてaws-sdkでAPI Gatewayを操作したので、updateIntegrationResponseしたあとにcreateDeploymentすることに気が付くのに時間がかかりました。その結果、Mockのデータは更新されているのにAPI Gatewayが返すデータが古いままという事象に数時間悩みました。
 
 ```javascript
 function(body,callback){
@@ -72,7 +70,7 @@ function(body,callback){
 });
 ```
 
-mithril.jsは以下のような簡単なコードです。API Gatewayから取得したjsonをデータバインディング用の配列に格納し格納し、Viewでその配列を描画します。いまだにControllerとView Model、Modelの使い分けがわかりません。。。
+mithril.jsは以下のような簡単なコードです。API Gatewayから取得したjsonをデータバインディング用の配列に格納し格納し、Viewでその配列を描画します。なお、いまだにControllerとView Model、Modelの使い分けがわかりません。
 
 ```javascript
 var register = {}
@@ -119,11 +117,11 @@ m.mount(document.getElementById("twit-register"), {
 
 ## #airinteopのツイート分析
 
-会期中、本家のBest of show awardsのようなことをやりたくなったので、Twitter APを使って#airinteropのツイートを収集し、最もリツイート数の多いツイートを、勝手にBest of Airinterop Awardとして表彰しました。
+会期中、本家のBest of show awardsのようなことをやりたくなりました。そこで、Twitter APを使って#airinteropのツイートを収集し、最もリツイート数の多いツイートを、勝手にBest of Airinterop Awardとして表彰しました。
 
 ![](http://aimless.jp/blog/images/2016-06-11-03.png)
 
-手作業で集計するのは非常に大変なので、node.jsとtwitを使って集計スクリプトを作りこみました。とりあえず集計優先で動くコードを書きましたが、next_resultsがなくなるまで検索を続ける処理について、もう少し良いアルゴリズムがありそうな気がします。。。
+手作業で集計するのは非常に大変なので、node.jsとtwitを使って集計スクリプトを作りこみました。とりあえず集計優先で動くコードを書きましたが、next_resultsがなくなるまで検索を続ける処理について、もう少し良いアルゴリズムがありそうな気がします。
 
 以下のスクリプトを動かすと、Retweet数トップ5のツイートを埋め込むためのHTMLコード
 を取得することができます。
