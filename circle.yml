@@ -8,9 +8,9 @@ dependencies:
     - go get -v github.com/spf13/hugo
     - git config --global user.name "CircleCI"
     - git config --global user.email "circleci@example.com"
-    - wget https://github.com/redpen-cc/redpen/releases/download/v1.4.1/redpen-1.4.1.tar.gz
-    - tar xvf redpen-1.4.1.tar.gz
-    - rm redpen-1.4.1.tar.gz
+    - wget https://github.com/redpen-cc/redpen/releases/download/redpen-1.6.2/redpen-1.6.2.tar.gz
+    - tar xvf redpen-1.6.2.tar.gz
+    - rm redpen-1.6.2.tar.gz
     - git clone https://github.com/kongou-ae/redpen-validator.git
 
 test:
