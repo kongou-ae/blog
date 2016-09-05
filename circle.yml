@@ -12,7 +12,7 @@ dependencies:
     - tar xvf redpen-1.6.2.tar.gz
     - rm redpen-1.6.2.tar.gz
     - git clone https://github.com/kongou-ae/redpen-validator.git
-    - echo $netlify_token
+    - echo "$netlify_token"
 
 test:
   post:
