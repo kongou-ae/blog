@@ -12,7 +12,7 @@
         {{ range .Params.categories }}
           #<a href="/blog/categories/{{ . | urlize }}">{{ . }}</a>&nbsp;
         {{ end }}
-        <a href='http://b.hatena.ne.jp/entry/{{ .Permalink }}/'><img src='http://b.hatena.ne.jp/entry/image/{{ .Permalink }}/' alt='' /></a>
+        <a href='//b.hatena.ne.jp/entry/{{ .Permalink }}/'><img src='//b.hatena.ne.jp/entry/image/{{ .Permalink }}/' alt='' /></a>
       </div>
     </div>
     {{ end }}
