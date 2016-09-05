@@ -28,7 +28,6 @@ deployment:
       - hugo -t angels-ladder-fork
       - rm -rf public/blog/categories
       - mv public/categories public/blog
-      -
       - cd public && git add .
       - cd public && git commit -m "publish"
       - cd public && git push origin master
