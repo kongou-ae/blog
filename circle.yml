@@ -23,7 +23,6 @@ deployment:
   master:
     branch: master
     commands:
-      - git clone git@github.com:kongou-ae/kongou-ae.github.io.git public
       - gem install asciidoctor
       - npm install netlify-cli
       - hugo -t angels-ladder-fork
