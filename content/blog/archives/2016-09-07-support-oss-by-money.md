@@ -19,6 +19,7 @@ categories:
 　「開発以外でプロジェクトに貢献できることはないか」と調べたところ、asciidoctorが、OSS専用のクラウドファンディングである[Bountysource Salt ](https://salt.bountysource.com/)に登録されていることを発見しました。Bountysource Saltを使えば、技術力がなくても、OSSを金銭的に支援できます。
 
 　[Bountysource Salt ](https://salt.bountysource.com/)による支援は容易です。支援に必要な項目は以下の3点です。
+
 - 投資金額（最小5ドル）
 - 頻度（今回限り or 月額）
 - 報酬（プロジェクトごとに投資金額に応じた報酬が設定されている）
