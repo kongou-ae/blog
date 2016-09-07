@@ -31,4 +31,4 @@ categories:
 
 　![](https://aimless.jp/blog/images/2016-09-07-002.png)
 
-　$5/monthというちっぽけな金額ですが、「OSSを使ってばっかり」という違和感を解消できました。asciidoctorを支援できてうれしいです。
+　月5ドルというちっぽけな金額ですが、「OSSを使ってばっかり」という違和感を解消できました。asciidoctorを支援できてうれしいです。
