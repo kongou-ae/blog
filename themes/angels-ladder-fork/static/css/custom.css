@@ -1,11 +1,6 @@
-.ad-left {
-    float: left;
-    margin-right: 2px;
-}
-
-.ad-right {
-    float: right;
+.ad {
     margin-left: 2px;
+    display: inline-block;
 }
 
 body{  font-size: 15px; }
@@ -26,3 +21,7 @@ h3,
 h4,
 h5,
 h6{font-size: 18px;}
+
+div.ad > iframe {
+  vertical-align: baseline;
+}
