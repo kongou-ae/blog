@@ -4,7 +4,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <main id="list" role="main">
     <div class="article-header light-gray"><h1>#{{ .Title }}</h1></div>
-    {{ range .Data.Pages }}
+    {{ range (.Paginator ).Pages }}
     <div class="summary">
       <h2><a href="{{ .RelPermalink  }}">{{ .Title }} {{ if .Draft }}:: DRAFT{{end}}</a></h2>
       <div class="meta">
@@ -17,5 +17,16 @@
     </div>
     {{ end }}
   </main>
+  {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+    <nav class="pagination">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}">Prev </a>
+      {{ end }}
+      <span class="current-page">{{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}"> Next</a>
+      {{ end }}
+    </nav>
+  {{ end }}
 
 {{ partial "footer.html" . }}
