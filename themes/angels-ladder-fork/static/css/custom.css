@@ -25,3 +25,11 @@ h6{font-size: 18px;}
 div.ad > iframe {
   vertical-align: baseline;
 }
+
+nav.pagination {
+  text-align: center;
+}
+
+nav.pagination a {
+    color: #29abe2;
+}
