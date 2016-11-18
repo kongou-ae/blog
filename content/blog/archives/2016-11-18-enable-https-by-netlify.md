@@ -53,7 +53,7 @@ deployment:
 
 ### 独自ドメインの利用
 
-Netlifyでは独自ドメインを利用できます。管理画面で独自ドメインを入力し、DNSサーバのCNAMEまたはAレコードをNetlifyに向けるだけです。簡単です。
+Netlifyでは独自ドメインを利用できます。管理画面で独自ドメインを入力し、DNSサーバのCNAMEまたはAレコードをNetlifyに向けるだけです。シンプル。
 
 参考：[Using a custom domain](https://www.netlify.com/docs/custom-domains/)
 
