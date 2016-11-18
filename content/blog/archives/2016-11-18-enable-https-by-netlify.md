@@ -12,7 +12,7 @@ categories:
 
 時代はHTTPSだということで、GitHub Pagesで公開している本ブログをHTTPS化しました。
 
-## やったこと
+## 実践
 
 ### ホスティング先の選定
 
@@ -24,7 +24,7 @@ GitHub Pages＋CloudFlareではなく、[Netlify](https://app.netlify.com/)を�
 
 ### デプロイプロセスの整備
 
-このブログは、CircleCIを中心としたデプロイプロセスで運営されています。Netlifyには、GitHubと連携しHogoを自動ビルトする機能があります。ですが、この機能を使ってしまうと、RedPenによる文書チェックが行われません。
+このブログは、CircleCIを中心としたデプロイプロセスで運営されています。Netlifyには、GitHubと連携しHogoを自動ビルトする機能があります。ですが、この機能を使うと、RedPenによる文書チェックが行われません。
 
 ![](http://aimless.jp/blog/images/2016-04-25-001.png)
 
@@ -49,11 +49,11 @@ deployment:
 {"site_id":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","path":"public"}
 ```
 
-`.netlify`にAPIを叩く認証を含めることもできますが、いかがなものかと思いましたので、CircleCIの環境変数に設定したうえで、`netlify-cli`に-tオプションで渡します。
+`.netlify`にはAPIをたたくTokenを含めることもできます。しかし、`.netlify`ファイルをリポジトリにふくめたいので、TokneをCircleCIの環境変数に設定したうえで、`netlify-cli`に-tオプションで渡します。
 
 ### 独自ドメインの利用
 
-Netlifyでは独自ドメインを利用することができます。管理画面で独自ドメインを入力し、DNSサーバのCNAMEまたはAレコードをNetlifyに向けるだけです。簡単！
+Netlifyでは独自ドメインを利用できます。管理画面で独自ドメインを入力し、DNSサーバのCNAMEまたはAレコードをNetlifyに向けるだけです。簡単です。
 
 参考：[Using a custom domain](https://www.netlify.com/docs/custom-domains/)
 
@@ -73,7 +73,7 @@ Netlifyは以下の通知をサポートしています。今回は、デプロ�
 
 HTTP前提で作られているHugoのテンプレートを修正します。
 
-- Amazonアソシエイトが表示されなくなってしまったので、`&internal=1`を追加
+- Amazonアソシエイトが表示されなくなったので、`&internal=1`を追加
 - はてぶのブックマーク数表示をHTTPSに変更。
 - Hugoの`baseurl`をhttpsにする勇気がなかったので、ブログのH1にHTTPSのURLを埋め込み、リンクの生成を`.Permalink`から`.RelPermalink`に変更
 
