@@ -26,7 +26,7 @@ GitHub Pages＋CloudFlareではなく、[Netlify](https://app.netlify.com/)を�
 
 このブログは、CircleCIを中心としたデプロイプロセスで運営されています。Netlifyには、GitHubと連携しHogoを自動ビルトする機能があります。ですが、この機能を使うと、RedPenによる文書チェックが行われません。
 
-![](http://aimless.jp/blog/images/2016-04-25-001.png)
+![](https://aimless.jp/blog/images/2016-04-25-001.png)
 
 そこで今回は、CircleCIのリリース先をGitHub PagesからNetlifyに切り替えることにしました。Netlifyには`netlify-cli`というCLIツールが用意されています。`circle.yml`のデプロイ処理に、`netlify-cli`のインストールと`netlify-cli`を使ったサイトのデプロイを追加します。
 
