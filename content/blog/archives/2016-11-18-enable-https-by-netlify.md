@@ -1,5 +1,5 @@
 ---
-title: Nelifyを使ってブログをHTTPS化する
+title: Neｔlifyを使ってブログをHTTPS化する
 author: kongou_ae
 layout: post
 date: 2016-09-07
@@ -30,7 +30,7 @@ GitHub Pages＋CloudFlareではなく、[Netlify](https://app.netlify.com/)を�
 
 そこで今回は、CircleCIのリリース先をGitHub PagesからNetlifyに切り替えることにしました。Netlifyには`netlify-cli`というCLIツールが用意されています。`circle.yml`のデプロイ処理に、`netlify-cli`のインストールと`netlify-cli`を使ったサイトのデプロイを追加します。
 
-```circle.yml
+```yaml:circle.yml
 deployment:
   master:
     branch: master
@@ -45,7 +45,7 @@ deployment:
 
 `netlify deploy`コマンドは、デプロイ先とデプロイするフォルダを`.netlify`ファイルから取得しますので、以下のフォーマットで記載します。site_idは管理画面のSite Infoに記載されています。
 
-```.netlify
+```json:.netlify
 {"site_id":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","path":"public"}
 ```
 
@@ -68,6 +68,10 @@ Netlifyでは独自ドメインを利用できます。管理画面で独自ド�
 Netlifyは以下の通知をサポートしています。今回は、デプロイの成功と失敗を自分のSlackチャンネルに流します。
 
 ![](http://aimless.jp/blog/images/2016-11-18-002.png)
+
+このような通知が流れます。
+
+![](http://aimless.jp/blog/images/2016-11-18-003.png)
 
 ### Hugoのテンプレート変更
 
