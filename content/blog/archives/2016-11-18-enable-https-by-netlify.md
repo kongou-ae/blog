@@ -1,5 +1,5 @@
 ---
-title: Neｔlifyを使ってブログをHTTPS化する
+title: Netlifyを使ってブログをHTTPS化する
 author: kongou_ae
 layout: post
 date: 2016-09-07
@@ -30,7 +30,7 @@ GitHub Pages＋CloudFlareではなく、[Netlify](https://app.netlify.com/)を�
 
 そこで今回は、CircleCIのリリース先をGitHub PagesからNetlifyに切り替えることにしました。Netlifyには`netlify-cli`というCLIツールが用意されています。`circle.yml`のデプロイ処理に、`netlify-cli`のインストールと`netlify-cli`を使ったサイトのデプロイを追加します。
 
-```yaml:circle.yml
+```
 deployment:
   master:
     branch: master
