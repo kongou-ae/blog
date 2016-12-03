@@ -1,5 +1,5 @@
 ---
-title: terraformを使ってDatadogのモニターを設定する
+title: terraformを使ってDatadogのモニタを設定する
 author: kongou_ae
 layout: post
 date: 2016-12-03
@@ -13,9 +13,9 @@ categories:
 
 「[SaaS サブスクリプションが AWS Marketplace から利用可能に](https://aws.amazon.com/jp/about-aws/whats-new/2016/11/saas-subscriptions-now-available-from-aws-marketplace/)」によって、Datadogの料金をAWS利用料で支払えるようになりました。
 
-このアップデートによって、私は、クレジットカードを使ってSaaSを契約するための社内手続きが不要になりました。事前に許可取得済みのAWS利用料の中に収まる範囲であればSaaSを使いたい放題です。神アップデートです。
+このアップデートによって、わたしは、クレジットカードを使ってSaaSを契約するための社内手続きが不要になりました。事前に許可取得済みのAWS利用料の中に収まる範囲であればSaaSを使いたい放題です。神アップデートです。
 
-Datadogを本格的に使うとなると、GUIをポチポチするのが辛そうです。この課題を解決するために、Terrformを使ってDatadogのモニターを設定します。
+Datadogを本格的に使うとなると、GUIをポチポチするのが辛そうです。この課題を解決するために、Terrformを使ってDatadogのモニタを設定します。
 
 ## 実践
 
@@ -27,9 +27,9 @@ DatadogのAPIを叩くためにはAPI KeyとApp Keyが必要です。GUIで作�
 
 ### コードを書く
 
-[DATADOG_MONITOR](https://www.terraform.io/docs/providers/datadog/r/monitor.html)をもとに、ロードアベレージが1になったらslackに通知するモニターを書きます。
+[DATADOG_MONITOR](https://www.terraform.io/docs/providers/datadog/r/monitor.html)をもとに、ロードアベレージが1になったらslackに通知するモニタを書きます。
 
-なお、Slackに通知するためにはSlack Integrationを有効にする必要があります。これは事前にGUIでポチポチやっておきます。
+なお、Slackに通知するためにはSlack Integrationを有効にする必要があります。これは事前にGUIでポチポチ設定しておきます。
 
 ```
 # Configure the Datadog provider
@@ -102,6 +102,6 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 ## 感想
 
-Terraformを使うことで、Datadogの監視設定をコードにすることができました。TerraformとDatadogを使うと、監視設定でもInfrastructure as codeのメリットを享受できますね。
+Terraformを使うことで、Datadogの監視設定をコードにできました。TerraformとDatadogを使うと、監視設定でもInfrastructure as codeのメリットを享受できますね。
 
-なお、Terraformはダッシュボードもコード化することができます（[DATADOG_TIMEBOARD](https://www.terraform.io/docs/providers/datadog/r/timeboard.html)）。これもいつか試します。
+なお、Terraformはダッシュボードもコードにできます（[DATADOG_TIMEBOARD](https://www.terraform.io/docs/providers/datadog/r/timeboard.html)）。これもいつか試します。
