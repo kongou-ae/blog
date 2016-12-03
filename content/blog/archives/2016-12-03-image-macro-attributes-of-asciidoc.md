@@ -78,4 +78,4 @@ image::17_11_vmd5c.jpg[scaledwidth="50%",align="center"]
 
 ## 感想
 
-Asciidocの表現力の高さを改めて実感しました。
+Asciidocの表現力の高さを、改めて実感しました。
