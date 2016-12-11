@@ -30,7 +30,7 @@ categories:
 
 Twilioは電話をかけるためのAPIが用意されています（[REST API: 通話を開始する](https://jp.twilio.com/docs/api/rest/making-calls)）。このAPIを、DatadogのWebhook Integrationを利用してたたきます。
 
-Webhookから叩くときのAPIエンドポイントは以下のフォーマットです（[参考：Datadog-Webhooks Integration](http://docs.datadoghq.com/ja/integrations/webhooks/)）。
+WebhookからAPIをたたくときのエンドポイントは以下のフォーマットです（[参考：Datadog-Webhooks Integration](http://docs.datadoghq.com/ja/integrations/webhooks/)）。
 
 ```
 https://{Your-Account-id}:{Your-Auth-Token}@api.twilio.com/2010-04-01/Accounts/{Your-Account-id}/Calls.json
