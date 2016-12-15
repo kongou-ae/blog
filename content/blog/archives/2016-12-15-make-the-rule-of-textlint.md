@@ -12,7 +12,7 @@ categories:
 
 
 
-文章校正ツールとして、Asciidocへの対応状況と形態素解析を標準サポートすることからRedPenを選んだものの、Javascript拡張の作り方と配布方法に苦労
+文章校正ツールとして、Asciidocへの対応状況と形態素解析を標準サポートすることからRedPenを選んだものの、JavaScript拡張の作り方と配布方法に苦労
 していました。
 
 そんな中、textlintに、`create-textlint-rule`という便利そうなツールが増えたので試してみました。
