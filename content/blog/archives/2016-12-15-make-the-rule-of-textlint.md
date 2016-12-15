@@ -26,7 +26,7 @@ categories:
 
 ![](https://aimless.jp/blog/images/2016-12-15-001.png)
 
-以前書いたRedPenのJavascript拡張（[use-joyo-Kanji.js](https://github.com/kongou-ae/redpen-validator/blob/master/use-joyo-Kanji.js)）を移植しました。
+以前書いたRedPenのJavaScript拡張（[use-joyo-Kanji.js](https://github.com/kongou-ae/redpen-validator/blob/master/use-joyo-Kanji.js)）を移植しました。
 
 ## 感想
 
