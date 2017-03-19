@@ -18,4 +18,4 @@ deployment:
       - hugo -t angels-ladder-fork
       - rm -rf public/blog/categories
       - mv public/categories public/blog
-      - node_modules/.bin/netlify deploy -t "$netlify_token"
+      #- node_modules/.bin/netlify deploy -t "$netlify_token"
