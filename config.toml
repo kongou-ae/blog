@@ -1,12 +1,12 @@
-baseurl = "http://aimless.jp/"
+baseurl = "https://aimless.jp/blog/"
 languageCode = "ja"
 title = "Aimless"
 disqusShortname = "aimlessjpblog"
 rssuri = "feed"
+copyright = "Written by kongou_ae"
+canonifyurls = true
 
 [Params]
-subtitle = "Powered by aimless emotion"
-twitter = "https://twitter.com/kongou_ae"
-github = "https://github.com/kongou-ae"
-copyright = "Written by kongou_ae"
-analytics = "UA-1736780-2"
+twitter = "kongou_ae"
+github = "kongou-ae"
+googleAnalyticsUserID = "UA-1736780-2"

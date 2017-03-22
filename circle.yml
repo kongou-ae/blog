@@ -15,7 +15,5 @@ deployment:
     commands:
       - gem install asciidoctor
       - npm install netlify-cli
-      - hugo -t angels-ladder-fork
-      - rm -rf public/blog/categories
-      - mv public/categories public/blog
-      #- node_modules/.bin/netlify deploy -t "$netlify_token"
+      - hugo -t material-design-fork -d public/blog
+      - node_modules/.bin/netlify deploy -t "$netlify_token"
