@@ -1,13 +1,21 @@
 {
-  "filters": {},
+  "filters": {
+    "whitelist": {
+      "allow": [
+        "金澤"
+      ]
+    }
+  },
   "rules": {
     "preset-ja-technical-writing": true,
     "joyo-kanji": true,
     "ja-no-redundant-expression": true,
+    "single-nado": true,
     "prh": {
       "rulePaths": [
         "./prh.yml"
       ]
-}
+    },
+    "no-renyo-chushi":true
   }
 }

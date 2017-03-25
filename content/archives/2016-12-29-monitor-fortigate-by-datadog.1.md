@@ -1,6 +1,7 @@
 ---
 title: DatadogでFortiGateを監視する
-author: kongou_ae
+author: kongou_ae
+
 date: 2016-12-29
 url: /archives/2016-12-29-monitor-fortigate-by-datadog
 categories:
@@ -65,27 +66,27 @@ Datadogにメトリクスを送っていますので、サーバと同様にメ�
 
 それっぽいダッシュボードができました。
 
-![](https://aimless.jp/blog/images/2016-12-29-002.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-002.png">}}
 
 ifInOctetsとifOutOctetsの値をそのままグラフにすると、単位がOctetsPerSecondになってしまいます。そこで、グラフに秒する値を8倍してBitPerSecondにします。
 
-![](https://aimless.jp/blog/images/2016-12-29-003.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-003.png">}}
 
 FortiGate50Bのダッシュボードにしたいので、タグでフィルタをかけます。`snmp.yaml`に設定した`tags`がここで活きてきます。`snmp_device:xxx.xxx.xxx.xxx`という識別子でフィルタをかけることもできます。
 
-![](https://aimless.jp/blog/images/2016-12-29-004.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-004.png">}}
 
 長期間のグラフを描画すると、データが丸まります（参考：[4) メトリクスの値のロールアップ(値を丸める)](http://docs.datadoghq.com/ja/graphing/#section-5)）。デフォルトは平均値で丸められます。最大値で丸めるためには、明示的に最大値でのrollupを設定します。
 
-![](https://aimless.jp/blog/images/2016-12-29-005.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-005.png">}}
 
 Datadogのダッシュボードは変数が使えます。タグでフィルタをかける部分を変数にすることで、1つのダッシュボードをつかって、複数のネットワーク機器のメトリクスを見られそうです。
 
-![](https://aimless.jp/blog/images/2016-12-29-006.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-006.png">}}
 
-![](https://aimless.jp/blog/images/2016-12-29-007.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-007.png">}}
 
-![](https://aimless.jp/blog/images/2016-12-29-009.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-29-009.png">}}
 
 ## 感想
 

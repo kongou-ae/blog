@@ -53,19 +53,19 @@ APIエンドポイントにPOSTしなければならない要素は以下の3つ
 
  上記のAPIエンドポイントとjsonを使って、Webhook Integrationを設定します。
 
- ![](https://aimless.jp/blog/images/2016-12-11-001.png)
+ {{<img src="https://aimless.jp/blog/images/2016-12-11-001.png">}}
 
 ### Monitor設定でWebhookを利用する
 
 作成したWebhook IntegrationをMonitor設定で利用します。
 
-![](https://aimless.jp/blog/images/2016-12-11-003.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-11-003.png">}}
 
 ただし、上記画像のようにWebhookを利用すると、障害発生だけでなく障害復旧の際にもTwilioによる電話がかかってきます。電話連絡は目覚まし時計のようなものですので、復旧時の連絡が不要なケースもあります。
 
 電話連絡を障害発生時だけにする場合は、条件変数（[message-template-variables](http://docs.datadoghq.com/monitoring/#message-template-variables)）を使ってアラート発生時のみWebhookが使われるようにします。近騎亜は障害発生時のみですので、電話をかけるWebhoolを`{{#is_alert}}{{/is_alert}}`で囲みます。
 
-![](https://aimless.jp/blog/images/2016-12-11-004.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-11-004.png">}}
 
 ### 電話をかける
 

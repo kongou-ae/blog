@@ -26,7 +26,7 @@ asciidoctor-pdfで画像入りのPDFを作り始めたものの、センタリ�
 
 インラインとブロックの見た目は以下のとおりです。
 
-![](https://aimless.jp/blog/images/2016-12-03-001.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-001.png">}}
 
 ブロックのみ有効になる属性がありますので、意識して使い分ける必要があります。たとえば、あとで説明する`align`はブロックでのみ使えます。
 
@@ -45,15 +45,15 @@ asciidoctor-pdfで画像入りのPDFを作り始めたものの、センタリ�
 
 サイズを指定しないと以下のとおりです。
 
-![](https://aimless.jp/blog/images/2016-12-03-002.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-002.png">}}
 
 `width="75"`をつけると画像が縮みます。
 
-![](https://aimless.jp/blog/images/2016-12-03-003.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-003.png">}}
 
 `scaledwidth="50%"`をつけると、横幅がPDFの印刷領域の半分になります。
 
-![](https://aimless.jp/blog/images/2016-12-03-004.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-004.png">}}
 
 ## 整列
 
@@ -73,7 +73,7 @@ image::17_11_vmd5c.jpg[scaledwidth="50%",align="right"]
 image::17_11_vmd5c.jpg[scaledwidth="50%",align="center"]
 ```
 
-![](https://aimless.jp/blog/images/2016-12-03-005.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-005.png">}}
 
 ## 感想
 

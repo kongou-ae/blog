@@ -61,6 +61,10 @@ footer.page-footer {
   font-size: 1.5em;
 }
 
+.card-panel p {
+  font-size: 1.1em;
+}
+
 .card-panel ul {
   padding: inherit;
 }
@@ -75,3 +79,7 @@ footer.page-footer {
     vertical-align: top;
 }
 
+.card-panel img {
+  border : 2px solid #eeeeee;
+  border-radius: 7px;
+}

@@ -13,7 +13,7 @@ Amazon WorkSpacesへの憧れが止まりません。BYOD＋WorkSpacesで仕事�
 
 AD ConnectorとRADIUSサーバによる多要素認証を使ってみて気が付いたのですが、WorkSpacesクライアントは多要素認証を使っていても認証情報を記憶します。多要素認証でログインした後に一旦切断しても、以下の画面になりボタン一つで簡単に再接続ができます。
 
-![https://media.amazonwebservices.com/blog/2015/ws_client_reconnect_2.png](https://media.amazonwebservices.com/blog/2015/ws_client_reconnect_2.png)
+{{<img src="https://media.amazonwebservices.com/blog/2015/ws_client_reconnect_2.png">}}
 
 　認証情報を保存する機能は便利なのですが、社外に配置するPCで利用するWorkSpacesクライアントには認証情報を保存したくありません。誰が触るかわかりませんので。
 
@@ -33,15 +33,15 @@ AD ConnectorとRADIUSサーバによる多要素認証を使ってみて気が�
 
 WorkSpacesクライアントを切断します。
 
-![http://aimless.jp/blog/images/2015-12-15-002.png](http://aimless.jp/blog/images/2015-12-15-002.png)
+{{<img src="http://aimless.jp/blog/images/2015-12-15-002.png">}}
 
 切断後の画面がRecconectになりません。IDとパスワード、ワンタイムパスワードを入力する画面に戻りました。
 
-![http://aimless.jp/blog/images/2015-12-15-003.png](http://aimless.jp/blog/images/2015-12-15-003.png)
+{{<img src="http://aimless.jp/blog/images/2015-12-15-003.png">}}
 
 WorkSpacesクライアントのオプション設定でもRemember Meを有効にすることができなくなります。
 
-![http://aimless.jp/blog/images/2015-12-15-004.png](http://aimless.jp/blog/images/2015-12-15-004.png)
+{{<img src="http://aimless.jp/blog/images/2015-12-15-004.png">}}
 
 ## 所感
 

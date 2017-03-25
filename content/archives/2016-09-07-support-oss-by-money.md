@@ -23,12 +23,12 @@ categories:
 - 頻度（今回限り or 月額）
 - 報酬（プロジェクトごとに投資金額に応じた報酬が設定されている）
 
-![](https://aimless.jp/blog/images/2016-09-07-001.png)
+{{<img src="https://aimless.jp/blog/images/2016-09-07-001.png">}}
 
 　支援に対する報酬は、「プロジェクトの支援者ページに名前やURLを載せる」や「issueやpull requestに対してなるべく早く対応する」といったものが多いです。報酬がないプロジェクトもあります。asciidoctorの報酬は、[Supporters](http://asciidoctor.org/supporters/)への登録と金額に応じたサポートレベルの向上です。
 
 ## 感想
 
-　![](https://aimless.jp/blog/images/2016-09-07-002.png)
+　{{<img src="https://aimless.jp/blog/images/2016-09-07-002.png">}}
 
 　月5ドルというわずかな金額ですが、「OSSを使ってばっかり」という違和感を解消できました。asciidoctorを支援できてうれしいです。利用頻度が増えたら金額も増やします。

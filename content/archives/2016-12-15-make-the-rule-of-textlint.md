@@ -23,7 +23,7 @@ categories:
 
 [https://github.com/kongou-ae/textlint-rule-joyo-kanji](https://github.com/kongou-ae/textlint-rule-joyo-kanji)
 
-![](https://aimless.jp/blog/images/2016-12-15-001.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-15-001.png">}}
 
 以前書いたRedPenのJavaScript拡張（[use-joyo-Kanji.js](https://github.com/kongou-ae/redpen-validator/blob/master/use-joyo-Kanji.js)）を移植しました。
 

@@ -19,7 +19,7 @@ categories:
 
 去年までのairInterop.jpはConoHaで稼働していました。ですが、経費節約を目的にConoHaを解約したため、Apacheやnginxに頼ることができません。現時点で常時稼働しているVPSは、リモート艦これ用のさくらのVPS for Windows Serverだけです。ですが、このVPSは、艦これのせいでCPUが常時90%を超えているため、サービスを公開するのに不向きです。
 
-![](https://aimless.jp/blog/images/2016-06-11-01.png)
+{{<img src="https://aimless.jp/blog/images/2016-06-11-01.png">}}
 
 ネタサイトのために再びVPSを借りるのは馬鹿らしいので、S3の静的ウェブサイトホスティングでリリースしました
 
@@ -27,11 +27,11 @@ categories:
 
 「airinterop.jpの参加者が可視化されたら面白くね？」という思いつきから、Doorkeeperなどのイベント登録サイトのように、参加者のTwitterアイコンを表示するようにしました。公式サイトも来場者数を公表していますし。
 
-![](https://aimless.jp/blog/images/2016-06-11-02.png)
+{{<img src="https://aimless.jp/blog/images/2016-06-11-02.png">}}
 
 静的ウェブサイトホスティングにしてしまったので、サーバ側でTwitterアイコンを動的に描画することはできません。そこで、API Gateway＋mithril.jsを使って、クライアント側で動的に描画することにしました。
 
-![](https://aimless.jp/blog/images/2016-06-11-04.png)
+{{<img src="https://aimless.jp/blog/images/2016-06-11-04.png">}}
 
 API Gatewayが返すデータはMockを使いました。DynamoDBやLambdaからデータを返すよりも安上がりで実装も簡単です。Lambdaを利用して#airinteropのハッシュタグをツイートした人のデータを作成し、そのデータを使ってAPI GatewayのMock を更新しました。
 
@@ -119,7 +119,7 @@ m.mount(document.getElementById("twit-register"), {
 
 会期中、本家のBest of show awardsのようなことをやりたくなりました。そこで、Twitter APを使って#airinteropのツイートを収集し、最もリツイート数の多いツイートを、勝手にBest of Airinterop Awardとして表彰しました。
 
-![](https://aimless.jp/blog/images/2016-06-11-03.png)
+{{<img src="https://aimless.jp/blog/images/2016-06-11-03.png">}}
 
 手作業で集計するのは非常に大変なので、node.jsとtwitを使って集計スクリプトを作りこみました。とりあえず集計優先で動くコードを書きましたが、next_resultsがなくなるまで検索を続ける処理について、もう少し良いアルゴリズムがありそうな気がします。
 

@@ -19,7 +19,7 @@ v1.0, 2014-01-01
 
 テーマをカスタマイズせずにPDFを生成すると、以下のような形になります。
 
-![](http://aimless.jp/blog/images/2016-02-16-001.png)
+{{<img src="http://aimless.jp/blog/images/2016-02-16-001.png">}}
 
 ## テーマファイルを使って表紙をカスタマイズする
 
@@ -44,7 +44,7 @@ title_page:
 
 かっこよくなりました。
 
- ![](http://aimless.jp/blog/images/2016-02-16-002.png)
+ {{<img src="http://aimless.jp/blog/images/2016-02-16-002.png">}}
 
 ## タイトルの改行位置を調整する
 
@@ -56,6 +56,6 @@ title_page:
 v1.0, 2014-01-01
 ```
 
- ![](http://aimless.jp/blog/images/2016-02-16-003.png)
+ {{<img src="http://aimless.jp/blog/images/2016-02-16-003.png">}}
 
 狙った位置でタイトルが改行されました。可読性を向上させることができました。

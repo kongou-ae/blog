@@ -25,7 +25,7 @@ GitHub Pages＋CloudFlareではなく、[Netlify](https://app.netlify.com/)を�
 
 このブログは、CircleCIを中心としたデプロイプロセスで運営されています。Netlifyには、GitHubと連携しHogoを自動ビルトする機能があります。ですが、この機能を使うと、RedPenによる文書チェックが行われません。
 
-![](https://aimless.jp/blog/images/2016-04-25-001.png)
+{{<img src="https://aimless.jp/blog/images/2016-04-25-001.png">}}
 
 そこで今回は、CircleCIのリリース先をGitHub PagesからNetlifyに切り替えることにしました。Netlifyには`netlify-cli`というCLIツールが用意されています。`circle.yml`のデプロイ処理に、`netlify-cli`のインストールと`netlify-cli`を使ったサイトのデプロイを追加します。
 
@@ -60,17 +60,17 @@ Netlifyでは独自ドメインを利用できます。管理画面で独自ド�
 
 ボタンぽちーでLet's EncryptによるHTTPSが有効になります。NetlifyはHTTP/2による配信をサポートしていますので、HTTPS化によってHTTP/2の恩恵を得られます。
 
-![](https://aimless.jp/blog/images/2016-11-18-001.png)
+{{<img src="https://aimless.jp/blog/images/2016-11-18-001.png">}}
 
 ### 通知
 
 Netlifyは以下の通知をサポートしています。今回は、デプロイの成功と失敗を自分のSlackチャンネルに流します。
 
-![](https://aimless.jp/blog/images/2016-11-18-002.png)
+{{<img src="https://aimless.jp/blog/images/2016-11-18-002.png">}}
 
 このような通知が流れます。
 
-![](https://aimless.jp/blog/images/2016-11-18-003.png)
+{{<img src="https://aimless.jp/blog/images/2016-11-18-003.png">}}
 
 ### Hugoのテンプレート変更
 

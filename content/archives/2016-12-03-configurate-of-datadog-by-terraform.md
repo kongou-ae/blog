@@ -22,7 +22,7 @@ Datadogを本格的に使うとなると、GUIをポチポチするのが辛そ�
 
 DatadogのAPIを叩くためにはAPI KeyとApp Keyが必要です。GUIで作ります。
 
-![](https://aimless.jp/blog/images/2016-12-03-006.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-006.png">}}
 
 ### コードを書く
 
@@ -97,7 +97,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 無事addedされました。GUI上にも表示されています。
 
-![](https://aimless.jp/blog/images/2016-12-03-007.png)
+{{<img src="https://aimless.jp/blog/images/2016-12-03-007.png">}}
 
 ## 感想
 
