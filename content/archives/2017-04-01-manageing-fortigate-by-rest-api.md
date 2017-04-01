@@ -54,7 +54,7 @@ FortiGateは2つのAPIをサポートします。cmdbはconfig xxx xxxの結果�
 
 次のポリシーが設定されているFortiGateからREST APIでポリシーを取得してみます。
 
-{{ <img src="./../../images/2017-04-02-001.png"> }}
+{{<img src="./../../images/2017-04-02-001.png">}}
 
 config xxx yyyが/cmdb/xxxx/yyy/に対応しているので、cmdb/firewall/policyにアクセスします。
 
@@ -136,7 +136,7 @@ cookie.txt
   "build":9380
 }
 ```
-{{ <img src="./../../images/2017-04-02-002.png"> }}
+{{<img src="./../../images/2017-04-02-002.png">}}
 
 
 ```
@@ -181,7 +181,7 @@ root@ubuntu:~# curl -X POST -H "Content-Type: application/json" -H "X-CSRFTOKEN:
   "build":9380
 }
 ```
-{{ <img src="./../../images/2017-04-02-003.png"> }}
+{{<img src="./../../images/2017-04-02-003.png">}}
 
 ## 感想
 
