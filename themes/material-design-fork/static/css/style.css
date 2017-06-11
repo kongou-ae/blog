@@ -38,7 +38,6 @@ p {
   }
 }
 
-
 .icon-block {
   padding: 0 15px;
 }
@@ -61,18 +60,30 @@ footer.page-footer {
   font-size: 1.5em;
 }
 
+.card-panel h4 {
+  font-size: 1.3em;
+}
+
 .card-panel p {
   font-size: 16px;
   line-height: 1.5
 }
 
 .card-panel ul {
-  padding: inherit;
+  padding-left: 40px;
 }
 
 .card-panel ul li {
   font-size: 16px;
   list-style-type: disc;
+}
+
+.card-panel ol {
+  padding-left: 40px;
+}
+
+.card-panel ol li {
+  font-size: 16px;
 }
 
 .ad {
@@ -84,4 +95,14 @@ footer.page-footer {
 .card-panel img {
   border : 2px solid #eeeeee;
   border-radius: 7px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table{
+  width:60%;
+  display:table;
+  margin-left: auto;
+  margin-right: auto;
 }
