@@ -1,5 +1,5 @@
 ---
-title: BGP対応のAzure Virtual Network GatewayをPowerShellでデプロイする
+title: BGP対応のAzure VPN GatewayをPowerShellでデプロイする
 author: kongou_ae
 
 date: 2017-07-16
@@ -8,17 +8,17 @@ categories:
   - Azure
 ---
 
-AzureのVNetとオンプレミスをIPsecVPNでつなぐ場合、Virtual Network Gatewayが必要です。Virtual Network GatewayはStatic RouteとBGPをサポートしています。Azure PortalではStatic RouteをサポートするVirtual Network Gatewayのみ作成できます。BGPをサポートするVirtual Network GatewayはPowerShellを使って作ります。
+AzureのVNetとオンプレミスをIPsecVPNでつなぐ場合、VPN Gatewayが必要です。VPN GatewayはStatic RouteとBGPをサポートしています。Azure PortalではStatic RouteをサポートするVPN Gatewayのみ作成できます。BGPをサポートするVPN GatewayはPowerShellを使って作ります。
 
 ## サンプルスクリプト
 
-BGPをサポートするVirtual Network Gatewayを作る時の基本的な注意点は次の3点です。
+BGPをサポートするVPN Gatewayを作る時の基本的な注意点は次の3点です。
 
 - SKUをBasic以外にする（BasicはBGPをサポートしない）
 - New-AzureRmVirtualNetworkGatewayに-EnableBgp $TRUEをつける
-- Virtual Network Gatewayを作る時のように、Local Network Gatewayを作る時（New-AzureRmLocalNetworkGateway）にもBGP用のパラメータをつける
+- VPN Gatewayを作る時のように、Local Network Gatewayを作る時にもBGP用のパラメータをつける
 
-サンプルのスクリプトは次のとおりです。New-AzureRmVirtualNetworkGatewayの処理にに時間がかかります。
+サンプルのスクリプトは次のとおりです。New-AzureRmVirtualNetworkGatewayの処理に時間がかかります。
 
 ```
 # 既存リソースのパラメータ
@@ -176,4 +176,4 @@ Weight       : 0
 
 BGPの状況を確認できるコマンドが用意されていることに驚きました。クラウドを利用する上で、トラブったときに自己調査できる手段が用意されていることは大事です。解決に至るまでのスピード感が違います。
 
-次のエントリでは、BGP対応のVirtual Network GatewayとFortiGateを接続します。
+次のエントリでは、BGP対応のVPN GatewayとFortiGateを接続します。
