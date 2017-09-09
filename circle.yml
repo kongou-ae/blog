@@ -23,4 +23,5 @@ deployment:
       - gem install asciidoctor
       - npm install netlify-cli
       - hugo -t material-design-fork -d public/blog
+      - mv public/blog/feed.xml public/blog/feed
       - node_modules/.bin/netlify deploy -t "$netlify_token"
