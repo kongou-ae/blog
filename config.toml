@@ -2,7 +2,6 @@ baseurl = "https://aimless.jp/blog/"
 languageCode = "ja"
 title = "Aimless"
 disqusShortname = "aimlessjpblog"
-rssuri = "feed"
 copyright = "Written by kongou_ae"
 canonifyurls = true
 
@@ -10,3 +9,8 @@ canonifyurls = true
 twitter = "kongou_ae"
 github = "kongou-ae"
 googleAnalyticsUserID = "UA-1736780-2"
+
+[outputFormats]
+
+[outputFormats.RSS]
+baseName = "feed"
