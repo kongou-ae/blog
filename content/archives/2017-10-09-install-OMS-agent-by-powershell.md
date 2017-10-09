@@ -31,7 +31,7 @@ MMASetup-AMD64.exe /Q:A /R:N /C:"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSI
 インストールに成功すると、次のレジストリキーができます。「Connection Status」が0であればOMSエージェントはOMS ワークスペースと接続できています。OMSポータルでログが確認できるようになるまで待ちましょう。
 
 ```
-PS C:\Users\y_matsumoto_ae\Documents> Get-ChildItem -Path "Registry::HKLM\SYSTEM\CurrentControlSet\Services\HealthServic
+PS C:\Users\YOUR-NAME\Documents> Get-ChildItem -Path "Registry::HKLM\SYSTEM\CurrentControlSet\Services\HealthServic
 e\Parameters\Service Connector Services\"
 
 
