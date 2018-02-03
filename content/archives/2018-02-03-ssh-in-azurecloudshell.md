@@ -2,7 +2,7 @@
 title: PowerShell in Azure Cloud ShellでSSH 
 author: kongou_ae
 date: 2018-02-03
-url: /archives/ssh-in-azurecloudshell.md
+url: /archives/ssh-in-azurecloudshell
 categories:
   - azure
 ---
