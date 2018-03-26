@@ -15,7 +15,7 @@ Azure上のリソースの設定をテストするPowerShellモジュール「[a
 
 Virtual Machineの設定をテストする場合は次のように書きます。
 
-```powershell
+```
 $vms = Get-AzureRmVM
 $vm = $vms[0]
 $vm | Test-AzRmVm -Name testvm `
