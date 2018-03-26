@@ -37,7 +37,7 @@ $vm | Test-AzRmVm -Name testvm `
 
 その名のとおり、[azurePester](https://github.com/kongou-ae/azurePester)は[Pester](https://github.com/pester/Pester)を使ってリソースがあるべき設定かどうかをテストします。`Test-AzRmVm `で仮想マシン名をテストすると、内部では次のようなコードが動いています。Pesterを利用して、受け取ったリソース内の設定（$vm）とユーザが引数に入力したあるべき姿（$name）を比較しています。
 
-```powershell
+```
   Describe "Checking Virtual Machine ($TargetVmName)" {
     if ($name) {
       it "VM name $Method $name" {
