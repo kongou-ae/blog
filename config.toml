@@ -10,7 +10,9 @@ twitter = "kongou_ae"
 github = "kongou-ae"
 googleAnalyticsUserID = "UA-1736780-2"
 
-[outputFormats]
+[outputs]
+  home = [ "HTML", "RSS" ]
 
+[outputFormats]
 [outputFormats.RSS]
 baseName = "feed"
