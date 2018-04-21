@@ -11,7 +11,7 @@ github = "kongou-ae"
 googleAnalyticsUserID = "UA-1736780-2"
 
 [outputs]
-  home = [ "HTML", "RSS" ]
+home = [ "HTML", "RSS" ]
 
 [outputFormats]
 [outputFormats.RSS]
