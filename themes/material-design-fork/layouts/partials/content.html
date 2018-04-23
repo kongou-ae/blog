@@ -7,7 +7,7 @@
   {{ end }}
   <div class="col m12 s12">
     <div class="card-panel">
-      <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+      <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
       <p>{{ .Date.Format "2 Jan 2006" }}　
       {{if .Params.categories }}
         {{ range $index, $category := .Params.categories }}
