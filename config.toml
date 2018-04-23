@@ -3,7 +3,7 @@ languageCode = "ja"
 title = "Aimless"
 disqusShortname = "aimlessjpblog"
 copyright = "Written by kongou_ae"
-canonifyurls = true
+canonifyurls = false
 
 [Params]
 twitter = "kongou_ae"
