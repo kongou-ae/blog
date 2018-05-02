@@ -20,17 +20,19 @@ JapanEastとJapanWest、EastUs2にVNetを用意します。
 
 {{<img src="./../../images/2018-05-02-003.png">}}
 
-JapanWestのVNetをJapanEastのVNetとEastUs2のVNetと接続してみました。ポータル上でポチポチするだけで異なる地域に存在するプライベートなネットワークがつながるとは、すごい時代になりました。
+JapanWestのVNetをJapanEastのVNetとEastUs2のVNetに接続してみました。ポータル上でポチポチするだけで異なる地域に存在するプライベートなネットワークがつながるとは、すごい時代になりました。
 
 {{<img src="./../../images/2018-05-02-006.png">}}
 
 JapanWestのルーティングは次の通りです。Global VNet PeeringしているVNetのセグメントはネクストホップは"VNet Global Peering"になります。
 
+{{<img src="./../../images/2018-05-02-010.png">}}
+
 # 疎通確認
 
-疎通確認のために、JapanWestとEastUs2にubuntuのVirtual Machineを起動します。別リージョンのVirtual MachineのプライベートIPアドレスに対してPingを打つと普通に通ります。JapanWestのVirtual MachineからEastUs2のVirtual MachineへのPingのRTTは156msでした。
+疎通確認のために、JapanWestとEastUs2にubuntuのVirtual Machineを起動します。別リージョンのVirtual MachineのプライベートIPアドレスに対してPingを打つと普通に通ります。JapanWestのVirtual MachineからEastUs2のVirtual MachineへのPingのRTTは156msくらいでした。
 
 {{<img src="./../../images/2018-05-02-007.png">}}
 
-比較のために、Looking Glassを利用して、大阪に設置されているISPのルータからEastUs2のVirtual MachineのPublic IP Addressに対してPingを打ってみました。利用したLooking Glassは[TATA](http://lg.as6453.net/lg/)と[ANEXIA](https://lg.anexia-it.com/lg/#node/select)です。どちらもRTTは165msでした。Global VNet Peeringの方が早い。すごいぞMicrosoft Backbone。
+比較のために、Looking Glassを利用して、大阪に設置されているISPのルータからEastUs2のVirtual MachineのPublic IP Addressに対してPingを打ってみました。利用したLooking Glassは[TATA](http://lg.as6453.net/lg/)と[ANEXIA](https://lg.anexia-it.com/lg/#node/select)です。どちらもRTTは165msくらいでした。Global VNet Peeringの方が早い。すごいぞMicrosoft Backbone。
 
