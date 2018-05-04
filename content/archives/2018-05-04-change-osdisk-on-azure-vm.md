@@ -28,7 +28,7 @@ vm01のOS Diskを変更してみます。ポータルでは変更できないの
 
 変更後のOS Diskには、Virtual Machineに接続されていないManaged Diskのみ利用できます。vm01のOS Diskをvm02に接続されてるManaged Disk（vm02_OsDisk_1_7fe4c53366f84edf95409a26c3ce1221）に変更しようとすると、409 Conflictでエラーになります。
 
-{{<img src="./../../images/2018-05-04-002.png">}}
+{{<img src="./../../images/2018-05-04-004.png">}}
 
 そこで、Snapshotを利用してvm02のOS Diskから未使用のManaged Disk(vm02-osdisk-from-snapshot)を作成します。次のPowerShellのように、変更後のOS Diskに未使用のManaged Diskを指定すると、処理が正常に終了します。
 
