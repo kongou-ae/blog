@@ -1,5 +1,5 @@
 ---
-title: PowerShellを使って、AzureからAzure StackにMarketPlaceのアイテムをダウンロードする
+title: PowerShellを使って、AzureからAzure StackにMarket Placeのアイテムをダウンロードする
 author: kongou_ae
 
 date: 2018-06-10
