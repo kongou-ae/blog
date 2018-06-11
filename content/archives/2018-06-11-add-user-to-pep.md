@@ -23,7 +23,7 @@ Azure Stackのデプロイにおいて、PEPにログインできる"CloudAdmin"
 まずは初期ユーザの"CloudAdmin"でPEPにログインします。
 
 ```
-PS C:\Users\AzureStackAdmin> $pep = New-PSSession -ComputerName azs-ercs01 -ConfigurationName priviledgeendpoint -Credential azurestack.local\CloudAdmin
+PS C:\Users\AzureStackAdmin> $pep = New-PSSession -ComputerName azs-ercs01 -ConfigurationName PrivilegedEndpoint -Credential azurestack.local\CloudAdmin
 PS C:\Users\AzureStackAdmin> Import-Session $pep
 ```
 
