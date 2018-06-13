@@ -1,6 +1,7 @@
 ---
 title: Netlifyを使ってブログをHTTPS化する
-author: kongou_ae
+author: kongou_ae
+
 date: 2016-09-07
 url: /archives/2016-11-18-enable-https-by-netlify
 categories:
@@ -44,7 +45,7 @@ deployment:
 
 `netlify deploy`コマンドは、デプロイ先とデプロイするフォルダを`.netlify`ファイルから取得しますので、以下のフォーマットで記載します。site_idは管理画面のSite Infoに記載されています。
 
-```json:.netlify
+```
 {"site_id":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","path":"public"}
 ```
 
