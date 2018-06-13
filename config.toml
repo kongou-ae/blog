@@ -4,7 +4,7 @@ title = "Aimless"
 disqusShortname = "aimlessjpblog"
 copyright = "Written by kongou_ae"
 canonifyurls = false
-pygmentsStyle = "monokai"
+
 pygmentsUseClasses = true
 pygmentscodefences = true
 
