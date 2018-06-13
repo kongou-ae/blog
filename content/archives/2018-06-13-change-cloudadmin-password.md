@@ -1,8 +1,8 @@
 ---
 title: Privileged Endpoint上のユーザのパスワードを変更する
 author: kongou_ae
-date: 2018-06-11
-url: /archives/2018-06-11-change-cloudadmin-password
+date: 2018-06-13
+url: /archives/2018-06-13-change-cloudadmin-password
 categories:
   - azurestack
 ---
