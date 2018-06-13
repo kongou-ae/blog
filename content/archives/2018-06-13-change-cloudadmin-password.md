@@ -27,7 +27,7 @@ PS C:\tools> $pepSession = New-PSSession -ComputerName azs-ercs01 -Credential $c
 
 接続できたpssessionに対して、"Set-CloudAdminUserPassword"を発行します。引数としてユーザ名と現在のパスワード、新しいパスワードが必要です。今回は"P@ssw0rd1"から"P@ssw0rd2"に変更します。
 
-```
+```powershell
 PS C:\tools> $password = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 PS C:\tools> $newPassword = ConvertTo-SecureString "P@ssw0rd2" -AsPlainText -Force
 PS C:\tools> Invoke-Command -Session $pepSession -ScriptBlock { Set-CloudAdminUserPassword -UserName kongou-ae -CurrentPassword $using:password -NewPassword $using:newPassword }
