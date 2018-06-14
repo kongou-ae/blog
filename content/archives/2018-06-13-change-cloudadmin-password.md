@@ -19,7 +19,7 @@ categories:
 
 kongou-aeのパスワードを変更してみます。現在のパスワード"P@ssw0rd1"を利用してPrivileged Endpointに接続します。
 
-```
+```powershell
 PS C:\tools> $password = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 PS C:\tools> $cred = New-Object System.Management.Automation.PSCredential 'azurestack.local\kongou-ae',$password
 PS C:\tools> $pepSession = New-PSSession -ComputerName azs-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
@@ -35,7 +35,7 @@ PS C:\tools> Invoke-Command -Session $pepSession -ScriptBlock { Set-CloudAdminUs
 
 パスワードを変更できたか確認してみます。古いパスワードである"P@ssw0rd1"でPrivileged Endpointに接続しようとするとエラーになります。パスワードが変わったようです。
 
-```
+```powershell
 PS C:\tools> $password = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 PS C:\tools> $cred = New-Object System.Management.Automation.PSCredential 'azurestack.local\kongou-ae',$password
 PS C:\tools> $pepSession = New-PSSession -ComputerName azs-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
@@ -44,7 +44,7 @@ New-PSSession : [azs-ercs01] Connecting to remote server azs-ercs01 failed with 
 
 正しいパスワードに変更できたかを確認するために、新しいパスワードである"P@ssw0rd2"を利用してPrivileged Endpointに接続してみます。
 
-```
+```powershell
 PS C:\tools> $password = ConvertTo-SecureString 'P@ssw0rd2' -AsPlainText -Force
 PS C:\tools> $cred = New-Object System.Management.Automation.PSCredential 'azurestack.local\kongou-ae',$password
 PS C:\tools> $pepSession = New-PSSession -ComputerName azs-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
