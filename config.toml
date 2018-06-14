@@ -6,7 +6,7 @@ copyright = "Written by kongou_ae"
 canonifyurls = false
 
 pygmentsUseClasses = true
-pygmentscodefences = true
+PygmentsCodeFences = true
 
 [Params]
 twitter = "kongou_ae"
