@@ -18,21 +18,21 @@ Azureの各種エンドポイントはHTTPSで保護されています。一例�
 |Key Valut|https://[name].vault.azure.net|
 |Web App|https://[name].azurewebsites.net|
 
-Azureと一貫性を持つAzure Stackにも同様のエンドポイントが存在しています。これらのエンドポイントは、誰が用意したサーバ証明書を利用してHTTPS化されるのでしょうか。Microsoftは用意してくれません。Azure Stackを導入する人が用意するのです。
+Azureと一貫性を持つAzure Stackにも同様のエンドポイントが存在しています。これらのエンドポイントは、誰が用意したサーバ証明書を利用してHTTPS化されるのでしょうか。Microsoftは用意してくれません。Azure Stackを導入する人が用意します。
 
 ## サーバ証明書が必要になるFQDN
 
-IaaS部分をデプロイする際にサーバ証明書が必要となるFQDNは次のURLに記載されています。デプロイを成功されるためには、もれなくサーバ証明書が必要です。
+IaaS部分をデプロイする際にサーバ証明書が必要となるFQDNは次のURLに記載されています。デプロイを成功されるためには、サーバ証明書がもれなく必要です。
 
 [Mandatory certificates](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)
 
-デプロイ後に追加するPaaSでサーバ証明書が必要なるFQDNは次のURLに記載されています。PaaSを正常に追加するためには、もれなくサーバ証明書が必要です。
+デプロイ後に追加するPaaSでサーバ証明書が必要なるFQDNは次のURLに記載されています。PaaSを正常に追加するためには、サーバ証明書がもれなく必要です。
 
 [Optional PaaS certificates](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-pki-certs#optional-paas-certificates)
 
 ## サーバ証明書の買い方
 
-サーバ証明書の買い方は「1枚にまとめる」と「FQDNごとにサーバ証明書を買う」のどちらもサポートされています。お好きな方をどうぞ。サーバ証明書の発行先は内部認証局と外部認証局がサポートされています。オレオレはサポートされていません。
+「1枚にまとめるで買う」と「FQDNごとにサーバ証明書を買う」のどちらもサポートされています。お好きな方をどうぞ。1枚にまとめる場合、マルチドメインかつワイルドカードな証明書が必要です。付き合いのある認証局が発行してくれるかを確認しましょう。サーバ証明書の発行先は内部認証局と外部認証局がサポートされています。オレオレはサポートされていません。
 
 ## CSRの作り方
 
