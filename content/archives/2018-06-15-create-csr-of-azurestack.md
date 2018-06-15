@@ -45,7 +45,7 @@ Install-Module Microsoft.AzureStack.ReadinessChecker -Scope CurrentUser
 Import-Module Microsoft.AzureStack.ReadinessChecker -Scope Local
 ```
 
-"Start-AzsReadinessChecker"でCSRを生成する際に利用する変数を作っていきます。作りたい証明書にあわせて変数の中身を変えてください。下記のようにした場合、Azure Stackの利用者向けポータルは"https://portal.japaneast.azs.aimless.jp"になります。
+"Start-AzsReadinessChecker"でCSRを生成する際に利用する変数を作っていきます。作りたい証明書にあわせて変数の中身を変えてください。下記のようにした場合、Azure Stackの利用者向けポータルはhttps://portal.japaneast.azs.aimless.jpになります。
 
 ```powershell
 $subjectHash = [ordered]@{"OU"="azuresktack";"O"="aimless";"L"="Saitama";"ST"="Saitama";"C"="JP"}
