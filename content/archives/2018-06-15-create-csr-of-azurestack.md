@@ -103,7 +103,7 @@ Mode                LastWriteTime         Length Name
 -a----        6/14/2018   1:28 PM           3688 portal_japaneast_azs_aimless_jp_CertRequest_20180614132819_ClearTextDoNotUse.inf
 ```
 
-OpenSSLを利用してCSRの中身を見てみます。CNが"portal.japaneast.azs.aimless.jp"で、SANが大量のFQDNの証明書ができあがりますね。
+OpenSSLを利用してCSRの中身を見てみます。CNが"portal.japaneast.azs.aimless.jp"で、SANが大量のFQDNな証明書ができあがりますね。
 
 ```
 kongou_ae:~/workspace $ openssl req -text -noout -in azs.req 
