@@ -25,7 +25,7 @@ TerraformがAzure Stack Providerをリリースしたので試しました。
 
 まずはTerraformが利用するサービスプリンシパルを作ります。Cloud Shellを利用して、Azure Stackにログインするときに利用するAzure Active Directoryに、サービスプリンシパルを作成します。
 
-```
+```powershell
 matsumotoyusuke@Azure:~$ az ad sp create-for-rbac --name AzsTerraform --password PASSWORD
 Retrying role assignment creation: 1/36
 Retrying role assignment creation: 2/36
@@ -40,7 +40,7 @@ Retrying role assignment creation: 2/36
 
 作成したサービスプリンシパルをAzure StackのサブスクリプションにOwner権限で追加します。Contributor権限だとTerraformがエラーになりました。なぜだろう。
 
-```
+```powershell
 PS C:\Users\AzureStackAdmin\Documents> Get-AzureRmRoleAssignment
 
 
@@ -57,7 +57,7 @@ ObjectType         : ServicePrincipal
 
 Azure Stackのテナント領域にPowerShellで接続して、リソースグループを作ります。
 
-```Powershell
+```powershell
 PS C:\Users\AzureStackAdmin\Documents> $ArmEndpoint = "https://management.local.azurestack.external"
 PS C:\Users\AzureStackAdmin\Documents> Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 PS C:\Users\AzureStackAdmin\Documents> Login-AzureRmAccount -EnvironmentName "AzureStackUser" `
@@ -177,13 +177,13 @@ resource "azurestack_virtual_machine" "test" {
 
 "terraform init"してAzure Stack Providerをインストールします。
 
-```
+```powershell
 PS C:\Users\AzureStackAdmin\Documents> .\terraform.exe init
 ```
 
 "terraform plan"でDry-runしたうえで、"terraform apply"します
 
-```
+```powershell
 PS C:\Users\AzureStackAdmin\Documents> .\terraform.exe plan
 （中略）
 PS C:\Users\AzureStackAdmin\Documents> .\terraform.exe apply
@@ -194,7 +194,7 @@ Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 
 Virtual Machineができました。tfファイルの書き方がほんの少し違いますが、Azure Providerを同じ使い勝手でVirtual Machineを作れました。
 
-```Powershell
+```powershell
 PS C:\Users\AzureStackAdmin\Documents> Get-AzureRmVM | ft
 
 ResourceGroupName   Name Location      VmSize  OsType    NIC ProvisioningState
