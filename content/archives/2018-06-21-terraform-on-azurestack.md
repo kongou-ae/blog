@@ -2,7 +2,7 @@
 title: Terraform on Azure Stack
 author: kongou_ae
 date: 2018-06-21
-url: /archives/2018-06-15-terraform-on-azurestack
+url: /archives/2018-06-21-terraform-on-azurestack
 categories:
   - azurestack
 ---
