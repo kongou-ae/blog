@@ -9,7 +9,7 @@ categories:
 
 Azure Stackには、Azure Stackが自分の状態を自己診断するためのコマンドがあります。その名も"Test-AzureStack"です。
 
-(Run a validation test for Azure Stack)[https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-diagnostic-test]
+[Run a validation test for Azure Stack](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-diagnostic-test)
 
 ## 環境
 - Azure Stack：ASDK 1.1805.1.47
@@ -46,4 +46,4 @@ PS C:\Users\AzureStackAdmin> Test-AzureStack -ServiceAdminCredentials admin@xxxx
 
 {{<img src="./../../images/2018-06-21-003.png">}}
 
-Microsoftのエンジニアが自分のAzure Stackを初期診断してくれるような気分になるコマンドです。分かりやすさゆえに、Microsoftのサポートエンジニアとのコミュニケーションツールになっています。「アラートが出たからとりあえずTest-AzureStackを実行する=>助けてCSS、うちのAzure StackがFAILしてるの（Test-AzureStackのキャプチャを添付）・・・」や「CSSに障害対応してもらう=>うちのAzure Stack、オールグリーンだよありがとう（Test-AzureStackのキャプチャを添付）」といったやりとりで利用しています。
+Microsoftのエンジニアが自分のAzure Stackを初期診断してくれるような気分になるコマンドです。分かりやすさゆえに、Microsoftのサポートエンジニアとのコミュニケーションツールになっています。「アラートが出たからとりあえずTest-AzureStackを実行する=>助けてCSS、うちのAzure StackがFAILしてるの（Test-AzureStackのキャプチャを添付）・・・」や「CSSに障害対応してもらう=>うちのAzure Stack、オールグリーンになったよ。ありがとう（Test-AzureStackのキャプチャを添付）」といったやりとりで利用しています。
