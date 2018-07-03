@@ -74,7 +74,7 @@ Host Nodeのコア数に応じて課金される形式です。Azure Stackがイ
 
 ## OSのライセンス費用
 
-Azure Stackで動作する仮想マシンのOSにかかる費用です。Windows ServerとWindows Server以外によって課金体系が異なります
+Azure Stackで動作する仮想マシンのOSにかかる費用は、Windows ServerとWindows Server以外によって課金体系が異なります
 
 ### Windowsサーバ　従量課金
 
