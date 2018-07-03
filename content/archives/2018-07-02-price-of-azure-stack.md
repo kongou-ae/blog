@@ -2,7 +2,7 @@
 title: Azure Stackの費用
 author: kongou_ae
 date: 2018-07-02
-url: /archives/2018-07-02-price-of-azure-stack.md
+url: /archives/2018-07-02-price-of-azure-stack
 categories:
   - azurestack
 ---
