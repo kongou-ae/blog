@@ -1,5 +1,5 @@
 ---
-title: Azure Stackのお値段
+title: Azure Stackの費用
 author: kongou_ae
 date: 2018-07-02
 url: /archives/2018-07-02-price-of-azure-stack.md
@@ -17,7 +17,7 @@ Azure Stackの費用について何度か質問を受けたのでまとめます
 
 - [Microsoft Azure Stack Licensing Guide(Hosters and service providers)](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Azure%20Stack%20Licensing%20Guide%20-%20Hosters.pdf)
 
-## 費用の構造
+## 料金の構造
 
 Azure Stackを利用する上で考慮すべき費用は次の4つです。
 
