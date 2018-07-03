@@ -90,15 +90,19 @@ Azure利用料を従量課金とした場合、Windows Serverのライセンス�
 
 #### Windowsサーバ　コア課金
 
-ライセンスの観点だとAzure Stackはオンプレミスのシステムとして扱われます。そのため、従来のHyper-V仮想基盤で採用される「物理コア分のwindows serverライセンスを買うことで、ゲストのWindows Serverのライセンスにあてる」作戦に対応しています。Windows Serverをコア課金とした場合、Windows Serverの仮想マシンは「ベース仮想マシン」として扱われるので、従量課金の費用が少なくなります。なお、コア課金の場合はCALが必要です。ご注意ください。
+ライセンスの観点だとAzure Stackはオンプレミスのシステムとして扱われます。そのため、従来のHyper-V仮想基盤で採用される「物理コア分のwindows serverライセンスを買うことで、ゲストのWindows Serverのライセンスにあてる」作戦に対応しています。コア課金とする場合、リージョンを構成する物理サーバのコア数をカバーするライセンスを調達する必要があります。
 
-一方で、Azure Stackはオンプレミスのシステムとして扱われるため「Azure Hybrid Use Benefit」には対応していません。
+Windows Serverをコア課金とした場合、Windows Serverの仮想マシンは「ベース仮想マシン」として扱われるので、従量課金の費用が少なくなります。なお、コア課金の場合はCALが必要です。ご注意ください。
+
+また、Azure Stackはオンプレミスのシステムとして扱われるため「Azure Hybrid Use Benefit」には対応していません。
+
+### Windows Server以外のOS
 
 ### SQL Server
 
-Azure StackにはSQLサーバのライセンスも従量課金なWindows Serverが存在しません。Azureとは異なるのでご注意ください。Azure StackでSQL Serverを利用する場合、ライセンスを持ち込む必要があります。ライセンスの買い方は物理コアと仮想コアの両方をサポートします。
+Azure Stackには従量課金なSQL Serverが存在しません。Azureとは異なるのでご注意ください。Azure StackでSQL Serverを利用する場合、ライセンスを持ち込む必要があります。ライセンスの買い方は「リージョンを構成する物理サーバのコア数」と「仮想マシンの仮想コア数」の両方をサポートします。
 
-### Windows Server以外のOS
+### サードパーティ製品
 
 マーケットプレイス連携によって、Azureで利用できるサードパーティ製品の一部はAzure Stackでも利用できます。ただし、Windows Server以外のOSを利用する際は、ライセンスを別途調達して持ち込む必要があります。いわゆるBYOLです。Azureでは従量課金に対応しているRedhat enterprise linuxであっても、2018年6月現在、Azure StackではBYOLのみです。
 
