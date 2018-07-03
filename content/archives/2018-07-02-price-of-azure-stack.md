@@ -78,13 +78,13 @@ Azure Stackで動作する仮想マシンのOSにかかる費用は、Windows Se
 
 ### Windowsサーバ　従量課金
 
-Azure利用料を従量課金とした場合、Windows Serverのライセンス費用も従量課金にできます。従量課金の単価は次のとおりです。
+Azure利用料を従量課金とした場合、Windows Serverのライセンス費用も従量課金にできます。Windows Serverのライセンス費用も従量課金にした場合の仮想マシンの費用は次のとおりです。
 
 |サービス                        | 種類                         |料金               |
 |-------------------------------|------------------------------|------------------|
 |Azure Virtual Machines         |Windows Server 仮想マシン    	 |¥5.16/vCPU/時間 (¥3,761 vCPU/月) |
 
-従量課金の場合、CALは不要です。Azureと同じです。
+従量課金の場合CALは不要です。Azureと同じです。
 
 ### Windowsサーバ　コア課金
 
@@ -92,7 +92,7 @@ Azure利用料を従量課金とした場合、Windows Serverのライセンス�
 
 Azure利用料が従量課金とキャパシティ課金のどちらであっても、Windows Serverのコア課金を利用できます。ただし、Azure利用料をキャパシティ課金とした場合、Windows Serverのライセンスはコア課金一択です。
 
-Windows Serverをコア課金にすると、Windows Serverの仮想マシンは「ベース仮想マシン」として扱われるので、従量課金の費用が少なくなります。Windows Serverの仮想マシンが多くなる場合は、コア課金の方が安くなる可能性があります。
+Windows Serverをコア課金にすると、Windows Serverの仮想マシンであっても「ベース仮想マシン」として扱われるので、従量課金の費用が少なくなります。
 
 なお、Azure Stackはオンプレミスのシステムとして扱われるため「Azure Hybrid Use Benefit」には対応していません。
 
