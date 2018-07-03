@@ -7,7 +7,7 @@ categories:
   - azurestack
 ---
 
-Azure Stackの費用について何度か質問を受けたのでまとめます。参考となる公式ドキュメントは次の通りです。多分あってる。なお、Azure Stackの購入を検討される際は、OEMベンダとMicrosoftのライセンス担当から最新の情報を入手したうえでご判断ください。
+Azure Stackの費用について何度か質問を受けたのでまとめます。参考とした公式ドキュメントは次の通りです。多分あってる。なお、Azure Stackの購入を検討される際は、OEMベンダとMicrosoftのライセンス担当から最新の情報を入手したうえでご判断ください。
 
 - [Azure Stack – 購入方法](https://azure.microsoft.com/ja-jp/overview/azure-stack/how-to-buy/)
 - [Microsoft Azure Stack packaging and pricing](https://go.microsoft.com/fwlink/?LinkId=851535&clcid=0x411)
