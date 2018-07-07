@@ -25,7 +25,7 @@ Just in time VM accessによって許可したい通信を設定します。時�
 
 {{<img src="./../../images/2018-0707-003.png">}}
 
-Just in time VM accessを有効にすると、対象Virtual MachineのNetwork Security Groupに、Just in time VM accessで許可したいサービスが送信元:ANYのAction:Denyで登録されます。今回は自宅のグローバルIPアドレスからのRDPと100.100.100.0/24からのSSHを有効にしました。
+Just in time VM accessを有効にすると、対象のVirtual MachineのNetwork Security Groupに、Just in time VM accessで許可したいサービスが送信元:ANYのAction:Denyで登録されます。今回は自宅のグローバルIPアドレスからのRDPと100.100.100.0/24からのSSHを有効にしました。
 
 {{<img src="./../../images/2018-0707-004.png">}}
 
@@ -39,11 +39,11 @@ Just in time VM accessを有効にすると、対象Virtual MachineのNetwork Se
 
 {{<img src="./../../images/2018-0707-006.png">}}
 
-設定時されているIP RANGEに含まれていないアドレスでリクエストをあげると、エラーになります。今回の場合、TCP22の設定では100.100.100.0/24の送信元IPアドレスが許可されています。にもかかわらず、100.100.100.0/24ではないMY IPを選択してアクセスをリクエストしたのでエラーになりました。
+設定されているIP RANGEに含まれていないアドレスでリクエストをあげると、エラーになります。今回の場合、TCP22の設定では100.100.100.0/24の送信元IPアドレスが許可されています。にもかかわらず、100.100.100.0/24ではないMY IPを選択してアクセスをリクエストしたのでエラーになりました。
 
 {{<img src="./../../images/2018-0707-007.png">}}
 
-今回はTCP22のTOGGLEをOFFにすることでリクエストが設定に含まれるようにします。設定に含まれるリクエストをあげると、リクエストが受け付けられて、対象Virtual MachineのNetwork Security GroupにJust in time VM accessで設定した通信が追加されます。あとは実際に通信するだけです。
+今回はTCP22のTOGGLEをOFFにすることでリクエストが設定に含まれるようにします。設定に含まれるリクエストをあげると、リクエストが受け付けられて、対象のVirtual MachineのNetwork Security GroupにJust in time VM accessで設定した通信が追加されます。あとは実際に通信するだけです。
 
 {{<img src="./../../images/2018-0707-008.png">}}
 
