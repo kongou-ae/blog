@@ -17,19 +17,19 @@ Log Analyticsに投入された通信ログは次のフォーマットになっ�
 
 | プロパティ | サンプル | 
 | ----------- | -------------------- |
-|TenantId | da2efae5-32b4-xxxx-xxxx-xxxxxxxxxxx|
-|SourceSystem|Azure|
-|TimeGenerated [UTC]|2018-07-13T16:15:13.703Z|
-|msg_s|HTTPS request from 10.0.3.4:55584 to da2efae5-32b4-44e1-815d-b5923d52325c.ods.opinsights.azure.com:443. Action: Deny. No rule matched. Proceeding with default action|
-|ResourceId|/SUBSCRIPTIONS/51B26C53-7AE2-xxxx-xxxx-xxxxxxxxxxx/RESOURCEGROUPS/SAMPLE/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/SAMPLEFW|
-|OperationName|AzureFirewallApplicationRuleLog|
-|Category|AzureFirewallApplicationRule|
-|SubscriptionId|51b26c53-7ae2-xxxx-xxxx-xxxxxxxxxxx|
-|ResourceGroup|SAMPLE|
-|ResourceProvider|MICROSOFT.NETWORK|
-|Resource|SAMPLEFW|
-|ResourceType|AZUREFIREWALLS|
-|Type|AzureDiagnostics|
+| TenantId | da2efae5-32b4-xxxx-xxxx-xxxxxxxxxxx |
+| SourceSystem | Azure |
+| TimeGenerated [UTC] | 2018-07-13T16:15:13.703Z |
+| msg_s | HTTPS request from 10.0.3.4:55584 to da2efae5-32b4-44e1-815d-b5923d52325c.ods.opinsights.azure.com:443. Action: Deny. No rule matched. Proceeding with default action |
+| ResourceId | /SUBSCRIPTIONS/51B26C53-7AE2-xxxx-xxxx-xxxxxxxxxxx/RESOURCEGROUPS/SAMPLE/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/SAMPLEFW |
+| OperationName | AzureFirewallApplicationRuleLog |
+| Category | AzureFirewallApplicationRule |
+| SubscriptionId | 51b26c53-7ae2-xxxx-xxxx-xxxxxxxxxxx |
+| ResourceGroup | SAMPLE |
+| ResourceProvider | MICROSOFT.NETWORK |
+| Resource | SAMPLEFW |
+| ResourceType | AZUREFIREWALLS |
+| Type | AzureDiagnostics |
 
 ですので、AzureDiagnosticsを選択してから、ResourceTypeをAZUREFIREWALLSでフィルタしたうえでmsg_sを出力すると、Azure Firewallの通信ログだけを確認できます。
 
