@@ -100,7 +100,7 @@ Application ruleで許可されていない http://www.google.com にアクセ�
 
 {{<img src="./../../images/2018-0714-013.png">}}
 
-警告画面がでるのはHTTPSだけです。HTTPSは警告画面がでません。
+警告画面がでるのはHTTPだけです。HTTPSは警告画面がでません。
 
 {{<img src="./../../images/2018-0714-014.png">}}
 
