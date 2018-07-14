@@ -71,7 +71,7 @@ Network ruleはNSGと同じ考え方です。プロトコルとIPアドレスと
 
 Application ruleはNSGと異なるものです。宛先として利用できるものはFQDNのみです。IPアドレスは利用できません。利用できるプロトコルはHTTPとHTTPSのみです。NSGのようにプトロコルとポート番号を利用して自由にサービスを定義することはできません。
 
-{{<img src="./../../images/2018-0714-009.png">}}
+{{<img src="./../../images/2018-0714-012.png">}}
 
 ## ログの保存先を設定する
 
@@ -86,4 +86,44 @@ Azure Firewallは診断ログとして通信ログを吐き出します。診断
 
 ## サーバからの通信をAzure Firewallに向ける
 
-Azure Firewallを用意しても、サーバからの通信はAzure Firewallに向かいません。User Defined Route(UDR)を利用して、
+Azure Firewallを用意しても、サーバからの通信はAzure Firewallに向かいません。User Defined Route(UDR)を利用して、Virtual Machineからインターネットへの通信をAzure Firewall経由にします。User Defined Routeに定義する0.0.0.0/0のネクストホップをAzure FirewallのプライベートIPアドレスにするのがポイントです。作成したUDRをサブネットに適用するのを忘れずに。
+
+{{<img src="./../../images/2018-0714-011.png">}}
+
+## 動作確認
+
+やっと準備が終わりました。動作確認します。
+
+### 通信制御
+
+Application ruleで許可されていない"http://www.google.com"にアクセスすると、Azure Firewallの警告画面がでます。
+
+{{<img src="./../../images/2018-0714-013.png">}}
+
+警告画面がでるのはhttpだけです。HTTPSは警告画面がでません。
+
+{{<img src="./../../images/2018-0714-014.png">}}
+
+通信が暗号化されているHTTPSの検査方法は不明です。MITMで復号化・再暗号化してるとは思えないので、FortiGateのSSL certicicate inspectionと同じようにサーバ証明書の中身を見ているのかもしれません。Common NameだけでなくSubject Alternate Namesも見ているのかを確認するために、sake.biccamera.comを許可する設定で動作確認したところアクセスできました。実装は不明ですがいい感じに動作しています。
+
+{{<img src="./../../images/2018-0714-015.png">}}
+
+当然、インターネットから見たときのサーバのIPアドレスは、Azure FirewallのPublic IP Addressになります。
+
+{{<img src="./../../images/2018-0714-016.png">}}
+
+### ログ
+
+通信してからちょっと待つと、Log Analyticsに診断ログが取り込まれます。Kustoを使えば、Network ruleだけのログを抽出したり、特定ドメインへのアクセスを抽出したりと、自由自在にログを調査できます。
+
+{{<img src="./../../images/2018-0714-017.png">}}
+
+{{<img src="./../../images/2018-0714-018.png">}}
+
+## 感想
+
+これはいいものだ。Azure FIrewallの登場によって、VNetからインターネットへのアクセスを集中管理するための選択肢が増えました。一長一短なので要件に合わせて適切なものを選んでいきましょう。
+
+- 強制トンネリング
+- Network Virtual Appliance
+- Azure Firewal New!!
