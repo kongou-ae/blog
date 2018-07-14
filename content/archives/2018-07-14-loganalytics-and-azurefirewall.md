@@ -17,7 +17,7 @@ Log Analyticsに投入された通信ログは次のフォーマットになっ�
 
 | プロパティ | サンプル | 
 |-----------|--------------------|
-|TenantId | da2efae5-32b4-xxxx-xxxx-xxxxxxxxxxx
+|TenantId | da2efae5-32b4-xxxx-xxxx-xxxxxxxxxxx|
 |SourceSystem|Azure|
 |TimeGenerated [UTC]|2018-07-13T16:15:13.703Z|
 |msg_s|HTTPS request from 10.0.3.4:55584 to da2efae5-32b4-44e1-815d-b5923d52325c.ods.opinsights.azure.com:443. Action: Deny. No rule matched. Proceeding with default action|
@@ -56,8 +56,8 @@ AzureDiagnostics
 
 すると、ログの表示が下図のようになります。
 
-{{<img src="./../../images/2018-0714-023.png">}}
+{{<img src="./../../images/2018-0714-022.png">}}
 
 項目ごとに整理されているので、直感的に検索できます。送信元が10.0.3.4でsakeというApplication ruleにマッチした通信を検索すると下図のような出力されます。いい感じですね。
 
-{{<img src="./../../images/2018-0714-024.png">}}
+{{<img src="./../../images/2018-0714-023.png">}}
