@@ -32,7 +32,7 @@ Azure FirewallをVNet内に設置するためには、VNet内に"AzureFirewalSub
 
 ## Azure Firewallをデプロイする
 
-VNetのブレードにAzure Firewallが追加されていますので、設定画面に進みます。
+VNetのブレードにAzure Firewallが追加されているので、設定画面に進みます。
 
 {{<img src="./../../images/2018-0714-003.png">}}
 
