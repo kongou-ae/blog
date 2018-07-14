@@ -16,7 +16,7 @@ categories:
 Log Analyticsに投入された通信ログは次のフォーマットになっています。
 
 | プロパティ | サンプル | 
-|-----------|--------------------|
+| ----------- | -------------------- |
 |TenantId | da2efae5-32b4-xxxx-xxxx-xxxxxxxxxxx|
 |SourceSystem|Azure|
 |TimeGenerated [UTC]|2018-07-13T16:15:13.703Z|
