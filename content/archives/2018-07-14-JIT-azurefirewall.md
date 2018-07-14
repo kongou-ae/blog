@@ -128,4 +128,4 @@ Common NameだけでなくSubject Alternate Namesも見ているのかを確認�
 
 - 強制トンネリング
 - Network Virtual Appliance
-- Azure Firewal New!!
+- Azure Firewal ←New!!
