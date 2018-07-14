@@ -2,7 +2,7 @@
 title: Azure Firewallをためした
 author: kongou_ae
 date: 2018-07-14
-url: /archives/2018-07-14-JIT-azurefirewal
+url: /archives/2018-07-14-JIT-azurefirewall
 categories:
   - azure
 ---
@@ -24,11 +24,11 @@ Register-AzureRmProviderFeature -FeatureName AllowAzureFirewall -ProviderNamespa
 
 Azure FirewallをVNet内に設置するためには、VNet内に"AzureFirewalSubnet"という名前の/25以上のサブネットが必要です。
 
-{{<img src="./../../images/2018-0714-001.png">}}
+{{<img src="./../../images/2018-0714-002.png">}}
 
 "AzureFirewalSubnet"が/25未満だと、デプロイに失敗します。ご注意ください。
 
-{{<img src="./../../images/2018-0714-002.png">}}
+{{<img src="./../../images/2018-0714-001.png">}}
 
 ## Azure Firewallをデプロイする
 
@@ -50,7 +50,7 @@ Azure Firewallを配置するリソースグループは、VNetが配置され�
 
 ## ポリシーを設定する
 
-Azure Firewallには2つのポリシーがあります。Network rulesとApplication rulesです。
+Azure Firewallには2つのポリシーがあります。Network ruleとApplication ruleです。
 
 |種類|できること|
 |---------|----------|
@@ -63,7 +63,7 @@ Network ruleはNSGと同じ考え方です。プロトコルとIPアドレスと
 
 {{<img src="./../../images/2018-0714-007.png">}}
 
-また、Rule collectionという複数のルールをグルーピングする機能が導入されています。NSGでは大量のルールが並列に並ぶため「このルール、何の用途？」となる場合があります。Rule collectionを利用してルールを意味のあるグループにまとめると、効果的にルールを運用できそうです。
+また、Rule collectionという複数のルールをグルーピングする機能が導入されています。NSGでは大量のルールが並列になるため「このルール、何の用途？」となる場合があります。Rule collectionを利用してルールを意味のあるグループにまとめると、効果的にルールを運用できそうです。
 
 {{<img src="./../../images/2018-0714-008.png">}}
 
@@ -77,8 +77,8 @@ Application ruleはNSGと異なるものです。宛先として利用できる�
 
 Azure Firewallは診断ログとして通信ログを吐き出します。診断ログとして吐き出すので、他のサービスの診断ログと同様、Storage AccountやLog Analyticsに自動的にログを保存できます。すばらしい。
 
-> "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-> "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
+> "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002" 
+> "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny" 
 
 [Tutorial: Monitor Azure Firewall logs](https://docs.microsoft.com/ja-jp/azure/firewall/tutorial-diagnostics#diagnostic-logs)
 
@@ -92,11 +92,11 @@ Azure Firewallを用意しても、サーバからの通信はAzure Firewallに�
 
 ## 動作確認
 
-やっと準備が終わりました。動作確認します。
+準備がやっと終わりました。動作確認します。
 
 ### 通信制御
 
-Application ruleで許可されていない"http://www.google.com"にアクセスすると、Azure Firewallの警告画面がでます。
+Application ruleで許可されていない http://www.google.com にアクセスすると、Azure Firewallの警告画面がでます。
 
 {{<img src="./../../images/2018-0714-013.png">}}
 
