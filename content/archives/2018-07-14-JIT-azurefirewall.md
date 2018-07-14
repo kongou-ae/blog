@@ -77,8 +77,8 @@ Application ruleはNSGと異なるものです。宛先として利用できる�
 
 Azure Firewallは診断ログとして通信ログを吐き出します。診断ログとして吐き出すので、他のサービスの診断ログと同様、Storage AccountやLog Analyticsに自動的にログを保存できます。すばらしい。
 
-> "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002" 
-> "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny" 
+> "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"  
+> "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"  
 
 [Tutorial: Monitor Azure Firewall logs](https://docs.microsoft.com/ja-jp/azure/firewall/tutorial-diagnostics#diagnostic-logs)
 
@@ -100,11 +100,13 @@ Application ruleで許可されていない http://www.google.com にアクセ�
 
 {{<img src="./../../images/2018-0714-013.png">}}
 
-警告画面がでるのはhttpだけです。HTTPSは警告画面がでません。
+警告画面がでるのはHTTPSだけです。HTTPSは警告画面がでません。
 
 {{<img src="./../../images/2018-0714-014.png">}}
 
-通信が暗号化されているHTTPSの検査方法は不明です。MITMで復号化・再暗号化してるとは思えないので、FortiGateのSSL certicicate inspectionと同じようにサーバ証明書の中身を見ているのかもしれません。Common NameだけでなくSubject Alternate Namesも見ているのかを確認するために、sake.biccamera.comを許可する設定で動作確認したところアクセスできました。実装は不明ですがいい感じに動作しています。
+通信が暗号化されているHTTPSの検査方法は不明です。MITMで復号化・再暗号化してるとは思えないので、FortiGateのSSL certificate inspectionと同じようにサーバ証明書の中身を見ているのかもしれません。
+
+Common NameだけでなくSubject Alternate Namesも見ているのかを確認するために、sake.biccamera.comを許可する設定で動作確認しました。無事アクセスできました。sake.biccamera.com が利用しているサーバ証明書は、CNが www.biccamera.com でSANsに sake.biccamera.com が含まれています。Azure FirewallがCNだけを見てHTTPSを検査しているのであれば、アクセスできないはずです。細かい実装は不明ですが、いい感じに動作しています。
 
 {{<img src="./../../images/2018-0714-015.png">}}
 
@@ -114,7 +116,7 @@ Application ruleで許可されていない http://www.google.com にアクセ�
 
 ### ログ
 
-通信してからちょっと待つと、Log Analyticsに診断ログが取り込まれます。Kustoを使えば、Network ruleだけのログを抽出したり、特定ドメインへのアクセスを抽出したりと、自由自在にログを調査できます。
+通信してから少し待つと、Log Analyticsに診断ログが取り込まれます。Kustoを使えば、Network ruleだけのログを抽出したり、特定ドメインへのアクセスを抽出したりと、自由自在にログを調査できます。
 
 {{<img src="./../../images/2018-0714-017.png">}}
 
@@ -122,7 +124,7 @@ Application ruleで許可されていない http://www.google.com にアクセ�
 
 ## 感想
 
-これはいいものだ。Azure FIrewallの登場によって、VNetからインターネットへのアクセスを集中管理するための選択肢が増えました。一長一短なので要件に合わせて適切なものを選んでいきましょう。
+これはいいものだ。Azure FIrewallの登場によって、VNetからインターネットへのアクセスを集中管理するための選択肢が増えました。一長一短なので要件に合わせて適切なものを選びましょう。
 
 - 強制トンネリング
 - Network Virtual Appliance
