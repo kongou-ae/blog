@@ -7,6 +7,7 @@ categories:
   - azure
 ---
 
+
 ## 背景
 
 Azureの[Update Management](https://docs.microsoft.com/ja-jp/azure/automation/automation-update-management)を使うと、Windows ServerとLinux Serverのパッチ適用を自動化できます。WSUSやSCCMが存在せず、手作業でパッチを適用している環境にお勧めのソリューションです。
