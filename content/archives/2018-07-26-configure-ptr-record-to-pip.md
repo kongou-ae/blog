@@ -7,7 +7,7 @@ categories:
   - azure
 ---
 
-何となく読んだ[Configure reverse DNS for services hosted in Azure](https://docs.microsoft.com/ja-jp/azure/dns/dns-reverse-dns-for-azure-services)に、「Public IP AddressにカスタムドメインのPTRレコードを設定できる」と書いてありました。「まじで？」と疑いを持ったので、実際にやってみました。
+何となく読んだ[Configure reverse DNS for services hosted in Azure](https://docs.microsoft.com/ja-jp/azure/dns/dns-reverse-dns-for-azure-services)に、「Public IP AddressにカスタムドメインのPTRレコードを設定できる」と書いてありました。「まじで？」と思ったので実際にやってみました。
 
 GUIではカスタムドメインのPTRレコードを設定できません。PowerShellを利用して"ReverseFqdn"というプロパティに値を設定する必要があります。また、PTRレコードには全く無関係のFQDNを設定できません。"test.azure.com"で試してみたところ、エラーがでました。
 
@@ -20,7 +20,7 @@ PS Azure:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 Set-AzureRmPublicIpAddress : ReverseFqdn azure2.aimless.jp. that PublicIPAddress appsg01-ip is trying to use does not belong to subscription xxxxxxxx-xxxx-xxxx-xxxx-cff37c36abf8. One of the following conditions need to be met to establish ownership: 1) ReverseFqdn matches fqdn of any public ip resource under the subscription; 2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subcription; 3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
 ```
 
-Azureの逆引きDNSにカスタムドメインのPTRレコードを追加するためには、次の条件を満たす必要があります。
+Public IP AddressにカスタムドメインのPTRレコードを追加するためには、次の条件を満たす必要があります。
 
 1. PTRレコードの値であるFQDNが名前解決できること
 1. 名前解決の結果が、PTRレコードを追加するPublic IP Addressと一致すること
