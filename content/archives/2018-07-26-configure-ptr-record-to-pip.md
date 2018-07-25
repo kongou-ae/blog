@@ -7,9 +7,11 @@ categories:
   - azure
 ---
 
-何となく読んだ[Configure reverse DNS for services hosted in Azure](https://docs.microsoft.com/ja-jp/azure/dns/dns-reverse-dns-for-azure-services)に、「Public IP AddressにカスタムドメインのPTRレコードを設定できる」と書いてありました。「まじで？」と思ったので実際にやってみました。
+何となく読んだ[Configure reverse DNS for services hosted in Azure](https://docs.microsoft.com/ja-jp/azure/dns/dns-reverse-dns-for-azure-services)に、「Public IP AddressにカスタムドメインのPTRレコードを設定できる」旨が書いてありました。「まじで？」と思ったので実際にやってみました。
 
-GUIではカスタムドメインのPTRレコードを設定できません。PowerShellを利用して"ReverseFqdn"というプロパティに値を設定する必要があります。また、PTRレコードには全く無関係のFQDNを設定できません。"test.azure.com"で試してみたところ、エラーがでました。
+PortalではカスタムドメインのPTRレコードを設定できません。PowerShellを利用して"ReverseFqdn"というプロパティに値を設定する必要があります。
+
+PTRレコードには人様のFQDNを設定できません。"test.azure.com"で試してみたところ、エラーがでました。
 
 ```powershell
 PS Azure:\> $pip = Get-AzureRmPublicIpAddress -Name "appsg01-ip" -ResourceGroupName "Sample"
@@ -20,7 +22,7 @@ PS Azure:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 Set-AzureRmPublicIpAddress : ReverseFqdn azure2.aimless.jp. that PublicIPAddress appsg01-ip is trying to use does not belong to subscription xxxxxxxx-xxxx-xxxx-xxxx-cff37c36abf8. One of the following conditions need to be met to establish ownership: 1) ReverseFqdn matches fqdn of any public ip resource under the subscription; 2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subcription; 3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
 ```
 
-Public IP AddressにカスタムドメインのPTRレコードを追加するためには、次の条件を満たす必要があります。
+いわゆる所有権の確認が行われるため、Public IP AddressにカスタムドメインのPTRレコードを追加するためには、次の条件を満たす必要があります。
 
 1. PTRレコードの値であるFQDNが名前解決できること
 1. 名前解決の結果が、PTRレコードを追加するPublic IP Addressと一致すること
@@ -39,7 +41,7 @@ PS Azure:\> $pip.DnsSettings.ReverseFqdn = "azure.aimless.jp."
 PS Azure:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-実際に逆引きすると、Azureの逆引きDNSサーバがカスタムドメインのPTRレコードを返していることを確認できます。
+実際に逆引きしたところ、Azureの逆引きDNSサーバがカスタムドメインのPTRレコードを返していることを確認できました。
 
 ```
 Azure:~$ dig -x 13.78.9.59
@@ -63,4 +65,3 @@ Azure:~$ dig -x 13.78.9.59
 ;; WHEN: Wed Jul 25 16:10:00 UTC 2018
 ;; MSG SIZE  rcvd: 82
 ```
-
