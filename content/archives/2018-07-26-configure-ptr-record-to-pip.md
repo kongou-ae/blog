@@ -7,7 +7,11 @@ categories:
   - azure
 ---
 
+## 背景
+
 何となく読んだ[Configure reverse DNS for services hosted in Azure](https://docs.microsoft.com/ja-jp/azure/dns/dns-reverse-dns-for-azure-services)に、「Public IP AddressにカスタムドメインのPTRレコードを設定できる」旨が書いてありました。「まじで？」と思ったので実際にやってみました。
+
+## 実践
 
 PortalではカスタムドメインのPTRレコードを設定できません。PowerShellを利用して"ReverseFqdn"というプロパティに値を設定する必要があります。
 
