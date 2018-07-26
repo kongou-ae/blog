@@ -37,7 +37,7 @@ Set-AzureRmPublicIpAddress : ReverseFqdn azure2.aimless.jp. that PublicIPAddress
 
 上記の条件を満たすFQDNを"ReverseFqdn"に設定した場合、PowerShellが正常に終了しました。
 
-```
+```powershell
 PS Azure:\> $pip = Get-AzureRmPublicIpAddress -Name "aaa" -ResourceGroupName "aaa"
 PS Azure:\> $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 PS Azure:\> $pip.DnsSettings.DomainNameLabel = "aaa"
@@ -47,7 +47,7 @@ PS Azure:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 
 実際に逆引きしたところ、Azureの逆引きDNSサーバがカスタムドメインのPTRレコードを返していることを確認できました。
 
-```
+```bash
 Azure:~$ dig -x 13.78.9.59
 
 ; <<>> DiG 9.10.3-P4-Ubuntu <<>> -x 13.78.9.59
