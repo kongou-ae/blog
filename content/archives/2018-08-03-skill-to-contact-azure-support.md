@@ -45,7 +45,7 @@ AzureとAzure Stackでお給料を稼いでいるので、一日に何度もAzur
 
 ```
 Virtual Machine
-　- hogehoge-vm01
+  - hogehoge-vm01
   - hugahuga-vm02
 
 Azure Backup
