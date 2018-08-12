@@ -1,7 +1,7 @@
 ---
 title: Azure Stack 1807 Update バックアップ編
 author: kongou_ae
-date: 2018-08-03
+date: 2018-08-12
 url: /archives/2018-08-12-azurestack-1807-backup
 categories:
   - azurestack
