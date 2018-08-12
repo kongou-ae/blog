@@ -7,7 +7,7 @@ categories:
   - azurestack
 ---
 
-# はじめに
+## はじめに
 
 [Azure Stack 1807 update](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1807)がリリースされました。本エントリーでは、目玉の一つであるinfrastructure backupのアップデートをまとめます。
 
