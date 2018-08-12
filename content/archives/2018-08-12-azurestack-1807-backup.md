@@ -20,11 +20,11 @@ categories:
 
 ## Encryption Keyを生成するコマンドレットの追加
 
-1807 update用のAzure Stack PowerShell Module 1.4.0に"New-AzSEncryptionKeyBase64"が追加されました。このコマンドによって、Azure Stackのバックアップを設定する際に必要となる"Encryption Key"の生成が簡単になります。
+1807 update用のAzure Stack PowerShell Module 1.4.0に"New-AzSEncryptionKeyBase64"が追加されました。このコマンドによって、Azure Stackのバックアップを設定する際に必要となる"Encryption Key"の生成が簡単になりました。
 
 ### 1807 updateまで
 
-```
+```powershell
 $BackupEncryptionKeyBase64 = ""
 $tempEncryptionKeyString = ""
 foreach($i in 1..64) { $tempEncryptionKeyString += -join ((65..90) + (97..122) | Get-Random | % {[char]$_}) }
@@ -35,7 +35,7 @@ $BackupEncryptionKeyBase64
 
 ### 1807 update以降
 
-```
+```powershell
 $Encryptionkey = New-AzSEncryptionKeyBase64
 $Encryptionkey
 ```
@@ -53,7 +53,7 @@ Azure Stack自身が決められた頻度でバックアップを取得するよ
 
 PowerShellでスケジュールバックアップを設定する場合、次のようなスクリプトを使います。
 
-```
+```powershell
 $username = "azurestack\azurestackadmin"
 $sharepath = "\\192.168.200.65\AzSBackupStore"
 $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
@@ -101,10 +101,10 @@ Admin Portal上でバックアップを実行できるようになりました�
 
 ## 嘘表示の改善
 
-Admin Portalに表示されるバックアップ先ファイルサーバの空き容量が実績値になりました。これまでは10Gがベタ書きされていました。なぜベタ書きでリリースしたのか。謎のままです。
+Admin Portalに表示されるバックアップ先の空き容量が実際の値になりました。これまでは10Gがベタ書きされていました。なぜベタ書きでリリースしたのか。謎のままです。
 
 {{<img src="./../../images/2018-0812-004.png">}}
 
 ## まとめ
 
-とりあえず機能として実装されていたInfrastructure Backupが、運用管理面で使い勝手良いものになりました。[Hector](https://twitter.com/hectoralinares) and team, Great work!!!
+最低限の機能としてリリースされていたInfrastructure Backupが、運用管理面で使い勝手の良いものになりました。[Hector](https://twitter.com/hectoralinares) and team, Great work!!!
