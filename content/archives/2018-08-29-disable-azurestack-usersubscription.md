@@ -24,7 +24,7 @@ Azure Stackでも同じことができます。お金を払わないユーザが
 
 ユーザサブスクリプションの無効化はAzure Stack Operatorの作業です。具体的には、"Set-AzsUserSubscription"を利用してユーザサブスクリプションの"State"を"Disabled"にします。
 
-{{<img src="./../../images/2018-0812-005.png">}}
+{{<img src="./../../images/2018-0829-005.png">}}
 
 ```Powershell
 Set-AzsUserSubscription -SubscriptionId 5264c1c3-e6eb-4301-bee4-245aaea17832 -State Disabled
@@ -32,7 +32,7 @@ Set-AzsUserSubscription -SubscriptionId 5264c1c3-e6eb-4301-bee4-245aaea17832 -St
 
 すると、adminportal上のユーザサブスクリプションの表示が"Disabled"に変わります。
 
-{{<img src="./../../images/2018-0812-006.png">}}
+{{<img src="./../../images/2018-0829-006.png">}}
 
 ## ユーザサブスクリプションが無効化されると？
 
@@ -40,19 +40,19 @@ Azure Stack Operatorがユーザサブスクリプションを"Disabled"にし�
 
 Azureと同様、サブスクリプションの表示は"Disabled"になります。
 
-{{<img src="./../../images/2018-0812-009.png">}}
+{{<img src="./../../images/2018-0829-009.png">}}
 
 Virtual Machineのステータスが"Failed"になり、アクセスできなくなります。
 
-{{<img src="./../../images/2018-0812-010.png">}}
+{{<img src="./../../images/2018-0829-010.png">}}
 
 Hyper-Vで該当のVirtual Machineの状況を確認すると、Stateが"OFF"になっています。
 
-{{<img src="./../../images/2018-0812-008.png">}}
+{{<img src="./../../images/2018-0829-008.png">}}
 
 Disabledなサブスクリプションを利用してリソースを作ろうとすると、エラーになります。
 
-{{<img src="./../../images/2018-0812-011.png">}}
+{{<img src="./../../images/2018-0829-011.png">}}
 
 ## ユーザサブスクリプションを有効化化する
 
