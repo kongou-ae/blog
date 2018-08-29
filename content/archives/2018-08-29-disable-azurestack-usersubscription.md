@@ -36,7 +36,7 @@ Set-AzsUserSubscription -SubscriptionId 5264c1c3-e6eb-4301-bee4-245aaea17832 -St
 
 ## ユーザサブスクリプションが無効化されると？
 
-Azure Stack Operatorがユーザサブスクリプションを"Disabled"にした場合、Azureど同様、サブスクリプションが読み取り専用になります。
+Azure Stack Operatorがユーザサブスクリプションを"Disabled"にした場合、Azureと同様、サブスクリプションが読み取り専用になります。
 
 Azureと同様、サブスクリプションの表示は"Disabled"になります。
 
