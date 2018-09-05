@@ -36,7 +36,7 @@ Get-AzsAlert | Sort-Object { $_.CreatedTimestamp } -Descending
 
 ## アラートを抽出する
 
-"-Filter"オプションを使うと特定条件のアラートを抽出できます。私は、分かりやすい"Where-Object"が好きです。
+"-Filter"オプションを使うと特定条件のアラートを抽出できます。当然、なじみのある"Where-Object"でも抽出できます。
 
 ```PowerShell
 Get-AzsAlert -Filter "Properties/State eq 'Active'" | Sort-Object { $_.CreatedTimestamp } -Descending
