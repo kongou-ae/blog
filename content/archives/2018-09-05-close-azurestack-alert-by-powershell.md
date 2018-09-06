@@ -43,7 +43,7 @@ Get-AzsAlert -Filter "Properties/State eq 'Active'" | Sort-Object { $_.CreatedTi
 Get-AzsAlert | Where-Object { $_.State -eq "Active"} | Sort-Object { $_.CreatedTimestamp } -Descending
 ```
 
-{{<img src="./../../images/2018-0905-004 .png">}}
+{{<img src="./../../images/2018-0905-004.png">}}
 
 ## アラートをクローズする
 
@@ -55,7 +55,7 @@ Close-AzsAlert -name ec7cbbb7-1581-41ad-bb75-37349abd4434 -Force -Verbose
 
 {{<img src="./../../images/2018-0905-005.png">}}
 
-クローズしたいアラートを抽出したうえでforeachでループさせれば、対象のアラートを一括でクローズするできます。
+クローズしたいアラートを抽出したうえでforeachでループさせれば、対象のアラートを一括でクローズできます。
 
 
 ```Powershell
