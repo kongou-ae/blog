@@ -58,12 +58,14 @@ Close-AzsAlert -name ec7cbbb7-1581-41ad-bb75-37349abd4434 -Force -Verbose
 クローズしたいアラートを抽出したうえでforeachでループさせれば、対象のアラートを一括でクローズできます。
 
 
-```Powershell
+```PowerShell
 $alerts = Get-AzsAlert | Where-Object { $_.State -eq "Active"} 
 $alerts | ForEach-Object {
     Close-AzsAlert -Name $_.AlertId -Force -Verbose
 }
 ```
+
+{{<img src="./../../images/2018-0905-006.png">}}
 
 ## 終わりに
 
