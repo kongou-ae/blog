@@ -7,7 +7,7 @@ categories:
   - azurestack
 ---
 
-## 
+## はじめに
 
 Azure Stack 1808 updateがリリースされました。ぐっときたポイントをまとめます。
 
