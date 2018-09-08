@@ -22,7 +22,7 @@ Managed Diskがサポートされました。Snapshotも取れます。Azure Sta
 
 ## ポータルの見た目変更
 
-Azure Stackの管理者ポータルとユーザポータルが、一世代前のAzureポータルのようになりました。目立つ変更点は、Grobal Subscription filterや左上のAll Service、Virtual Machine作成時のサイズを選ぶ画面などです。ただし、1808 Updateの数日前にAzureポータルの見た目が新しくなってしまったので、AzureポータルとAzure Stackポータルの見た目が揃うことはありませんでした。残念。
+Azure Stackの管理者ポータルとユーザポータルが、一世代前のAzureポータルのようになりました。目立つ変更点は、Grobal Subscription filterや左上のAll Services、Virtual Machine作成時のサイズを選ぶ画面などです。ただし、1808 Updateの数日前にAzureポータルの見た目が新しくなってしまったので、AzureポータルとAzure Stackポータルの見た目が揃うことはありませんでした。残念。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">Azure Stackのポータルが一世代前のAzureっぽくなった。1808 Update配信のちょっと前にAzureのポータルが新しくなっちゃったので、両方が同じ感じにはならず・・・ <a href="https://t.co/GtBHEvkOCF">pic.twitter.com/GtBHEvkOCF</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1038379761846824960?ref_src=twsrc%5Etfw">2018年9月8日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -47,7 +47,7 @@ Azure Stack自身がUpdateのパッケージを自動でダウンロードする
 これまでUpdateを適用するためには次の手順が必要でした。手順3以降のUpdateが完全に自動化されているので、手順１と手順２が凄く面倒です。
 
 1. パッケージをダウンロードするツールを起動して、数Gバイトのパッケージをダウンロードする
-1. 数GバイトのパッケージをAzure Stack上のストレージアカウントにダウンロードする
+1. 数GバイトのパッケージをAzure Stack上のストレージアカウントにアップロードする
 1. 管理者ポータル上でUpdateを実行する
 
 本機能の実装によって、Azure Stack Operatorは手順1と手順2の作業から解放されます。Updateの適用手順は、MicrosoftからUpdateのアナウンスがあったら管理者ポータルで"Update now"のボタンを押すだけになりました。簡単。
