@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1808 update 所感
+title: Azure Stack 1808 Update の所感
 author: kongou_ae
 date: 2018-09-08
 url: /archives/2018-09-08-azurestack-1808-update
@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-Azure Stack 1808 updateがリリースされました。ぐっときたポイントをまとめます。
+Azure Stack 1808 Updateがリリースされました。ぐっときたポイントをまとめます。
 
 [Azure Stack 1808 update](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1808)
 
@@ -42,19 +42,18 @@ Azure Stackの管理者ポータルとユーザポータルが、一世代前の
 
 ## Updateの自動ダウンロード
 
-Azure Stack自身がUpdateのパッケージを自動でダウンロードするようになりました。1807 Updateで実装された機能（ただし、リリースノートに明記されていない）が1808 Updateのリリースによって明らかになった形です。1808 Updateのリリース直後には、この機能の実装を喜ぶAzure Stack Operatorの姿がTwitter上に溢れました。
+Azure Stack自身がUpdateのパッケージを自動でダウンロードするようになりました。1807 Updateで実装された機能が1808 Updateのリリースによって明らかになった形です。1807 Updateのリリースノートに明記されていなかったので、1808 Updateのリリース直後には、この機能の実装を喜ぶAzure Stack Operatorの姿がTwitter上に溢れました。
 
-これまでUpdateを適用するためには次の手順が必要でした。手順3以降のUpdateが完全に自動化されているので、手順１と手順２が凄くめんどくさいのです。
+これまでUpdateを適用するためには次の手順が必要でした。手順3以降のUpdateが完全に自動化されているので、手順１と手順２が凄く面倒です。
 
 1. パッケージをダウンロードするツールを起動して、数Gバイトのパッケージをダウンロードする
 1. 数GバイトのパッケージをAzure Stack上のストレージアカウントにダウンロードする
 1. 管理者ポータル上でUpdateを実行する
 
-本機能の実装によって、Azure Stack Operatorは手順1と手順2の作業から解放されます。Updateの適用手順は、MicrosoftからUpdateのアナウンスがあったら管理者ポータルでUpdateを実行するだけです。簡単。
+本機能の実装によって、Azure Stack Operatorは手順1と手順2の作業から解放されます。Updateの適用手順は、MicrosoftからUpdateのアナウンスがあったら管理者ポータルで"Update now"のボタンを押すだけになりました。簡単。
 
 ## おわりに
 
 Azure Stack 1808 Updateでぐっときたポイントをまとめました。利用者としてはManaged Diskの実装がうれしいです。AzureではManaged Diskを使っているのに、Azure StackではUnmanaged Diskを使わなければならないという状況は苦痛でした。Azure Stack OperatorとしてはUpdateの自動ダウンロードが素晴らしい。毎月のUpdate適用が本当にボタンを一つ押すだけになりました。
 
 ただし、月末に開催されるIgniteの直前リリースと考えると、少々物足りないです。Igniteの会場で刺激的な発表があることを期待します。
-
