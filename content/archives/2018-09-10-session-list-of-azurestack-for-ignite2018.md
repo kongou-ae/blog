@@ -1,7 +1,7 @@
 ---
 title: Microsoft Ignite 2018 の Azure Stackセッション一覧
 author: kongou_ae
-date: 2018-09-10
+date: 2018-09-09
 url: /archives/2018-09-10-session-list-of-azurestack-for-ignite2018
 categories:
   - azurestack
