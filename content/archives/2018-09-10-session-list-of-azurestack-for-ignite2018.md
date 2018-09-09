@@ -79,7 +79,7 @@ Azure Stackを販売しているOEMベンダがスピーカを担当するセッ
 - THR2350 - What are Lenovo and Microsoft Azure Stack customers experiencing?
   - https://myignite.techcommunity.microsoft.com/sessions/67107
 
-## Cisco
+### Cisco
 - BRK2427 - Securing your cloud journey, from data center to the edge with Cisco
   - https://myignite.techcommunity.microsoft.com/sessions/66868
 
