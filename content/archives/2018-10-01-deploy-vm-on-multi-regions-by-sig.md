@@ -61,7 +61,7 @@ az sig image-definition create \
 
 作成した Image Definition に 実際の Image を格納します。上記で作成した Image のリソースIDを `--managed-image` オプションに渡します。
 
-Shared Image Gallery にはレプリカという考え方があります。Shared Image Gallery 上の Image は Storage Blob 上に保持されます。同時にたくさんの Virtual Machineをデプロイしようとすると、Storage Blob の性能がボトルネックになる可能性があります。Shared Image Gallery 上の Image にレプリカを持たせておくことと、同時にたくさんのVirtual Machine をデプロイしようとした場合、Virtual Machine 作成時に読み取られる Shared Image Gallery 上の Image がレプリカに分散します。
+Shared Image Gallery にはレプリカという考え方があります。Shared Image Gallery 上の Image は Storage Blob 上に保持されます。同時にたくさんの Virtual Machineをデプロイしようとすると、Storage Blob の性能がボトルネックになる可能性があります。Shared Image Gallery 上の Image にレプリカを持たせておくと、同時にたくさんのVirtual Machine をデプロイしようとした場合、Virtual Machine 作成時の読み取りがレプリカに分散します。
 
 `--replica-count` オプションはデフォルトのレプリカ数を定義します。`--target-regions` オプションでは、 Image を配りたいリージョンと、リージョン個別のレプリカ数を定義します。今回は East US2 と Southeast Asia 、 Japan East 、 Japan West に対してレプリカ数１で Image を配ります。
 
