@@ -36,7 +36,7 @@ az sig create -g sig --gallery-name aimlesssig
 Shared Image Gallery と同じリージョンに、Shared Image Gallery に格納する Image を作成します。今回は以下の流れで Image を作りました。
 
 - MarketPlace から Ubuntu を作成する
-- Run Command を利用して /opt/sig.txt を作成する
+- Serial Console で /opt/sig.txt を作成する
 - Serial Console で waagent -deprovision+user を実行する
 - Azure Portal から Virtual Machine をキャプチャしてイメージ化する
 
