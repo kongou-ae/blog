@@ -17,7 +17,7 @@ Microsoft Ignite 2018 で [Shared Image Gallery](https://azure.microsoft.com/en-
 
 Shared Image Gallery は Public Preview 中です。個別に有効化する必要があります。
 
-```Bash
+```bash
 az feature register --namespace Microsoft.Compute --name GalleryPreview
 az provider register -n Microsoft.Compute
 ```
@@ -26,7 +26,7 @@ az provider register -n Microsoft.Compute
 
 まずは Shared Image Gallery そのものを作ります。 [Announcing the public preview of Shared Image Gallery](https://azure.microsoft.com/en-us/blog/announcing-the-public-preview-of-shared-image-gallery/) に記載のとおり、Shared Image Gallery そのものを作れるリージョンには限りがあります。今回は East US2 を利用します。
 
-```Bash
+```bash
 az group create -g sig -l eastus2
 az sig create -g sig --gallery-name aimlesssig
 ```
@@ -46,7 +46,7 @@ Shared Image Gallery と同じリージョンに、Shared Image Gallery に格�
 
 Shared Image Gallery に格納する Image を定義します。
 
-```Bash
+```bash
 az sig image-definition create \
    -g sig \
    --gallery-name aimlesssig \
@@ -65,7 +65,7 @@ Shared Image Gallery にはレプリカという考え方があります。Share
 
 `--replica-count` オプションはデフォルトのレプリカ数を定義します。`--target-regions` オプションでは、 Image を配りたいリージョンと、リージョン個別のレプリカ数を定義します。今回は East US2 と Southeast Asia 、 Japan East 、 Japan West に対してレプリカ数１で Image を配ります。
 
-```Bash
+```bash
 az sig image-version create -g sig \
    --gallery-name aimlesssig --gallery-image-definition ubuntu-16.04.4-custom \
    --gallery-image-version 3.0.0 --target-regions "East US 2" "southeast asia=1" "japan east=1" "japan west=1" \
@@ -89,7 +89,7 @@ az sig image-version create -g sig \
 
 では、実際に Shared Image Gallery を使って、Virtual Machine を作ってみます。Shared Image Gallery を配った Southeast Asia でVMを作ります。
 
-```Bash
+```bash
 az group create -n sig-dst -l southeastasia
 az storage account create -n sigboot -g sig-dst --sku Standard_LRS --kind Storage
 az vm create -g sig-dst -n sigdst \
