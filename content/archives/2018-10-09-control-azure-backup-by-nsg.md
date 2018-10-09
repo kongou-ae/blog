@@ -35,7 +35,7 @@ Azure IaaS VM Backup の 場合、Virtual Machine にインストールされて
 
 ### バックアップからのリストア
 
-Azure IaaS VM Backup から Virtual Machine または Disk をリストアする通信はAzure インフラストラクチャ内で完結します。Bakup を取得している Virtual Machine に適用されている NSG は無関係です。
+Azure IaaS VM Backup から Virtual Machine または Disk をリストアする通信はAzure インフラストラクチャ内で完結します。Backup を取得している Virtual Machine に適用されている NSG は無関係です。
 
 ただし、Azure IaaS VM Backup からファイルを復元する方法（[Recover files from Azure virtual machine backup](https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-restore-files-from-vm)）はVirtual Machine の NSG が関係します。サービスタグ「Storage.[geo-name]」宛てのTCP/443だけだと、ファイルの復元を利用できません。要注意です。
 
@@ -45,7 +45,7 @@ Azure IaaS VM Backup から Virtual Machine または Disk をリストアする
     - download.microsoft.com は Akamai から配信されているため、IPアドレスベースのNSGで制御することが困難
     - NSGで許可するならばサービスタグ「Internet」（グローバルIPアドレス全部）を使わざるを得ない。リストアのためだけにサービスタグ「Internet」を許可するのはやりすぎ
 - pod01-rec2.[geo-name].backup.windowsazure.com へのTCP/3260
-    - サービスタグ「Storage.[geo-name]」に含まれていない。
+    - サービスタグ「Storage.[geo-name]」に含まれていない
     - サービスタグ「AzureCloud.[geo-name]」に対してポートを絞るのが限界
 
 ファイル単位で取り出したければ、Backup から Disk 単位でリストアした後に Virtual Machine に Disk をマウントしたうえでファイルを取り出しましょう。
