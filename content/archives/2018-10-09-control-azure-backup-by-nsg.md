@@ -66,7 +66,7 @@ Azure File and Folder Backup の場合、Virtual Machine にインストール�
 - サービスタグ「AzureActiveDirectory」へのTCP/443
 - Recovery Service Vault がデプロイされているリージョンのサービスタグ「AzureCloud.[geo-name]」宛てのTCP/443
 
-Azure File and Folder Backup については、NSG で制御するのではなく、Proxy や Azure Firewall などのFQDNベースのソリューションで制御するのがよいでしょう。
+そもそも、Microsoftのドキュメントにはサービスタグを利用した通信制御が記載されていません。そのためAzure File and Folder Backup については、NSG で制御するのではなく、Proxy や Azure Firewall などのFQDNベースのソリューションで制御するのがよいでしょう。
 
 ## まとめ
 
