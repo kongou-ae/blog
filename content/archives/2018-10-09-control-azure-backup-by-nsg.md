@@ -48,7 +48,7 @@ Azure IaaS VM Backup から Virtual Machine または Disk をリストアする
     - サービスタグ「Storage.[geo-name]」に含まれていない
     - サービスタグ「AzureCloud.[geo-name]」に対してポートを絞るのが限界
 
-ファイル単位で取り出したければ、Backup から Disk 単位でリストアした後に Virtual Machine に Disk をマウントしたうえでファイルを取り出しましょう。
+必要な通信要件を満たせない状態で Azure IaaS VM Backup からファイルを取り出したければ、Backup から Disk 単位でリストアした後に Virtual Machine に Disk をマウントしたうえでファイルを取り出しましょう。
 
 ## Azure File and Folder Backup
 
