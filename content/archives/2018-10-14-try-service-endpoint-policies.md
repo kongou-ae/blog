@@ -31,9 +31,11 @@ Service Endpoint Policies とは Service Endpoint 経由でアクセスできる
 
 Service Endpoint 経由でストレージアカウントにだけアクセスできるサブネットを用意します。
 
-Service Endpoint を Azure Storage に対して有効にします。Azure Storage を有効にした場合、VNet と同じリージョンとペアリージョンへの裏口ができます。さらに、0.0.0.0/0を存在しないIPアドレスに向けます。これでこのサブネット上の Virtual Machine は VNet 内と Azure Storage にのみアクセスできます。
+Service Endpoint を Azure Storage に対して有効にします。Azure Storage を有効にした場合、VNet と同じリージョンとペアリージョンへの裏口ができます。
 
 {{<img src="./../../images/2018-1014-002.png">}}
+
+さらに、UDRを利用して0.0.0.0/0をVNet内の利用していないIPアドレスに向けます。これでこのサブネット上の Virtual Machine は VNet 内と Azure Storage にのみアクセスできます。インターネット経由で Azure にはアクセスできません。
 
 ### Service Endpoint Policies なしの動作
 
@@ -57,7 +59,7 @@ Service Endpoint Policies で設定できる許可の範囲は次の3択です�
 
 {{<img src="./../../images/2018-1014-006.png">}}
 
-今回は、ストレージアカウントその1のみを許可する Service Endpoint Policies を上記の Virtual Machine が接続しているサブネットに適用します。
+今回は、ストレージアカウントその1（aimless1010v1）のみを許可する Service Endpoint Policies を上記の Virtual Machine が接続しているサブネットに適用します。
 
 {{<img src="./../../images/2018-1014-004.png">}}
 
