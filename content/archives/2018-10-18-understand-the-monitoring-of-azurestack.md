@@ -17,23 +17,23 @@ Azure Stack は自身を構成する要素を監視しています。ですが�
 
 そんな時には、Azure Stack 自身に格納されているアラートのテンプレートが役に立ちます。
 
-admin portal側に存在しているストレージアカウントには、アラートのテンプレートが保存されています。これを見れば、Azure Stack がどんなアラートをあげるつもりなのを把握できます。
+admin portal側に存在しているストレージアカウントには、アラートのテンプレートが保存されています。これを見れば、Azure Stack がどのようなアラートをあげるつもりなのを把握できます。
 
 ## テンプレートの内容
 
-スクリプトを書いてテンプレートの中身をパースした結果を次の通りです。大量にあるので別リンクです。
+スクリプトを書いてテンプレートの中身をパースした結果は次の通りです。大量にあるので別リンクです。
 
 [The alerts of Azure Stack 1808 update](https://gist.github.com/kongou-ae/5a16e31965ce71761ca2dda0a7565b25)
 
-テンプレートの中身を見る限りだと、OSから確認できる範囲の項目を一通り監視しているように見えます。これだけの項目を監視していれば、ブラックボックスでも安心できますね。
+テンプレートの中身を見る限りだと、OSから確認できる範囲の項目を一通り監視しているように見えます。これだけの項目を監視していればブラックボックスでもある程度は安心できますね。
 
-これらのアラートはAPIにて公開されます。そのため、Azure Stack Operator は、System CenterのManagement PackやNagiosなど、APIからアラートを収集してアラートをあげる仕組みを用意する必要があります。詳細は、次の URL を参照。
+Azure Stack は、これらのアラートをAPIを通して外部に公開します。そのため、Azure Stack Operator は、System CenterのManagement PackやNagiosなど、API 経由でアラートを収集して運用者にアラートを通知する仕組みを用意する必要があります。詳細は、次の URL を参照。
 
 [Integrate external monitoring solution with Azure Stack](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-monitor)
 
 ## Azure Stack が監視しないこと
 
-一方で、Azure Stack が動作している OS からは確認できない範囲のアラートはテンプレートに含まれていません。例えば次の項目です。これらを監視するのはOEMベンダが個別に導入するツールの役割です。
+一方で、Azure Stack が動作している OS からは確認できない範囲のアラートはテンプレートに含まれていません。例えば次の項目です。これらを監視する役目は、OEMベンダが個別に導入するツールが担います。
 
 - 各サーバに搭載されているファンや電源モジュールなどの部品
 - 各サーバの消費電力や温度
