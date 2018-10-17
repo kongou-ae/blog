@@ -2,9 +2,9 @@
 title: Azure Stack の監視を理解する
 author: kongou_ae
 date: 2018-10-18
-url: /archives/2018-10-18-understand-the-minitoring-of-azurestack
+url: /archives/2018-10-18-understand-the-monitoring-of-azurestack
 categories:
-  - azurestack
+  - azurestack
 ---
 
 ## Azure Stack の監視項目は不明
