@@ -34,19 +34,17 @@ Hub は 二台の VPN Gateway で構成されています。これも Virtual WA
 
 {{<img src="./../../images/2018-10-19-001.png">}}
 
-そして Hub を作ります。利用用途に合わせて帯域を選びましょう。裏で VPN Gateway が作成されるため、デプロイに時間がかかります。
-
-{{<img src="./../../images/2018-10-19-002.png">}}
-
-Virtual WAN はハブアンドスポーク型のVPNなので全ての通信がこの Hub を経由します。帯域の選定は慎重に。またスケールユニットが課金単位ですので、帯域を確保すればするほどお金がかかります。
+そして Hub を作ります。利用用途に合わせて帯域を選びましょう。裏で VPN Gateway が作成されるため、デプロイに時間がかかります。Virtual WAN はハブアンドスポーク型のVPNなので全ての通信がこの Hub を経由します。帯域の選定は慎重に。またスケールユニットが課金単位ですので、帯域を確保すればするほどお金がかかります。
 
 参考：[Virtual WAN の価格](https://azure.microsoft.com/ja-jp/pricing/details/virtual-wan/)
 
-次に VPN Site を登録します。FortiGate は VWAN の自動登録をサポートしていません。必要なパラメータを手で入力します。FortiGate 側の設定が完了していないので、現時点のステータスは Connecting です。
+{{<img src="./../../images/2018-10-19-002.png">}}
+
+次に VPN Site を登録します。FortiGate は VWAN の自動登録をサポートしていません。必要なパラメータを手で入力します。
 
 {{<img src="./../../images/2018-10-19-003.png">}}
 
-VPN Site ができたら、作成した VPN Site を Hub と関連付けます。
+VPN Site ができたら、作成した VPN Site を Hub と関連付けます。この時点で IPsec の共有鍵を指定します。
 
 {{<img src="./../../images/2018-10-19-005.png">}}
 
@@ -74,15 +72,15 @@ Virtual WAN 固有の設定は存在しませんので、[@syuheiuda](https://tw
 
 ### Virtual WAN の状態
 
-IPsec トンネルが一本でも確立すると、ポータルのステータスは になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
+IPsec トンネルが一本でも確立すると、ポータルのステータスは Connected になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
 
 {{<img src="./../../images/2018-10-19-011.png">}}
 
-また、現時点では Azure Monitor を利用した メトリクス のアラートを作れませんでした。トンネルの可用性やレイテンシなどをAzure Monitor で監視できるようになってほしいところです。
+また、現時点では Azure Monitor を利用した メトリクスアラートを作れませんでした。トンネルの可用性やレイテンシなどをAzure Monitor で監視できるようになってほしいところです。
 
 ### FortiGate の状態
 
-BGPで学習した経路は次の通りです。想定した経路が聞こえてきています。他の拠点がいるとそのPrefixも聞こえてくのでしょう。
+FOrtiGate が BGP で学習した経路は次の通りです。想定した経路が聞こえてきています。他の拠点がいるとその拠点が広報する Prefix も聞こえてくのでしょう。
 
 - Hub のprefix
   - 192.168.0.0/24
@@ -111,7 +109,7 @@ Origin codes: i - IGP, e - EGP, ? - incomplete
 Total number of prefixes 5
 ```
 
-### vnet の状態
+### VNet の状態
 
 Hub と接続している VNet で稼働している Virtual Machine のルーティングテーブルには VPN Site が広報した経路（192.168.111.0/24）が載っています。当然、私の自宅から VIrtual Machine にアクセスできます。
 
@@ -119,6 +117,6 @@ Hub と接続している VNet で稼働している Virtual Machine のルー�
 
 ## まとめ
 
-自動プロビジョニングをサポートしないデバイスであっても、VPN Gateway に接続するのと同じ流れで、Virtual WAN と接続できました。
+自動プロビジョニングをサポートしない FortiGate であっても、VPN Gateway に接続するのと同じ流れで Virtual WAN と接続できました。
 
-ただし、自動プロビジョニングのメリットを全く得られないので、すごく微妙でした。ベンダが検証したであろうコンフィグが自動で設定されることこそが、 VIrtual WAN の最大のメリットです。Ignite の Expo 会場で Fortinet のエンジニアにFortiGate の Virtual WAN 対応について質問したところ、現在絶賛開発中とのことでした。リリースが楽しみです。
+ただし、自動プロビジョニングのメリットを全く得られないので、すごく微妙でした。ベンダが検証したであろうコンフィグが自動で設定されることこそが、 VIrtual WAN の最大のメリットです。Ignite の Expo 会場で Fortinet のエンジニアにFortiGate の Virtual WAN サポートについて質問したところ、現在絶賛開発中とのことでした。リリースが楽しみです。
