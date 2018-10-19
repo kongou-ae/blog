@@ -9,7 +9,9 @@ categories:
 
 ## はじめに
 
-Azure Virtual Wan が GA しました。Ignite のセッションを見ているだけだと期待値が高くなりすぎてサービスの価値を正しく判断できないので、実際に試しました。ただし、我が家には自動プロビジョニングをサポートするデバイスがありません。そこで、どこのご家庭にもある FortiGate を Azure Virtual WAN に手動で接続しました。
+Azure Virtual Wan が GA しました。Ignite のセッションを見ているだけだと期待値が高くなりすぎてサービスの価値を正しく判断できないので、実際に試しました。ただし、我が家には自動プロビジョニングをサポートするデバイスがありません。そこで、どこのご家庭にもある FortiGate を Azure Virtual WAN に手動で接続しました。目指す構成は次の通りです。
+
+{{<img src="./../../images/2018-10-19-011.png">}}
 
 ## Virtual WAN の構成要素
 
@@ -30,11 +32,11 @@ Hub は 二台の VPN Gateway で構成されています。これも Virtual WA
 
 まずは Virtual WAN 自体を作ります。Virtual WAN の設定として、VPN Site 間の通信の許可するかどうかを選択できます。今回は許可にします。
 
-{{<img src="./../../images/2018-1019-001.png">}}
+{{<img src="./../../images/2018-10-19-001.png">}}
 
 そして Hub を作ります。利用用途に合わせて帯域を選びましょう。裏で VPN Gateway が作成されるため、デプロイに時間がかかります。
 
-{{<img src="./../../images/2018-1019-002.png">}}
+{{<img src="./../../images/2018-10-19-002.png">}}
 
 Virtual WAN はハブアンドスポーク型のVPNなので全ての通信がこの Hub を経由します。帯域の選定は慎重に。またスケールユニットが課金単位ですので、帯域を確保すればするほどお金がかかります。
 
@@ -42,25 +44,25 @@ Virtual WAN はハブアンドスポーク型のVPNなので全ての通信が�
 
 次に VPN Site を登録します。FortiGate は VWAN の自動登録をサポートしていません。必要なパラメータを手で入力します。FortiGate 側の設定が完了していないので、現時点のステータスは Connecting です。
 
-{{<img src="./../../images/2018-1019-003.png">}}
+{{<img src="./../../images/2018-10-19-003.png">}}
 
 VPN Site ができたら、作成した VPN Site を Hub と関連付けます。
 
-{{<img src="./../../images/2018-1019-005.png">}}
+{{<img src="./../../images/2018-10-19-005.png">}}
 
 さらに、Hub と VNet を関連付けます。これで Azure 側の準備は完了です。
 
-{{<img src="./../../images/2018-1019-006.png">}}
+{{<img src="./../../images/2018-10-19-006.png">}}
 
 この時点だと、まだ IPsec は確立していません。そのためポータル上の VPN Site のステータスは Connecting です。
 
-{{<img src="./../../images/2018-1019-008.png">}}
+{{<img src="./../../images/2018-10-19-008.png">}}
 
 ## FortiGate の準備
 
 FortiGate は、Virtual WAN の特長である自動デプロイをサポートしていません。そのため、自分で設定します。接続先である Hub のパラメータは、Azure Portal からダウンロードできます。
 
-{{<img src="./../../images/2018-1019-009.png">}}
+{{<img src="./../../images/2018-10-19-009.png">}}
 
 参考：[ダウンロードしたコンフィグファイル](https://gist.github.com/kongou-ae/8118a7bbacad5a5d0e06a1974a4f395e)
 
@@ -74,7 +76,7 @@ Virtual WAN 固有の設定は存在しませんので、[@syuheiuda](https://tw
 
 IPsec トンネルが一本でも確立すると、ポータルのステータスは になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
 
-{{<img src="./../../images/2018-1019-011.png">}}
+{{<img src="./../../images/2018-10-19-011.png">}}
 
 また、現時点では Azure Monitor を利用した メトリクス のアラートを作れませんでした。トンネルの可用性やレイテンシなどをAzure Monitor で監視できるようになってほしいところです。
 
@@ -113,7 +115,7 @@ Total number of prefixes 5
 
 Hub と接続している VNet で稼働している Virtual Machine のルーティングテーブルには VPN Site が広報した経路（192.168.111.0/24）が載っています。当然、私の自宅から VIrtual Machine にアクセスできます。
 
-{{<img src="./../../images/2018-1019-010.png">}}
+{{<img src="./../../images/2018-10-19-010.png">}}
 
 ## まとめ
 
