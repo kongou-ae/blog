@@ -30,11 +30,11 @@ Hub は 二台の VPN Gateway で構成されています。これも Virtual WA
 
 まずは Virtual WAN 自体を作ります。Virtual WAN の設定として、VPN Site 間の通信の許可するかどうかを選択できます。今回は許可にします。
 
-{{<img src="./../../images/2018-10-14-001.png">}}
+{{<img src="./../../images/2018-1014-001.png">}}
 
 そして Hub を作ります。利用用途に合わせて帯域を選びましょう。裏で VPN Gateway が作成されるため、デプロイに時間がかかります。
 
-{{<img src="./../../images/2018-10-14-002.png">}}
+{{<img src="./../../images/2018-1014-002.png">}}
 
 Virtual WAN はハブアンドスポーク型のVPNなので全ての通信がこの Hub を経由します。帯域の選定は慎重に。またスケールユニットが課金単位ですので、帯域を確保すればするほどお金がかかります。
 
@@ -42,29 +42,29 @@ Virtual WAN はハブアンドスポーク型のVPNなので全ての通信が�
 
 次に VPN Site を登録します。FortiGate は VWAN の自動登録をサポートしていません。必要なパラメータを手で入力します。FortiGate 側の設定が完了していないので、現時点のステータスは Connecting です。
 
-{{<img src="./../../images/2018-10-14-003.png">}}
+{{<img src="./../../images/2018-1014-003.png">}}
 
 VPN Site ができたら、作成した VPN Site を Hub と関連付けます。
 
-{{<img src="./../../images/2018-10-14-005.png">}}
+{{<img src="./../../images/2018-1014-005.png">}}
 
 さらに、Hub と VNet を関連付けます。これで Azure 側の準備は完了です。
 
-{{<img src="./../../images/2018-10-14-006.png">}}
+{{<img src="./../../images/2018-1014-006.png">}}
 
 この時点だと、まだ IPsec は確立していません。そのためポータル上の VPN Site のステータスは Connecting です。
 
-{{<img src="./../../images/2018-10-14-008.png">}}
+{{<img src="./../../images/2018-1014-008.png">}}
 
 ## FortiGate の準備
 
 FortiGate は、Virtual WAN の特長である自動デプロイをサポートしていません。そのため、自分で設定します。接続先である Hub のパラメータは、Azure Portal からダウンロードできます。
 
-{{<img src="./../../images/2018-10-14-009.png">}}
+{{<img src="./../../images/2018-1014-009.png">}}
 
 参考：[ダウンロードしたコンフィグファイル](https://gist.github.com/kongou-ae/8118a7bbacad5a5d0e06a1974a4f395e)
 
-Virtual WAN 固有の設定は存在しませんので、@uda のブログを参考にしつつ Active/Active な S2S VPN を設定すればOKです。
+Virtual WAN 固有の設定は存在しませんので、[@syuheiuda](https://twitter.com/syuheiuda) のブログを参考にしつつ Active/Active な S2S VPN を設定すればOKです。
 
 参考：[Juniper SRX650 / Cisco C841M で VPN を張って、BGP で経路交換してみた](https://www.syuheiuda.com/?p=4304)
 
@@ -72,9 +72,9 @@ Virtual WAN 固有の設定は存在しませんので、@uda のブログを参
 
 ### Virtual WAN の状態
 
-IPsec トンネルが一本でも確立すると、ポータルのステータスは になります。確立しているトンネルが一本なのか日本なのかを確認する術はありません。
+IPsec トンネルが一本でも確立すると、ポータルのステータスは になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
 
-{{<img src="./../../images/2018-10-14-011.png">}}
+{{<img src="./../../images/2018-1014-011.png">}}
 
 また、現時点では Azure Monitor を利用した メトリクス のアラートを作れませんでした。トンネルの可用性やレイテンシなどをAzure Monitor で監視できるようになってほしいところです。
 
@@ -113,7 +113,7 @@ Total number of prefixes 5
 
 Hub と接続している VNet で稼働している Virtual Machine のルーティングテーブルには VPN Site が広報した経路（192.168.111.0/24）が載っています。当然、私の自宅から VIrtual Machine にアクセスできます。
 
-{{<img src="./../../images/2018-10-14-010.png">}}
+{{<img src="./../../images/2018-1014-010.png">}}
 
 ## まとめ
 
