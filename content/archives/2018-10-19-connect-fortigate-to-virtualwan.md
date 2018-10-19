@@ -40,7 +40,7 @@ Hub は 二台の VPN Gateway で構成されています。これも Virtual WA
 
 {{<img src="./../../images/2018-10-19-002.png">}}
 
-次に VPN Site を登録します。FortiGate は VWAN の自動登録をサポートしていません。必要なパラメータを手で入力します。
+次に VPN Site を登録します。FortiGate は Virtual WAN をサポートしていないので必要なパラメータを手で入力します。今回は BGP を有効にします。
 
 {{<img src="./../../images/2018-10-19-003.png">}}
 
@@ -58,7 +58,7 @@ VPN Site ができたら、作成した VPN Site を Hub と関連付けます�
 
 ## FortiGate の準備
 
-FortiGate は、Virtual WAN の特長である自動デプロイをサポートしていません。そのため、自分で設定します。接続先である Hub のパラメータは、Azure Portal からダウンロードできます。
+FortiGate は、Virtual WAN の特長である自動デプロイをサポートしていません。接続先である Hub のパラメータをAzure Portal からダウンロードして。そのパラメータをもとに自分で設定しましょう。
 
 {{<img src="./../../images/2018-10-19-009.png">}}
 
@@ -72,7 +72,7 @@ Virtual WAN 固有の設定は存在しませんので、[@syuheiuda](https://tw
 
 ### Virtual WAN の状態
 
-IPsec トンネルが一本でも確立すると、ポータルのステータスは Connected になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
+IPsec トンネルが1本でも確立すると、ポータルのステータスは Connected になります。確立しているトンネルが1本なのか2本なのかを確認する術はありません。
 
 {{<img src="./../../images/2018-10-19-011.png">}}
 
@@ -82,9 +82,9 @@ IPsec トンネルが一本でも確立すると、ポータルのステータ�
 
 FOrtiGate が BGP で学習した経路は次の通りです。想定した経路が聞こえてきています。他の拠点がいるとその拠点が広報する Prefix も聞こえてくのでしょう。
 
-- Hub のprefix
+- Hub の Prefix
   - 192.168.0.0/24
-- hub と接続しているVNETのprefix
+- Hub と接続している VNet の Prefix
   - 10.0.3.0/24
   - 10.0.4.0/24
 
