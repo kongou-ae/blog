@@ -87,7 +87,7 @@ Virtual Machine の Network Interface にアタッチされた Public IP Address
 
 ## まとめ
 
-NVA の対応状況と、PowerShell を使った NVA のデプロイを試しました。色々な NVA が Azure Stack に対応してくれるのは良いことです。
+NVA の対応状況と、PowerShell を使った NVA のデプロイをまとめました。色々な NVA が Azure Stack に対応してくれるのは良いことです。
 
-ただし、現時点での NVA のライセンスは、BYOL のみをサポートしています。ライセンス料金が従量課金になる PAYG がありません。実際に NVA を使うためには、代理店からライセンスを調達しなければなりません。気軽に試せる、早く利用できるというクラウド目線だと、Azure Stack にも Azure と同じように ライセンスが PAYG な NVA が来てほしいです。
+ただし、現時点での NVA のライセンスは、BYOL のみをサポートしています。ライセンス料金が従量課金になる PAYG がありません。したがって、実際に Azure Stack 上で NVA を使うためには、代理店からライセンスを調達しなければなりません。気軽に試せる、早く利用できるというクラウド目線だと、Azure Stack にも Azure と同じように ライセンスが PAYG な NVA が来てほしいです。
 
