@@ -35,9 +35,11 @@ Virtual WAN への自動接続は、CloudGen Firewall 7.2.2 hotfix-886 以降で
 
 {{<img src="./../../images/2018-10-25-002.png">}}
 
-Virtual WAN をサポートするバージョンであれば、GUI に Virtual WANの設定項目があります。必要なパラメータは次の通りです。
+Virtual WAN をサポートするバージョンであれば、GUI に Virtual WANの設定項目があります。
 
 {{<img src="./../../images/2018-10-25-003.png">}}
+
+必要なパラメータは次の通りです。
 
 - サービスプリンシパルを利用するための認証情報一式
 - Barracuda をt登録したい Virtual WAN の名前
@@ -58,7 +60,7 @@ Azure Portal 上では、自動登録された Barracuda が VPN Site として�
 
 {{<img src="./../../images/2018-10-25-005.png">}}
 
-登録された VPN Site を手動で Barracuda と Hub と関連付けします。手動で関連付けしなきゃいけないの残念ポイントです。VPN Site としての登録だけでなく、Hub との関連付けまで自動でやってほしい。
+登録された VPN Site を手動で Hub と関連付けします。手動で関連付けしなきゃいけないの残念ポイントです。VPN Site としての登録だけでなく、Hub との関連付けまで自動でやってほしい。
 
 VPN Site と Hub との関連付けが終わると、Barracuda は自分が関連付けられた Hub を特定して、コンフィグファイルをダウンロードします。そして、ダウンロードした情報を利用して、自身に Azure Virtuwal WAN の設定をインストールします。
 
