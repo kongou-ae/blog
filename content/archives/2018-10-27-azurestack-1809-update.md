@@ -1,7 +1,7 @@
 ---
 title: Azure Stack 1809 update
 author: kongou_ae
-date: 2018-1027
+date: 2018-10-27
 url: /archives/2018-10-27-azurestack-1809-update
 categories:
   - azurestack
