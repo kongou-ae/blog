@@ -4,8 +4,10 @@ nav ul a,
 nav .brand-logo {
   color: #444;
 }
+
 p {
   line-height: 1.7;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .button-collapse {
