@@ -4,10 +4,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
   <title>{{ .Title }}</title>
-  <link href="{{.Site.BaseURL}}css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{{.Site.BaseURL}}css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{{.Site.BaseURL}}css/highlight_monokai.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{{.Site.BaseURL}}css/chroma-powershellconsole.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{.Site.BaseURL | relURL }}css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{.Site.BaseURL | relURL }}css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{.Site.BaseURL | relURL }}css/highlight_monokai.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{.Site.BaseURL | relURL }}css/chroma-powershellconsole.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
   <style type="text/css">
   {{if .Site.Params.footerCover}}
