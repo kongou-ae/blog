@@ -3,7 +3,8 @@ languageCode = "ja"
 title = "Aimless"
 disqusShortname = "aimlessjpblog"
 copyright = "Written by kongou_ae"
-canonifyurls = false
+canonifyurls = true
+relativeURLs = true
 
 pygmentsUseClasses = true
 PygmentsCodeFences = true
