@@ -75,7 +75,7 @@ Azure Stack Integrated system は、OEM ベンダが決まっています。現�
 
 引用：[Azure Stack 受け入れ準備_20180630](https://www.slideshare.net/HiroshiMatsumoto1/azure-stack-20180630)
 
-UCS を利用している Cisco Systems の Azure Stack の場合、Hardware Lifecycle Host が存在しません。そのかわりに Fablic Interconnect が利用されています。また BMC Switch が2台に冗長化されています。
+ただし、UCS を利用している Cisco Systems の Azure Stack の場合、他の OEM ベンダの Azure Stack と違う点があります。Cisco systems の Azure Stack には Hardware Lifecycle Host が存在しません。そのかわりに Fablic Interconnect が利用されています。また BMC Switch が2台に冗長化されています。
 
 ### 3. メーカのサポートを受けられる
 
