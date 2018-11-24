@@ -61,7 +61,7 @@ Development kit は評価版です。そのため、Integrated systems と比較
 
 Microsoft は、評価用である Develpment kit に対してサポートを提供しません。利用者は、Development kit に関する不具合を自己解決しなければなりません。Microsoft が提供してくれるものは、公式ドキュメントとフォーラムのみです。
 
-参考：[](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurestack)
+参考：[Azure Stack forum - MSDN - Microsoft](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurestack)
 
 ## まとめ
 
