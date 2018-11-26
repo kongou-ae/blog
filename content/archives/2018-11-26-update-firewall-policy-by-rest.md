@@ -33,7 +33,7 @@ curl -H "Content-Type: application/json" https://your.fortigate.ip.address/api/v
 
 ## Create a policy
 
-You must use "POST" operation to create new policy.
+You must use "POST" operation to create new policy. The body which you send to Fortigate must be same format as the responce which FortiGate send you. But I don't know which parametor is required and which parametor is optional.
 
 ```
 curl -X POST -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/ -d @policy.json --insecure -b cookie.txt
@@ -47,7 +47,7 @@ You must use "PUT" operation to update a policy. When you use "PUT" operation, y
 curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/20 -d @policy.json --insecure -b cookie.txt
 ```
 
-The body which you send to Fortigate must be same format as the responce which FortiGate send you. For example,
+ For example,
 
 ```
 $ curl -H "Content-Type: application/json" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/20 --insecure -b cookie.txt -sS | grep action
