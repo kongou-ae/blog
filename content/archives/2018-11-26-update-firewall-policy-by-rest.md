@@ -2,7 +2,7 @@
 title: Update FortiGate policy by REST API
 author: kongou_ae
 date: 2018-11-26
-url: /archives/2018-11-26-update-firewall-policy-by-rest.md
+url: /archives/2018-11-26-update-firewall-policy-by-rest
 categories:
   - fortigate
 ---
