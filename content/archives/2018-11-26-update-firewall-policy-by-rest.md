@@ -15,6 +15,8 @@ If you don't know a token and a cookie to access FortiGate by rest api, Please c
 
 [FortiGateをREST APIで管理する](https://aimless.jp/blog/archives/2017-04-01-manageing-fortigate-by-rest-api/)
 
+Our environment is FortiGate 30D (v5.6.3).
+
 ## Get a policy
 
 You can get all policy by the following command.
@@ -34,7 +36,7 @@ curl -H "Content-Type: application/json" https://your.fortigate.ip.address/api/v
 You must use "POST" operation to create new policy.
 
 ```
-curl -X POST -H "Content-Type: application/json" -H "X-CSRFTOKEN:69CDD57316A7CBFE71922FA7ACBB8F5C" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/ -d @policy.json --insecure -b cookie.txt
+curl -X POST -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/ -d @policy.json --insecure -b cookie.txt
 ```
 
 ## Update a policy
@@ -42,7 +44,7 @@ curl -X POST -H "Content-Type: application/json" -H "X-CSRFTOKEN:69CDD57316A7CBF
 You must use "PUT" operation to update a policy. When you use "PUT" operation, you must use the url which has policy number.
 
 ```
-curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:69CDD57316A7CBFE71922FA7ACBB8F5C" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/20 -d @policy.json --insecure -b cookie.txt
+curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/20 -d @policy.json --insecure -b cookie.txt
 ```
 
 For example,
@@ -56,7 +58,7 @@ $ cat policy.1.json
       "action":"deny"
 }
 $ 
-$ curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:69CDD57316A7CBFE71922FA7ACBB8F5C" https://your.fortigate.ip.address/api/v2/cdb/firewall/policy/20 -d @policy.1.json --insecure -b cookie.txt
+$ curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" https://your.fortigate.ip.address/api/v2/cdb/firewall/policy/20 -d @policy.1.json --insecure -b cookie.txt
 {
   "http_method":"PUT",
   "revision":"180.0.0.2906394636.1539432640",
@@ -66,7 +68,7 @@ $ curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:69CDD57316A7CB
   "vdom":"root",
   "path":"firewall",
   "name":"policy",
-  "serial":"FGT30D3X15013820",
+  "serial":"FGT30Dxxxxxxxxxxxxx",
   "version":"v5.6.3",
   "build":1547
 }
