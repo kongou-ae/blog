@@ -73,7 +73,7 @@ $ curl -X PUT -H "Content-Type: application/json" -H "X-CSRFTOKEN:YOURTOKEN" htt
   "build":1547
 }
 
-$ curl -H "Content-Type: application/json" https://36.2.107.75/api/v2/cmdb/firewall/policy/20 --insecure -b cookie.txt -sS | grep action
+$ curl -H "Content-Type: application/json" https://your.fortigate.ip.address/api/v2/cmdb/firewall/policy/20 --insecure -b cookie.txt -sS | grep action
       "action":"deny",
 ```
 
