@@ -19,7 +19,7 @@ categories:
 
 - SIer勤務
 - Azure Stack 歴１年半くらい
-- Azure Stack Integrated system を運用中
+- Azure Stack Integrated system( IaaS のみ)を運用中
 - Azure Stack Development Kit をお借りして評価中
 - 提案から設計、運用まで幅広く
 
