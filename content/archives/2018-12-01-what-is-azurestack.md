@@ -17,7 +17,7 @@ categories:
 
 ## 中の人の属性
 
-- SIer勤務
+- SIer 勤務
 - Azure Stack 歴１年半くらい
 - Azure Stack Integrated system( IaaS のみ)を運用中
 - Azure Stack Development Kit をお借りして評価中
