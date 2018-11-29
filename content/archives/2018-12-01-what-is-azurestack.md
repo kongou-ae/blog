@@ -7,7 +7,6 @@ categories:
   - azurestack
 ---
 
-
 ## はじめに
 
 自分の頭の中の整理もかねて、Azure Stack の Advent Calender に挑戦します。25個のエントリーを通して、次のことを網羅的にまとめます。
@@ -130,5 +129,3 @@ Azure Stack は、選択の自由度が低いです。Azure Stack はハード�
 ## おわりに
 
 本エントリでは、Azure Stack を「Azure のサービスを好きな場所で利用できるアプライアンス」と捉えて、Azure Stackの3つの特徴を説明しました。これらの特徴を踏まえて、次のエントリでは、Azure Stack のメリットとユースケースを説明します。
-
-
