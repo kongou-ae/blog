@@ -27,7 +27,6 @@ categories:
 
 Microsoft公式の言葉を借りると、Azure Stack とは「オンプレミスで常にハイブリッドアプリケーションを実行できるようにする Azure の拡張機能」です。2015年5月にアナウンスされて、2017年7月に一般公開されました。できたてホヤホヤというレベルではないですが、まだまだこれからのソリューションです。
 
-**参考**
 - ソリューションの概要
   - [Azure Stack とは](https://azure.microsoft.com/ja-jp/overview/azure-stack/)
   - [コンピューティングの未来: インテリジェント クラウドとインテリジェント エッジ](https://azure.microsoft.com/ja-jp/overview/future-of-cloud/)
@@ -91,8 +90,7 @@ Azure のサービスは、提供場所が決まっています。好きな場�
 
 Azure Stack が提供する Azure のサービスは、提供場所が決まっていません。Azure Stack を構成するハードウェアを設置した場所が、サービスの提供場所になります。自分の好きな場所に Azure Stack を設置することで、利用者は自分の好きな場所で Azure Stack が提供する Azure のサービスを利用できます。過去に発表された事例やコンセプトには、一般的なデータセンタでなく、飛行機や船舶、車両に Azure Stack を設置するシナリオが紹介されました。
 
-**参考**
-- [The power of Azure Stack's ruggedized system](https://www.youtube.com/watch?v=nTXdJN0IW5Y)
+参考：[The power of Azure Stack's ruggedized system](https://www.youtube.com/watch?v=nTXdJN0IW5Y)
 
 ### 特徴3　アプライアンス
 
@@ -106,8 +104,7 @@ Azure Stack は、汎用的なサーバとネットワーク機器で構成さ�
 
 Azure Stack は、選択の自由度が低いです。Azure Stack はハードウェアとソフトウェアの組み合わせが決まっており、Microsoft が認める OEM ベンダによって販売されます。OEMベンダ以外のハードウェアでは Azure Stack を動かせません。さらに、OEMベンダによっては、ハードウェアの構成がパターン化されています。例えば、Dell EMC の Azure Stack は、Sサイズ・Mサイズ・Lサイズの3択です。
 
-***参考***
-- [DELL EMC CLOUD FOR MICROSOFT AZURE STACK](https://japan.emc.com/collateral/solution-overview/h16047-dell-emc-cloud-for-microsoft-azure-stack-so.pdf)
+参考：[DELL EMC CLOUD FOR MICROSOFT AZURE STACK](https://japan.emc.com/collateral/solution-overview/h16047-dell-emc-cloud-for-microsoft-azure-stack-so.pdf)
 
 #### 検証済みのパラメータで構築される
 
