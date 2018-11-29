@@ -7,6 +7,7 @@ categories:
   - azurestack
 ---
 
+
 ## はじめに
 
 自分の頭の中の整理もかねて、Azure Stack の Advent Calender に挑戦します。25個のエントリーを通して、次のことを網羅的にまとめます。
