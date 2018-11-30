@@ -62,6 +62,10 @@ footer.page-footer {
 
 .card-panel h3 {
   font-size: 1.3em;
+  border-left: 2px solid #004d40;
+  padding-left: 10px;
+  border-bottom: 2px solid #004d40;
+  padding-bottom: 5px;
 }
 
 .card-panel h4 {
