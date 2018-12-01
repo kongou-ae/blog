@@ -20,3 +20,6 @@ home = [ "HTML", "RSS" ]
 [outputFormats]
 [outputFormats.RSS]
 baseName = "feed"
+
+[blackfriday]
+hrefTargetBlank = true
