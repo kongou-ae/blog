@@ -48,7 +48,7 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 | Lenovo | [URL](https://lenovopress.com/datasheet/ja/ds0013-lenovo-thinkagile-sx-for-microsoft-azure-stack)|
 | WORTMANN AG | [URL](https://azure.microsoft.com/mediahandler/files/resourcefiles/terra-for-microsoft-azure-factsheet/AzuerStack_06062018.pdf) |
 
-上記の OEM ベンダ以外に、富士通が Azure Stack の取り扱いをアナウンスしています。
+上記の OEM ベンダ以外に、富士通が Azure Stack Integrated systems の取り扱いをアナウンスしています。
 
 参考：[クラウドをより簡単に導入できる「PRIMEFLEX for Microsoft Azure Stack」を発表](http://pr.fujitsu.com/jp/news/2018/11/9.html)
 
