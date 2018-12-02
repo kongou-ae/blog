@@ -36,7 +36,7 @@ Microsoft は、2種類の Azure Stack をリリースしています。Integrat
 
 ### 1. OEM ベンダが決まっている
 
-Azure Stack Integrated systems は、OEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。これらの OEM ベンダからのみ Azure Stack を購入できます。
+Azure Stack Integrated systems は、Integrated systems を販売できるOEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。これらの OEM ベンダからのみ Azure Stack Integrated systems を購入できます。
 
 | OEM ベンダ | 参考リンク |
 |-----------------------|---------------------------|
