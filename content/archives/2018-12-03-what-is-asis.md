@@ -73,7 +73,7 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 
 {{<img src="./../../images/2018-12-03-001.png">}}
 
-引用：[Azure Stack 受け入れ準備_20180630](https://www.slideshare.net/HiroshiMatsumoto1/azure-stack-20180630)
+引用：[Azure Stack 受け入れ準備_20180630](https://www.slideshare.net/HiroshiMatsumoto1/azure-stack-20180630/21)
 
 ただし、UCS を利用している Cisco Systems の Azure Stack の場合、他の OEM ベンダの Azure Stack と違う点があります。Cisco systems の Azure Stack には Hardware Lifecycle Host が存在しません。そのかわりに ハードウェアの運用管理に Fabric Interconnect が利用されています。また BMC Switch が2台に冗長化されています。
 
