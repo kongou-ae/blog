@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の9日目です。
 
-本日のエントリーでは、Azure Staack のネットワーク周りを説明します。どんなネットワークをもった環境が来るのかを理解しないと、受け入れる側のネットワークを設計できません。
+本日のエントリーでは、Azure Stack のネットワーク周りを説明します。どんなネットワークをもった環境が来るのかを理解しないと、受け入れる側のネットワークを設計できません。
 
 ## 物理ネットワーク
 
