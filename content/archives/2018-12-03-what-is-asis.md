@@ -81,7 +81,7 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 
 製品版である Integrated systems は、Microsoft と OEM ベンダによるサポートを受けられます。Micorosoft のサポート範囲は Azure のサービスを提供するためのソフトウェアです。OEM ベンダのサポートは、ハードウェアと運用管理用のソフトウェアです。
 
-OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでかなりお得です。Azure Stack の重要度を鑑みて、Azure サポートとプレミアムサポートを併用するのが良いでしょう。
+OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Standard 以上 の Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでかなりお買い得です。Azure Stack の重要度を鑑みて、Azure サポートとプレミアムサポートを併用するのが良いでしょう。
 
 参考：[Azure のサポート プラン](https://azure.microsoft.com/ja-jp/support/plans/)
 
