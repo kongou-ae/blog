@@ -15,7 +15,7 @@ categories:
 
 ## 2種類の Azure Stack
 
-Microsoft は、2種類の Azure Stack をリリースしています。Integrated sysem と Development Kit です。両社の大きな違いは、用途と対応するハードウェアです。
+Microsoft は、2種類の Azure Stack をリリースしています。Integrated systems と Development Kit です。2つの大きな違いは、用途と対応するハードウェアです。
 
 - Azure Stack Integrated systems
   - 製品版の Azure Stack 
@@ -28,15 +28,15 @@ Microsoft は、2種類の Azure Stack をリリースしています。Integrat
 
 ## Integrated System の特徴
 
-Azure Stack Integrated systems の特徴をざっくりと説明します。Development Kit には無い Integrated systems の特徴は次の3点です。
+本エントリでは、Azure Stack Integrated systems の特徴をざっくりと説明します。Development Kit には無い Integrated systems 固有の特徴は次の3点です。
 
 1. OEM ベンダが決まっている
-1. 本番想定のハードウェア構成
+1. ハードウェア構成が本番を想定している
 1. メーカのサポートを受けられる
 
 ### 1. OEM ベンダが決まっている
 
-Azure Stack Integrated systems は、OEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。
+Azure Stack Integrated systems は、OEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。これらの OEM ベンダからのみ Azure Stack を購入できます。
 
 | OEM ベンダ | 参考リンク |
 |-----------------------|---------------------------|
@@ -52,15 +52,15 @@ Azure Stack Integrated systems は、OEM ベンダが決まっています。現
 
 参考：[クラウドをより簡単に導入できる「PRIMEFLEX for Microsoft Azure Stack」を発表](http://pr.fujitsu.com/jp/news/2018/11/9.html)
 
-ハードウェア上で動作する「Azureのサービスを提供するソフトウェア」は Microsoft によって開発されているため、すべての OEM ベンダの Azure Stack で共通です。OEM ベンダによって差異が出る部分は「サーバの構成」と「運用管理の仕組み」です。CPU の種類とメモリ量などを自由に選べる OEM ベンダと、事前に構成されたパターンから選択する OEM ベンダがいます。また、ハードウェアの運用管理には OEM ベンダ独自のツールを利用するので、OEM ベンダごとに特色が出ます。これらの差異を理解したうえで、自分にあった OEM ベンダから Azure Stack を買いましょう。
+ハードウェア上で動作する「Azureのサービスを提供するソフトウェア」は Microsoft によって開発されているため、すべての OEM ベンダの Azure Stack で共通です。OEM ベンダによって差異が出る部分は「サーバの構成」と「運用管理の仕組み」です。CPU の種類やメモリ量などのハードウェア構成を自由に選べる OEM ベンダと、事前に構成されたパターンから選択する OEM ベンダが存在しています。また、ハードウェアの運用管理には OEM ベンダ独自のツールを利用するので、OEM ベンダごとに特色が出ます。これらの差異を理解したうえで、自分にあった OEM ベンダから Azure Stack を買いましょう。
 
-### 2. 本番想定のハードウェア構成
+### 2. ハードウェア構成が本番を想定している
 
 製品版である Integrated systems は、本番での利用を想定したハードウェア構成になっています。Integrated System を構成するハードウェアは原則として次の通りです。
 
 - Host Node
   - Azure のサービスが動作するサーバ
-  - 現時点で、4台から16台までをサポート
+  - 現時点で4台から16台までをサポート
 - Hardware Lifecycle Host
   - OEM ベンダの運用管理用ソフトウェアが動作するサーバ
   - 1台
@@ -81,10 +81,10 @@ Azure Stack Integrated systems は、OEM ベンダが決まっています。現
 
 製品版である Integrated systems は、Microsoft と OEM ベンダによるサポートを受けられます。Micorosoft のサポート範囲は Azure のサービスを提供するためのソフトウェアです。OEM ベンダのサポートは、ハードウェアと運用管理用のソフトウェアです。
 
-OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでお得です。
+OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでかなりお得です。Azure Stack の重要度を鑑みて、Azure サポートとプレミアムサポートを併用するのが良いでしょう。
 
 参考：[Azure のサポート プラン](https://azure.microsoft.com/ja-jp/support/plans/)
 
 ## おわりに
 
-本日のエントリーでは、 Integrated systems と Development Kit という2つの Azure Stack に触れたうえで、Integrated systems の基本的な特徴を説明しました。明日のエントリーでは、もう1つのAzure Stack である Development Kit について説明します。
+本日のエントリーでは、 Integrated systems と Development Kit という2つの Azure Stack に触れたうえで、Integrated systems の基本的な特徴を説明しました。明日のエントリーでは、もう1つの Azure Stack である Development Kit について説明します。
