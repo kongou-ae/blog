@@ -42,11 +42,11 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 |-----------------------|---------------------------|
 | avanade               | |
 | Cisco Systems | [Cisco Integrated System for Microsoft Azure Stack データ シート](https://www.cisco.com/c/ja_jp/solutions/collateral/data-center/integrated-system-microsoft-azure-stack/datasheet-c78-739813.html) | 
-| DELL EMC | [URL](https://japan.emc.com/collateral/solution-overview/h16047-dell-emc-cloud-for-microsoft-azure-stack-so.pdf) |
-| Hewlett Packard Enterprise | [URL](https://psnow.ext.hpe.com/doc/PSN1009954522USEN.pdf)
-| HUAWEI | [URL](https://e.huawei.com/en/material/onLineView?MaterialID=c99bc3101e5448339cca43690c5e3965)|
-| Lenovo | [URL](https://lenovopress.com/datasheet/ja/ds0013-lenovo-thinkagile-sx-for-microsoft-azure-stack)|
-| WORTMANN AG | [URL](https://azure.microsoft.com/mediahandler/files/resourcefiles/terra-for-microsoft-azure-factsheet/AzuerStack_06062018.pdf) |
+| DELL EMC | [DELL EMC CLOUD FOR MICROSOFT AZURE STACK](https://japan.emc.com/collateral/solution-overview/h16047-dell-emc-cloud-for-microsoft-azure-stack-so.pdf) |
+| Hewlett Packard Enterprise | [HPE ProLiant for Microsoft Azure Stack](https://psnow.ext.hpe.com/doc/PSN1009954522USEN.pdf)
+| HUAWEI | [Huawei Hybrid Cloud Solution for Microsoft Azure Stack - Solution Data Sheet](https://e.huawei.com/en/material/onLineView?MaterialID=c99bc3101e5448339cca43690c5e3965)|
+| Lenovo | [ThinkAgile SX for Microsoft Azure Stack Datasheet](https://lenovopress.com/datasheet/ja/ds0013-lenovo-thinkagile-sx-for-microsoft-azure-stack)|
+| WORTMANN AG | [TERRA FOR MICROSOFT AZURE STACK FACTSHEET](https://azure.microsoft.com/mediahandler/files/resourcefiles/terra-for-microsoft-azure-factsheet/AzuerStack_06062018.pdf) |
 
 上記の OEM ベンダ以外に、富士通が Azure Stack Integrated systems の取り扱いをアナウンスしています。
 
