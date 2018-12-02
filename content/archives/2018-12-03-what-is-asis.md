@@ -41,7 +41,7 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 | OEM ベンダ | 参考リンク |
 |-----------------------|---------------------------|
 | avanade               | |
-| Cisco Systems | [URL](https://www.cisco.com/c/ja_jp/solutions/collateral/data-center/integrated-system-microsoft-azure-stack/datasheet-c78-739813.html) | 
+| Cisco Systems | [Cisco Integrated System for Microsoft Azure Stack データ シート](https://www.cisco.com/c/ja_jp/solutions/collateral/data-center/integrated-system-microsoft-azure-stack/datasheet-c78-739813.html) | 
 | DELL EMC | [URL](https://japan.emc.com/collateral/solution-overview/h16047-dell-emc-cloud-for-microsoft-azure-stack-so.pdf) |
 | Hewlett Packard Enterprise | [URL](https://psnow.ext.hpe.com/doc/PSN1009954522USEN.pdf)
 | HUAWEI | [URL](https://e.huawei.com/en/material/onLineView?MaterialID=c99bc3101e5448339cca43690c5e3965)|
