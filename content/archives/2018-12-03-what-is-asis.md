@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Integrated system とは
+title: Azure Stack Integrated systems とは
 author: kongou_ae
 date: 2018-12-03
 url: /archives/2018-12-03-what-is-asis
@@ -17,7 +17,7 @@ categories:
 
 Microsoft は、2種類の Azure Stack をリリースしています。Integrated sysem と Development Kit です。両社の大きな違いは、用途と対応するハードウェアです。
 
-- Azure Stack Integrated system
+- Azure Stack Integrated systems
   - 製品版の Azure Stack 
   - OEM ベンダから購入する
 - Azure Stack Development Kit
@@ -28,7 +28,7 @@ Microsoft は、2種類の Azure Stack をリリースしています。Integrat
 
 ## Integrated System の特徴
 
-Azure Stack Integrated system の特徴をざっくりと説明します。Development Kit には無い Integrated system の特徴は次の3点です。
+Azure Stack Integrated systems の特徴をざっくりと説明します。Development Kit には無い Integrated systems の特徴は次の3点です。
 
 1. OEM ベンダが決まっている
 1. 本番想定のハードウェア構成
@@ -36,7 +36,7 @@ Azure Stack Integrated system の特徴をざっくりと説明します。Devel
 
 ### 1. OEM ベンダが決まっている
 
-Azure Stack Integrated system は、OEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。
+Azure Stack Integrated systems は、OEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。
 
 | OEM ベンダ | 参考リンク |
 |-----------------------|---------------------------|
@@ -56,7 +56,7 @@ Azure Stack Integrated system は、OEM ベンダが決まっています。現�
 
 ### 2. 本番想定のハードウェア構成
 
-製品版である Integrated system は、本番での利用を想定したハードウェア構成になっています。Integrated System を構成するハードウェアは原則として次の通りです。
+製品版である Integrated systems は、本番での利用を想定したハードウェア構成になっています。Integrated System を構成するハードウェアは原則として次の通りです。
 
 - Host Node
   - Azure のサービスが動作するサーバ
@@ -79,7 +79,7 @@ Azure Stack Integrated system は、OEM ベンダが決まっています。現�
 
 ### 3. メーカのサポートを受けられる
 
-製品版である Integrated system は、Microsoft と OEM ベンダによるサポートを受けられます。Micorosoft のサポート範囲は Azure のサービスを提供するためのソフトウェアです。OEM ベンダのサポートは、ハードウェアと運用管理用のソフトウェアです。
+製品版である Integrated systems は、Microsoft と OEM ベンダによるサポートを受けられます。Micorosoft のサポート範囲は Azure のサービスを提供するためのソフトウェアです。OEM ベンダのサポートは、ハードウェアと運用管理用のソフトウェアです。
 
 OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでお得です。
 
@@ -87,4 +87,4 @@ OEM ベンダのサポートは、従来のハードウェア・ソフトウェ�
 
 ## おわりに
 
-本日のエントリーでは、 Integrated system と Development Kit という2つの Azure Stack に触れたうえで、Integrated System の基本的な特徴を説明しました。明日のエントリーでは、もう1つのAzure Stack である Development Kit について説明します。
+本日のエントリーでは、 Integrated systems と Development Kit という2つの Azure Stack に触れたうえで、Integrated systems の基本的な特徴を説明しました。明日のエントリーでは、もう1つのAzure Stack である Development Kit について説明します。
