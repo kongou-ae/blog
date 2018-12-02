@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の3日目です。
 
-先日のエントリでは、Azure Stack のユースケースについてお話しました。本エントリー以降では、Azure Stack そのものについてお話します。
+先日のエントリでは、Azure Stack のユースケースについて説明しました。本エントリ以降では、Azure Stack そのものについて説明していきます。
 
 ## 2種類の Azure Stack
 
