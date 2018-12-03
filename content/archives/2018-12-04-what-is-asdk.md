@@ -33,6 +33,8 @@ Developmet kit は、Microsoft からソフトウェアのみで提供されま�
   - 最小5本（OSディスク200GB、データディスク140GB×4）
   - 推奨5本（OSディスク200GB、データディスク250GB×4）
 
+その他の条件については、次のドキュメントをご確認ください。特に、データ Disk については、複数の Disk を Storage Spaces Direct で1つプールにする都合上、細かな条件が定められています、
+
 参考：[Azure Stack のデプロイ計画に関する考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/asdk/asdk-deploy-considerations#hardware)
 
 要件さえ満たせば、仮想マシンにもインストールできます。Azure の Virtual Machine であれば、E16v3 や E32v3 あたりが良い具合です。Azure の Virtual Machine 上に Development Kit をデプロイする ARM テンプレートを公開している方もいます。
@@ -47,9 +49,7 @@ Development kit は評価版です。そのため、Integrated systems と比較
 
 ### 可用性
 
-ASDK は1台のサーバ上で動作します。Integrated systems のように複数のサーバを利用して可用性を高められません。
-
-また、データ Disk の本数が少ないと、ディスクが1本死んだだけで再起不能になります。
+ASDK は1台のサーバ上で動作します。Integrated systems のように複数のサーバを利用して可用性を高められません。そのサーバが死んだらおしまいです。また、S2D の設定が  になっているため、データ Disk が1本死んだだけでデータが消失して Azure Stack のサービスが起動しなくなります。
 
 ### 外部との接続
 
