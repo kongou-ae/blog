@@ -31,7 +31,7 @@ Developmet Kit の特徴をざっくりと説明します。
 |データ Disk | 140GB×4本 | 250GB×4本 |
 | OS | Windows Server 2016 | Windows Server 2016 |
 
-その他の条件については、次のドキュメントをご確認ください。特に、データ Disk については、複数の Disk を Storage Spaces Direct で1つプールにする都合上、細かな条件が定められています、
+その他の条件については、次のドキュメントをご確認ください。特に、データ Disk については、複数の Disk を Storage Spaces Direct で1つのプールにする都合上、細かな条件が定められています、
 
 参考：[Azure Stack のデプロイ計画に関する考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/asdk/asdk-deploy-considerations#hardware)
 
