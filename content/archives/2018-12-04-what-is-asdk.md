@@ -1,7 +1,7 @@
 ---
 title: Azure Stack Development Kit とは
 author: kongou_ae
-date: 2018-09-30
+date: 2018-12-04
 url: /archives/2018-12-04-what-is-asdk
 categories:
   - azurestack
