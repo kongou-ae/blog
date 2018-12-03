@@ -19,7 +19,7 @@ Development kit は、その名のとおり評価用の Azure Stack です。高
 
 Developmet kit の特徴をざっくりと説明します。
 
-## ベンダを選ばない
+## 1. ベンダを選ばない
 
 Developmet kit は、Microsoft からソフトウェアのみで提供されます。無料で誰でもダウンロードできます。そして、次の前提条件を満たすハードウェアであれば、どのベンダのハードウェアにもインストールできます。
 
@@ -41,29 +41,33 @@ Developmet kit は、Microsoft からソフトウェアのみで提供されま�
 - [Inception: Running Microsoft Azure Stack on Azure - THR2212](https://www.youtube.com/watch?v=BwMLL2-awtc)
 - [ned1313/AzureStack-VM-PoC](https://github.com/ned1313/AzureStack-VM-PoC)
 
-## 評価前提の構成
+## 2. 評価前提の構成
 
 Development kit は評価版です。そのため、Integrated systems と比較すると次のような制限があります。
 
-- 可用性
-  - 1台のサーバにインストールする
-  - Integrated systems のように複数のサーバを利用して可用性を高められない
-- 外部との接続
-  - Azure のサービスを提供するネットワークが、サーバ内部のSDNに閉じている
-  - 外部のネットワークから Azure Stack 上の Azure のサービスを利用できない
-- ドメイン名
-  - Azure Stack 上の Azure のサービスが、loacl.azurestack.external というドメイン名で提供される
-  - Integrated systems のように自由にドメイン名を指定できない
+### 可用性
 
-これらの制限から、Development kit で Azure Stack を評価する際は、原則として、Development kit をインストールしたサーバに RDP でログインした上で、そのサーバ上で評価を行う必要があります。
+ASDK は1台のサーバ上で動作します。Integrated systems のように複数のサーバを利用して可用性を高められません。
 
-## Microsoft のサポートがない
+また、データ Disk の本数が少ないと、ディスクが1本死んだだけで再起不能になります。
+
+### 外部との接続
+
+Azure のサービスを提供するネットワークが、サーバ内部のSDNに閉じています。そのため、サーバ外部のネットワークから Azure Stack 上の Azure のサービスを利用できません。
+
+これらの制限から、Development kit で Azure Stack を評価する際は、原則として、Development Kit をインストールしたサーバに RDP または VPN で接続する必要があります。
+
+### ドメイン名
+
+Development Kit 上の Azure のサービスは、loacl.azurestack.external というドメイン名で提供されます。Integrated systems のように自由にドメイン名を指定できません。
+
+## 3. Microsoft のサポートがない
 
 Microsoft は、評価用である Develpment kit に対してサポートを提供しません。利用者は、Development kit に関する不具合を自己解決しなければなりません。Microsoft が提供してくれるものは、公式ドキュメントとフォーラムのみです。
 
 参考：[Azure Stack forum - MSDN - Microsoft](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurestack)
 
-ちなみに最近の私は、不具合を自己解決することを無駄と考えて、不具合が起きたらデプロイしなおしています。
+最近の私は、不具合を自己解決することを無駄と考えて、不具合が起きたらデプロイしなおしています。
 
 ## まとめ
 
