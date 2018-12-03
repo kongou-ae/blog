@@ -15,23 +15,21 @@ categories:
 
 ## Development Kit の特徴
 
-Development kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack という仕組みが自分たちの組織に合うかどうかを評価するためのソリューションです。
+Development Kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack という仕組みが自分たちの組織に合うかどうかを評価するためのソリューションです。
 
-Developmet kit の特徴をざっくりと説明します。
+Developmet Kit の特徴をざっくりと説明します。
 
 ## 1. ベンダを選ばない
 
-Developmet kit は、Microsoft からソフトウェアのみで提供されます。無料で誰でもダウンロードできます。そして、次の前提条件を満たすハードウェアであれば、どのベンダのハードウェアにもインストールできます。
+1つ目の特徴は「ベンダを選ばない」です。Developmet Kit は、Microsoft からソフトウェアのみで提供されます。無料で誰でもダウンロードできます。そして、次の前提条件を満たすハードウェアであれば、どのベンダのハードウェアにもインストールできます。
 
-- CPU
-  - 最小12コア
-  - 推奨16コア
-- メモリ
-  - 最小96GB
-  - 推奨128GB
-- Disk 
-  - 最小5本（OSディスク200GB、データディスク140GB×4）
-  - 推奨5本（OSディスク200GB、データディスク250GB×4）
+|     | 最小 | 推奨 |
+|-----|------|------|
+|CPU  | 12コア | 16コア |
+|メモリ | 96GB | 128GB |
+|OS Disk| 200GB | 200GB|
+|データ Disk | 140GB×4本 | 250GB×4本 |
+| OS | Windows Server 2016 | Windows Server 2016 |
 
 その他の条件については、次のドキュメントをご確認ください。特に、データ Disk については、複数の Disk を Storage Spaces Direct で1つプールにする都合上、細かな条件が定められています、
 
@@ -45,25 +43,25 @@ Developmet kit は、Microsoft からソフトウェアのみで提供されま�
 
 ## 2. 評価前提の構成
 
-Development kit は評価版です。そのため、Integrated systems と比較すると次のような制限があります。
+2つ目の特徴は「評価前提の構成」です。Development Kit は評価版です。そのため、Integrated systems と比較すると次のような制限があります。
 
-### 可用性
+### 可用性が低い
 
-ASDK は1台のサーバ上で動作します。Integrated systems のように複数のサーバを利用して可用性を高められません。そのサーバが死んだらおしまいです。また、S2D の設定が  になっているため、データ Disk が1本死んだだけでデータが消失して Azure Stack のサービスが起動しなくなります。
+ASDK は1台のサーバ上で動作します。Integrated systems のように複数のサーバを利用して可用性を高められません。そのサーバが死んだらおしまいです。また、S2D の設定が Simple（ミラーしない）になっているため、データ Disk が1本死んだだけでデータが消失して Azure Stack のサービスが起動しなくなります。
 
-### 外部との接続
+### 外部からアクセスできない
 
 Azure のサービスを提供するネットワークが、サーバ内部のSDNに閉じています。そのため、サーバ外部のネットワークから Azure Stack 上の Azure のサービスを利用できません。
 
-これらの制限から、Development kit で Azure Stack を評価する際は、原則として、Development Kit をインストールしたサーバに RDP または VPN で接続する必要があります。
+これらの制限から、Development Kit で Azure Stack を評価する際は、原則として、Development Kit をインストールしたサーバに RDP または VPN で接続する必要があります。
 
-### ドメイン名
+### オレオレドメイン名
 
 Development Kit 上の Azure のサービスは、loacl.azurestack.external というドメイン名で提供されます。Integrated systems のように自由にドメイン名を指定できません。
 
 ## 3. Microsoft のサポートがない
 
-Microsoft は、評価用である Develpment kit に対してサポートを提供しません。利用者は、Development kit に関する不具合を自己解決しなければなりません。Microsoft が提供してくれるものは、公式ドキュメントとフォーラムのみです。
+3つ目の特徴が「Microsoft のサポートがない」です。Microsoft は、評価用である Develpment Kit に対してサポートを提供しません。利用者は、Development Kit に関する不具合を自己解決しなければなりません。Microsoft が提供してくれるものは、公式ドキュメントとフォーラムのみです。
 
 参考：[Azure Stack forum - MSDN - Microsoft](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurestack)
 
@@ -71,4 +69,4 @@ Microsoft は、評価用である Develpment kit に対してサポートを提
 
 ## まとめ
 
-本日のエントリーでは、評価版の Azure Stack である Development kit について説明しました。Azure Stack に興味のある方は、いきなり Integrated systems を買うのではなく、Development kit を利用してみることをお勧めします。Azure Stack が何を提供してくれるのかということを身をもって体験できます。
+本日のエントリーでは、評価版の Azure Stack である Development Kit について説明しました。Azure Stack に興味のある方は、いきなり Integrated systems を買うのではなく、Development Kit を利用してみることをお勧めします。Azure Stack が何を提供してくれるのかということを身をもって体験できます。
