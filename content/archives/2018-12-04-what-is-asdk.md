@@ -15,7 +15,7 @@ categories:
 
 ## Development Kit の特徴
 
-Development kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack という仕組みが自組織に合うかどうかを評価するためのソリューションです。
+Development kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack という仕組みが自分たちの組織に合うかどうかを評価するためのソリューションです。
 
 Developmet kit の特徴をざっくりと説明します。
 
@@ -35,7 +35,7 @@ Developmet kit は、Microsoft からソフトウェアのみで提供されま�
 
 参考：[Azure Stack のデプロイ計画に関する考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/asdk/asdk-deploy-considerations#hardware)
 
-要件さえ満たせば、仮想マシンにもインストールできます。Azure の Virtual Machine であれば、E16v3 あたりが良い具合です。Azure の Virtual Machine 上に Development Kit をデプロイする ARM テンプレートを公開している方もいます。
+要件さえ満たせば、仮想マシンにもインストールできます。Azure の Virtual Machine であれば、E16v3 や E32v3 あたりが良い具合です。Azure の Virtual Machine 上に Development Kit をデプロイする ARM テンプレートを公開している方もいます。
 
 参考：
 - [Inception: Running Microsoft Azure Stack on Azure - THR2212](https://www.youtube.com/watch?v=BwMLL2-awtc)
@@ -47,7 +47,7 @@ Development kit は評価版です。そのため、Integrated systems と比較
 
 - 可用性
   - 1台のサーバにインストールする
-  - Integrated systems のように複数のサーバで可用性を高められない
+  - Integrated systems のように複数のサーバを利用して可用性を高められない
 - 外部との接続
   - Azure のサービスを提供するネットワークが、サーバ内部のSDNに閉じている
   - 外部のネットワークから Azure Stack 上の Azure のサービスを利用できない
@@ -62,6 +62,8 @@ Development kit は評価版です。そのため、Integrated systems と比較
 Microsoft は、評価用である Develpment kit に対してサポートを提供しません。利用者は、Development kit に関する不具合を自己解決しなければなりません。Microsoft が提供してくれるものは、公式ドキュメントとフォーラムのみです。
 
 参考：[Azure Stack forum - MSDN - Microsoft](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurestack)
+
+ちなみに最近の私は、不具合を自己解決することを無駄と考えて、不具合が起きたらデプロイしなおしています。
 
 ## まとめ
 
