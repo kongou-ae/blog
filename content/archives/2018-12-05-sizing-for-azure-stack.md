@@ -21,8 +21,7 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node のリソー
 
 |名前 | 役割 |
 |-----|------|
-| Azs-ACS01、Azs-ACS02、Azs-ACS03 |
-Azure Stack ストレージサービス |
+| Azs-ACS01、Azs-ACS02、Azs-ACS03 |Azure Stack ストレージサービス |
 | Azs-ADFS01、Azs-ADFS02 | Active Directory Federation Services |
 | Azs-CA01 | 内部で利用される認証機関 |
 | Azs-DC01、Azs-DC02 | 内部で利用される Active Directory、NTP、DHCP |
