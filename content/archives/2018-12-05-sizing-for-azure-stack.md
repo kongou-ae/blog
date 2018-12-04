@@ -27,17 +27,17 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node のリソー
 | Azs-DC01、Azs-DC02 | 内部で利用される Active Directory、NTP、DHCP |
 | Azs-ERCS01、Azs-ERCS02、Azs-ERCS03 | Emergency Recovery Console |
 | Azs-NC01、Azs-NC02、Azs-NC03 | ネットワークコントローラ |
-| Azs-Gwy01、Azs-Gwy02 | テナントで利用されるVPNサービス |
+| Azs-Gwy01、Azs-Gwy02 | テナントで利用される VPN サービス |
 | Azs-PXE01 | Host Node のための PXE サーバ
 | Azs-SLB01、Azs-SLB02 | SLB MUX |
 | Azs-Sql01、Azs-Sql02 | 内部のデータストア |
-| Azs-WAS01、Azs-WAS02 | ポータルとARM（管理者向け） |
-| Azs-WASP01、Azs-WASP02 | ポータルとARM（利用者向け） |
+| Azs-WAS01、Azs-WAS02 | ポータルと ARM（管理者向け） |
+| Azs-WASP01、Azs-WASP02 | ポータルと ARM（利用者向け） |
 | Azs-Xrp01、Azs-Xrp02、Azs-Xrp03 | 各種リソースプロバイダ |
 
  参考：[仮想マシンのロール](https://docs.microsoft.com/ja-jp/azure/azure-stack/asdk/asdk-architecture#virtual-machine-roles)
 
-これらの Infrastructure Role Instance は、合計で124 vCPU、208 GB のリソースを利用します。また、PaaS をインストールすると、PaaS の仕組みを動作させるための Virtual Machine が動作します。これらの Virtual Machine も Host Node のリソースを利用します。その分だけ、利用者が使えるリソースが減ります。
+これらの Infrastructure Role Instance は、合計で124 vCPU、208 GB のリソースを利用します。また、PaaS をインストールすると、PaaS の仕組みを動作させるための Virtual Machine が動作します。これらの Virtual Machine も Host Node のリソースを利用します。その分だけ、利用者の使えるリソースが減ります。
 
 ## 計算ツール
 
@@ -62,4 +62,4 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node のリソー
 
 ## まとめ
 
-本エントリでは、Azure Stack をサイジングする方法をお話ししました。実際に購入する際は、Azure Stack Capacity Planner であたりを付けたうえで、OEM ベンダ様に相談しましょう。
+本エントリでは、Azure Stack をサイジングする方法をお話ししました。実際に購入する際は、Azure Stack Capacity Planner を参考にしつつ、OEM ベンダ様に相談しながらベストな構成を選びましょう。
