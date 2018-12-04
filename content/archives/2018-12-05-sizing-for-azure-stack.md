@@ -49,7 +49,7 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node のリソー
 - [Azure Stack コンピューティング能力の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-compute)
 - [Azure Stack ストレージ容量の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-storage)
 
-すべての考慮事項を踏まえたうえで、利用者として必要なリソースが動く Azure Stack を選定するのはしんどいです。「そんなこともあろうかと」ということで、Microsoft は、[Azure Stack Capacity Planner](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-spreadsheet)　という 便利 Excel をリリースしています。この便利 Excel に次の情報を入力すると、Excel が考慮事項を考慮したうえでお勧めスペックを表示してくれます。ただしあくまでも参考です。
+すべての考慮事項を踏まえたうえで、利用者として必要なリソースが動く Azure Stack を選定するのはしんどいです。「そんなこともあろうかと」ということで、Microsoft は、[Azure Stack Capacity Planner](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-spreadsheet) という 便利 Excel をリリースしています。この便利 Excel に次の情報を入力すると、Excel が考慮事項を考慮したうえでお勧めスペックを表示してくれます。ただしあくまでも参考です。
 
 - 購入予定の Integrated systems のスペック
 - 動かしたい Virtual Machine の種類と台数
