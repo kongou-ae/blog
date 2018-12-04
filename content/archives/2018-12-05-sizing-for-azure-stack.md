@@ -44,6 +44,7 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node のリソー
 上記以外にも、Host Node としての機能を動作させるためのリソースや、可用性のための余剰を考慮する必要があります。考慮すべき事項は、Microsoft のガイダンスは次の URL に記載されています。
 
 参考：
+
 - [Azure Stack のキャパシティ プランニング](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning)
 - [Azure Stack コンピューティング能力の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-compute)
 - [Azure Stack ストレージ容量の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-storage)
