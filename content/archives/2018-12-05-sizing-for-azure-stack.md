@@ -15,11 +15,14 @@ categories:
 
 ## 仕組みが使うリソース
 
-Azure Stack の利用者は、Azure Stack を構成する Host Node の全リソースを利用できません。Host Node 上に、Azure Stack という仕組みを成立させるための Virtual Machine が動作するためです。これらの Virtual Machine を Infrastructure Role Instance と呼びます。Infrastructure Role Instance の一覧は次の通りです。
+Azure Stack の利用者は、Azure Stack を構成する Host Node のリソースの全てを利用できません。Host Node 上に、Azure Stack という仕組みを成立させるための Virtual Machine が動作するためです。
 
-|名前 | 役割 | 
+これらの Virtual Machine を Infrastructure Role Instance と呼びます。Infrastructure Role Instance の一覧は次の通りです。
+
+|名前 | 役割 |
 |-----|------|
-| Azs-ACS01、Azs-ACS02、Azs-ACS03 | Azure Stack ストレージサービス |
+| Azs-ACS01、Azs-ACS02、Azs-ACS03 |
+Azure Stack ストレージサービス |
 | Azs-ADFS01、Azs-ADFS02 | Active Directory Federation Services |
 | Azs-CA01 | 内部で利用される認証機関 |
 | Azs-DC01、Azs-DC02 | 内部で利用される Active Directory、NTP、DHCP |
@@ -28,14 +31,14 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node の全リソ
 | Azs-Gwy01、Azs-Gwy02 | テナントで利用されるVPNサービス |
 | Azs-PXE01 | Host Node のための PXE サーバ
 | Azs-SLB01、Azs-SLB02 | SLB MUX |
-| Azs-Sql01、Azs-Sql02 | 内部のデータストア | 
-| Azs-WAS01、Azs-WAS02 | ポータルとARM（管理者向け） | 
-| Azs-WASP01、Azs-WASP02 | ポータルとARM（利用者向け） | 
+| Azs-Sql01、Azs-Sql02 | 内部のデータストア |
+| Azs-WAS01、Azs-WAS02 | ポータルとARM（管理者向け） |
+| Azs-WASP01、Azs-WASP02 | ポータルとARM（利用者向け） |
 | Azs-Xrp01、Azs-Xrp02、Azs-Xrp03 | 各種リソースプロバイダ |
 
  参考：[仮想マシンのロール](https://docs.microsoft.com/ja-jp/azure/azure-stack/asdk/asdk-architecture#virtual-machine-roles)
 
-これらの Infrastructure Role Instance は、合計で124 vCPU、208 GB のリソースを利用します。また、PaaS をインストールすると、PaaS の仕組みを動作させるための Virtual Machine が動作します。これらの Virtual Machine も Host Node のリソースを利用します。
+これらの Infrastructure Role Instance は、合計で124 vCPU、208 GB のリソースを利用します。また、PaaS をインストールすると、PaaS の仕組みを動作させるための Virtual Machine が動作します。これらの Virtual Machine も Host Node のリソースを利用します。その分だけ、利用者が使えるリソースが減ります。
 
 ## 計算ツール
 
@@ -46,14 +49,14 @@ Azure Stack の利用者は、Azure Stack を構成する Host Node の全リソ
 - [Azure Stack コンピューティング能力の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-compute)
 - [Azure Stack ストレージ容量の計画](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-storage)
 
-すべての考慮事項を踏まえたうえで、利用者として必要なリソースが動く Azure Stack を選定するのはしんどいです。「そんなこともあろうかと」ということで、Microsoft は、[Azure Stack Capacity Planner](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-spreadsheet)　という 便利 Excel をリリースしています。この便利 Excel に次の情報を入力すると、Excel が考慮事項を考慮したうえでお勧めスペックを表示してくれます。
+すべての考慮事項を踏まえたうえで、利用者として必要なリソースが動く Azure Stack を選定するのはしんどいです。「そんなこともあろうかと」ということで、Microsoft は、[Azure Stack Capacity Planner](https://docs.microsoft.com/ja-jp/azure/azure-stack/capacity-planning-spreadsheet)　という 便利 Excel をリリースしています。この便利 Excel に次の情報を入力すると、Excel が考慮事項を考慮したうえでお勧めスペックを表示してくれます。ただしあくまでも参考です。
 
 - 購入予定の Integrated systems のスペック
 - 動かしたい Virtual Machine の種類と台数
 
 {{<img src="./../../images/2018-12-05-001.png">}}
 
-なお、本 Excel では vCPU と物理コアの比率が4：1に置かれています。ゆとりをもった収容率にしたい方は、2：1にするとよいでしょう。
+なお、この Excel では vCPU と物理コアの比率が 4：1に置かれています。ゆとりをもった収容率にしたい方は、2：1にするとよいでしょう。
 
 {{<img src="./../../images/2018-12-05-002.png">}}
 
