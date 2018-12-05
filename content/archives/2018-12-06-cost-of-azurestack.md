@@ -60,10 +60,10 @@ Azure Stack の Virtual Machine と App Service は、vCPU の数に応じて料
 |サービス                        | 種類                         |料金               |
 |-------------------------------|------------------------------|------------------|
 |Azure Virtual Machines         |ベース仮想マシン	              |¥0.90/vCPU/時間 (¥655 vCPU/月) |
+|Azure App Service              |Web Apps、API Apps、Functions	|¥6.28/vCPU/時間 (¥4,579 vCPU/月)|
 |Azure Storage                  |Blob Storage	                 |¥0.68/GB/月 (トランザクション料金なし) |
 |Azure Storage                  |テーブルとキューのストレージ     |¥2.02/GB/月 (トランザクション料金なし) |
 |Azure Storage                  |Standard 非管理対象ディスク	    |¥1.24/GB/月 (トランザクション料金なし) |
-|Azure App Service              |Web Apps、API Apps、Functions	|¥6.28/vCPU/時間 (¥4,579 vCPU/月)|
 
 ### Azure利用料　容量課金
 
@@ -84,8 +84,8 @@ Azure 利用料を従量課金とした場合、Windows Server のライセン�
 
 |サービス                        | 種類                         |料金               |
 |-------------------------------|------------------------------|------------------|
-|Azure Virtual Machines         |Windows Server 仮想マシン    	 |¥5.16/vCPU/時間 (¥3,761 vCPU/月) |
 |Azure Virtual Machines         |ベース仮想マシン	              |¥0.90/vCPU/時間 (¥655 vCPU/月) |
+|Azure Virtual Machines         |Windows Server 仮想マシン    	 |¥5.16/vCPU/時間 (¥3,761 vCPU/月) |
 
 従量課金の場合、CALは不要です。Azureと同じです。
 
@@ -105,7 +105,7 @@ Azure Stack には従量課金な SQL Server が存在しません。Azure と�
 
 ## 4. サポート費用
 
-本エントリでは、ハードウェアのサポートをハードウェア費用に含めます。Azure Stack というソフトウェアのサポートは、Azure のサポートに準じます。[Azure Stack Integrated systems とは](https://aimless.jp/blog/archives/2018-12-03-what-is-asis/)で説明したとおりです。利用するサブスクリプションに応じてサポートの契約先が異なります。EA サブスクリプションの場合は、Microsoft と直接サポート契約を結びます。困ったときの問い合わせ先は Microsoft です。Azureのサポートとプレミアムサポートが利用できますので、Azure Stack の重要度を踏まえて適切な費用を払いましょう。
+Azure Stack というソフトウェアのサポートは、Azure のサポートに準じます。[Azure Stack Integrated systems とは](https://aimless.jp/blog/archives/2018-12-03-what-is-asis/)で説明したとおりです。利用するサブスクリプションに応じてサポートの契約先が異なります。EA サブスクリプションの場合は、Microsoft と直接サポート契約を結びます。困ったときの問い合わせ先は Microsoft です。Azureのサポートとプレミアムサポートが利用できますので、Azure Stack の重要度を踏まえて適切な費用を払いましょう。
 
 CSP サブスクリプションの場合、Cloud Solution Provider とサポート契約を結びます。困ったときの問い合わせ先は Cloud Solution Provider です。サポート費用はCloud Solution Providerによって異なります。Azure Stack の用途に応じたサポートを提供してくれる Cloud Solution Provider と契約を結びましょう。
 
