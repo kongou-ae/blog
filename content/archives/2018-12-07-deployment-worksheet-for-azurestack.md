@@ -12,7 +12,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の7日目です。
 
-本日のエントリーでは、Azure Staack を設置するために必要なことを説明します。
+本日のエントリーでは、Azure Stack を設置するために必要なことを説明します。
 
 ## 利用者が実施すべきこと
 
