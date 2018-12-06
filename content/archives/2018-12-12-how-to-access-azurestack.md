@@ -13,6 +13,8 @@ categories:
 
 先日までのエントリで、「Azure Stack とは何か」と「設置するために何を考える必要があるか」を説明してきました。本日以降のエントリーでは、Azure Stack の使い方を説明していきます。使い方第一回は、Azure Stack へのアクセス方法です。
 
+参考：[Discovering the Importance of Security Design Principles and Key Use cases for Azure - BRK2305](https://www.youtube.com/watch?v=c2JYZZjwaRs)
+
 なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
 
 ## 管理者と利用者
@@ -45,13 +47,13 @@ Development Kit でのアクセス先は adminportal.local.azurestack.external �
 PowerShell によるアクセスは少々複雑です。複雑になってしまう理由は次の3つです。
 
 * API のバージョンが Azure と異なる
-* 専用の PowerShell モジュールがある
+* 専用の PowerShell モジュールとツールがある
 * API のエンドポイントが独自である
 
 Azure Stack がサポートする API バージョンは、Azure と比較して古いです。そのため、古い PowerShell モジュールを利用しなけれなりません。ここをうまいことやってくれるのが AzureRM.Bootstrapper モジュールです。
 
 ```powershell
-# インストールされているかもしれない、新しい Azure と Azure Stack 関連モジュールを全部アンインストール
+# インストールされているかもしれない新しい Azure モジュールと Azure Stack 関連モジュールを一度全部アンインストール
 Uninstall-Module -Name AzureRM.AzureStackAdmin -Force 
 Uninstall-Module -Name AzureRM.AzureStackStorage -Force 
 Uninstall-Module -Name AzureStack -Force -Verbose
@@ -70,32 +72,55 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.5.0
 ```
 
-Azure Stack がサポートする API バージョンにあった PowerShell モジュールがインストールできました。次は接続先の変更です。Azure の PowerShell は Azure に接続するように設定されています。ですので、PowerShell で Azure Stack に接続する場合は、Azure Stack の接続情報を明示的に指定します。最後に明示的に指定した接続情報を引数にしてログインしまs。
+Azure Stack がサポートする API バージョンにあった PowerShell モジュールがインストールできました。次に専用のツールである　[Azure/AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) をダウンロードします。
 
-```powershell
+```
+cd $HOME
+
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  -OutFile master.zip
+
+expand-archive master.zip `
+  -DestinationPath . `
+  -Force
+```
+
+そして、接続先を変更してログインします。初期状態だと、Azure の PowerShell は Azure に接続するように設定されています。ですので、PowerShell で Azure Stack に接続する場合は、Azure Stack の接続情報を明示的に指定しなければなりません。
+
+```
+Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
+
 $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+$AADTenantName = "<YOURNAME>.onmicrosoft.com" 
+
 Add-AzureRMEnvironment `
   -Name "AzureStackAdmin" `
   -ArmEndpoint $ArmEndpoint
-Login-AzureRmAccount -Environment AzureStackAdmin
+
+$TenantID = Get-AzsDirectoryTenantId `
+  -AADTenantName $AADTenantName `
+  -EnvironmentName AzureStackAdmin
+
+Login-AzureRmAccount `
+  -Environment AzureStackAdmin `
+  -TenantId $TenantID
 ```
 
 ## 利用者のアクセス方法
 
-Azure Stack に利用者としてアクセスする方法についても、管理者と同様にブラウザを PowerShell を例にして説明しまs。また、サードパーティーのツールである Terraform で Azure Stack に接続する方法にも触れます。
+Azure Stack に利用者としてアクセスする方法についても、管理者と同様にブラウザを PowerShell を例にして説明します。また、サードパーティーのツールである Terraform で Azure Stack に接続する方法にも触れます。
 
 ### プラウザ
 
-プラウザによるアクセス方法はシンプルです。プラウザを利用して、利用者向けポータルの URL にアクセスするだけです。認証に AAD を利用している場合は、AAD の認証画面にリダイレクトされます。AAD による認証を通過すると、管理者向け管理画面が表示されます。AAD による認証の場合、アクセスする URL が違うだけで、基本的な流れは Azure と同じです。
-
-Development Kit でのアクセス先は portal.local.azurestack.external です。アクセスすると次のように管理者向けポータルが表示されます。
+AAD による認証の場合、アクセスする URL が違うだけで、基本的な流れは管理者と同じです。Development Kit でのアクセス先は portal.local.azurestack.external です。アクセスすると次のように管理者向けポータルが表示されます。
 
 {{<img src="./../../images/2018-12-12-002.png">}}
 
-
 ### PowerShell
 
-管理者と同様、利用者についても同じ苦しみがあります。そのため、手順もほとんど変わりません。違いは API のエンドポイントです。管理者のエンドポイントは adminportal.region.fqdn ですが、利用者のエンドポイントは portal.region.fqdn です。
+管理者と同様、利用者についても同じ苦しみがあります。そのため、手順もほとんど変わりません。違いは API のエンドポイントです。管理者のエンドポイントは adminmanagement.region.fqdn ですが、利用者のエンドポイントは management.region.fqdn です。
 
 ```powershell
 # インストールされているかもしれない、新しい Azure と Azure Stack 関連モジュールを全部アンインストール
@@ -116,21 +141,40 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 # Azure Stack 専用のモジュールをインストール
 Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
-$ArmEndpoint = "https://management.local.azurestack.external"
+# AzureStack-Toolsをダウンロード
+cd $HOME
 
-# ユーザ用のAPI エンドポイントを登録。登録したエンドポイントにログイン
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+invoke-webrequest `
+  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  -OutFile master.zip
+
+expand-archive master.zip `
+  -DestinationPath . `
+  -Force
+
+# ツールをインポートする
+Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
+
+$ArmEndpoint = "https://management.local.azurestack.external"
+$AADTenantName = "<YOURNAME>.onmicrosoft.com" 
+
 Add-AzureRMEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $ArmEndpoint
 
-# Sign in to your environment
+$TenantID = Get-AzsDirectoryTenantId `
+  -AADTenantName $AADTenantName `
+  -EnvironmentName AzureStackUser
+
 Login-AzureRmAccount `
-  -EnvironmentName "AzureStackUser"
+  -Environment AzureStackUser `
+  -TenantId $TenantID
 ```
 
 ### Infrastrucute as code 関係
 
-Azure をサポートする Infrastrucute as code のツールが Azure Stack に対応しています。
+Azure をサポートする Infrastrucute as code のツールおも Azure Stack に対応しています。
 
 - [Ansible](https://docs.ansible.com/ansible/2.5/scenario_guides/guide_azure.html#other-cloud-environments)
 - [Terraform](https://www.terraform.io/docs/providers/azurestack/index.html)
@@ -139,4 +183,4 @@ Azure をサポートする Infrastrucute as code のツールが Azure Stack �
 
 ## おわりに
 
-本日のエントリでは、管理者と利用者が Azure Stack にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があること、の2つがポイントです。
+本日のエントリでは、管理者と利用者が Azure Stack にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があること、の2つがポイントです。正直ちょっとめんどくさいですね。。。改善されることを願います。
