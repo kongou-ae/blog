@@ -23,18 +23,18 @@ Azure Stack には2つの接続モデルが存在します。それが Connected
 
 Connected deployment とは、インターネットに接続できる環境に Azure Stack をデプロイすることを指します。次の通り、Microsoft は Connected deployment を推奨しています。
 
-```
-Azure Stack と Azure 間のハイブリッド シナリオを含めて、Azure Stack から最大のメリットを得るには、Azure に接続した状態でのデプロイをお勧めします。
-```
+
+> Azure Stack と Azure 間のハイブリッド シナリオを含めて、Azure Stack から最大のメリットを得るには、Azure に接続した状態でのデプロイをお勧めします。
+
 引用：[Azure Stack デプロイの接続モデルを選択する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-connection-models)
 
 Connected deployment と対になる Disconnected deployment には、沢山の制限があります。ですので、「弊社はインターネット接続が厳しいのでとりあえず Disconnected」というスタンスではなく、「是が非でも Connected にするんだ」というスタンスをお勧めします。
 
-具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしています。Forward Proxy のサポートが計画されていますので、いずれより Connected deployment にしやすくなります。
+Connected deployment における Azure Stack の具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしているので、Proxy 経由にしにくいです。ただし、今後 Forward Proxy のサポートが計画されていますので、今よりも Connected deployment にしやすくなるでしょう。
 
 参考：[ポートと URL (送信)](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)
 
-## 2. Disconnected deployment
+### 2. Disconnected deployment
 
 Disconnected deployment とは、Azure Stack がインターネットおよび Azure に接続できない環境にデプロイすることを指します。
 
@@ -44,7 +44,7 @@ Disconnected deployment による機能的な制限は次の URL に記載され
 
 参考：[切断されたデプロイで損なわれるか、または使用できない機能](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-disconnected-deployment#features-that-are-impaired-or-unavailable-in-disconnected-deployments)
 
-上記以外にも、次のよう機能が不便になります。ただし、Disconnected deployment な Azure Stack に触れたことがないので、想像を含みます。
+上記以外にも、次のよう機能が不便になりまりそうな気がします。ただし、Disconnected deployment な Azure Stack に触れたことがないので、想像を含みます。これら以外にも、ドキュメントに記載されておらず私が想像もしなかった制約があるかもしれません。覚悟した上で Disconnected deployment を選択しましょう。
 
 - Windows Defender の定義ファイル更新
   - 随時更新から定期アップデートによる更新に頻度が下がる
@@ -53,8 +53,6 @@ Disconnected deployment による機能的な制限は次の URL に記載され
   - Azure Stack 自身による自動ダウンロードから、手動で端末にダウンロードして、手動で Azure Stack にアップロードする方式に変更
 - Github 上のテンプレートを使ったデプロイ
   - ポータル上で GitHub のテンプレートからリソースをデプロイする方式から、GitHub からテンプレートを手動でダウンロードしたうえでデプロイする方式に変更
-
-これら以外にも、ドキュメントに記載されておらず私が想像もしなかった制約があるかもしれません。覚悟した上で Disconnected deployment を選択しましょう。
 
 ## 接続モデルと認証方式
 
@@ -69,7 +67,7 @@ Azure Stack は、Azure Active Directory による認証と ADFS による認証
 
 {{<img src="./../../images/2018-12-12-001.png">}}
 
-なお。デプロイが始まった後に認証方式を変えることはできません。したがって、Disconnected deployment で ADFS 認証を選択した場合、後からインターネット環境を整備できたとしても、認証は ADFS のままです。どうしても AAD 認証に切り替えたければ、Azure Stack を OEM ベンダに再デプロイしてもらう必要があります。
+なお、OEM ベンダによりデプロイが始まってしまうと、認証方式を変えられません。したがって、Disconnected deployment で ADFS 認証を選択した場合、後からインターネット環境を整備できたとしても、認証は ADFS のままです。どうしても AAD 認証に切り替えたければ、Azure Stack を OEM ベンダに再デプロイしてもらう必要があります。
 
 ## 接続モデルと課金方式
 
