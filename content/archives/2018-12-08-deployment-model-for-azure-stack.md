@@ -23,14 +23,13 @@ Azure Stack には2つの接続モデルが存在します。それが Connected
 
 Connected deployment とは、インターネットに接続できる環境に Azure Stack をデプロイすることを指します。次の通り、Microsoft は Connected deployment を推奨しています。
 
-
 > Azure Stack と Azure 間のハイブリッド シナリオを含めて、Azure Stack から最大のメリットを得るには、Azure に接続した状態でのデプロイをお勧めします。
 
 引用：[Azure Stack デプロイの接続モデルを選択する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-connection-models)
 
-Connected deployment と対になる Disconnected deployment には、沢山の制限があります。ですので、「弊社はインターネット接続が厳しいのでとりあえず Disconnected」というスタンスではなく、「是が非でも Connected にするんだ」というスタンスをお勧めします。
+Connected deployment と対になる Disconnected deployment には、様々の制限があります。ですので、「弊社はインターネット接続が厳しいので、とりあえず Disconnected にしよう」というスタンスではなく、「是が非でも Connected にするんだ」というスタンスで検討することをお勧めします。
 
-Connected deployment における Azure Stack の具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしているので、Proxy 経由にしにくいです。ただし、今後 Forward Proxy のサポートが計画されていますので、今よりも Connected deployment にしやすくなるでしょう。
+Connected deployment における Azure Stack の具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしているので、Proxy を経由させずらいです。ただし、今後 Forward Proxy のサポートが計画されていますので、今よりも Connected deployment にしやすくなるでしょう。
 
 参考：[ポートと URL (送信)](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)
 
@@ -84,4 +83,4 @@ Azure Stack は、Azure Active Directory による認証と ADFS による認証
 
 ## まとめ
 
-本日のエントリでは、Azure Stack を設置する際に最初に検討することになる接続モデルを説明しました。なんとなーく Disconnected deployment を選択するのではなく、Azure Stack に期待することやAzure Stack で実現したい世界を踏まえて、適切な接続モデルを選びましょう。
+本日のエントリでは、Azure Stack を設置する際に最初に検討することになる接続モデルを説明しました。接続モデルに依存する認証方式は「後戻りするには再デプロイ」という重要な項目です。なんとなーく Disconnected deployment を選択するのではなく、Azure Stack に期待することやAzure Stack で実現したい世界を踏まえて接続モデルを選びましょう。
