@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の8日目です。
 
-本日のエントリーでは、Azure Stack を設置するうえで重要となる「接続モデル」について説明します
+本日のエントリーでは、Azure Stack を設置するうえで重要となる「接続モデル」についてまとめます。
 
 ## 2つの接続モデル
 
@@ -29,7 +29,7 @@ Connected deployment とは、インターネットに接続できる環境に A
 
 Connected deployment と対になる Disconnected deployment には、様々の制限があります。ですので、「弊社はインターネット接続が厳しいので、とりあえず Disconnected にしよう」というスタンスではなく、「是が非でも Connected にするんだ」というスタンスで検討することをお勧めします。
 
-Connected deployment における Azure Stack の具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしているので、Proxy を経由させずらいです。ただし、今後 Forward Proxy のサポートが計画されていますので、今よりも Connected deployment にしやすくなるでしょう。
+Connected deployment における Azure Stack の具体的なアクセス先は次のURLの通りです。現時点での Azure Stack は透過型 Proxy のみをサポートしているので、Proxy を経由させるのが大変です。ただし、Forward Proxy のサポートが計画されていますので、今後は今よりも Connected deployment にしやすくなるでしょう。
 
 参考：[ポートと URL (送信)](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-integrate-endpoints#ports-and-urls-outbound)
 
@@ -43,15 +43,13 @@ Disconnected deployment による機能的な制限は次の URL に記載され
 
 参考：[切断されたデプロイで損なわれるか、または使用できない機能](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-disconnected-deployment#features-that-are-impaired-or-unavailable-in-disconnected-deployments)
 
-上記以外にも、次のよう機能が不便になりまりそうな気がします。ただし、Disconnected deployment な Azure Stack に触れたことがないので、想像を含みます。これら以外にも、ドキュメントに記載されておらず私が想像もしなかった制約があるかもしれません。覚悟した上で Disconnected deployment を選択しましょう。
+上記以外にも、次のよう機能が不便になりそうな気がします。ただし、Disconnected deployment な Azure Stack に触れたことがないので、想像を含みます。これら以外にも、ドキュメントに記載されておらず私が想像もしなかった制約があるかもしれません。覚悟した上で Disconnected deployment を選択しましょう。
 
 - Windows Defender の定義ファイル更新
   - 随時更新から定期アップデートによる更新に頻度が下がる
   - [Azure Stack 上で Windows Defender ウイルス対策を更新する](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-security-av#disconnected-scenario)
 - 定期アップデート用パッケージの自動ダウンロード
   - Azure Stack 自身による自動ダウンロードから、手動で端末にダウンロードして、手動で Azure Stack にアップロードする方式に変更
-- Github 上のテンプレートを使ったデプロイ
-  - ポータル上で GitHub のテンプレートからリソースをデプロイする方式から、GitHub からテンプレートを手動でダウンロードしたうえでデプロイする方式に変更
 
 ## 接続モデルと認証方式
 
