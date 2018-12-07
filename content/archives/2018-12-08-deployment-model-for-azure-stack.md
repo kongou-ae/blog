@@ -58,14 +58,18 @@ Disconnected deployment による機能的な制限は次の URL に記載され
 
 ## 接続モデルと認証方式
 
-Azure Stack は、Azure Active Directory による認証と、ADFSによる認証の２つをサポートしています。Connected deployment は両方の方式をサポートしますが、Dis connected deployment はADFSのみをサポートします。
+Azure Stack は、Azure Active Directory による認証と ADFS による認証の２つをサポートしています。Connected deployment は両方の方式をサポートしますが、Disconnected deployment はADFSのみをサポートします。
 
 | | Connected | Disconnected |
 |---|--------------|-------------|
 |AAD認証| OK | NG |
 |ADFS認証| OK | OK |
 
-デプロイが始まった後に認証方式を変えることはできません。したがって、Disconnected deployment で ADFS 認証を選択した場合、後からインターネット環境を整備できたとしても、認証は ADFS のままです。どうしても AAD 認証に切り替えたければ、Azure Stack を OEM ベンダに再デプロイしてもらう必要があります。
+どちらの認証方式にするか決めたら、Deployment Worksheet に記入しましょう。認証方式は、Deployment Worksheet における最初の項目です。
+
+{{<img src="./../../images/2018-12-12-001.png">}}
+
+なお。デプロイが始まった後に認証方式を変えることはできません。したがって、Disconnected deployment で ADFS 認証を選択した場合、後からインターネット環境を整備できたとしても、認証は ADFS のままです。どうしても AAD 認証に切り替えたければ、Azure Stack を OEM ベンダに再デプロイしてもらう必要があります。
 
 ## 接続モデルと課金方式
 
@@ -76,7 +80,7 @@ Azure Stack は、Azure Active Directory による認証と、ADFSによる認�
 |従量課金| OK | NG |
 |キャパシティ課金| OK | OK |
 
-ただし、課金方式は、認証方式と違って後から変更できるようなので、それほど致命的な問題にはなりません。
+ただし、課金方式は、認証方式と違って後から変更できるようです。
 
 参考：[登録を更新または変更する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-registration#renew-or-change-registration)
 
