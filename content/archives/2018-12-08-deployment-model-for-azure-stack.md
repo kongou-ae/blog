@@ -64,7 +64,7 @@ Azure Stack は、Azure Active Directory による認証と ADFS による認証
 
 どちらの認証方式にするか決めたら、Deployment Worksheet に記入しましょう。認証方式は、Deployment Worksheet における最初の項目です。
 
-{{<img src="./../../images/2018-12-12-001.png">}}
+{{<img src="./../../images/2018-12-08-001.png">}}
 
 なお、OEM ベンダによりデプロイが始まってしまうと、認証方式を変えられません。したがって、Disconnected deployment で ADFS 認証を選択した場合、後からインターネット環境を整備できたとしても、認証は ADFS のままです。どうしても AAD 認証に切り替えたければ、Azure Stack を OEM ベンダに再デプロイしてもらう必要があります。
 
