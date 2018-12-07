@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の8日目です。
 
-本日のエントリーでは、Azure Staack を設置するうえで重要となる「接続モデル」について説明します
+本日のエントリーでは、Azure Stack を設置するうえで重要となる「接続モデル」について説明します
 
 ## 2つの接続モデル
 
