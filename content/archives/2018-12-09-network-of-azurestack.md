@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の9日目です。
 
-本日のエントリーでは、Azure Stack のネットワーク周りをまとめます。Azure Stack を設置するためには、どのようなネットワークを持った環境が来るのかを理解しなければなりません。理解したうえで、ネットワーク管理者と一緒に環境を受け入れる側の整えましょう。
+本日のエントリーでは、Azure Stack のネットワーク周りをまとめます。Azure Stack を設置するためには、どのようなネットワークを持った環境が来るのかを理解しなければなりません。理解したうえで、ネットワーク管理者と一緒に受け入れる側のネットワーク環境を整えましょう。
 
 ## 物理ネットワーク
 
@@ -33,7 +33,7 @@ ToR Switch のアップリンクには /30 のアドレスがふられます。�
 
 引用：[境界接続](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-border-connectivity)
 
-ToR Switch は スタティックルート と BGP をサポートします。Micorosoft は、BGP の利用を推奨していますので、まずは BGP を選択するのが良いでしょう。
+ToR Switch は スタティックルート と BGP をサポートします。Micorosoft は、スタティックルートの利用を推奨していないので、まずは BGP を選択するのが良いでしょう。
 
 > 静的ルーティングには、境界デバイスへの追加構成が必要です。 より多くの手動による介入と管理が必要であり、変更の前には徹底的な分析が必要です。行った変更によっては、構成エラーにより発生した問題のロールバックに時間がかかる可能性があります。 ルーティング メソッドは推奨されていませんが、サポートはされています。
 
@@ -43,7 +43,7 @@ ToR Switch は スタティックルート と BGP をサポートします。Mi
 
 ### アドレス体系
 
-全体的な概要は、公式ドキュメントの次の図の通りです。すべてのサブネットは ToR Switch の配下に存在する構成です。
+全体的な概要は、公式ドキュメントの次の図の通りです。すべてのサブネットは ToR Switch の配下に存在します。
 
 {{<img src="./../../images/2018-12-09-002.png">}}
 
@@ -101,7 +101,7 @@ ToR Switch と BMC Switch で利用するサブネットです。スイッチと
 
 ### VNet との接続方法
 
-ToR Switch のルーティングテーブルには、Azure Stack 上の Azure に作成された VNet のサブネットが存在しません。なぜなら、VNet は Azure Stack 内部の SDN 内に存在しているからです。
+ToR Switch のルーティングテーブルには、Azure Stack 上の Azure に作成された VNet のサブネットが存在しません。なぜなら、VNet が Azure Stack 内部の SDN 内に存在しているからです。物理ネットワーク上には存在しません。
 
 VNet のプライベート IP アドレスと NAT 無しで直接通信する場合は、Azure と同様、Site-to-Site IPsec VPN が必須です。Azure Stack は、Azureと同様に、標準の VPN Gateway と Network Virtual Appliance の2つをサポートしています。トンネリングなしの L3 ルーティング（ Azure でいうところの Express Route ）は現時点でサポートされていません。
 
