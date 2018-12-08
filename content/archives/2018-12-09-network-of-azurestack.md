@@ -27,11 +27,19 @@ categories:
 
 ### ToR Switch との接続方法
 
-ToR Switch のアップリンクには /30 のアドレスがふられます。したがって、既存ネットワークから Azure Stack に対して L2 で VLAN を流すことはできません。ToR Switch は スタティックルート と BGP をサポートします。Micorosoft は、BGP の利用を推奨していますので、まずは BGP を選択するのが良いでしょう。
+ToR Switch のアップリンクには /30 のアドレスがふられます。したがって、既存ネットワークから Azure Stack に対して L2 で VLAN を流すことはできません。
+
+> Top-of-Rack (TOR) スイッチでは、ポイント ツー ポイント IP (/30 ネットワーク) を持つレイヤー 3 アップリンクが物理インターフェイスに構成されている必要があります。 Azure Stack 操作をサポートする TOR スイッチにレイヤー 2 アップリンクを使用することはサポートされていません。
+
+引用：[境界接続](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-border-connectivity)
+
+ToR Switch は スタティックルート と BGP をサポートします。Micorosoft は、BGP の利用を推奨していますので、まずは BGP を選択するのが良いでしょう。
+
+> 静的ルーティングには、境界デバイスへの追加構成が必要です。 より多くの手動による介入と管理が必要であり、変更の前には徹底的な分析が必要です。行った変更によっては、構成エラーにより発生した問題のロールバックに時間がかかる可能性があります。 ルーティング メソッドは推奨されていませんが、サポートはされています。
+
+引用：[境界接続](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-border-connectivity)
 
 既存のネットワーク機器で/30の BGP 接続を4本収容できない場合は、Azure Stack 収容 L3SW を新規導入する必要があります。Azure Stack の仕様を変えることはできません。
-
-参考：[境界接続](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-border-connectivity)
 
 ### アドレス体系
 
@@ -49,9 +57,9 @@ ToR Switch の配下に存在するサブネットは次の通りです。
 - Infrastructure Network
 - Switch Infrastructure Network
 
-これらのサブネットのアドレスをDeployment Worksheetに記入します。
+これらのサブネットのアドレスをDeployment Worksheetに記入する必要があります。
 
-{{<img src="./../../images/2018-12-09-001.png">}}
+{{<img src="./../../images/2018-12-09-003.png">}}
 
 ### External Network ( Public VIP )
 
@@ -95,11 +103,9 @@ ToR Switch と BMC Switch で利用するサブネットです。スイッチと
 
 ToR Switch のルーティングテーブルには、Azure Stack 上の Azure に作成された VNet のサブネットが存在しません。なぜなら、VNet は Azure Stack 内部の SDN 内に存在しているからです。
 
-Azure Stack で動作する Azure の VNet 内のリソースと NAT無しのプライベートIPアドレスで直接通信する場合は、Azure と同様、Site-to-Site IPsec VPN が必須です。Azure Stack は、Azureと同様に、標準の VPN Gateway と Network Virtual Appliance の2つをサポートしています。トンネリングなしのL3ルーティング（ Azure でいうところの Express Route ）は現時点でサポートされていません。
+VNet のプライベート IP アドレスと NAT 無しで直接通信する場合は、Azure と同様、Site-to-Site IPsec VPN が必須です。Azure Stack は、Azureと同様に、標準の VPN Gateway と Network Virtual Appliance の2つをサポートしています。トンネリングなしの L3 ルーティング（ Azure でいうところの Express Route ）は現時点でサポートされていません。
 
-したがって、VNet 内のリソースとNAT無しのプライベートIPアドレスで直接通信する場合は、既存ネットワーク側に IPSec VPN を終端するネットワーク機器が必要になります。そして、既存ネットワーク側で、Azure Stack 内 VNetのサブネットの Nexthop を VPNを終端するネットワーク機器に向けます。ToR Switch ではありません。
-
-VPN 接続を終端する装置については、ToR Swtich を収容する L3SW に VPN 接続を終端するネットワーク機器をツーアームでぶら下げたり、ToR Switch の収容と VPN 接続の終端を1台の機器で兼ねたり、いろいろなデザインがあり得ます。ネットワークエンジニアの腕の見せ所です。
+したがって、VNet のプライベート IP アドレスと NAT 無しで直接通信する場合は、既存ネットワーク側に IPSec VPN を終端するネットワーク機器が必要になります。そして、既存ネットワーク側で、VNet のサブネットに対するルーティングの Nexthop を VPNを終端するネットワーク機器に向けます。VPN 接続を終端する装置については、ToR Swtich を収容する L3SW に VPN 接続を終端するネットワーク機器をツーアームでぶら下げたり、ToR Switch の収容と VPN 接続の終端を1台の機器で兼ねたり、いろいろなデザインがあり得ます。ネットワークエンジニアの腕の見せ所です。
 
 ## おわりに
 
