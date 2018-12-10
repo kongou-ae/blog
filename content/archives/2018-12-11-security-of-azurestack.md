@@ -17,26 +17,28 @@ categories:
 
 ## 大前提
 
-Microsoft が描く Azure Stack のセキュリティに対するビジョンは次の通りです。Microsoft は、「Microsoft管理下でない環境で動くAzure Stackであっても、Azure と同レベルのセキュリティと保護をお客様に提供する」というすごいことをやろうとしています。
+Microsoft が描く Azure Stack のセキュリティに対するビジョンは次の通りです。Microsoft は、「Microsoft の管理下ではない環境で動くAzure Stack であっても、Azure と同レベルのセキュリティと保護をお客様に提供する」という凄いことをやろうとしています。
 
 {{<img src="./../../images/2018-12-11-001.png">}}
 
 ## Internals are internal
 
-ビジョンを実現するための基本的な考え方が「Internals are internal」です。Azure Stack は、普通の物理サーバと Windows Server 2016 の機能を利用しています。ただし、これらの部分を利用者にオープンにしてしまうと、次のようなリスクが生まれます。高度なセキュリティの設定を組み込んで出荷したとしても、意味がなくなってしまいます。
+このビジョンを実現するための基本的な考え方が「Internals are internal」です。Azure Stack は、Windows Server 2016 の機能を利用しています。ただし、Windows Server の部分を管理者にオープンにしてしまうと、次のようなリスクが生まれます。高度なセキュリティの設定を組み込んで出荷したとしても、意味がなくなってしまいます。
 
-- 利用者が勝手にセキュリティに関する設定を変更してしまう
-- 悪意ある第三者に乗っ取られた利用者によって、セキュリティインシデントを起こされてしまう
+- 管理者が勝手にセキュリティに関する設定を変更してしまう
+- 悪意ある第三者に乗っ取られた管理者によって、セキュリティインシデントを起こされてしまう
 
-そこで、Microsoft は、Azure Stack のユーザに対して内部を自由に操作させないという方針をとりました。セキュリティを確保するために、性悪説にもとづいてシステムを設計しているわけです。そのため、自分のお金でかったハードウェア上で動いている Windows Server ベースの製品にも関わらず、リモートデスクトップで接続できませんし、必要に応じて自分の好きな設定を追加することもできません。すべてはビジョンを実現するためです。
+そこで、Microsoft は、Azure Stack の管理者に対して内部を自由に操作させないという方針をとりました。セキュリティを確保するために、性悪説にもとづいてシステムを設計しているわけです。
+
+そのため、自分のお金でかったハードウェア上で動いている Windows Server ベースの製品にも関わらず、Azure Stack の管理側にはリモートデスクトップで接続できませんし、必要に応じて自分の好きな設定を追加することもできません。すべてはビジョンを実現するためです。
 
 ## 制限付き管理者
 
 Internals are internal の実装の1つが制限付き管理者です。
 
-性悪説にのっとっているのですから、利用者になんでもできる特権管理者（Domain Admin）を与えるわけにはいきません。しかし、権限を全く与えないと、Azure Stack の運用に支障をきたします。必要最低限の権限だけを利用者に付与する必要があります。
+性悪説にのっとっているのですから、管理者になんでもできる特権管理者（Domain Admin）を与えるわけにはいきません。しかし、権限を全く与えないと、Azure Stack の運用に支障をきたします。必要最低限の権限だけを管理者に付与する必要があります。
 
-原則として、Azure Stack の操作は API を経由して行われます。この時点で、利用者は、APIに実装されている操作でのみ Azure Stack を操作できます。利用者は、ハードウェアやOSを自由に操作できません。
+原則として、Azure Stack の操作は API を経由して行われます。この時点で、管理者は、API に実装されている操作でのみ Azure Stack を操作できます。管理者は、ハードウェアや OS を自由に操作できません。
 
 API で Azure Stack を操作できない時のため用意されている、Emergency Recovery Console についても権限の制限が徹底しています。Microsoft は Emergency Recovery Console 上に [Privileged Endpoint（PEP）](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-privileged-endpoint) という仕組みを導入しています。PEP とは、PowerShell の [Just Enough Administrator ](https://docs.microsoft.com/ja-jp/powershell/jea/overview) によって保護された PowerShell です。JEA を使うことで、Microsoft は「特権管理者の権限を有しているが、Microsoft が運用上使うである考えた数十個のコマンドのみを実行できる PowerShell 環境」を実現しています。
 
@@ -48,7 +50,7 @@ PS D:\Users\kongou-ae\Documents> $normalCommand.Length
 4072
 ```
 
-一方で、JEA で保護された PEP では約50個のコマンドだけを実行できます。利用できるコマンドの多くは、Azure Stack 用に作られたものばかりです。したがって、管理者は PowerShell でハードウェアやOSを自由に操作できません。
+一方で、JEA で保護された PEP では約50個のコマンドだけを実行できます。利用できるコマンドの多くは、Azure Stack 用に作られたものばかりです。したがって、管理者は PowerShell でハードウェアや OS を自由に操作できません。
 
 ```
 PS D:\Users\kongou-ae\Documents> $pep = New-PSSession -ComputerName azs-ercs01 -ConfigurationName privilegedendpoint
@@ -61,7 +63,7 @@ API と PowerShell のどちらであっても、ハードウェアと OS を自
 
 ## ハードウェア周りの実装
 
-Azure Stack を構成するサーバではセキュリティを向上するためのハードウェア機能が利用されています。使える機能をしっかりと使っているという形ですね。
+Azure Stack を構成するサーバでも、セキュリティを向上するためのハードウェア機能が利用されています。使える機能をしっかりと使っているという形ですね。詳しくないのでさらっと！
 
 - Secure Boot 
 - UEFI 
@@ -69,15 +71,17 @@ Azure Stack を構成するサーバではセキュリティを向上するた�
 
 ## 攻撃を受ける場所を減らす
 
-攻撃を受けるリスクを減らう方法の一つが、攻撃を受ける場所を減らすことです。脆弱な場所があるから攻撃を受けるわけです。Azure Stack では次のような実装がデフォルトでなされています。自分でやろうとすると地味に大変ですよね。
+攻撃を受けるリスクを減らう方法の一つが、攻撃を受ける場所を減らすことです。脆弱な場所があるから攻撃を受けるわけです。
 
-- アメリカ国防情報システム局の Hardened security OS baseline に基づいた OS のベースライン
+Azure Stack では次のような実装がデフォルトでなされています。自分でやろうとすると地味に大変ですよね。
+
+- アメリカ国防情報システム局の Hardened security OS baseline に基づいた OS のベースライン設定
 - 不要なコンポーネントの削除
 - Windows Server のセキュリティ機能
   - Device Guard
   - Windows Defender
 - TOR Switch のアクセスリスト、SDNのアクセスリスト、Windows Firewall 
-- SMBv1やSSLなどの古いプロトコルの無効化
+- SMBv1 や SSLなどの古いプロトコルの無効化
 
 ## 認証情報のローテーション
 
@@ -88,6 +92,8 @@ Azure Stack を構成するサーバではセキュリティを向上するた�
   - Internal accounts
   - gMSA accounts
   - Storage account keys
+
+ただし、管理者が利用する
 
 ## データの保護
 
