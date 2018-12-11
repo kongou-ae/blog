@@ -46,9 +46,9 @@ Azure のサービスを利用するためには利用者と Microsoft のデー
 
 好きな場所で利用できるという Azure Stack の特徴を利用すれば、この課題を解決できます。Azure Stack には Disconnected deployment という導入方式が存在します。この方式の Azure Stack はインターネットと通信できない環境でも動作します。つまり、Azure とのネットワーク接続を用意できない切断された環境でも、Azure のサービスを利用できるようになります。
 
-## ユースケース2　Reguatory & Data Sovereignty
+## ユースケース2　Regulatory & Data Sovereignty
 
-2つ目のユースケースが Reguatory & Data Sovereignty です。このユースケースの課題と解決策は次の通りです。
+2つ目のユースケースが Relguatory & Data Sovereignty です。このユースケースの課題と解決策は次の通りです。
 
 |シナリオ | 課題 | 解決策 |
 |--------|------|---------|
