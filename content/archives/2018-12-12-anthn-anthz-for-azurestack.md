@@ -68,7 +68,7 @@ Azure Stack には次の通り大きく３つの接続先があり、接続先�
 
 リソースに対して権限を有するユーザーだけが Azure Stack 上のリソースにアクセスできます。Azure と同じです。ただし、現在の Azure Stack は組み込みのカスタムロールが少ないです。次の画像のように、Owner と Reader 、 Contributer の3つのみです。
 
-{{<img src="./../../images/2018-12-12-007.png">}}
+{{<img src="./../../images/2018-12-12-010.png">}}
 
 ## 3. PEP の認証認可
 
