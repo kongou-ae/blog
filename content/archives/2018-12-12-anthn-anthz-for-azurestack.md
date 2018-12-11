@@ -11,7 +11,14 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の12日目です。
 
-本日のエントリでは、Azure Stack における認証認可をまとめます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用した Azure Stack のみを対象とします。
+先日までのエントリでは、Dploymemt Worksheet をもとにして、Azure Stack を設置するために必要な準備をまとめました。
+
+本日以降のエントリでは、OEM ベンダが導入した Azure Stack を運用していくために必要なことをまとめていきます。
+
+
+まずはじめに、本日エントリでは、Azure Stack における認証認可をまとめます。運用するためにはログインしなければなりません。
+
+なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用した Azure Stack のみを対象とします。
 
 ## ３つの接続先
 
