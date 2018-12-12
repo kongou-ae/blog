@@ -11,7 +11,7 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の11日目です。
 
-先日のエントリでは、Azure Stack. の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
+先日のエントリでは、Azure Stack の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
 
 ## 管理者と利用者の違い
 
@@ -68,7 +68,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 Azure Stack がサポートする API バージョンにあった PowerShell モジュールがインストールできました。次に専用のツールである　[Azure/AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) をダウンロードします。
 
-```
+```powershell
 cd $HOME
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
@@ -83,12 +83,13 @@ expand-archive master.zip `
 
 そして、接続先を変更してログインします。初期状態だと、Azure の PowerShell は Azure に接続するように設定されています。ですので、PowerShell で Azure Stack に接続する場合は、Azure Stack の接続情報を明示的に指定しなければなりません。
 
-```
+```powershell
 Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
 
 $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
 $AADTenantName = "<YOURNAME>.onmicrosoft.com" 
 
+# Azure Stack の 管理者向け ARM エンドポイントを、AzureStackAdmin という名前で追加
 Add-AzureRMEnvironment `
   -Name "AzureStackAdmin" `
   -ArmEndpoint $ArmEndpoint
@@ -97,6 +98,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -AADTenantName $AADTenantName `
   -EnvironmentName AzureStackAdmin
 
+# 追加した名前を指定してログイン
 Login-AzureRmAccount `
   -Environment AzureStackAdmin `
   -TenantId $TenantID
@@ -104,17 +106,17 @@ Login-AzureRmAccount `
 
 ## 利用者のアクセス方法
 
-Azure Stack に利用者としてアクセスする方法についても、管理者と同様にブラウザを PowerShell を例にして説明します。また、サードパーティーのツールである Terraform で Azure Stack に接続する方法にも触れます。
+Azure Stack に利用者としてアクセスする方法についても、管理者と同様にブラウザと PowerShell を例にして説明します。また、サードパーティーのツールである Terraform で Azure Stack に接続する方法にも触れます。
 
 ### プラウザ
 
-AAD による認証の場合、アクセスする URL が違うだけで、基本的な流れは管理者と同じです。Development Kit でのアクセス先は portal.local.azurestack.external です。アクセスすると次のように管理者向けポータルが表示されます。
+AAD による認証の場合、ブラウザによるアクセスは、アクセスする URL が違うだけで、基本的な流れが管理者と同じです。Development Kit でのアクセス先は portal.local.azurestack.external です。アクセスすると次のように管理者向けポータルが表示されます。
 
 {{<img src="./../../images/2018-12-12-002.png">}}
 
 ### PowerShell
 
-管理者と同様、利用者についても同じ苦しみがあります。そのため、手順もほとんど変わりません。違いは API のエンドポイントです。管理者のエンドポイントは adminmanagement.region.fqdn ですが、利用者のエンドポイントは management.region.fqdn です。
+PowerShell でのアクセスは、管理者と同様、利用者についても同じ苦しみがあります。そのため、手順もほとんど変わりません。違いは API のエンドポイントです。管理者のエンドポイントは adminmanagement.region.fqdn ですが、利用者のエンドポイントは management.region.fqdn です。
 
 ```powershell
 # インストールされているかもしれない、新しい Azure と Azure Stack 関連モジュールを全部アンインストール
@@ -153,6 +155,7 @@ Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
 $ArmEndpoint = "https://management.local.azurestack.external"
 $AADTenantName = "<YOURNAME>.onmicrosoft.com" 
 
+# Azure Stack の 利用者向け ARM エンドポイントを、AzureStackUser という名前で追加
 Add-AzureRMEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $ArmEndpoint
@@ -161,14 +164,15 @@ $TenantID = Get-AzsDirectoryTenantId `
   -AADTenantName $AADTenantName `
   -EnvironmentName AzureStackUser
 
+# 追加した名前を指定してログイン
 Login-AzureRmAccount `
   -Environment AzureStackUser `
   -TenantId $TenantID
 ```
 
-### Infrastrucute as code 関係
+### Infrastrucute as code ツール
 
-Azure をサポートする Infrastrucute as code のツールおも Azure Stack に対応しています。
+Azure をサポートする Infrastrucute as code のツールが、 Azure Stack に対応しています。代表的なものは Ansible と Terraforn です。
 
 - [Ansible](https://docs.ansible.com/ansible/2.5/scenario_guides/guide_azure.html#other-cloud-environments)
 - [Terraform](https://www.terraform.io/docs/providers/azurestack/index.html)
@@ -177,4 +181,4 @@ Azure をサポートする Infrastrucute as code のツールおも Azure Stack
 
 ## おわりに
 
-本日のエントリでは、管理者と利用者が Azure Stack にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があること、の2つがポイントです。正直ちょっとめんどくさいですね。。。改善されることを願います。
+本日のエントリでは、管理者と利用者が Azure Stack にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があること、の2つがポイントです。正直ちょっとめんどくさいです。今後改善されることを願います。
