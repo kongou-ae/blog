@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の11日目です。
+本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の13日目です。
 
 先日のエントリでは、Azure Stack の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
 
