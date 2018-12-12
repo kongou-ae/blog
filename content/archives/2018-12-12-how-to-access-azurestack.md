@@ -11,17 +11,11 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の11日目です。
 
-先日までのエントリで、「Azure Stack とは何か」と「設置するために何を考える必要があるか」を説明してきました。本日以降のエントリーでは、Azure Stack の使い方を説明していきます。使い方第一回は、Azure Stack へのアクセス方法です。
+先日のエントリでは、Azure Stack. の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
 
-参考：[Discovering the Importance of Security Design Principles and Key Use cases for Azure - BRK2305](https://www.youtube.com/watch?v=c2JYZZjwaRs)
-
-なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
-
-## 管理者と利用者
+## 管理者と利用者の違い
 
 Azure Stack にアクセスする人は、管理者と利用者に分けられます。管理者とは Azure Stack のインフラを運用管理する人です。利用者とは、Azure Stack が提供する Azure のサービスを利用する人です。
-
-## 管理者と利用者のアクセス先
 
 管理者と利用者の大きな違いの１つがアクセス先です。次のとおり、Azure Stack では、管理者と利用者のアクセス先が異なります。
 
