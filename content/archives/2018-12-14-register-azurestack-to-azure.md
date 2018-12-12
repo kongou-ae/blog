@@ -52,7 +52,7 @@ Development Kit の場合は、PAYG サブスクリプションも利用でき�
 
 直近でデプロイした Development Kit を Azure に登録した際に利用したスクリプトは次の通りです。
 
-```
+```powershell
 # PEP に接続する
 $cred = Get-Credential -UserName "azurestack.local\azurestackadmin" -Message "Please input password of CloudAdmin"
 #Enter-PSSession -ComputerName 10.1.3.226 -ConfigurationName PrivilegedEndpoint -Credential $cred
