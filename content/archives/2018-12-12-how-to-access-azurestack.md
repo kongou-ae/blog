@@ -22,7 +22,7 @@ Azure Stack にアクセスする人は、管理者と利用者に分けられ�
 | アクセス先 | 管理者 | 利用者 |
 |------------|------------|----------------|
 |ポータル |adminportal.region.fqdn|portal.region.fqdn|
-|API のエンドポイント|adminmanagement.region.fqdn|management.region.fqdn|
+|ARM のエンドポイント|adminmanagement.region.fqdn|management.region.fqdn|
 
 ## 管理者のアクセス方法
 
