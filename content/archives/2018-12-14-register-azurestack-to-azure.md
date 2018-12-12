@@ -18,7 +18,7 @@ categories:
 
 ## なぜ登録が必要か
 
-Azure Stack には Azure に依存した2つの機能があります。これらの機能を動作させるためには、Azure Stak を Registration（登録）する必要があります。
+Azure Stack には Azure に依存した2つの機能があります。これらの機能を動作させるためには、Azure Stak を Azure に Registration（登録）する必要があります。
 
 1. Marketplace
 2. 利用料の請求
@@ -41,14 +41,16 @@ Azure Stack を Azure に登録するためには、次の2つが必要です。
 
 ## 登録作業
 
-登録作業の手順は公式ドキュメントで公開されています。次の条件によって手順が違うの注意が必要です。
+登録作業の手順は公式ドキュメントで公開されています。Integrated systems の場合、次の条件によって手順が違うの注意が必要です。
 
-- EA サブスクリプション or CSP　サブスクリプション
+- EA サブスクリプション or CSP サブスクリプション
 - 容量課金 or 従量課金
+
+Development Kit の場合は、PAYG サブスクリプションも利用できます。また課金モデルに"development"が利用できます。
 
 参考：[Azure を使用した Azure Stack の登録](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-registration)
 
-直近でデプロイした Development Kit を Azure に登録する際に利用したスクリプトは次の通りです。
+直近でデプロイした Development Kit を Azure に登録した際に利用したスクリプトは次の通りです。
 
 ```
 # PEP に接続する
@@ -84,6 +86,8 @@ Set-AzsRegistration `
 | --------- | ----|---------- |------------|------|
 | azurestack | Resource Group |West Central US | 〇 | リソース名とロケーションは変更可能 | 
 | 指定必須 | Microsoft.AzureStack/registrations | Global | × | |
+
+上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。
 
 {{<img src="./../../images/2018-12-14-002.png">}}
 
