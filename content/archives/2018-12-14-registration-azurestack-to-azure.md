@@ -2,7 +2,7 @@
 title: Azure Stack を Azure に登録する
 author: kongou_ae
 date: 2018-12-14
-url: /archives/2018-12-14-register-azurestack-to-azure
+url: /archives/2018-12-14-registration-azurestack-to-azure
 categories:
   - azurestack
 ---
@@ -21,7 +21,7 @@ categories:
 Azure Stack には Azure に依存した2つの機能があります。これらの機能を動作させるためには、Azure Stak を Azure に Registration（登録）する必要があります。
 
 1. Marketplace
-2. 利用料の請求
+2. 利用料金の合算
 
 Azure Stack を Azure に登録していない場合、Azure Stack の Marketplace で Azure からアイテムをダウンロードしようとしても、ダウンロードするためのボタンがグレーアウトされています。
 
@@ -33,7 +33,7 @@ Azure Stack を Azure に登録していない場合、Azure Stack の Marketpla
 
 Azure Stack を Azure に登録するためには、次の2つが必要です。Azure Active Directory の運用体制によっては、後者のアカウントを用意するのが厳しいですね。
 
-- 支払いに利用する Azure サブスクリプションID
+- 支払いに利用する Azure サブスクリプション ID
   - EA サブスクリプションか CSP サブスクリプションのいずれか
 - Azure Active Directory 上のアカウント
   - 上記サブスクリプションに対して所有者権限をもつ
@@ -84,7 +84,7 @@ Set-AzsRegistration `
 
 | リソース名 | タイプ | ロケーション | 表示 | 備考 |
 | --------- | ----|---------- |------------|------|
-| azurestack | Resource Group |West Central US | 〇 | リソース名とロケーションは変更可能 | 
+| azurestack | Resource Group |West Central US | 〇 | 登録のパラメータでリソース名とロケーションを変更できる | 
 | 指定必須 | Microsoft.AzureStack/registrations | Global | × | |
 
 上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。“Show hidden types”にチェックを入れると見られます。
