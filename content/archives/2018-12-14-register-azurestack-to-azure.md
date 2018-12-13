@@ -46,7 +46,7 @@ Azure Stack を Azure に登録するためには、次の2つが必要です。
 - EA サブスクリプション or CSP サブスクリプション
 - 容量課金 or 従量課金
 
-Development Kit の場合は、PAYG サブスクリプションも利用できます。また課金モデルに"development"が利用できます。評価版という位置付けなので、誰でも登録できるように PAYG サブスクリプションがサポートされているのでしょう。
+Development Kit の場合は、PAYG サブスクリプションも利用できます。また課金モデルに"development"が利用できます。Development Kitは評価版という位置付けなので、誰でも登録できるように PAYG サブスクリプションがサポートされているのでしょう。
 
 参考：[Azure を使用した Azure Stack の登録](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-registration)
 
@@ -87,12 +87,12 @@ Set-AzsRegistration `
 | azurestack | Resource Group |West Central US | 〇 | リソース名とロケーションは変更可能 | 
 | 指定必須 | Microsoft.AzureStack/registrations | Global | × | |
 
-上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。
+上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。“Show hidden types”にチェックを入れると見られます。
 
 {{<img src="./../../images/2018-12-14-002.png">}}
 
 ## まとめ
 
-本日のエントリでは、Azure Stack の Azure 連携機能に必要不可欠な登録をまとめました。実際の作業方法というよりも、前提条件となるサブスクリプションとアカウントの用意が重要です。これらの用意し忘れると、Azure Stack が利用できるようになるのが遅れます。事前に準備したうえでデプロイに臨みましょう。
+本日のエントリでは、Azure Stack の Azure 連携機能に必要不可欠な登録をまとめました。実際の作業方法よりも、前提条件となるサブスクリプションとアカウントの用意が重要です。これらの用意し忘れると、Azure Stack が利用できるようになるのが遅れます。事前に準備したうえでデプロイに臨みましょう。
 
 
