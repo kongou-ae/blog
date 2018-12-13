@@ -80,14 +80,7 @@ Set-AzsRegistration `
 
 ## 登録作業の結果
 
-登録作業を実施すると、Azure サブスクリプション上に次のリソースができます。Azure Stack を利用している間は、これらのリソースを消さないようにしましょう。
-
-| リソース名 | タイプ | ロケーション | 表示 | 備考 |
-| --------- | ----|---------- |------------|------|
-| azurestack | Resource Group |West Central US | 〇 | 登録のパラメータでリソース名とロケーションを変更できる | 
-| 指定必須 | Microsoft.AzureStack/registrations | Global | × | |
-
-上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。“Show hidden types”にチェックを入れると見られます。
+登録作業を実施すると、Azure サブスクリプションに次のリソースができます。上記のコマンドで Development Kit を登録した際に作られたリソースは次の通りです。“Show hidden types”にチェックを入れると見られます。Azure Stack を利用している間は、これらのリソースを消さないようにしましょう。
 
 {{<img src="./../../images/2018-12-14-002.png">}}
 
