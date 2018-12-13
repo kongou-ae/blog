@@ -46,7 +46,7 @@ Azure Stack を Azure に登録するためには、次の2つが必要です。
 - EA サブスクリプション or CSP サブスクリプション
 - 容量課金 or 従量課金
 
-Development Kit の場合は、PAYG サブスクリプションも利用できます。また課金モデルに"development"が利用できます。
+Development Kit の場合は、PAYG サブスクリプションも利用できます。また課金モデルに"development"が利用できます。評価版という位置付けなので、誰でも登録できるように PAYG サブスクリプションがサポートされているのでしょう。
 
 参考：[Azure を使用した Azure Stack の登録](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-registration)
 
