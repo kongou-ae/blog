@@ -1,16 +1,17 @@
-<div class="material-placeholder">
     <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
         {{- if .Get "link" -}}
             <a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
         {{- end }}
-        <img src="{{ .Get "src" }}"
-             {{- if or (.Get "alt") (.Get "caption") }}
-             alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
-             {{- end -}}
-             {{- with .Get "width" }} width="{{ . }}"{{ end -}}
-             {{- with .Get "height" }} height="{{ . }}"{{ end -}}
-             class="responsive-img materialboxed initialized active"
-        /> <!-- Closing img tag -->
+        <div class="material-placeholder">
+            <img src="{{ .Get "src" }}"
+                 {{- if or (.Get "alt") (.Get "caption") }}
+                 alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
+                 {{- end -}}
+                 {{- with .Get "width" }} width="{{ . }}"{{ end -}}
+                 {{- with .Get "height" }} height="{{ . }}"{{ end -}}
+                 class="responsive-img materialboxed initialized active"
+            /> <!-- Closing img tag -->
+        </div>
         {{- if .Get "link" }}</a>{{ end -}}
         {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
             <figcaption>
@@ -28,4 +29,3 @@
             </figcaption>
         {{- end }}
     </figure>
-</div>
