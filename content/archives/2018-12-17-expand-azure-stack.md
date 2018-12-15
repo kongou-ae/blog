@@ -40,7 +40,7 @@ Azure Stack は、自分自身のキャパシティを監視して、キャパ�
 
 管理者向け ARM では、CPU 以外の項目を確認できます。GUI であれば管理者向けポータル、CLI であれば PowerShell を使うことになります。お好みのツールから API を直接叩いてもいいでしょう。
 
-({{<img src="./../../images/2018-12-15-001.png">}})
+({{<img src="./../../images/2018-12-17-001.png">}})
 
 ```powershell
 PS > $health = Get-AzsRegionHealth
