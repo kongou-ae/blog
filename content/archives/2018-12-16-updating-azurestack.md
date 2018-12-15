@@ -15,13 +15,15 @@ categories:
 
 ## アップデートの種類と範囲
 
-Azure Stack には２つのアップデートがあります。１つ目は Microsoft がリリースするアップデートです。もう１つは OEM ベンダがリリースするアップデートです。それぞれの特徴は次の通りです。
+Azure Stack には２つのアップデートがあります。Microsoft がリリースするアップデートと OEM ベンダがリリースするアップデートです。それぞれの特徴は次の通りです。
 
 ### Microsoft のアップデート
 
-Microsoft は、原則として月に1回アップデートをリリースします。原則ですので、アップデートがリリースされない月もあります。このアップデートでは、新機能の追加とバグの修正、Windows Update が行われます。したがって、Azure Stack の新機能追加は最短でも1か月周期です。Azure のように毎日毎日新機能がでることはありません。また、月に1回の定期アップデート以外に、臨時で Hotfix がリリースされます。Hotfix では緊急度の高い不具合の修正が行われます。
+Microsoft は、原則として月に1回アップデートをリリースします。原則ですので、アップデートがリリースされない月もあります。このアップデートでは、新機能の追加とバグの修正、Windows Update が行われます。したがって、Azure Stack の新機能追加は最短でも1か月周期です。Azure のように毎日毎日新機能がでることはありません。
 
-Microsoft のアップデートの適用範囲は、Host Node 上で動作する Azure Stack というソフトウェアの部分のみです。Host Node のハードウェア部分や HLH、HLH の上で動作する OEM ベンダの運用管理ソフトウェアは、MIcrosoft の アップデーtには含まれていません。
+また、Microsoft は月に1回の定期アップデート以外に、臨時で Hotfix をリリースします。Hotfix では緊急度の高い不具合の修正が行われます。
+
+Microsoft のアップデートの適用範囲は、Host Node 上で動作する Azure Stack というソフトウェアの部分のみです。MIcrosoft の アップデートには、Host Node のハードウェア部分や HLH、HLH の上で動作する OEM ベンダの運用管理ソフトウェアが含まれていません。
 
 ### OEM ベンダのアップデート
 
@@ -31,11 +33,15 @@ OEM ベンダがリリースするアップデートのリリーススケジュ�
 
 ### Microsoft のアップデート
 
-Microsoft がリリースするアップデートと Hotfix の適用方法は、ボタン数クリックです。Connected deployment の場合、Azure Stack は定期的にアップデートが配信されたかを確認して、自分が適用すべきアップデートを自動的にダウンローとします。管理者が行うことは、適用するアップデートを選択して「Update now」を押すだけです。あとは Azure Stack が全自動で自分をアップデートします。
+Microsoft がリリースするアップデートと Hotfix の適用方法は、ボタン数クリックです。Connected deployment の場合、Azure Stack は定期的にアップデートが配信されたかを確認して、自分が適用すべきアップデートを自動的にダウンロードします。Desconnected deployment の場合は、Microsoft が公開しているアップデートパッケージを管理者が手動で Azure Stack にアップロードしなければなりません。
+
+参考：[Azure Stack で更新を適用する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-apply-updates)
+
+アップデートパッケージの配備が終わった後に管理者が行うことは、適用するアップデートを選択して「Update now」を押すだけです。あとは Azure Stack が全自動で自分をアップデートします。
 
 {{< figure src="./../../images/2018-12-16-001.png" title="アップデート画面と Update now ボタン" >}}
 
-Azure Stack は、特徴的なアップデート方法を採用しています。Azure Stack のアップデートは、既存の環境のパッチを充てるのではなく、既存の環境を捨てて新しい環境を新規構築します。アップデートの間に、Host Node と Infrastructure Role Instance は、アップデート前まで使っていたイメージを捨てて、アップデートが適用された新しいイメージでブートします。
+Azure Stack は、特徴的なアップデート方法を採用しています。Azure Stack のアップデートは、既存の環境にパッチをあてるのではなく、既存の環境を捨てて新しい環境を新規構築します。アップデートの間に、Host Node と Infrastructure Role Instance は、アップデート前まで使っていたイメージを捨てて、アップデートが適用された新しいイメージでブートします。
 
 {{< figure src="./../../images/2018-12-16-003.png" title="アップデートパッケージを使って新しいイメージを作る" >}}
 
