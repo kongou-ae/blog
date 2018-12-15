@@ -38,9 +38,9 @@ Azure Stack は、自分自身のキャパシティを監視して、キャパ�
 |ディスク |管理者向け ARM （ポータル、PowerShell など）|
 |Public IP Address |管理者向け ARM （ポータル、PowerShell など）|
 
-管理者向け ARM では、CPU 以外の項目を確認できます。GUI であれば管理者向けポータル、CLI であれば PowerShell を使うことになります。お好みのツールから API を直接叩いてもいいでしょう。
+管理者向け ARM では CPU を確認できません。BMC を利用して、CPU の理由状況を確認します。CPU 以外の項目は管理者向け ARM で確認できます。GUI であれば管理者向けポータル、CLI であれば PowerShell を使うことになります。お好みのツールから API を直接叩いてもいいでしょう。
 
-({{<img src="./../../images/2018-12-17-001.png">}})
+{{< figure src="./../../images/2018-12-17-001.png" title="管理者向けポータル画面" >}}
 
 ```powershell
 PS > $health = Get-AzsRegionHealth
@@ -53,7 +53,7 @@ Physical storage               Used=0.78TB Available=9.07TB
 Public IP address pools        Used=38.00 Available=217.00                   
 ```
 
-ただし、管理者向け ARM では CPU の利用状況を取得できません。必要に応じて、BMC 側から情報を取得しましょう。これらの手法を組み合わせることで、キャパシティの推移を監視することもできるでしょう。
+また、これらの手法を利用して定期的に情報を取得し続ければ、現在のキャパシティだけでなく、キャパシティの推移も確認できるでしょう。
 
 ## キャパシティの増強
 
