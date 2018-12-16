@@ -29,7 +29,7 @@ Azure Stack は、自分自身のキャパシティを監視して、キャパ�
 - The scale unit does not have the minimum recommended storage reserve capacity
 - Public IP address utilization at xx% across all pools.
 
-まだ、Azure Stack に任せるのではなく、自分でメトリクスを確認することもできます。具体的な手法は次の通りです。
+また、Azure Stack に任せるのではなく、自分でメトリクスを確認することもできます。具体的な手法は次の通りです。
 
 |項目 | 手法 |
 |-----|------|
