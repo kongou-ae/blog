@@ -9,9 +9,9 @@ categories:
 
 ## はじめに
 
-本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の15日目です。
+本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の17日目です。
 
-本日のエントリでは、Azure Stack の拡張についてまとめます。以前のエントリ（[Azure Stack をサイジングする](https://aimless.jp/blog/archives/2018-12-05-sizing-for-azure-stack/)）では、Azure Stack を導入する際のサイジングをまとめました。導入後には、キャパシティを監視する必要があります。そして、キャパシティが不足しそうな場合は、サーバを増強しなければなりません。
+本日のエントリでは、Azure Stack の拡張についてまとめます。以前のエントリ（[Azure Stack をサイジングする](https://aimless.jp/blog/archives/2018-12-05-sizing-for-azure-stack/)）では、Azure Stack を導入する際のサイジングをまとめました。導入後には、キャパシティを確認する必要があります。そして、キャパシティが不足しそうな場合は、サーバを増強しなければなりません。
 
 ## キャパシティの確認
 
