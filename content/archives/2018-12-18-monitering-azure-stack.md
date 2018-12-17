@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の17 日目です。
+本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の18日目です。
 
 本日のエントリでは、Azure Stack の監視についてまとめます。
 
