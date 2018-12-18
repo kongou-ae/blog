@@ -18,24 +18,22 @@ categories:
 
 ## アラートに従う
 
-切り分けのために役に立つのが、アラートの Remediation という項目です。Azure Stack のアラートには Remediation という情報が付与されており、アラートの中にアラートの対処方法が記載されています。
+切り分けのために役に立つのが、アラートの Remediation という項目です。Azure Stack のアラートには Remediation という情報が付与されており、アラートの中にアラートの対処方法が記載されています。アラートのテンプレートから持ってきた２つのアラートの Remediation は次の通りです。
 
 - A physical disk has failed
-  - Remediation
-    - Replace the physical disk as soon as possible to ensure full resiliency. To monitor the progress of virtual disk storage repair, see https://aka.ms/virtualdiskhealth.
+  - Replace the physical disk as soon as possible to ensure full resiliency. To monitor the progress of virtual disk storage repair, see https://aka.ms/virtualdiskhealth.
 
 - Scale unit node is offline
-  - Remediation
-    - 1.Navigate to the NodeName and try to cycle the node using the Power off/Power on actions on the node blade. (A physical node restart might take up to 10 minutes.)
-    - 2.If this didn't solve the problem, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. If hardware replacement is required, there are important pre- and post-replacement steps. See https://aka.ms/azurestackreplacenode.
+  - 1.Navigate to the NodeName and try to cycle the node using the Power off/Power on actions on the node blade. (A physical node restart might take up to 10 minutes.)
+  - 2.If this didn't solve the problem, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. If hardware replacement is required, there are important pre- and post-replacement steps. See https://aka.ms/azurestackreplacenode.
 
-アラートの中には、具体的な対処方法が書かれているものがあります。これらの対処方法は管理者の権限で対処できます。「A physical disk has failed」のRemediationに記載されているディスクの交換や、「Scale unit node is offline」のRemediationに記載されている再起動などです。管理者による対処で状況が解消しない場合は、「Scale unit node is offline」のRemediationに記載されているとおり、サポートに障害を申告して対処してもらいましょう。
+アラートの中には、具体的な対処方法が書かれているものがあります。これらの対処方法は管理者の権限で対処できます。「A physical disk has failed」の　Remediation に記載されているディスクの交換や、「Scale unit node is offline」の Remediation に記載されている再起動などです。管理者による対処で状況が解消しない場合は、「Scale unit node is offline」の Remediation に記載されているとおり、サポートに障害を申告して対処してもらいましょう。
 
 ## 自己診断する
 
 アラートをトリガとするとトラブルシュートは受動的な対応です。Azure Stack には、管理者が能動的に自分の好きなタイミングで Azure Stack の健全性を確認する手段があります。それが Test-AzureStack です。
 
-Test-AzureStack は、Azure Stack の現状と Microsoft が定めた Azure Stack のあるべき姿と現状との差異をチェックしてくれるツールです。このツールはさまざまな内容を網羅的に確認した上で、管理者にわかりやすい形で結果を出力してくれます。
+Test-AzureStack は、Azure Stack の現状と Microsoft が定めた Azure Stack のあるべき姿との差異をチェックしてくれるツールです。このツールはさまざまな内容を網羅的に確認した上で、管理者にわかりやすい形で結果を出力してくれます。
 
 {{< figure src="./../../images/2018-12-19-001.png" title="Test-AzureStack の出力" >}}
 
