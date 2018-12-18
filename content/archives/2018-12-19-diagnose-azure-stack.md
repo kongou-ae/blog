@@ -27,7 +27,7 @@ categories:
   - 1.Navigate to the NodeName and try to cycle the node using the Power off/Power on actions on the node blade. (A physical node restart might take up to 10 minutes.)
   - 2.If this didn't solve the problem, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. If hardware replacement is required, there are important pre- and post-replacement steps. See https://aka.ms/azurestackreplacenode.
 
-アラートの中には、具体的な対処方法が書かれているものがあります。これらの対処方法は管理者の権限で対処できます。「A physical disk has failed」の　Remediation に記載されているディスクの交換や、「Scale unit node is offline」の Remediation に記載されている再起動などです。管理者による対処で状況が解消しない場合は、「Scale unit node is offline」の Remediation に記載されているとおり、サポートに障害を申告して対処してもらいましょう。
+アラートの中には、具体的な対処方法が書かれているものがあります。これらの対処方法は管理者の権限で対処できます。「A physical disk has failed」のRemediation に記載されているディスクの交換や、「Scale unit node is offline」の Remediation に記載されている再起動などです。管理者による対処で状況が解消しない場合は、「Scale unit node is offline」の Remediation に記載されているとおりサポートに障害を申告して対処してもらいましょう。
 
 ## 自己診断する
 
@@ -47,6 +47,6 @@ Test-AzureStack は、Azure Stack の現状と Microsoft が定めた Azure Stac
 
 ## まとめ
 
-本日のエントリでは、Azure Stack のトラブルシュート方法をまとめました。Remediation と Test-AzureStack を駆使することで、権限を制限されている Azure Stack であってもMicrosoft の力を借りなくても状況の把握や適切な障害対応を実施できます。Microsoft のサポートどのやり取りは時間がかかるので、Remediatio や Test-AzureStack を利用して自己解決できるものは自己解決していきましょう。
+本日のエントリでは、Azure Stack のトラブルシュート方法をまとめました。Remediation と Test-AzureStack を駆使することで、権限を制限されている Azure Stack であっても Microsoft の力を借りずに簡単なトラブルシュートが可能です。Microsoft のサポートどのやり取りは時間がかかるので、Remediation や Test-AzureStack を利用して自己解決できるものは自己解決していきましょう。
 
 明日のエントリでは、切り分けの次に行う保守対応についてまとめます。
