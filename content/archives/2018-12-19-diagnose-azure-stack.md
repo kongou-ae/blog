@@ -47,6 +47,6 @@ Test-AzureStack は、Azure Stack の現状と Microsoft が定めた Azure Stac
 
 ## まとめ
 
-本日のエントリでは、Azure Stack のトラブルシュート方法をまとめました。Remediation と Test-AzureStack を駆使することで、権限を制限されている Azure Stack であっても Microsoft の力を借りずに簡単なトラブルシュートが可能です。Microsoft のサポートどのやり取りは時間がかかるので、Remediation や Test-AzureStack を利用して自己解決できるものは自己解決していきましょう。
+本日のエントリでは、Azure Stack のトラブルシュート方法をまとめました。Remediation と Test-AzureStack を駆使することで、権限を制限されている Azure Stack であっても Microsoft の力を借りずに簡単なトラブルシュートが可能です。Microsoft のサポートとのやり取りは時間がかかるので、Remediation や Test-AzureStack を利用して自己解決できるものは自己解決していきましょう。
 
 明日のエントリでは、切り分けの次に行う保守対応についてまとめます。
