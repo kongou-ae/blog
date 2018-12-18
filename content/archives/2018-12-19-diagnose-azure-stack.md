@@ -12,11 +12,11 @@ categories:
 
 先日の[Azure Stackを監視する](https://aimless.jp/blog/archives/2018-12-18-monitering-azure-stack)では、監視の仕組みをまとめました。本日のエントリでは、監視からのアラートを受け取った後のトラブルシュートについてまとめます。
 
-## 誰が対処できるアラートなのか
+## アラートを切り分ける
 
 [Azure Stack のセキュリティ](https://aimless.jp/blog/archives/2018-12-11-security-of-azurestack/)でまとめたとおり、Microsoft は Azure Stack に対する管理者の権限を限定しています。そのため、Azure Stack には、管理者の権限で対処できるトラブルと、管理者だけでは対処できないトラブルが存在します。アラートが発生した場合には、自分たちだけで対処できる問題なのか Microsoft または OEM ベンダに協力を要請すべき問題なのかを切り分けることが重要です。
 
-## アラートを全て見る
+## アラートに従う
 
 切り分けのために役に立つのが、アラートの Remediation という項目です。Azure Stack のアラートには Remediation という情報が付与されており、アラートの中にアラートの対処方法が記載されています。
 
