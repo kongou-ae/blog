@@ -61,6 +61,8 @@ $key = ConvertTo-SecureString -String ($Encryptionkey) -AsPlainText -Force
 Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
 ```
 
+引用：[バックアップを有効にするためのバックアップ共有、認証情報、暗号化キーを提供する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-backup-enable-backup-powershell#provide-the-backup-share-credentials-and-encryption-key-to-enable-backup)
+
 ## リストアのしかた
 
 [Restore-AzsBackup](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/restore-azsbackup) という cmdlet でリストアするようです。「ようです」と書いた理由は、実際にリストアしたことがないからです。バックアップには利用者の構成情報やデータが含まれていないので、リストアすると利用者が作ったものは綺麗さっぱり消えます。にも関わらず、Restore-AzsBackup を実施しなければならない状況とは、いったいどのようなことが起きているのでしょうか。。。
