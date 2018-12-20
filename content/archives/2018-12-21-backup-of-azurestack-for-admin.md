@@ -63,7 +63,7 @@ Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $passwo
 
 ## リストアのしかた
 
-[Restore-AzsBackup](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/restore-azsbackup?view=azurestackps-1.5.0)というcmdletでリストアするようです。「ようです」と書いた理由は、実際にリストアしたことがないからです。バックアップには利用者の構成情報やデータが含まれていないので、リストアすると利用者が作ったものは綺麗さっぱり消えます。にも関わらず、Restore-AzsBackup を実施しなければならない状況とは、いったいどのようなことが起きているのでしょうか。。。
+[Restore-AzsBackup](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/restore-azsbackup) という cmdlet でリストアするようです。「ようです」と書いた理由は、実際にリストアしたことがないからです。バックアップには利用者の構成情報やデータが含まれていないので、リストアすると利用者が作ったものは綺麗さっぱり消えます。にも関わらず、Restore-AzsBackup を実施しなければならない状況とは、いったいどのようなことが起きているのでしょうか。。。
 
 ## まとめ
 
