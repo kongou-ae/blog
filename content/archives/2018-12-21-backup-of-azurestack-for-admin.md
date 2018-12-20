@@ -27,7 +27,7 @@ Asure Stack には、管理者向けにバックアップの機能が提供さ�
 
 参考：[管理ポータルで Azure Stack のバックアップを有効にする](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-backup-enable-backup-console)
 
-管理者向けのバックアップは、管理者が基盤を再構築するためのバックアップです。したがって、利用者が作成したものはバックアップされません。Azure Stack をバックアップからリストアすると、利用者が Azure Stack に作成したリソースは消失します。
+管理者向けのバックアップは、管理者が基盤を再構築するためのバックアップです。したがって、利用者が作成したものはバックアップされません。
 
 ## バックアップの保存先
 
@@ -63,7 +63,7 @@ Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $passwo
 
 ## リストアのしかた
 
-[Restore-AzsBackup](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/restore-azsbackup?view=azurestackps-1.5.0)というcmdletでリストアするようです。「ようです」と書いた理由は、実際にリストアしたことがないからです。バックアップには利用者の構成情報やデータが含まれていないので、リストアすると利用者が作ったものは綺麗さっぱり消えるはずです。にも関わらず、Restore-AzsBackup を実施しなければならない状況とは、いったいどのようなことが起きているのでしょうか。。。
+[Restore-AzsBackup](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/restore-azsbackup?view=azurestackps-1.5.0)というcmdletでリストアするようです。「ようです」と書いた理由は、実際にリストアしたことがないからです。バックアップには利用者の構成情報やデータが含まれていないので、リストアすると利用者が作ったものは綺麗さっぱり消えます。にも関わらず、Restore-AzsBackup を実施しなければならない状況とは、いったいどのようなことが起きているのでしょうか。。。
 
 ## まとめ
 
