@@ -15,11 +15,11 @@ categories:
 
 Azure の場合、多くの利用者は Virtual Machine のデータをバックアップするために Azure IaaS VM Backup を利用していると思います。Azure IaaS VM Backup は、定期的に Virtual Machine の Disk のスナップショットを取得して世代管理してくれる素晴らしいサービスです。
 
-残念なことに、1809 Update 時点の Azure Stack には Recovery Service Vault がありません。そのため、Azure Stack では Azure IaaS VM Backup が利用できません。Azure IaaS VM Backup が存在しない状況は、Azure Stack と Azure との一貫性を大きく損なっています。早く実装されてほしいです・・
+残念なことに、1811 Update 時点の Azure Stack には Recovery Service Vault がありません。そのため、Azure Stack では Azure IaaS VM Backup が利用できません。Azure IaaS VM Backup が存在しない状況は、Azure Stack と Azure との一貫性を大きく損なっています。早く実装されてほしいです・・
 
 ## データのバックアップ
 
-Azure IaaS VM Backup が存在しない Azure Stack で Virtual Machine のデータをバックアップするためには、エージェント型バックアップを利用する必要があります。例えば、Acronis や Arcserve、Comvault などのサードパーティソリューションを使うもよし、Azure Backup Server や　Azure Backup Agent などの Microsoft ソリューションを使うもよし、使い慣れたものを利用するとよいでしょう。
+Azure IaaS VM Backup が存在しない Azure Stack で Virtual Machine のデータをバックアップするためには、エージェント型バックアップを利用する必要があります。例えば、Acronis や Arcserve、Comvault などのサードパーティソリューションを使うもよし、Azure Backup Server や Azure Backup Agent などの Microsoft ソリューションを使うもよし、使い慣れたものを利用するとよいでしょう。
 
 バックアップデータの保存先には注意が必要です。バックアップデータを Azure Stack 上に保存してしまうと、Azure Stack が全損した際にバックアップデータも消失します。エージェント型バックアップを構築する際は、バックアップデータが Azure Stack の外に保存されるようなアーキテクチャにするとよいでしょう。
 
@@ -27,7 +27,7 @@ Azure IaaS VM Backup が存在しない Azure Stack で Virtual Machine のデ�
 
 昨日のエントリで説明したとおり、Azure Stack の管理者が取得するバックアップには、利用者が作成したリソースの構成情報が含まれていません。リソースの構成情報をバックアップは、利用者の責任範囲に含まれます。
 
-「万が一に備えて構成情報を控えておきたい。リソースの再作成は手で構わない」というスタンスであれば、[](https://www.syuheiuda.com/?p=4381) の方式で一括取得する方法が気軽です。「再デプロイ可能な状態で構成情報を保存したい」というスタンスであれば、Infrastructure as code なツールを利用して構成をコード化しておくとよいでしょう。
+「万が一に備えて構成情報を控えておきたい。リソースの再作成は手で構わない」というスタンスであれば、[Azure のリソース定義を JSON で取得したい](https://www.syuheiuda.com/?p=4381) の方式で一括取得する方法が気軽です。「再デプロイ可能な状態で構成情報を保存したい」というスタンスであれば、Infrastructure as code なツールを利用して構成をコード化しておくとよいでしょう。
 
 ## BC/DR
 
@@ -37,7 +37,7 @@ Azure の場合、BC/DR を考慮すると複数リージョンを利用して�
 
 ### Azure Stack と Azure
 
-複製先の候補の１つが Azure です。Azure Site Recovery は Azure Stack をサポートしています。ただし、サポートされている方式は、構成サーバを利用した実装です。Azure の Azure to Azure のような実装ではありません。Azure Stack が Recovery Service Vault をサポートしていない以上、Azure to Azure と同じ実装ができるわけがありません。Recovery Service Vault のリリースが待ち遠しいです。
+複製先の候補の１つが Azure です。Azure への複製機能を有する Azure Site Recovery は Azure Stack をサポートしています。ただし、サポートされている方式は、構成サーバを利用した実装です。Azure の Azure to Azure のような実装ではありません。Azure Stack が Recovery Service Vault をサポートしていない以上、Azure to Azure と同じ実装ができるわけがありません。Recovery Service Vault のリリースが待ち遠しいです。
 
 ### Azure Stack と Azure Stack
 
@@ -47,7 +47,6 @@ Azure の場合、BC/DR を考慮すると複数リージョンを利用して�
 
 参考:[BRK3335 - Understanding architectural patterns and practices for business continuity andisaster recovery on Microsoft Azure Stack](https://azure.microsoft.com/en-us/resources/videos/ignite-2018-understanding-architectural-patterns-and-practices-for-business-continuity-and-disaster-recovery-on-microsoft-azure-stack/)
 
-##　まとめ
+## まとめ
 
-本日のエントリでは、利用者向けのバックアップをまとめました。利用者向けパックアップの部分は、Azure と一貫性がありません。残念です。早く Azure IaaS VM Backup が来てほしいです。
-d
+本日のエントリでは、利用者向けのバックアップをまとめました。利用者向けパックアップの部分は、重要にも関わらず Azure と一貫性がありません。残念です。早く Azure IaaS VM Backup が来てほしいです。
