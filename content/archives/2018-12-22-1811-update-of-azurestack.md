@@ -18,7 +18,7 @@ Azure Stack 1811 update がリリースされました。
 
 ## Extension host
 
-1811 update の目玉は extension host です。従来の Azure Stack は、管理画面を操作するために TCP/443以外の通信を通信が必要でした。そのため、利用者と Azure Stack の間にファイアウォールや Proxy が存在する場合、特殊なポートを利用する通信が破棄されてしまい、画面がうまく表示されませんでいた。
+1811 update の目玉は extension host です。従来の Azure Stack は、管理画面を操作するために TCP/443以外の通信を通信が必要でした。そのため、利用者と Azure Stack の間にファイアウォールや Proxy が存在する場合、特殊なポートを利用する通信が破棄されてしまい画面がうまく表示されませんでいた。
 
 {{< figure src="./../../images/2018-12-22-001.png" title="TCP/13010 の通信" >}}
 
@@ -38,7 +38,7 @@ Azure Stack 1811 update がリリースされました。
 
 ## アラート画面からのリペア機能
 
-[Azure Stack を診断する](https://aimless.jp/blog/archives/2018-12-19-diagnose-azure-stack/)に記載した通り、Azure Stack のアラートには Remediation という形で対応方法が記載されています。1811 update では、対応方法の中に Repair ボタンが実装されました。Repair ボタンを押すとアラートに即した復旧作業を Azure Stack　が自動的に実施してくれるようです。
+[Azure Stack を診断する](https://aimless.jp/blog/archives/2018-12-19-diagnose-azure-stack/)に記載した通り、Azure Stack のアラートには Remediation という形で対応方法が記載されています。1811 update では、対応方法の中に Repair ボタンが実装されました。Repair ボタンを押すとアラートに即した復旧作業を Azure Stack が自動的に実施してくれるようです。
 
 参考：[Repair alerts](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-monitor-health#repair-alerts)
 
@@ -54,7 +54,7 @@ Azure Stack の管理者側バックアップの容量が約10GBから約20GBに
 
 管理者ポータル上で、利用者向けサブスクリプションを無効化できるようになりました。これまでは PowerShellでのみ無効化できました。
 
-{{< figure src="./../../images/2018-12-22-005.png" title="Disable ボタン" >}}
+{{< figure src="./../../images/2018-12-22-005.jpg" title="Disable ボタン" >}}
 
 ### Plan から Quota を参照
 
@@ -70,4 +70,4 @@ Plan から Quota を直接参照・編集できるようになりました。18
 
 本日のエントリでは、1811 update の中で気になった新機能と変更点をまとめました。やはり、1811 Update の目玉は extension host です。extension host の登場によって、社内 LAN からインターネット上にデプロイされた Azure Stack へのアクセスが容易になりました。インターネット経由で Azure Stack を利用者に提供するサービスプロバイダにとって、extension host は福音でしょう。
 
-また、運用者目線では、細かな操作性の向上がありがたいです。Azure Stack の管理画面も Azure の管理画面と同じように継続的に進化することがわかりました。
+また、運用者目線では、細かな操作性の向上がありがたいです。Azure Stack の管理画面も Azure の管理画面と同じように継続的に進化することがわかりました。今後もどんどん使いやすくなってくれると嬉しいです。
