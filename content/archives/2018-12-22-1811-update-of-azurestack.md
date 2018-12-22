@@ -28,7 +28,7 @@ Azure Stack 1811 update がリリースされました。
 
 ## Host Node の操作性向上
 
-1809 以前の Azure Stack では、Host Node のステータスを確認するために、Host Node を1つずつクリックして確認する必要がありした。地味に面倒です。
+1809 以前の Azure Stack では、Host Node のステータスを確認するために、Host Node を1つずつクリックする必要がありした。地味に面倒です。
 
 {{< figure src="./../../images/2018-12-22-003.png" title="1809 以前の Host Node 画面" >}}
 
