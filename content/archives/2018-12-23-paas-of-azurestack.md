@@ -45,7 +45,7 @@ Azure Stack は Azure の拡張であり、Azure と一貫性をもって設計�
 
 一方で、App Service と SQL Server、MySQL Server は、なんちゃって PaaS ではなく PaaS としてリリースされています。たとえば、App Service を利用する際に利用者のサブスクリプションに構築されるものは、App Service というリソースです。Virutal Machine ではありません。
 
-{{< figure src="./../../images/2018-12-23-001.jpg" title="利用者ポータル上の App Service" >}}
+{{< figure src="./../../images/2018-12-23-001.png" title="利用者ポータル上の App Service" >}}
 
 ## 管理者目線での PaaS
 
