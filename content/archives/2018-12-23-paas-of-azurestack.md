@@ -57,15 +57,13 @@ Azure Stack 上で利用者に対して App Service と SQL Server、MySQL Serve
 
 手順に従って App Service をインストールすると、管理者側に沢山の Virtual Machine と VM Scaleset がデプロイされます。これらの IaaS が連携することで、App Service という PaaS を利用者に提供しています。
 
-{{< figure src="./../../images/2018-12-23-002.jpg" title="App Service を構成する主要なリソース" >}}
+{{< figure src="./../../images/2018-12-23-002.png" title="App Service を構成する主要なリソース" >}}
 
 Azure Stack の PaaS は利用者にとっての PaaS であって、管理者にとっては IaaS です。そのため、これらのリソースを運用するのは Azure Stack の管理者の仕事です。ただし、これらのリソースの運用管理方法は、Azure Stack 本体のようにドキュメントが充実していません。本体のように高度に抽象化された仕組みだとよいのですが・・・
 
 ## まとめ
 
-本日のエントリでは、Azure Stack 上の PaaS についてまとめました。Azure Stack の PaaS はまだまだこれからの領域です。利用を検討する際には次のことを考慮する必要があります。本番利用の前に、PoC をやることで、管理者と利用者がそれぞれ何をすべきなのかを明確にしましょう。
+本日のエントリでは、Azure Stack 上の PaaS についてまとめました。Azure Stack の PaaS はまだまだこれからの領域です。利用を検討する際には次のことを考慮する必要があります。本番利用の前に PoC を行って、管理者と利用者がそれぞれ何をすべきなのかを明確にしましょう。
 
 - PaaS の皮をかぶった Iaas なのか、PaaS なのか
 - PaaS を提供するリソースを管理者がどのように運用管理するか
-
-
