@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Operator
+title: Azure Stack Operator とは
 author: kongou_ae
 date: 2018-12-24
 url: /archives/2018-12-24-become-azurestack-operator
@@ -39,4 +39,4 @@ Azure Stack の違いを正しく伝えるために、Microsoft は、Azure Stac
 
 ## まとめ
 
-本日のエントリでは Azure Stack Operator という新しい役割をまとめました。新しい何かを正しく利用するためには新しい役割が必要です。従来の仮想基盤は「頑張って導入する。入れたら粛々と運用」というソリューションです。ですが、Azure Stack は「導入してからが本番」なソリューションです。Azure Stack Operator を育成して、Azure Stack の効果的に利用しましょう。
+本日のエントリでは Azure Stack Operator という新しい役割をまとめました。新しい何かを正しく利用するためには新しい役割が必要です。従来の仮想基盤は「頑張って導入する。入れたら粛々と運用」というソリューションです。ですが、Azure Stack は「導入してからが本番」なソリューションです。Azure Stack Operator を育成して、Azure Stack を効果的に利用しましょう。
