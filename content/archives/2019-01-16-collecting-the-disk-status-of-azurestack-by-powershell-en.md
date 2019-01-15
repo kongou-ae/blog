@@ -14,7 +14,7 @@ This article explains the following commands.
 - Get-AzsVolume
 - Get-AzsDrive
 
-These commands was impremented on PowerShell for AzureStack 1.6.0 and can collect the status of Azure stack's storage.
+These commands was implemented on PowerShell for AzureStack 1.6.0 and can collect the status of Azure stack's storage.
 
 ## The case of Azure Stack before 1811 Update
 
