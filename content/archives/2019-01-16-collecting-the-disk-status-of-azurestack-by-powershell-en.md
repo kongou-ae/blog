@@ -14,18 +14,18 @@ This article explains the following commands.
 - Get-AzsVolume
 - Get-AzsDrive
 
-These commands was implemented on PowerShell for AzureStack 1.6.0 and can collect the status of Azure stack's storage.
+These commands were implemented on PowerShell for AzureStack 1.6.0 and can collect the status of Azure stack's storage.
 
 ## The case of Azure Stack before 1811 Update
 
-Azure Stack before 1811 don’t have the capability to collect the status of own physical disk and virtual disk by API. Azure Stack Operator have to use OEM’s management tool to collect the status of own physical disk. And Azure Stack Operator have to use Privileged Endpoint to collect the status of own virtual disk which is on storage pool created by S2D.
+Azure Stack before 1811 doesn't have the capability to collect the status of own physical disk and virtual disk by API. Azure Stack Operator have to use OEM’s management tool to collect the status of own physical disk. And Azure Stack Operator have to use Privileged Endpoint to collect the status of own virtual disk which is on storage pool created by S2D.
 
-I think that these implements is not good for operation and security. Because it is nessesary to use Privileged Endpoint for general operation such as replacing failed disk. Privileged Endpoint is weak point of Azure Stack by the following points.
+I think that these implements are not good for operation and security. Because it is necessary to use Privileged Endpoint for general operation such as replacing failed disk. Privileged Endpoint is weak point of Azure Stack by the following points.
 
-- Azure Stack Operator have to create accounts for their operators which will replace failed disk. Because Privileged Endpoint use local authentication.
-- Every person who have the account of Privileged Endpoint can stop and start Azure Stack. Because privilleged endpoint don’t have RBAC.
+- Azure Stack Operator have to create accounts for their operators which will replace failed disk. Because Privileged Endpoint uses local authentication.
+- Every person who has the account of Privileged Endpoint can stop and start Azure Stack. Because privileged endpoint doesn't have RBAC.
 
-So it is ideal that limited user should be able to use privileged endpoint. But Azure Stack before 1811 requires to use Privileged Endpoint for replacing failed disk. This is not good.
+So it is ideal that a limited user should be able to use privileged endpoint. But Azure Stack before 1811 requires to use Privileged Endpoint for replacing a failed disk. This is not good.
 
 ## The case of Azure Stack after 1811
 
@@ -68,7 +68,7 @@ FriendlyName ResiliencySettingName OperationalStatus HealthStatus IsManualAttach
 SU1_Volume   Simple                OK                Healthy      True           9.85 TB s-cluster     
 ```
 
-The result of this cmdlet has the property as "RepairStatus". So I guess that Azure Stack Operator can collect the progress of repairing a virtual disk. If this cmdlet returns the progress of repairing a virutal disk, the operator who replaces failed disk don't use Privileged Endpoint. This is good.
+The result of this cmdlet has the property as "RepairStatus". So I guess that Azure Stack Operator can collect the progress of repairing a virtual disk. If this cmdlet returns the progress of repairing a virtual disk, the operator who replaces failed disk don't use Privileged Endpoint. This is good.
 
 ### Get-AzsDrive
 
@@ -112,7 +112,7 @@ Tags              : {}
 
 ## Closing thoughts
 
-I believe that "Get-AzureVolume" and "Get-AzsDrive" will make the oppotunity to use Privilaged Endpoint more rare. I hope that  Azure Stack Operator can operate every general tasks by API not Privileged Endpoint. 
+I believe that "Get-AzureVolume" and "Get-AzsDrive" will make the opportunity to use Privileged Endpoint more rarer. I hope that  Azure Stack Operator can operate every general task by API not Privileged Endpoint. 
 
 I believe that Azure Stack should obtain a capability to perform every general operation by API. Because operation by API provides Azure Stack Operator with the following convenience.
 
@@ -120,4 +120,4 @@ I believe that Azure Stack should obtain a capability to perform every general o
 - Audit with Activity log
 - Automation by Infrastructure as code
 
-One of the general operation which Azure Stack Operator cannot perform by API is collecting Get-AzureStackLog. I hope that Azure Stack will the capability to collect Get-AzureStackLog by API.
+One of the general operations which Azure Stack Operator cannot perform by API is collecting Get-AzureStackLog. I hope that Azure Stack will the capability to collect Get-AzureStackLog by API.
