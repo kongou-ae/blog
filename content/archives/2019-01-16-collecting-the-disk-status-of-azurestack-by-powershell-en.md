@@ -7,15 +7,6 @@ categories:
   - azurestack
 ---
 
----
-title: Collecting the status of Azure Stack‘s storage by PowerShell
-author: kongou_ae
-date: 2019-01-14
-url: /archives/2019-01-14-Get-the-disk-status-of-azurestack-by-powershell-en
-categories:
-  - azurestack
----
-
 ## Introduction
 
 This article explains the following commands. 
