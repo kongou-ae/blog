@@ -32,7 +32,7 @@ Azure ポータルで Azure Files をポチポチ作ります。
 
 ## Infrastructure Backup を有効化する
 
-上記の手順で入手したパスとユーザ名、パスワードを利用して、INfrastructure Backup を有効化します。
+上記の手順で入手したパスとユーザ名、パスワードを利用して、Infrastructure Backup を有効化します。
 
 ```powershell
 $username = "Azure\aimlessazsinfrabackup"
@@ -44,7 +44,7 @@ $key
 Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
 ```
 
-設定が成功すれば、管理ポータル上に表示されるバックアップ先が Azure Files になります。
+設定が成功すると、管理ポータル上に表示されるバックアップ先が Azure Files になります。
 
 {{< figure src="./../../images/2019-01-16-003.png" title="管理ポータル上の表示" >}}
 
