@@ -9,9 +9,9 @@ categories:
 
 ## はじめに
 
-[https://aimless.jp/blog/archives/2018-12-21-backup-of-azurestack-for-admin/](Azure Stack をバックアップする（管理者向け）)でまとめたとおり、Azure Stack の管理者向けバックアップは SMB のファイルサーバにバックアップファイルを保存します。ドキュメント上では、保存先としてサポートされているファイルサーバはオンプレミスのものだけであって、Azure Files はサポートされていません。
+[Azure Stack をバックアップする（管理者向け）](https://aimless.jp/blog/archives/2018-12-21-backup-of-azurestack-for-admin/)でまとめたとおり、Azure Stack の管理者向けバックアップは SMB のファイルサーバにバックアップファイルを保存します。ドキュメント上では、保存先としてサポートされているファイルサーバはオンプレミスのものだけであって、Azure Files はサポートされていません。
 
-参考：[https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-backup-reference#supported-storage-locations](Infrastructure Backup Service reference)
+参考：[Infrastructure Backup Service reference](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-backup-reference#supported-storage-locations)
 
 バックアップのためだけにファイルサーバを運用しなければならないのは苦痛です。前々から「Azure Files を早くサポートしてくれないかな」という要望をもっていました。そんな中、Twitter 上で「 Azure Files にバックアップファイルを保存した」というつぶやきがありました。
 
