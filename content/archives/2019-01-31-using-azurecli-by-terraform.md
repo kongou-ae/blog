@@ -11,6 +11,7 @@ categories:
 
 Azure 上のリソースに作った人の名前をタグ付けする仕組み（[azure-auto-tagging](https://github.com/kongou-ae/azure-auto-tagging)）を作っています。仕組みに必要な PaaS を Terraform で一発構築する際に困ったことと解決策をまとめます。
 
+
 ## Terraform はすべてをサポートしない
 
 [azure-auto-tagging](https://github.com/kongou-ae/azure-auto-tagging) は、Log Analytics に飛んでくる Activity Log をチェックしてリソースをタグをつけます。Terraform の Azure Provider は Log Analytics の作成をサポートします。
