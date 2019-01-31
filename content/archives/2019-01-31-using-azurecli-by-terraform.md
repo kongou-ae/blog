@@ -29,7 +29,7 @@ resource "azurerm_log_analytics_workspace" "autotagging" {
 
 Log Analytics に Activity Log を飛ばすためには、Data Source として Activity Log を設定する必要があります。
 
-{{< figure src="./../../images/2019-01-31-001.jpg" title="Log Analytics と Activity logの接続画面" >}}
+{{< figure src="./../../images/2019-01-31-001.png" title="Log Analytics と Activity logの接続画面" >}}
 
 ただし、Terraform の Azure Provider は Log Analytics の Data Source をサポートしていません。せっかくTerraform で Log Analytics を作ったにも関わらず、その流れで Data Source を設定できません。残念。。。
 
