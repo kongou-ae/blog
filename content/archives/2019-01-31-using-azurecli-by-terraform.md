@@ -51,7 +51,7 @@ resource "null_resource" "connectLaAndActivityLog" {
 }
 ```
 
-かなり強引ですが、上記のように書くことでやりたいことを達成できました。Terraform apply するだけで、Log Analytics の構築と Data Source の設定を一気に実行できます。素晴らしい。また、Terraform から Azure CLI を実行するようにすると、Terraform 内の変数をAzure CLI のコマンド内で利用できるという効果もあります。
+かなり強引ですが、上記のように書くことで Log Analytics の構築と Data Source の設定を Terraform で一気に実行できます。素晴らしい。また、Terraform から Azure CLI を実行するようにすると、Terraform 内の変数をAzure CLI のコマンド内で利用できるという効果もあります。
 
 ## まとめ
 
