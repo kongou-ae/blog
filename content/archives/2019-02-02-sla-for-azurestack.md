@@ -13,10 +13,10 @@ Azure では、各サービスごとに 稼働率の SLA が定められてい�
 
 残念なことに、Azure と一貫性のあるサービスを提供する Azure Stack には 稼働率に対する SLA がありません。おそらく、お客様サイトで動作してお客様が運用する Azure Stack に対して Microsoft が SLA を定めることが困難だからでしょう。気持ちは理解できます。
 
-しかし、システム全体の稼働率の SLA を定める立場の方々は困ってしまいます。自由に設計できるインフラの場合、管理者はインフラの構成や設定値を全て確認できるので、根拠を持って稼働率のSLAを定められます。一方、Azure Stack の場合、利用者は稼働率の指標となるインフラの構成を全て確認できません（参考：[Azure Stack のセキュリティ](https://aimless.jp/blog/archives/2018-12-11-security-of-azurestack/)）。そのため、ハードウェア構成や利用されている機能などの一般公開されている限られた情報を頼りに、根拠ので薄い稼働率の SLA を定めざるを得ません。
+しかし、システム全体の稼働率の SLA を定める立場の方々は困ってしまいます。Azure Stack は性悪説で設計されているため、利用者は稼働率の指標となるインフラの構成の全てを確認できません（参考：[Azure Stack のセキュリティ](https://aimless.jp/blog/archives/2018-12-11-security-of-azurestack/)）。そのため、ハードウェア構成や利用されている機能などの一般公開されている限られた情報を頼りに、根拠の少ない稼働率の SLA を定めなければならないからです。
 
-この困りごとは、feedback.azure.com に登録されています。Azure Stack を使ったシステム全体の SLA を決めるために、Azure Stack の SLA を計算するための情報を提供してほしいというフィードバックです。ステータスは「レビュー中」です。私も投票しました。
+自信をもってシステム全体の稼働率の SLA を定めるためには、Microsoft からの情報提供が必要不可欠です。この困りごとは、feedback.azure.com に登録されています。Azure Stack を使ったシステム全体の SLA を決めるために、Azure Stack の SLA を計算するための情報を提供してほしいというフィードバックです。ステータスは「レビュー中」です。私も投票しました。
 
 [Methodology or suggestion for Azure Stack SLA calculation](https://feedback.azure.com/forums/344565-azure-stack/suggestions/34030585-methodology-or-suggestion-for-azure-stack-sla-calc)
 
-かなりのチャレンジだと思いますが、Microsoft が Azure Stack にも Azure と同じように 稼働率の SLA を定めてくれることを期待しています。
+Azure Stack に対して SLA を定めることは、かなりのチャレンジだと思います。ですが、Microsoft が Azure と同じようにAzure Stack にも 稼働率の SLA を定めてくれることを期待しています。
