@@ -11,7 +11,7 @@ Azure では、各サービスごとに 稼働率の SLA が定められてい�
 
 参考：[Virtual Machines の SLA](https://azure.microsoft.com/ja-jp/support/legal/sla/virtual-machines/v1_8/)
 
-残念なことに、Azure と一貫性のあるサービスを提供する Azure Stack には 稼働率に対する SLA がありません。おそらく、お客様サイトで動作してお客様が運用する Azure Stack に対して Microsoft が SLA を定めることが困難だからでしょう。気持ちは理解できます。
+残念なことに、2019年2月現在、Azure と一貫性のあるサービスを提供する Azure Stack には 稼働率に対する SLA がありません。おそらく、お客様サイトで動作してお客様が運用する Azure Stack に対して Microsoft が SLA を定めることが困難だからでしょう。気持ちは理解できます。
 
 しかし、システム全体の稼働率の SLA を定める立場の方々は困ってしまいます。Azure Stack は性悪説で設計されているため、利用者は稼働率の指標となるインフラの構成の全てを確認できません（参考：[Azure Stack のセキュリティ](https://aimless.jp/blog/archives/2018-12-11-security-of-azurestack/)）。そのため、ハードウェア構成や利用されている機能などの一般公開されている限られた情報を頼りに、根拠の少ない稼働率の SLA を定めなければならないからです。
 
@@ -19,4 +19,4 @@ Azure では、各サービスごとに 稼働率の SLA が定められてい�
 
 [Methodology or suggestion for Azure Stack SLA calculation](https://feedback.azure.com/forums/344565-azure-stack/suggestions/34030585-methodology-or-suggestion-for-azure-stack-sla-calc)
 
-Azure Stack に対して SLA を定めることは、かなりのチャレンジだと思います。ですが、Microsoft が Azure と同じようにAzure Stack にも 稼働率の SLA を定めてくれることを期待しています。
+Azure Stack に対して SLA を定めることは、かなりのチャレンジだと思います。ですが、Azure との一貫性というビジョンのもと、Microsoft が Azure と同じようにAzure Stack にも 稼働率の SLA を定めてくれることを期待しています。
