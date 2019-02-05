@@ -25,7 +25,7 @@ categories:
 
 {{< figure src="./../../images/2019-02-05-005.png" title="WebHook トリガの画面" >}}
 
-`Request Body JSON Schema` は次のようになります。
+`HTTP POST URL` に記載されている URL が、JSON を投げつける先です。`Request Body JSON Schema` は次のようになります。
 
 ```json
 {
@@ -46,8 +46,6 @@ categories:
     "type": "object"
 }
 ```
-
-`HTTP POST URL` に記載されている URL が、JSON を投げつける先です。
 
 ## SNMP アクションの実装
 
@@ -85,5 +83,3 @@ Invoke-RestMethod -Method POST -Uri $url -Body $body -ContentType "application/j
 ```
 
 {{< figure src="./../../images/2019-02-05-004.png" title="Gmail の受信画面" >}}
-
-
