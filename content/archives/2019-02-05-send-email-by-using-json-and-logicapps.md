@@ -21,7 +21,11 @@ categories:
 
 ## WebHook トリガの実装
 
-件名と本文、送信元アドレス、宛先アドレスを含む JSON を受け取れるようにします。`Request Body JSON Schema` は次のようになります。
+件名と本文、送信元アドレス、宛先アドレスを含む JSON を受け取れるようにします。
+
+{{< figure src="./../../images/2019-02-05-005.png" title="WebHook トリガの画面" >}}
+
+`Request Body JSON Schema` は次のようになります。
 
 ```json
 {
