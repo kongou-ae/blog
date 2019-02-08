@@ -18,7 +18,9 @@ Azure IaaS VM backup は、Recovery Service Vault によって提供されます
 
 ## azure_rm_deployment を使う
 
-Azure モジュールは、azure_rm_deployment で ARM テンプレートによるデプロイをサポートしています。Azure モジュールが Recovery Serivce Vault を抽象化してくれないので、ARM テンプレートを使って IaaS VM Backup を有効化します。Playbook のサンプルは次の通りです。
+Azure モジュールは、azure_rm_deployment で ARM テンプレートによるデプロイをサポートしています。Azure モジュールが Recovery Serivce Vault を抽象化してくれないので、ARM テンプレートを使って IaaS VM Backup を有効化します。
+
+Playbook のサンプルは次の通りです。対象の Virtual Machine に対して、夜8時にバックアップを取得して三世代保管するバックアップポリシーを適用します。
 
 ```
   - name: Create Recovery servive vault and policy
@@ -57,7 +59,7 @@ Azure モジュールは、azure_rm_deployment で ARM テンプレートによ�
           value: daily-0300
 ```
 
-azure_rm_deployment では、サーバ上のテンプレートを参照できません。上記のように template_link を利用して Web サーバ上のテンプレートを参照するか、 template を利用して Playbook の中に ARM テンプレートの内容を直接記載する必要があります。直接記載するサンプルは、 Ansible の公式ドキュメントに記載されています。
+azure_rm_deployment では、サーバ上のテンプレートを参照できません。上記のように `template_link` を利用して Web サーバ上のテンプレートを参照するか、 `template` を利用して Playbook の中に ARM テンプレートの内容を直接記載する必要があります。直接記載するサンプルは、 Ansible の公式ドキュメントに記載されています。
 
 参考：[azure_rm_deployment - Create or destroy Azure Resource Manager template deployments](https://docs.ansible.com/ansible/latest/modules/azure_rm_deployment_module.html)
 
@@ -67,7 +69,7 @@ azure_rm_deployment では、サーバ上のテンプレートを参照できま
 
 `scheduleRunTimes` で指定するバックアップの開始時間は、UTC タイムゾーン付きの表記が良いようです。気を利かせて +09:00 にすると、UTC に変換された時間が設定されてしまいます。
 
-#### +09:00 のタイムゾーン表記の場合
+20:00:00+09:00 のタイムゾーン表記を設定した場合、バックアップのポリシーに設定される時間は9時間引かれた11時になります。
 
 ```
 scheduleRunTimes:
@@ -77,7 +79,7 @@ scheduleRunTimes:
 
 {{< figure src="./../../images/2019-02-08-001.png" title="JST タイムゾーンで設定した場合のポリシー" >}}
 
-#### +00:00 のタイムゾーン表記の場合
+20:00+00:00 のタイムゾーン表記を設定した場合、バックアップのポリシーに設定される時間は20時になります。
 
 ```
 scheduleRunTimes:
