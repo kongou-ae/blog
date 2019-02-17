@@ -78,7 +78,7 @@ az login --tenant aimless2.onmicrosoft.com
 az account set -s 81373782-f242-4e53-9a9e-ee9168ecc0f3
 ```
 
-上手くいくと、Azure CLI のコマンドで Azure Stack 上のリソースを確認できました。
+上手くいくと、Azure CLI のコマンドで Azure Stack 上のリソースを確認できます。
 
 ```bash
 az resource list -o table
