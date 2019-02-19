@@ -34,7 +34,7 @@ Ansible が利用する API のバージョンを下げるために、Ansible �
 pip install ansible[azure]\==2.4
 ```
 
-なお、Azure CLI で Azure Stack に接続している状態でも、Ansible の認証がエラーになりました。原因が得的出来なかったので、 `/etc/credentails` ファイルにサービスプリンシパルの情報を記載する方式で認証を突破します。Azure AD に作成したサービスプリンシパルを、 Azure Stack 上のサブスクリプションの IAM に追加するのを忘れずに。
+Azure CLI の認証情報を利用して Ansible を利用しようとしたのですが、Azure CLI で Azure Stack にログインしている状態でも、Ansible の認証がエラーになりました。原因が特定出来なかったので、`/etc/credentails` ファイルにサービスプリンシパルの情報を記載する方式で認証を突破します。Azure AD に作成したサービスプリンシパルを、 Azure Stack 上のサブスクリプションの IAM に追加するのを忘れずに。
 
 ```bash
 [default]
