@@ -49,7 +49,7 @@ cloud_environment=https://management.local.azurestack.external
 
 Playbookを書く際の注意点はリージョン名です。利用する Azure Stack のリージョン名を明記しましょう。今回は ASDK を利用したので、Playbook 上のリージョン名は `local` です。
 
-```yaml
+```bash
 - name: Create Azure VM
   hosts: localhost
   connection: local
