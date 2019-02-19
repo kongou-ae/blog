@@ -20,7 +20,7 @@ categories:
 
 `pip install ansible[azure]` でインストールした Ansible 2.7.7 だと、Virtual Network の作成がエラーになります。
 
-```
+```bash
     "msg": "Error creating or updating virtual network myVnet - Azure Error: NoRegisteredProviderFound\nMessage: No registered resource provider found for location 'local' and API version '2017-11-01' for type 'virtualNetworks'. The supported api-versions are '2014-12-01-preview, 2015-05-01-preview, 2015-06-15, 2016-03-30, 2016-06-01, 2016-07-01, 2016-08-01, 2016-09-01, 2016-10-01, 2016-11-01, 2016-12-01, 2017-03-01, 2017-04-01, 2017-06-01, 2017-08-01, 2017-09-01, 2017-10-01'. The supported locations are 'local'."
 ```
 
@@ -30,13 +30,13 @@ categories:
 
 Ansible が利用する API のバージョンを下げるために、Ansible そのもののバージョンを下げます。マネージドディスクと可用性セットをサポートする 2.4 が最終防衛線だと考えるので、2.4 を入れなおします。
 
-```
+```bash
 pip install ansible[azure]\==2.4
 ```
 
 なお、Azure CLI で Azure Stack に接続している状態でも、Ansible の認証がエラーになりました。原因が得的出来なかったので、 `/etc/credentails` ファイルにサービスプリンシパルの情報を記載する方式で認証を突破します。Azure AD に作成したサービスプリンシパルを、 Azure Stack 上のサブスクリプションの IAM に追加するのを忘れずに。
 
-```
+```bash
 [default]
 subscription_id=81373782-f242-4e53-9a9e-ee9168ecc0f3
 client_id=c6957708-cc0a-xxxx-xxxx-xxxxxxxxxxxx
@@ -49,7 +49,7 @@ cloud_environment=https://management.local.azurestack.external
 
 Playbookを書く際の注意点はリージョン名です。利用する Azure Stack のリージョン名を明記しましょう。今回は ASDK を利用したので、Playbook 上のリージョン名は `local` です。
 
-```
+```yaml
 - name: Create Azure VM
   hosts: localhost
   connection: local
