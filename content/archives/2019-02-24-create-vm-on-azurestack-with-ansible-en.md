@@ -51,7 +51,7 @@ client_id=c6957708-cc0a-xxxx-xxxx-xxxxxxxxxxxx
 secret=fd495ddd-e536-xxxx-xxxx-xxxxxxxxxxxx
 tenant=50f9de73-a175-xxxx-xxxx-xxxxxxxxxxxx
 cloud_environment=https://management.local.azurestack.external
-``
+```
 
 ## Notice for writing a playbook
 
@@ -67,10 +67,9 @@ client_id=c6957708-cc0a-xxxx-xxxx-xxxxxxxxxxxx
 secret=fd495ddd-e536-xxxx-xxxx-xxxxxxxxxxxx
 tenant=50f9de73-a175-xxxx-xxxx-xxxxxxxxxxxx
 cloud_environment=https://management.local.azurestack.external
-``
+```
 
 Also, you must use your region name of Azure Stack. Azure Stack uses a unique region name which is different from the region name of Azure. If you try Ansible with ASDK, location name must be local.
-
 
 ```
 - name: Create Azure VM
