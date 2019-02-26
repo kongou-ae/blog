@@ -1,7 +1,8 @@
 baseurl = "https://aimless.jp/blog/"
 languageCode = "ja"
 title = "Aimless"
-disqusShortname = "aimlessjpblog"
+hasCJKLanguage = true
+summaryLength = 70
 copyright = "Written by kongou_ae"
 canonifyurls = true
 relativeURLs = true
@@ -16,6 +17,20 @@ googleAnalyticsUserID = "UA-1736780-2"
 
 [outputs]
 home = [ "HTML", "RSS" ]
+
+[frontmatter]
+# update sitemap.xml's lastmod datetime by file change time, instead of git.
+lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[params]
+description = "Describe what your web page is about"
+twitter = "your_twitter_id"
+# You can use favicon by addin them manually.
+useIcon = true
+useTwitterCard = true
+
+shareTo = ["Twitter", "Hatena", "Facebook", "Pocket"]
+showFooterCredits = true
 
 [outputFormats]
 [outputFormats.RSS]
