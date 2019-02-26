@@ -2,7 +2,7 @@
   publish = "public"
   command = "hugo --buildFuture -t hugo-primer-fork -d public/blog && mv public/blog/feed.xml public/blog/feed"
 
-[context.production]
+[context.production.environment]
   HUGO_VERSION = "0.54.0"
 
 
