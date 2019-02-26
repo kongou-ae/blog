@@ -3,3 +3,13 @@ video.responsive-video {
     max-width: 100%;
     height: auto
 }
+
+figcaption {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.twitter-tweet {
+    margin-left: auto;
+    margin-right: auto;
+}
