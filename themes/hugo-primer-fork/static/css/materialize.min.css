@@ -1,7 +1,7 @@
 img.responsive-img,
 video.responsive-video {
-    max-width: 80%;
-    height: auto
+    max-width: 100%;
+    height: auto;
 }
 
 figcaption {
