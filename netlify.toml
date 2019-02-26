@@ -2,10 +2,7 @@
   HUGO_VERSION = "0.31.1"
 
 [context.deploy-preview]
-
   publish = "public"
-
-  # Default build command.
   command = "hugo --buildFuture -t hugo-primer-fork -d public/blog && mv public/blog/feed.xml public/blog/feed"
 
 [context.deploy-preview.environment]
