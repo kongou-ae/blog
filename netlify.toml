@@ -6,4 +6,4 @@
   command = "hugo --buildFuture -t hugo-primer-fork -d public/blog && mv public/blog/feed.xml public/blog/feed"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.4"
+  HUGO_VERSION = "0.42.2"
