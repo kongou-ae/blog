@@ -16,7 +16,7 @@ WorkSpacesは大変気軽です。ですが、リモートアクセス用途で�
 
 WorkSpacesクライアントは、認証情報を記憶する機能（Remember Me）があります。これを利用することで、次回以降のログインにおいてIDとパスワードの入力が不要となります。多要素認証を使っている場合、多要素認証のパスワードも記憶します。
 
-この機能は大変便利ですが、社外からのリモートアクセス用途の場合、第三者による不正利用のリスクが生まれます。この機能は利用しているDirectory Service単位で無効にすることができます。詳細は[Amazon WorkSpacesのRemember Me機能を使う](http://aimless.jp/blog/archives/2015-12-15-aws-workspaces-with-remember-me/)を参照ください。
+この機能は大変便利ですが、社外からのリモートアクセス用途の場合、第三者による不正利用のリスクが生まれます。この機能は利用しているDirectory Service単位で無効にすることができます。詳細は[Amazon WorkSpacesのRemember Me機能を使う](https://aimless.jp/blog/archives/2015-12-15-aws-workspaces-with-remember-me/)を参照ください。
 
 ## 利用状況を記録する
 

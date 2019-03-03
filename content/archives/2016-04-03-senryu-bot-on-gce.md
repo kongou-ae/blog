@@ -17,7 +17,7 @@ categories:
 
 ## 実装
 
-{{<img src="http://aimless.jp/blog/images/2016-04-03-001.png">}}]
+{{<img src="https://aimless.jp/blog/images/2016-04-03-001.png">}}]
 
 ## 設計
 

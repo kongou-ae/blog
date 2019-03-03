@@ -33,15 +33,15 @@ AD ConnectorとRADIUSサーバによる多要素認証を使ってみて気が�
 
 WorkSpacesクライアントを切断します。
 
-{{<img src="http://aimless.jp/blog/images/2015-12-15-002.png">}}
+{{<img src="https://aimless.jp/blog/images/2015-12-15-002.png">}}
 
 切断後の画面がRecconectになりません。IDとパスワード、ワンタイムパスワードを入力する画面に戻りました。
 
-{{<img src="http://aimless.jp/blog/images/2015-12-15-003.png">}}
+{{<img src="https://aimless.jp/blog/images/2015-12-15-003.png">}}
 
 WorkSpacesクライアントのオプション設定でもRemember Meを有効にすることができなくなります。
 
-{{<img src="http://aimless.jp/blog/images/2015-12-15-004.png">}}
+{{<img src="https://aimless.jp/blog/images/2015-12-15-004.png">}}
 
 ## 所感
 

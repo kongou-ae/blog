@@ -92,4 +92,4 @@ Origin codes: i - IGP, e - EGP, ? - incomplete
                                                   400      0 645** 645** 645** ?
 </code></pre>
 
- [1]: http://aimless.jp/blog/images/bgp.png
+ [1]: https://aimless.jp/blog/images/bgp.png
