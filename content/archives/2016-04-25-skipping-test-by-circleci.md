@@ -11,7 +11,7 @@ categories:
 
 下図のようなデプロイメントプロセスでブログを書いています。CircleCIを中心としたプロセスで、それなりに便利なのですが、ブログを公開するためにはRedPenのテストに合格しなければなりません。
 
-{{<img src="http://aimless.jp/blog/images/2016-04-25-001.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-04-25-001.png">}}
 
 RedPenのJavaScript拡張を利用したスペルチェックのロジックがイマイチなのか、前回のエントリ作成時に「Email」を「Gmail」や「Emacs」のスペルミスと判定する悲劇が起きました。
 
@@ -73,11 +73,11 @@ fi
 
 コミットメッセージを「update」とすると、CircleCIによってRedPenのテストが実行されます。ひらがなにしたほうが読みやすい表現に関するエラーがでています。
 
-{{<img src="http://aimless.jp/blog/images/2016-04-25-002.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-04-25-002.png">}}
 
 コミットメッセージを「update [skip test]」とすると、CircleCIによるRedPenのテストは実行されません。そのかわりに、スクリプトで設定した`redpen test is skipped.`が表示されます。
 
-{{<img src="http://aimless.jp/blog/images/2016-04-25-003.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-04-25-003.png">}}
 
 ## まとめ
 

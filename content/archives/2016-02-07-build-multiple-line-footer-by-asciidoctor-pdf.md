@@ -35,4 +35,4 @@ footer:
 
 asciidoctor-pdfでビルドする際に上記のテーマファイルを利用すると、以下のPDFが生成されます。やりたいことができました。
 
-{{<img src="http://aimless.jp/blog/images/2016-02-07-001.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-02-07-001.png">}}

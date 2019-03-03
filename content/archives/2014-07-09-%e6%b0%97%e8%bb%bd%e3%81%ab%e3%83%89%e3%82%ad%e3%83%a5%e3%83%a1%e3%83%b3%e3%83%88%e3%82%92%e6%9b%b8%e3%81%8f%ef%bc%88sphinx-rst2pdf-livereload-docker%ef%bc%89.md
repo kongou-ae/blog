@@ -54,4 +54,4 @@ categories:
 
 以上、気軽さを求めて試行錯誤した結果でした。
 
- [1]: http://aimless.jp/blog/images/doc-diag.jpg
+ [1]: https://aimless.jp/blog/images/doc-diag.jpg

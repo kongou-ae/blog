@@ -15,10 +15,10 @@ Zabbix3.0からメールの暗号化方式にSTARTTLSとSSL/TLSが選択でき�
 
 管理＞メディアタイプから以下の通り設定します。
 
-{{<img src="http://aimless.jp/blog/images/2016-04-18-001.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-04-18-001.png">}}
 
 ### 動作確認
 
 無事メールが届きました。
 
-{{<img src="http://aimless.jp/blog/images/2016-04-18-002.png">}}
+{{<img src="https://aimless.jp/blog/images/2016-04-18-002.png">}}

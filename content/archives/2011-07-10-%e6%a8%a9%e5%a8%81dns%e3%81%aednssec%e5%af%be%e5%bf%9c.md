@@ -80,4 +80,4 @@ aimless.zone.signed
 　全て緑ですので、rootから自ドメインまで信頼の連鎖が繋がったようです。いずれは、DNSSECのキモである鍵の更新に挑戦しようと思います。
 
  [1]: http://dnssec-debugger.verisignlabs.com/
- [2]: http://aimless.jp/blog/images/dnssec_result.png
+ [2]: https://aimless.jp/blog/images/dnssec_result.png
