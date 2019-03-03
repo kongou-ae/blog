@@ -34,3 +34,23 @@ baseName = "feed"
 
 [blackfriday]
 hrefTargetBlank = true
+
+[menu]
+
+  [[menu.main]]
+    name = "Category"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/categories/"
+    weight = -100
+
+  [[menu.main]]
+    name = "GitHub"
+    pre = "<i class='fa fa-road'></i>"
+    url = "https://github.com/kongou-ae"
+    weight = -100
+
+  [[menu.main]]
+    name = "Twitter"
+    pre = "<i class='fa fa-road'></i>"
+    url = "https://twitter.com/kongou_ae"
+    weight = -100
