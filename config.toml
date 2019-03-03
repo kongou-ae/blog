@@ -48,3 +48,9 @@ hrefTargetBlank = true
     pre = "<i class='fa fa-road'></i>"
     url = "https://github.com/kongou-ae"
     weight = -100
+
+  [[menu.main]]
+    name = "Twitter"
+    pre = "<i class='fa fa-road'></i>"
+    url = "https://twitter.com/kongou_ae"
+    weight = -100
