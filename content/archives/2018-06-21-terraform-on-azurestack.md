@@ -26,7 +26,7 @@ TerraformがAzure Stack Providerをリリースしたので試しました。
 まずはTerraformが利用するサービスプリンシパルを作ります。Cloud Shellを利用して、Azure Stackにログインするときに利用するAzure Active Directoryに、サービスプリンシパルを作成します。
 
 ```powershell
-matsumotoyusuke@Azure:~$ az ad sp create-for-rbac --name AzsTerraform --password PASSWORD
+~$ az ad sp create-for-rbac --name AzsTerraform --password PASSWORD
 Retrying role assignment creation: 1/36
 Retrying role assignment creation: 2/36
 {
