@@ -20,7 +20,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 [Params]
 twitter = "kongou_ae"
 github = "kongou-ae"
-googleAnalyticsUserID = "UA-1736780-2"
+googleAnalytics = "UA-1736780-2"
 # You can use favicon by addin them manually.
 useIcon = true
 useTwitterCard = true
