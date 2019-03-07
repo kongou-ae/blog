@@ -36,13 +36,13 @@ Offer や Plan、Quota の設定画面が変わりました。2019年3月時点�
 
 ### ERCS VM のリソース拡張
 
-ERCS VM の必要メモリが、8G から 12G に増加しました。ERCS VM は 3台構成なので、3台合計で 12G のメモリが 新たに Azure Stack の基盤に持っていかれます。ERCS VM のメモリ不足によるトラブルが起きたこともあるので、抜本的な対策を講じたのでしょう。
+Azure Stack の基盤を構成する VM (Infrastructure Role Instances) の一つである ERCS VM の必要メモリが、8G から 12G に増加しました。ERCS VM は 3台構成なので、3台合計で 12G のメモリが 新たに Azure Stack の基盤に持っていかれます。ERCS VM のメモリ不足によるトラブルが起きたこともあるので、抜本的な対策を講じたのでしょう。
 
 > In build 1902, the memory required by the ERCS infrastructure VM was increased from 8 GB to 12 GB. On an ASDK, this results in a 4 GB increase. On an Azure Stack integrated systems installation, it is a 12 GB increase.
 
 参考：[Known issues (post-installation) / Compute](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1902#compute)
 
-過去にも Azure Stack の基盤側の VM のリソースが追加されたことがありました。1台構成だったポータル用 VM が1台増えて合計2台になったり、2台構成だった VPN Gateway 用の VM が1台増えて合計3台構成になったりと、Microsoft は気軽に基盤側を拡張しますす。Microsoft が基盤側で使うリソースを勝手に増やす前提で、ゆとりを持ったキャパシティ計画を策定したほうがよいでしょう。
+過去にも Infrastructure Role Instances の VM のリソースが追加されたことがありました。1台構成だったポータル用 VM が1台増えて合計2台になったり、2台構成だった VPN Gateway 用の VM が1台増えて合計3台構成になったりと、Microsoft は気軽に Infrastructure Role Instances を拡張します。Microsoft が基盤側で使うリソースを勝手に増やす前提で、ゆとりを持ったキャパシティ計画を策定したほうがよいでしょう。
 
 ## まとめ
 
