@@ -31,7 +31,7 @@ Let's Encrypt に署名してもらうための CSR を作ります。Azure Stac
 なお、acme.sh は、CSR のフォーマットが `-----BEGIN CERTIFICATE REQUEST-----` で始まり `-----END CERTIFICATE REQUEST-----` で終わることを期待するようです。`AzsReadinessChecker` が作成してくれる CSR は `-----BEGIN NEW CERTIFICATE REQUEST-----` で始まり `-----END NEW CERTIFICATE REQUEST-----` で終わっているため、CSR に対する署名がエラーになりました。
 
 
-### Service Principle を作る
+## Service Principle を作る
 
 acme.sh は、様々な DNS サービスと連携して Let's Encrypt の DNS 認証を自動化してくれます。
 
