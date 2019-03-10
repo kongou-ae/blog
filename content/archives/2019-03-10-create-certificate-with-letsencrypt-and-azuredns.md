@@ -15,7 +15,7 @@ Azure Stack Development Kit を独自ドメインでデプロイするために�
 
 ## acme.sh をインストールする
 
-Let's encrypt のクライアントとして、Azure DNS との連携をサポートしている [acme.sh](https://github.com/Neilpang/acme.sh) を利用します。インストール方法は次の通りです。今回は Azure Cloud Shell 上にインストールしました。
+Let's Encrypt のクライアントとして、Azure DNS との連携をサポートしている [acme.sh](https://github.com/Neilpang/acme.sh) を利用します。インストール方法は次の通りです。今回は Azure Cloud Shell 上にインストールしました。
 
 ```bash
 curl https://get.acme.sh | sh
@@ -54,7 +54,7 @@ export AZUREDNS_CLIENTSECRET="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## 署名する
 
-acme.sh の準備ができたら、acme.sh を利用して、作成した CSR を Let's Encrypt に署名してもらいます。無事に署名が完了すると、Let's Encrypt に署名されたサーバ証明書が `$HOME/.acme.sh/` 配下に配置されます。簡単。
+acme.sh の準備ができたら、acme.sh を利用して、作成した CSR を Let's Encrypt に署名してもらいます。
 
 ```bash
 $ acme.sh --signcsr --dns dns_azure --csr adminportal_test_asdk_aimless_jp_CertRequest_20190310132106.req
@@ -83,6 +83,8 @@ $ acme.sh --signcsr --dns dns_azure --csr adminportal_test_asdk_aimless_jp_CertR
 [Sun Mar 10 13:40:12 UTC 2019] The intermediate CA cert is in $HOME/.acme.sh/adminportal.test.asdk.aimless.jp/ca.cer
 [Sun Mar 10 13:40:12 UTC 2019] And the full chain certs is there: $HOME/.acme.sh/adminportal.test.asdk.aimless.jp/fullchain.cer
 ```
+
+無事に署名が完了すると、Let's Encrypt に署名されたサーバ証明書が `$HOME/.acme.sh/` 配下に配置されます。簡単。DNS Zone の Activity Log を見ると、acme.sh が Service Principle を利用して TXTレコードを追加・削除しているのを確認できます。
 
 {{< figure src="./../../images/2019-03-10-001.PNG" title="実際にできたサーバ証明書" >}}
 
