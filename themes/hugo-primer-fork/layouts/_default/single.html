@@ -16,7 +16,12 @@
     {{ if ( default true .Params.showDate ) }}
     <div class="float-md-right">
       <span title="Lastmod: {{ .Lastmod.Format "2006-01-02" }}. Published at: {{ .PublishDate.Format "2006-01-02" }}.">
+        {{ if ( .Date ) }}
+          Published: {{ dateFormat "2006-01-02" .Date }}
+        {{ end }}
+        {{ if ( .PublishDate ) }}
           Published: {{ dateFormat "2006-01-02" .PublishDate }}
+        {{ end }}
       </span>
     </div>
     {{ end }}
