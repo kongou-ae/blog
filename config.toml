@@ -6,6 +6,7 @@ summaryLength = 70
 copyright = "Written by kongou_ae"
 canonifyurls = true
 relativeURLs = true
+enableGitInfo = true
 
 pygmentsUseClasses = true
 PygmentsCodeFences = true
