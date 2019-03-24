@@ -1,7 +1,7 @@
 ---
 title: Windows Virtual Desktop を作ってみた
 author: kongou_ae
-date: 2019-03-24
+publishDate: 2019-03-24
 url: /archives/2019-03-24-first-impression-of-windows-virtual-desktop
 categories:
   - azure
