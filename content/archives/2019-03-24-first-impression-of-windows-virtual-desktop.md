@@ -62,19 +62,17 @@ WVD(PaaS) とクライアントアプリが Azure Active Directory にアクセ�
 
 Host Pool を作成する際に Virtual Machine が `JsonADDomainExtension` を使ってドメイン参加しますので、Host Pool を配置する Virtual Network から Active Directory にアクセスできる必要があります。
 
-また、AD 上で `User must change password at next logon` にチェックが入っているユーザは、Host Pool への接続がエラーになります。Azure Active Direcotry Domain Service を利用した構成の場合、同期直後のユーザは AAD DS 側で`User must change password at next logon`にチェックが入るようです。AAD 側でパスワードを変更すれば、その変更が AAD DS に同期されて `User must change password at next logon` のチェックが外れます。AAD とAAD DS の構成で WVD を評価する際には、利用するユーザのパスワード変更を忘れずに。
-
-{{< figure src="./../../images/2019-03-23-004.PNG" title="User must change password at next logon" >}}
+また、AD 上で `User must change password at next logon` にチェックが入っているユーザは、Host Pool への接続がエラーになります。Azure Active Direcotry Domain Service を利用した構成の場合、同期直後のユーザは AAD DS 側で `User must change password at next logon` にチェックが入るようです。AAD 側でパスワードを変更すれば、その変更が AAD DS に同期されて `User must change password at next logon` のチェックが外れます。AAD とAAD DS の構成で WVD を評価する際には、利用するユーザのパスワード変更を忘れずに。
 
 ## 4. Host Pool ( ユーザを収容する Virtual Machine のあつまり )
 
 ### Virtual Machine の扱い
 
-手順に従って Host Pool を作成すると、Host Pool を構成する Virtual Machine は 他の Virtual Machine と同じように表示されます。Host Pool を作成する際に、Virtual Machine の Prefix を指定できるので、他の Virtual Machine と混同しない Prefix を指定しましょう。
+手順に従って Host Pool を作成すると、Host Pool を構成する Virtual Machine は 他の Virtual Machine と同じように一覧で表示されます。Host Pool を作成する際にVirtual Machine の Prefix を指定できるので、他の Virtual Machine と混同しない Prefix を指定しましょう。
 
-{{< figure src="./../../images/2019-03-23-005.PNG" title="アプリケーションのユーザ登録画面" >}}
+{{< figure src="./../../images/2019-03-23-005.PNG" title="Virtual Machine の Prefix" >}}
 
-上記の Prefix の場合、実際に構築される Virtual Machine の名前は 台数に応じて wvdpoolvm-0、wvdpoolvm-1 になります。
+上記の Prefix の場合、実際に構築される Virtual Machine の名前は、台数に応じて wvdpoolvm-0、wvdpoolvm-1 になります。
 
 ### 通信経路
 
@@ -97,11 +95,11 @@ Windows Virtual Desktop の基本的な部分を試してみて気になった�
 
 - FSLogix profile containers
   - [Set up a user profile share for a host pool](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-user-profile)
-- Host Pool をカスタムイメージから起動する
+- カスタムイメージの利用
   - [Prepare and customize a master VHD image](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/set-up-customize-master-image)
 - Host Pool のスケールアウト
   - そもそも、一度作った Host Pool の Virtual Machine を増やせるのかが不明。ポータルから作ると、別のリソースグループに Virtual Machine が配置されてしまう気がする。
-  - PowerShell や ARM テンプレートでやるのかな？
+  - スケールアウトは PowerShell や ARM テンプレートでやるのかな？
     - [Create a host pool with PowerShell (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-powershell)
     - [Create a host pool with an Azure Resource Manager template (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-arm-template)
 - 時間に応じた Host Pool の停止・起動
