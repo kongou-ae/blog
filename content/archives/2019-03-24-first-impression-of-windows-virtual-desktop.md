@@ -64,13 +64,15 @@ Host Pool を作成する際に Virtual Machine が `JsonADDomainExtension` を�
 
 また、AD 上で `User must change password at next logon` にチェックが入っているユーザは、Host Pool への接続がエラーになります。Azure Active Direcotry Domain Service を利用した構成の場合、同期直後のユーザは AAD DS 側で`User must change password at next logon`にチェックが入るようです。AAD 側でパスワードを変更すれば、その変更が AAD DS に同期されて `User must change password at next logon` のチェックが外れます。AAD とAAD DS の構成で WVD を評価する際には、利用するユーザのパスワード変更を忘れずに。
 
+{{< figure src="./../../images/2019-03-23-004.PNG" title="User must change password at next logon" >}}
+
 ## 4. Host Pool ( ユーザを収容する Virtual Machine のあつまり )
 
 ### Virtual Machine の扱い
 
 手順に従って Host Pool を作成すると、Host Pool を構成する Virtual Machine は 他の Virtual Machine と同じように表示されます。Host Pool を作成する際に、Virtual Machine の Prefix を指定できるので、他の Virtual Machine と混同しない Prefix を指定しましょう。
 
-{{< figure src="./../../images/2019-03-23-004.PNG" title="アプリケーションのユーザ登録画面" >}}
+{{< figure src="./../../images/2019-03-23-005.PNG" title="アプリケーションのユーザ登録画面" >}}
 
 上記の Prefix の場合、実際に構築される Virtual Machine の名前は 台数に応じて wvdpoolvm-0、wvdpoolvm-1 になります。
 
@@ -80,7 +82,7 @@ Host Pool の Virtual Machine には Public IP Address が割り当てられま�
 
 ドキュメントにはトラフィックフローの記載が見当たりません。現時点では、Ignite 2018 のセッション動画にて、WDV を利用する際のトラフィックフローが説明されています。この資料によると、WVD(PaaS) と Virtual Machine とのトラフィックは常に Virtual Machine から WVD(PaaS) への TCP/443のアウトバウンドのみのようです。この実装であれば Virtual Machine に Public IP Address が不要なことが理解できます。
 
-{{< figure src="./../../images/2019-03-23-005.PNG" title="アプリケーションのユーザ登録画面" >}}
+{{< figure src="./../../images/2019-03-23-006.PNG" title="トラフィックフロー" >}}
 
 引用：[Windows Virtual Desktop deep dive - BRK3312](https://youtu.be/VQSsgEYamBs?t=688)
 
