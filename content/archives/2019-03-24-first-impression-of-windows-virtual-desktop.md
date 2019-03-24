@@ -44,7 +44,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-desktop/environment-setup
 
 [Windows Virtual Desktop Powershel](https://docs.microsoft.com/en-us/powershell/module/windowsvirtualdesktop/?view=windows-virtual-desktop-1.0.0-preview)
 
-一時期、プレビュー版の Azure Portal に WVD の開発中？の画面が載っていたので、いずれ Azure Portal からも設定できるようになると思います。次の動画の終盤に、開発中？の画面を使ったデモが行われています。早く Azure Portal 上で操作できるようになってほしい。
+ただし、次の動画では Azure Portal を使ったデモが行われています。一時期、プレビュー版の Azure Portal に WVD の開発中の画面が表示されていたので、いずれ Azure Portal で WVD(PaaS)を設定できるようになるでしょう。
 
 [What is Windows Virtual Desktop?](https://youtu.be/30dOLcZ4_9U?t=611)
 
