@@ -1,7 +1,7 @@
 ---
 title: PaloAlto on Azure を Active/Passive 構成で導入する
 author: kongou_ae
-date: 2019-03-10
+date: 2019-03-27
 url: /archives/2019/03/deploy-paloalto-on-azure-as-active-passive
 categories:
   - azure
@@ -32,33 +32,17 @@ PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によ�
 
 {{< figure src="./../../images/2019-03-24-005.PNG" title="デプロイ直後の構成" >}}
 
-## 3. バージョンを 9.0 に上げる
-
-2019年3月現在、マーケットプレイスで公開されている PaloAlto のバージョンは 8.x 系のみです。デプロイ後に、Active/Passive の機能をサポートする9.0系にアップデートします。8.1系をデプロイすれば、直接9.0にアップデートできます。
-
-```powershell
-PS Azure:\> Get-AzureRmVMImage -Location japaneast -PublisherName paloaltonetworks -Offer vmseries1 -skus bundle1 | select-object Version,Skus,Offer,Publishername
-
-Version Skus    Offer     PublisherName
-------- ----    -----     -------------
-7.1.1   bundle1 vmseries1 paloaltonetworks
-8.0.0   bundle1 vmseries1 paloaltonetworks
-8.1.0   bundle1 vmseries1 paloaltonetworks
-```
-
-{{< figure src="./../../images/2019-03-24-001.PNG" title="アップデートの画面" >}}
-
-## 4. NIC に仮想 IP アドレスとなる Secondary IP を付与する
+## 3. NIC に仮想 IP アドレスとなる Secondary IP を付与する
 
 デプロイ直後の NIC には、Azure が DHCP で割り当てた IP アドレスのみが割り当てられています。1号機の NIC に2台で共有する仮想 IP アドレス を Secondary IP として割り当てます。今回は第4オクテットが100の IP アドレスを仮想 IP アドレスとして利用します。Secondary IP を割り当てるのは、サーバの通信を制御する2本目と3本目の NIC です。
 
 {{< figure src="./../../images/2019-03-24-002.PNG" title="Secondary IP の設定画面" >}}
 
-## HA ポート用の NIC を足す
+## 4. HA ポート用の NIC を足す
 
 マーケットプレイスからデプロイする PaloAlto はシングル構成で導入されることを想定しているため、1台目の仮想マシンには HA 用の NIC が搭載されません。VNet に HA 用のサブネットを新設したうえで、そのサブネットに接続する NIC を追加します。
 
-## UDR を設定する
+## 5. UDR を設定する
 
 デフォルトの ルートテーブル のままだと、サーバが発信した通信とサーバに戻る通信が PaloAlto を経由しません。通信を PaloAlto 経由にするために、PaloAlto で通信を制御したいサブネットに UDR を適用します。そして UDR に対して、PaloAlto 経由で通信したいサブネットのルーティングを追加します。設定するルーティングのネクストホップは、NIC に割り当てた Secondary IP です。
 
@@ -66,9 +50,9 @@ Azure 上の設定はこれで完了です。ここまでの設定によって�
 
 {{< figure src="./../../images/2019-03-24-007.PNG" title="Secondary IP ＋ NIC ＋ UDR後の構成" >}}
 
-## PaloAlto を設定する
+## 6. PaloAlto を設定する
 
-ここからは PaloAlto の設定になります。
+Azure 側の設定が済んだの、PaloAlto を設定していきます。
 
 ### 1. NIC を設定する
 
@@ -90,7 +74,7 @@ UDR で制御できるのは、Virtual Machine が発信したパケットをど
 
 最後に、Virtual Machine 同士の通信を PaloAlto が許可するように、PaloAlto にポリシーを設定します。
 
-## 疎通確認
+## 7. 疎通確認
 
 UDR と OS 上のルーティング、ポリシーのすべてが整うと、2台の Virtual Machine が PaloAlto を経由して通信できるようになります。例えば、10.4.3.4 の Virtual Machine が 10.4.4.4 のVirtual Machine に通信すると、次のような段取りでパケットがルーティングされます。
 
@@ -112,17 +96,31 @@ UDR と OS 上のルーティング、ポリシーのすべてが整うと、2�
 5. Azure は、10.4.1.0/24 のサブネットに適用されているシステムルートに従って、NVA が転送した 10.4.3.4 宛てのパケットを 10.4.3.4 の Virtual Machine に転送する
 6. 10.4.3.4 の Virtual Machine が 10.4.3.4 宛てのパケットを受信する
 
-## 冗長化の設定を追加する
+## 8. 冗長化の設定を追加する
 
-シングル構成で通信できることが分かったので、1号機に冗長化の設定を追加します。まずは、障害時に切り替えで PaloAlto 自身が Azure を操作するための資格情報であるサービスプリンシパルを設定します。サービスプリンシパルを利用して Azure にアクセスできるかをテストするボタンが用意されている新設設計です。
+２号機をデプロイする前に、１号機に冗長化の設定を入れておきます。2019年3月現在、マーケットプレイスで公開されている PaloAlto のバージョンは 8.x 系のみです。冗長化の設定を追加するために、Active/Passive の機能をサポートする9.0系にアップデートします。8.1系をデプロイすれば、直接9.0にアップデートできます。
+
+```powershell
+PS Azure:\> Get-AzureRmVMImage -Location japaneast -PublisherName paloaltonetworks -Offer vmseries1 -skus bundle1 | select-object Version,Skus,Offer,Publishername
+
+Version Skus    Offer     PublisherName
+------- ----    -----     -------------
+7.1.1   bundle1 vmseries1 paloaltonetworks
+8.0.0   bundle1 vmseries1 paloaltonetworks
+8.1.0   bundle1 vmseries1 paloaltonetworks
+```
+
+{{< figure src="./../../images/2019-03-24-001.PNG" title="アップデートの画面" >}}
+
+そして、障害時の切り替えで PaloAlto 自身が Azure を操作するための資格情報であるサービスプリンシパルを設定します。設定画面にサービスプリンシパルを利用して Azure にアクセスできるかをテストするボタンが用意されている親切設計です。
 
 {{< figure src="./../../images/2019-03-24-009.PNG" title="サービスプリンシパルの設定画面" >}}
 
-そして、HA の設定を追加します。左上の HA のピアには、相手の mgmt ポートのIPアドレスを設定します。右下のセッション同期で利用するデータリンクには、増設した 自分の HA ポートの情報を設定します。
+最後に、HA の設定を追加します。左上の HA のピアには、相手の mgmt ポートのIPアドレスを設定します。右下のセッション同期で利用するデータリンクには、増設した 自分の HA ポートの情報を設定します。
 
 {{< figure src="./../../images/2019-03-24-010.PNG" title="HA の設定画面" >}}
 
-## 2台目の PaloAlto をデプロイする
+## 9. 2台目の PaloAlto をデプロイする
 
 シングル構成が整ったので2台目を用意します。まずは、2台目の PaloAlto を公式が用意している [ARM Template](https://github.com/PaloAltoNetworks/Azure-HA-Deployment) でデプロイします。2台目を ARM Template でデプロイする理由は、Marketplace からだと既存の Virtual Network に 2台目をデプロイできないからです。
 
@@ -155,7 +153,7 @@ byol    vmseries1 paloaltonetworks japaneast
 
 {{< figure src="./../../images/2019-03-24-011.PNG" title="最終構成" >}}
 
-## 動作確認
+## 10. 動作確認
 
 1号機と2号機の設定が正しければ、冗長化のステータス画面がActiveとPassiveになります。左側が1号機、右側が2号機です。
 
@@ -179,6 +177,3 @@ byol    vmseries1 paloaltonetworks japaneast
 PaloAlto on Azure が 9.0 系でサポートした Active/Passive 方式の HA を実際に試してみました。今回は PaloAlto が通信を制御するサブネットを最小限にしたため、すんなりと PaloAlto を Active/Passive 構成で導入して通信を制御できました。切り替わり時の通信断時間がオンプレミスと比較すると長いように感じますが、API をたたいて切り替える方式である以上、オンプレミスのように Ping 数発かけるだけという切り替えは不可能だと思います。
 
 ステートフルな NVA を Azure 上に導入するうえで、 Active/Passive 形式の冗長化方式は必要不可欠です。また一つ Azure Native な Active/Passive 形式の冗長化をサポートする NVA が増えたことを嬉しく思います。
-
-
-
