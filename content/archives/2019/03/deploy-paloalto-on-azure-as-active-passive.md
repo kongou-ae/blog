@@ -2,9 +2,10 @@
 title: PaloAlto on Azure を Active/Passive 構成で導入する
 author: kongou_ae
 date: 2019-03-10
-url: /archives/2019-03-10-create-certificate-with-letsencrypt-and-azuredns
+url: /archives/2019/03/deploy-paloalto-on-azure-as-active-passive
 categories:
-  - azurestack
+  - azure
+  - network
 ---
 
 ## はじめに
