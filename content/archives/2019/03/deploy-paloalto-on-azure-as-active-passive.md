@@ -28,13 +28,23 @@ Azure CLI で次のようなコマンドを実行して、Service Principle を�
 
 ## 2. 1台目の PaloAlto をデプロイする
 
-まずは1台の PaloAlto をデプロイします。MarketPlace からデプロイする方法が簡単です。最終的に Virtual Machine に NIC を4本接続しなければならないので、ある程度大きめのインスタンスが必要です。
+まずは1台の PaloAlto をデプロイします。Marketplace からデプロイする方法が簡単です。最終的に Virtual Machine に NIC を4本接続しなければならないので、ある程度大きめのインスタンスを選択します。なお、2019年3月現在、Marketplace では9.0の PaloAlto が公開されていません。8.1が9.0へのアップデートをサポートしているので、8.1を選択してデプロイするとアップデートが1回で済みます。
 
-デプロイ後の仮想マシンは 3本の NIC を持っています。PaloAlto からみると、1本目が管理用の NICに、2本目と3本目がサーバの通信を制御する NIC になります。デプロイ直後の下図の通りです。
+```powershell
+PS Azure:\> Get-AzureRmVMImage -Location japaneast -PublisherName paloaltonetworks -Offer vmseries1 -skus bundle1 | select-object Version,Skus,Offer,Publishername
 
-このタイミングで動作確認用の Virtual Machine も作っておきます。冗長化とは関係ありません。
+Version Skus    Offer     PublisherName
+------- ----    -----     -------------
+7.1.1   bundle1 vmseries1 paloaltonetworks
+8.0.0   bundle1 vmseries1 paloaltonetworks
+8.1.0   bundle1 vmseries1 paloaltonetworks
+```
+
+デプロイ後の Virtual Machine は 3本の NIC を持っています。PaloAlto からみると、1本目が管理用の NICに、2本目と3本目がサーバの通信を制御する NIC になります。デプロイ直後の下図の通りです。
 
 {{< figure src="/images/2019-03-24-005.png" title="デプロイ直後の構成" >}}
+
+このタイミングで動作確認用の Virtual Machine も作っておきます。冗長化とは関係ありません。
 
 ## 3. NIC に仮想 IP アドレスとなる Secondary IP を付与する
 
@@ -56,13 +66,13 @@ Marketplace からデプロイする PaloAlto はシングル構成で導入さ�
 
 **10.4.3.0/24**
 
-| 宛先サブネット | ネクストホップ｜
+| 宛先サブネット | ネクストホップ |
 |-----------|-----------|
 |10.4.4.0/24|10.4.1.100|
 
 **10.4.4.0/24**
 
-| 宛先サブネット | ネクストホップ｜
+| 宛先サブネット | ネクストホップ |
 |-----------|-----------|
 |10.4.3.0/24|10.4.2.100|
 
@@ -83,7 +93,7 @@ Azure 側の設定が済んだの、PaloAlto を設定していきます。
 
 デプロイ直後の通信制御用 NIC には OS 側で IP アドレスが振られていないので、OS 側でも NIC に IP アドレスを振ります。
 
-ポイントは、Azure 側の NIC で仮想 IP として割り当てた Secondary IP のみを、サブネットマスクと一致する IP アドレスで設定する箇所です。Azure 側の NIC で Primary IP として割り当てられた IP アドレスは /32 の IP アドレスで設定します。OS に対して、Secondary IP こそが パケット転送の際に自分が使うべき IPアドレスだと認識させるわけですね。
+ポイントは、Azure 側の NIC で仮想 IP として割り当てた Secondary IP のみを、サブネットマスクと一致する IP アドレスで設定することです。Azure 側の NIC で Primary IP として割り当てられた IP アドレスは /32 の IP アドレスで設定します。OS に対して、Secondary IP こそが パケット転送の際に自分が使うべき IPアドレスだと認識させるわけですね。
 
 {{< figure src="/images/2019-03-24-003.png" title="NIC の設定画面" >}}
 
@@ -97,9 +107,9 @@ UDR で制御できるのは、Virtual Machine が発信したパケットをど
 
 10.4.3.0/24 のサブネットに「10.4.4.0/24 宛てのパケットを 10.4.1.100 に転送しろ」という UDR を適用したので、PaloAlto は 10.4.3.0/24 からのパケットを 10.4.1.100 な Eth1/1 で受信します。PaloAlto はステートフルファイアウォールとして動作するため、10.4.1.100 な Eth1/1 で受信したパケットの戻りを 10.4.1.100 な Eth1/1 から送信しなければなりません。
 
-そのために、OS 上のルーティングテーブルに、「10.4.3.0/24 宛てのパケットは Eth1/1 の先にいる 10.4.1.1（サブネットのデフォルトゲートウェイ）に転送しろ」というスタティックルートを設定します。同様の理由から、「10.4.4.0/24 は Ethe1/2 の先にいる 10.4.2.1 に転送しろ」というスタティックルートをも設定します。
+そのために、OS 上のルーティングテーブルに、「10.4.3.0/24 宛てのパケットは Eth1/1 の先にいる 10.4.1.1（サブネットのデフォルトゲートウェイ）に転送しろ」というスタティックルートを設定します。同様の理由から、「10.4.4.0/24 は Eth1/2 の先にいる 10.4.2.1 に転送しろ」というスタティックルートも設定します。
 
-最後に、Virtual Machine 同士の通信を PaloAlto が許可するように、PaloAlto にポリシーを設定します。
+最後に、PaloAlto が Virtual Machine 同士の通信を許可するように、PaloAlto にポリシーを設定します。
 
 ## 7. 疎通確認
 
@@ -109,7 +119,7 @@ UDR で制御できるのは、Virtual Machine が発信したパケットをど
 
 1. 10.4.3.4 の Virtual Machine が 10.4.4.4 宛てのパケットを発信する
 2. Azure は、10.4.3.0/24 のサブネットに適用されている UDR に従って、10.4.4.4 宛てのパケットを 10.4.1.100(NVA) に転送する
-3. NVA は 10.4.3.3 からのパケットを Eth1/1 で受信する。NVA には 「10.4.3.0/24 宛てのパケットは Eth1/1 の先にいる 10.4.1.1 に転送しろ」というスタティックルートが書いてあるため、正しい NIC からパケットを受信したと判断して次の処理に進む
+3. NVA は 10.4.3.3 からのパケットを Eth1/1 で受信する
 4. NVA は、「10.4.4.0/24 宛てのパケットを Eth1/2 の先にいる 10.4.2.1 に転送しろ」というスタティックルートに従って、10.4.4.4 宛てのパケットを Eth1/2 の先にいる 10.4.2.1 に転送する
 5. Azure は、10.4.2.0/24 のサブネットに適用されているシステムルートに従って、NVA が転送した 10.4.4.4 宛てのパケットを 10.4.4.4 の Virtual Machine に直接転送する
 6. 10.4.4.4 の Virtual Machine が 10.4.4.4 宛てのパケットを受信する
@@ -118,42 +128,38 @@ UDR で制御できるのは、Virtual Machine が発信したパケットをど
 
 1. 10.4.4.4 の Virtual Machine が 10.4.3.4 宛てのパケットを発信する
 2. Azure は、10.4.4.0/24 のサブネットに適用されている UDR に従って 10.4.3.4 宛てのパケットを 10.4.2.100(NVA) に転送する
-3. NVA は 10.4.4.4 からのパケットを Eth1/2 で受信する。NVA には 「10.4.4.0/24 宛てのパケットは Ethe1/2 の先にいる 10.4.2.1 に転送しろ」というスタティックルートが書いてあるため、正しい NIC からパケットを受信したと判断して次の処理に進む
+3. NVA は 10.4.4.4 からのパケットを Eth1/2 で受信する
 4. NVA は、「10.4.3.0/24 宛てのパケットを Eth1/1 の先にいる 10.4.1.1 に転送しろ」というスタティックルートに従って、10.4.3.4 宛てのパケットを Eth1/1 の先にいる 10.4.1.1 に転送する
 5. Azure は、10.4.1.0/24 のサブネットに適用されているシステムルートに従って、NVA が転送した 10.4.3.4 宛てのパケットを 10.4.3.4 の Virtual Machine に直接転送する
 6. 10.4.3.4 の Virtual Machine が 10.4.3.4 宛てのパケットを受信する
 
-なお、Network Securiyt Group で通信を制御している場合、上記のパケットが通過するすべての NSG で必要な通信を許可しなければなりません。
+なお、Network Securiyt Group で通信を制御している場合、上記のパケットが通過するすべての NSG で必要な通信を許可しなければなりません。大規模になればなるほど通信できないときのトラブルシュートが困難になっていきます。つらい。
 
-## 8. 冗長化の設定を追加する
+## 8. 冗長化
 
 単体での疎通確認が完了したら、2号機をデプロイする前に 1号機に冗長化の設定を入れておきます。
 
-2019年3月現在、マーケットプレイスで公開されている PaloAlto のバージョンは 8.x 系のみです。Active/Passive な冗長化の設定を追加するためには、Active/Passive の機能をサポートする 9. 0 系にアップデートする必要があります。そこで、8.1 系の PaloAlto をデプロイしたうえで、9.0 に直接アップデートします。
+### 1. 9.0へのアップデート
 
-```powershell
-PS Azure:\> Get-AzureRmVMImage -Location japaneast -PublisherName paloaltonetworks -Offer vmseries1 -skus bundle1 | select-object Version,Skus,Offer,Publishername
-
-Version Skus    Offer     PublisherName
-------- ----    -----     -------------
-7.1.1   bundle1 vmseries1 paloaltonetworks
-8.0.0   bundle1 vmseries1 paloaltonetworks
-8.1.0   bundle1 vmseries1 paloaltonetworks
-```
+まずは、Active/Passive な冗長化をサポートする9.0にアップデートします。
 
 {{< figure src="/images/2019-03-24-001.png" title="アップデートの画面" >}}
 
-そして、障害時の切り替えで PaloAlto 自身が Azure を操作するための資格情報であるサービスプリンシパルを設定します。設定画面にサービスプリンシパルを利用して Azure にアクセスできるかをテストするボタンが用意されている親切設計です。
+### 2. サービスプリンシパルの指定
+
+そして、サービスプリンシパルを設定します。設定画面にサービスプリンシパルを利用して Azure にアクセスできるかをテストするボタンが用意されている親切設計です。
 
 {{< figure src="/images/2019-03-24-009.png" title="サービスプリンシパルの設定画面" >}}
 
-最後に、HA の設定を追加します。左上の HA のピアには、相手の mgmt ポートのIPアドレスを設定します。右下のセッション同期で利用するデータリンクには、増設した 自分の HA ポートの情報を設定します。
+### 2. HA 設定
+
+最後に、HA の設定を追加します。左上の ピア HA IP アドレスには、相手の mgmt ポートのIPアドレスを設定します。右下のデータリンクには、増設した自分の HA ポートの情報を設定します。
 
 {{< figure src="/images/2019-03-24-010.png" title="HA の設定画面" >}}
 
 ## 9. 2台目の PaloAlto をデプロイする
 
-シングル構成が整ったので2台目を用意します。まずは、2台目の PaloAlto を公式が用意している [ARM Template](https://github.com/PaloAltoNetworks/Azure-HA-Deployment) でデプロイします。2台目を ARM Template でデプロイする理由は、Marketplace からだと既存の Virtual Network に 2台目をデプロイできないからです。
+シングル構成が整ったので2台目を用意します。まずは、2台目の PaloAlto を公式が用意している [ARM Template](https://github.com/PaloAltoNetworks/Azure-HA-Deployment) でデプロイします。2台目を ARM Template でデプロイする理由は、Marketplace からでは既存の Virtual Network に PaloAlto をデプロイできないからです。
 
 なお、2台目用のテンプレートは BYOL のイメージを使って PaloAlto を起動します。PAYG なイメージを使いたい場合は、テンプレート内の `imageSku` を `bundle1` または `bundle2` に変更する必要があります。
 
@@ -178,10 +184,11 @@ byol    vmseries1 paloaltonetworks japaneast
 
 - HA 用の NIC を増設する
 - PaloAlto を設定する
-  - NIC を設定する
-  - 冗長化の設定を追加する
+  - 9.0へのアップデート
+  - サービスプリンシパルの指定
+  - HA 設定
 
-作業後は次のような構成になります。
+2台目の導入が終わると、次のような構成になります。
 
 {{< figure src="/images/2019-03-24-011.png" title="最終構成" >}}
 
@@ -193,9 +200,9 @@ byol    vmseries1 paloaltonetworks japaneast
 
 セッション同期を有効にしていれば、下図の通り1号機を通過したセッションの情報が2号機にも同期されます。左側が1号機、右側が2号機です。10.4.3.4 の Virtual Machine から 10.4.4.4 の Virtual Machine に SSH した状態で1号機を停止して系を切り替えても、SSH が切断されることはありませんでした。セッション同期はうまく動いているようです。
 
-{{< figure src="/images/2019-03-24-012.png" title="セッション維持" >}}
+{{< figure src="/images/2019-03-24-013.png" title="セッション維持" >}}
 
-最後に、仮想マシンの再起動によって系が切り替わったときの通信断時間を計測しました。測定方法は、10.4.3.4 の Virtual Machine から 10.4.4.4 の Virtual Machine に Ping を打ち続けた状態で系を切り替えた際に何発の Ping が欠けたを icmp_seq を利用してカウントする手法です。Linux の Ping は1秒間隔なので、icmp_seq が30個かけたら30秒の通信断が発生したと判断しました。
+最後に、仮想マシンの再起動によって系が切り替わったときの通信断時間を計測しました。測定方法は、10.4.3.4 の Virtual Machine から 10.4.4.4 の Virtual Machine に Ping を打ち続けた状態で系を切り替えた際に何発の Ping が欠けたを icmp_seq を利用してカウントする手法です。Linux の Ping は1秒間隔なので、icmp_seq が30個かけたら30秒の通信断が発生したと判断します。
 
 結果は次の通りです。オンプレの通信断時間と比較すると断時間が長くまた揺らぎがあります。
 
@@ -213,8 +220,17 @@ byol    vmseries1 paloaltonetworks japaneast
 
 ただし、数分もかかることが正しいのかが判断できません。もし、本番環境に導入することがあったら、なぜこの時間がかかるのかを改めて調べようと思います。
 
+また、切り替え時に、Secondary IP として設定した仮想 IP アドレスは1号機から2号機にちゃんと移動していました。次の画像は、切り替える前の NIC の状態です。左が1号機で右が2号機です。1号機の NIC の Secondary IP に.100 のアドレスが設定されていることがわかります。
+
+{{< figure src="/images/2019-03-24-014.png" title="切り替える前の状態" >}}
+
+次の画像は、切り替えが完了した後の NIC の状態です。左が1号機で右が2号機です。2機の NIC の Secondary IP に.100 のアドレスが設定されていることがわかります。
+
+{{< figure src="/images/2019-03-24-015.png" title="切り替えた後の状態" >}}
+
+
 ## おわりに
 
-PaloAlto on Azure が 9.0 系でサポートした Active/Passive 方式の HA を実際に試してみました。今回は PaloAlto が通信を制御するサブネットを最小限にしたため、すんなりと PaloAlto を Active/Passive 構成で導入して通信を制御できました。切り替わり時の通信断時間がオンプレミスと比較すると長いように感じますが、API をたたいて切り替える方式である以上、オンプレミスのように Ping 数発かけるだけという切り替えは不可能だと思います。
+PaloAlto on Azure が 9.0 系でサポートした Active/Passive 方式の HA を実際に試してみました。今回は PaloAlto が通信を制御するサブネットを最小限にしたため、すんなりと PaloAlto を Active/Passive 構成で導入して通信を制御できました。切り替わり時の通信断時間がオンプレミスと比較すると長いように感じますが、API を叩いて切り替える方式である以上、オンプレミスのように Ping 数発かけるだけという切り替えは不可能だと思います。
 
-ステートフルな NVA を Azure 上に導入するうえで、 Active/Passive 形式の冗長化方式は必要不可欠です。また一つ Azure Native な Active/Passive 形式の冗長化をサポートする NVA が増えたことを嬉しく思います。
+ステートフルな NVA を Azure 上に導入するうえで、 Active/Passive 形式の冗長化方式は必要不可欠です。Azure Native な Active/Passive 形式の冗長化をサポートする NVA がまた1つ増えたことを嬉しく思います。
