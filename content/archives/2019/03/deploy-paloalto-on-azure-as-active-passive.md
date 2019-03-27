@@ -211,12 +211,12 @@ byol    vmseries1 paloaltonetworks japaneast
 - 3回目：80秒
 - 4回目：172秒
 
-謎です。PaloAlto が系を切り替える際には、PaloAlto 自身が次の作業をやっているはずなので、ある程度の時間がかかるのは想定内です。
+謎です。PaloAlto が系を切り替える際には、PaloAlto 自身が次の作業をやっているはずなので、ある程度の時間がかかるのは想定内です。API を叩いて切り替える方式である以上、オンプレミスのように Ping 数発かけるだけという切り替えは不可能だと思います。
 
 1. Passive 側が Active 側の障害を検知する
 1. Passive 側が API をたたいて Active 系 の NIC から Secondary IP を削除する
 1. Passive 側が APIをたたいて Passive 系の NIC に Secondary IP を設定する
-1. PaloAlto 的に Passive 系を Active系 に切り替える
+1. PaloAlto 的に Passive 側を Active 側に切り替える
 
 ただし、数分もかかることが正しいのかが判断できません。もし、本番環境に導入することがあったら、なぜこの時間がかかるのかを改めて調べようと思います。
 
@@ -228,9 +228,8 @@ byol    vmseries1 paloaltonetworks japaneast
 
 {{< figure src="/images/2019-03-24-015.png" title="切り替えた後の状態" >}}
 
-
 ## おわりに
 
-PaloAlto on Azure が 9.0 系でサポートした Active/Passive 方式の HA を実際に試してみました。今回は PaloAlto が通信を制御するサブネットを最小限にしたため、すんなりと PaloAlto を Active/Passive 構成で導入して通信を制御できました。切り替わり時の通信断時間がオンプレミスと比較すると長いように感じますが、API を叩いて切り替える方式である以上、オンプレミスのように Ping 数発かけるだけという切り替えは不可能だと思います。
+PaloAlto on Azure が 9.0 系でサポートした Active/Passive 方式の HA を実際に試してみました。ステートフルな NVA を Azure 上に導入するうえで、 Active/Passive 形式の冗長化方式は必要不可欠です。Azure Native な Active/Passive 形式の冗長化をサポートする NVA がまた1つ増えたことを嬉しく思います。
 
-ステートフルな NVA を Azure 上に導入するうえで、 Active/Passive 形式の冗長化方式は必要不可欠です。Azure Native な Active/Passive 形式の冗長化をサポートする NVA がまた1つ増えたことを嬉しく思います。
+今回は PaloAlto が通信を制御するサブネットを最小限にしたため、すんなりと PaloAlto を Active/Passive 構成で導入して通信を制御できました。沢山のサブネットを PaloAlto の保護対象とする、または Hub&Spoke 型の VNet に導入するなど複雑な構成で導入しようとすると、難易度が一気に跳ね上がる気がします。ご利用は計画的に。
