@@ -30,7 +30,7 @@ PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によ�
 
 デプロイ直後の下図の通りです。動作確認用の Virtual Machine も作っておきます。
 
-{{< figure src="./../../images/2019-03-24-005.PNG" title="デプロイ直後の構成" >}}
+{{< figure src="images/2019-03-24-005.png" title="デプロイ直後の構成" >}}
 
 ## 3. NIC に仮想 IP アドレスとなる Secondary IP を付与する
 
