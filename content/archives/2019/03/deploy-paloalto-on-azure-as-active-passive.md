@@ -14,11 +14,13 @@ PaloAlto が 9.0 で Azure での Active/Passive 方式の冗長化をサポー�
 
 [Set up Active/Passive HA on Azure](https://docs.paloaltonetworks.com/vm-series/9-0/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure.html)
 
-Active/Passive 方式の冗長化といえばネットワークエンジニアの悲願です。これまで IP アドレス付け替え方式の構成を組んだことがなかったので、実際に試してみました
+Active/Passive 方式で冗長化された NVA は、オンプレミスのネットワークエンジニアのとって慣れ親しんだ構成です。これまで IP アドレス付け替え方式の冗長構成を組んだことがなかったので、実際に試してみました
 
 ## 1. サービスプリンシパルを作る
 
-PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によって実現されます。そのため、PaloAlto 自体に Service Principle を登録する必要があります。Azure CLI でサクッと作ります。
+PaloAlto の IP アドレス付け替えは、PaloAlto 自身の HA 機能によって実現されます。そのため、PaloAlto 自体に Azure を操作するための資格情報である Service Principle を登録する必要があります。
+
+Azure CLI で次のようなコマンドを実行して、Service Principle をサクッと作ります。
 
 ```bash
 ~$ az ad sp create-for-rbac --name palo
@@ -26,15 +28,17 @@ PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によ�
 
 ## 2. 1台目の PaloAlto をデプロイする
 
-まずは1台の PaloAlto をデプロイします。NIC を4本接続しなければならないので、ある程度大きめのインスタンスが必要です。マーケットプレイスからデプロイするのが簡単です。デプロイ後の仮想マシンは、3本の NIC を持っています。PaloAlto からみると、1本目が管理用の NICに、2本目と3本目がサーバの通信を制御する NIC になります。
+まずは1台の PaloAlto をデプロイします。マーケットプレイスからデプロイするのが簡単です。NIC を4本接続しなければならないので、ある程度大きめのインスタンスが必要です。
 
-デプロイ直後の下図の通りです。動作確認用の Virtual Machine も作っておきます。
+デプロイ後の仮想マシンは、3本の NIC を持っています。PaloAlto からみると、1本目が管理用の NICに、2本目と3本目がサーバの通信を制御する NIC になります。
+
+デプロイ直後の下図の通りです。このタイミングで^_^動作確認用の Virtual Machine も作っておきました。
 
 {{< figure src="/images/2019-03-24-005.png" title="デプロイ直後の構成" >}}
 
 ## 3. NIC に仮想 IP アドレスとなる Secondary IP を付与する
 
-デプロイ直後の NIC には、Azure が DHCP で割り当てた IP アドレスのみが割り当てられています。1号機の NIC に2台で共有する仮想 IP アドレス を Secondary IP として割り当てます。今回は第4オクテットが100の IP アドレスを仮想 IP アドレスとして利用します。Secondary IP を割り当てるのは、サーバの通信を制御する2本目と3本目の NIC です。
+デプロイ直後の NIC には、Azure が DHCP で割り当てた IP アドレスのみが割り当てられています。1号機の NIC に2台で共有する仮想 IP アドレス を Secondary IP として割り当てます。Secondary IP を割り当てるのは、サーバの通信を制御する2本目と3本目の NIC 今回は第4オクテットが100の IP アドレスを仮想 IP アドレスとして利用します。
 
 {{< figure src="/images/2019-03-24-002.png" title="Secondary IP の設定画面" >}}
 
