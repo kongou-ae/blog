@@ -36,7 +36,7 @@ PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によ�
 
 デプロイ直後の NIC には、Azure が DHCP で割り当てた IP アドレスのみが割り当てられています。1号機の NIC に2台で共有する仮想 IP アドレス を Secondary IP として割り当てます。今回は第4オクテットが100の IP アドレスを仮想 IP アドレスとして利用します。Secondary IP を割り当てるのは、サーバの通信を制御する2本目と3本目の NIC です。
 
-{{< figure src="./../../images/2019-03-24-002.PNG" title="Secondary IP の設定画面" >}}
+{{< figure src="/images/2019-03-24-002.png" title="Secondary IP の設定画面" >}}
 
 ## 4. HA ポート用の NIC を足す
 
@@ -48,7 +48,7 @@ PaloAlto のIPアドレス付け替えは、PaloAlto 自身の HA 機能によ�
 
 Azure 上の設定はこれで完了です。ここまでの設定によって、Azure 上には次にような環境が出来上がっています。
 
-{{< figure src="./../../images/2019-03-24-007.PNG" title="Secondary IP ＋ NIC ＋ UDR後の構成" >}}
+{{< figure src="/images/2019-03-24-007.png" title="Secondary IP ＋ NIC ＋ UDR後の構成" >}}
 
 ## 6. PaloAlto を設定する
 
@@ -60,7 +60,7 @@ Azure 側の設定が済んだの、PaloAlto を設定していきます。
 
 デプロイ直後の通信制御用 NIC には OS 側で IP アドレスが振られていませんので、OS 側でも NIC に IP アドレスを振ります。ポイントは、Azure 側の NIC で仮想 IP として割り当てた Secondary IP のみを、サブネットと一致するサブネットマスクで設定する箇所です。Azure 側の NIC で Primary IP として割り当てられた IP アドレスは /32 の IP アドレスで設定します。OS に対して、Secondary IP こそが 自分の使うべき IPアドレスだと認識させるわけですね。
 
-{{< figure src="./../../images/2019-03-24-003.PNG" title="NIC の設定画面" >}}
+{{< figure src="/images/2019-03-24-003.png" title="NIC の設定画面" >}}
 
 **HA 用の NIC**
 
@@ -110,15 +110,15 @@ Version Skus    Offer     PublisherName
 8.1.0   bundle1 vmseries1 paloaltonetworks
 ```
 
-{{< figure src="./../../images/2019-03-24-001.PNG" title="アップデートの画面" >}}
+{{< figure src="/images/2019-03-24-001.png" title="アップデートの画面" >}}
 
 そして、障害時の切り替えで PaloAlto 自身が Azure を操作するための資格情報であるサービスプリンシパルを設定します。設定画面にサービスプリンシパルを利用して Azure にアクセスできるかをテストするボタンが用意されている親切設計です。
 
-{{< figure src="./../../images/2019-03-24-009.PNG" title="サービスプリンシパルの設定画面" >}}
+{{< figure src="/images/2019-03-24-009.png" title="サービスプリンシパルの設定画面" >}}
 
 最後に、HA の設定を追加します。左上の HA のピアには、相手の mgmt ポートのIPアドレスを設定します。右下のセッション同期で利用するデータリンクには、増設した 自分の HA ポートの情報を設定します。
 
-{{< figure src="./../../images/2019-03-24-010.PNG" title="HA の設定画面" >}}
+{{< figure src="/images/2019-03-24-010.png" title="HA の設定画面" >}}
 
 ## 9. 2台目の PaloAlto をデプロイする
 
@@ -151,17 +151,17 @@ byol    vmseries1 paloaltonetworks japaneast
 
 作業後は次のような構成になります。
 
-{{< figure src="./../../images/2019-03-24-011.PNG" title="最終構成" >}}
+{{< figure src="/images/2019-03-24-011.png" title="最終構成" >}}
 
 ## 10. 動作確認
 
 1号機と2号機の設定が正しければ、冗長化のステータス画面がActiveとPassiveになります。左側が1号機、右側が2号機です。
 
-{{< figure src="./../../images/2019-03-24-012.PNG" title="HA の状態" >}}
+{{< figure src="/images/2019-03-24-012.png" title="HA の状態" >}}
 
 セッション同期を有効にすると、1号機を通過したセッションの情報が2号機にも同期されます。左側が1号機、右側が2号機です。10.4.3.4 の Virtual Machine から 10.4.4.4 の Virtual Machine に SSH した状態で1号機を停止して系を切り替えても、SSH が切断されることはありませんでした。セッション同期はうまく動いているようです。
 
-{{< figure src="./../../images/2019-03-24-012.PNG" title="セッション維持" >}}
+{{< figure src="/images/2019-03-24-012.png" title="セッション維持" >}}
 
 最後に、仮想マシンの再起動によって系が切り替わったときの通信断時間を計測しました。測定方法は、10.4.3.4 の Virtual Machine から 10.4.4.4 の Virtual Machine に Ping を打ち続けた状態で系を切り替えた際に何発の Ping が欠けたかです。結果は次の通りです。オンプレの通信断時間と比較すると断時間が長く、また揺らぎました。
 
