@@ -12,7 +12,8 @@ categories:
 
 Azure Stack 1903 Update がリリースされました。
 
-
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="ja"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AzureStack?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStack</a> 1903 update is out. <a href="https://t.co/hO2cPXWTCu">https://t.co/hO2cPXWTCu</a>. ~16h to update</p>&mdash; Vijay Tewari (@vtango) <a href="https://twitter.com/vtango/status/1113491154933149696?ref_src=twsrc%5Etfw">2019年4月3日</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## ASDK
 
@@ -25,10 +26,9 @@ Azure Stack 1903 Update がリリースされました。
 1903 Update 以降、Microsoft はアップデートの適用にかかる見込み時間を教えてくれるようになるようです。
 
 > Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
+> [Improvements](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1903#improvements)
 
-これは本当にありがたいです。Azure Stack Integrated Systems のアップデートは自動で行われます。そのため所要時間が全く読めません。仕方がないので「過去の実績からすると、20時間から30時間、30時間を超えることもある」というデタラメな予想をもとに対応せざるを得ませんでした。
-
-今後は、Microsoft が見込みではあるものの所要時間を教えてくれるようになるので、アップデートの適用スケジュールを多少組みやすくなります。
+この運用は本当にありがたいです。Azure Stack Integrated Systems のアップデートは自動で行われます。そのため所要時間が全く読めません。仕方がないので「過去の実績からすると、20時間から30時間、30時間を超えることもある」というデタラメな予想をもとに対応せざるを得ませんでした。今後は、Microsoft が見込みではあるものの所要時間を教えてくれるようになるので、アップデートの適用スケジュールを多少組みやすくなります。
 
 ### Public IP Address の Idle timeout
 
