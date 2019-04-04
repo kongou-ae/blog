@@ -25,8 +25,8 @@ Azure Stack 1903 Update がリリースされました。
 
 1903 Update 以降、Microsoft はアップデートの適用にかかる見込み時間を教えてくれるようになるようです。
 
-> Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
-> [Improvements](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1903#improvements)
+> Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.  
+> 引用：[Improvements](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1903#improvements)
 
 この運用は本当にありがたいです。Azure Stack Integrated Systems のアップデートは自動で行われます。そのため所要時間が全く読めません。仕方がないので「過去の実績からすると、20時間から30時間、30時間を超えることもある」というデタラメな予想をもとに対応せざるを得ませんでした。今後は、Microsoft が見込みではあるものの所要時間を教えてくれるようになるので、アップデートの適用スケジュールを多少組みやすくなります。
 
