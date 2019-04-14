@@ -18,7 +18,7 @@ Azure Stack Integrated systems 上の Virtual Machine を Azure の運用管理�
 * Update Management
 * Security Center
 
-2019年4月現在の Azure Stack にはこれらの運用管理サービスが存在しません。正確に言うと Azure Monitor は存在しますが、サポートするメトリクスが少ない、アラート機能がないなど、その機能は Azure の Azure Monitor に遠く及びません。Azure が提供する運用管理サービスを利用するならば、Azure 一択です。
+2019年4月現在の Azure Stack Integrated systems にはこれらの運用管理サービスが存在しません。正確に言うと Azure Monitor は存在しますが、サポートするメトリクスが少ない、アラート機能がないなど、その機能は Azure の Azure Monitor に遠く及びません。Azure が提供する運用管理サービスを利用するならば、Azure 一択です。
 
 したがって、本エントリーは Azure Stack Integrated systems 固有の話よりも Azure の運用管理サービスの話が多めです。あらかじめご了承ください。また、これらの運用管理サービスはハイブリッドをうたっています。そのため、Azure Stack Integrated systems 以外の環境に存在する仮想マシン・物理マシンであっても利用可能です。
 
