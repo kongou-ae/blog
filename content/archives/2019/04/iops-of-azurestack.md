@@ -53,7 +53,7 @@ Azure と一貫性をもった Azure Stack ですが、IOPS のロジックは�
 
 2300 IOPS 以上の IOPS が必要な場合は、Sつきタイプの Virtual Machine に複数の Disk をマウントしたうえでストライプします。30G の Disk を3本ストライプしたボリュームの IOPS を計測すると 6900 IOPS(2300*3) がでます。
 
-{{< figure src="/images/2019-04-27-002.png" title="Azure Stack 上での複数ディスクを束ねたボリュームに対するテスト結果" >}}
+{{< figure src="/images/2019-04-27-003.png" title="Azure Stack 上での複数ディスクを束ねたボリュームに対するテスト結果" >}}
 
 また、Azure Stack の IOPS は制限であって保証ではありません。
 
