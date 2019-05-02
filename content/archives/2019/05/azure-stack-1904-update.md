@@ -14,19 +14,19 @@ Azure Stack 1904 Update がリリースされました。
 <blockquote class="twitter-tweet" data-cards="hidden" data-lang="ja"><p lang="en" dir="ltr">Bunch of awesome improvements with <a href="https://twitter.com/hashtag/AzureStack?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStack</a> 1904 update <a href="https://t.co/ShXYdh7pog">https://t.co/ShXYdh7pog</a></p>&mdash; Vijay Tewari (@vtango) <a href="https://twitter.com/vtango/status/1123643106375528450?ref_src=twsrc%5Etfw">2019年5月1日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-1903 Update は Integrated system のみでしたが、1904 Update は Integrated system と Development kit の両方がリリースされました。@vtango が「Bunch of awesome improvements」と言っているように、大量の改善が行われて known issue が大幅に減ったことがリリースノートから読み取れます。
+1903 Update は Integrated system のみでしたが、1904 Update は Integrated system と Development kit の両方がリリースされました。@vtango が「Bunch of awesome improvements」と言っているように、1904 Update では大量の改善が行われたことがリリースノートから読み取れます。Known issueもぐっと減ったように見えます。
 
 ASDK 1904 をざっと触ってみた印象をもとに、気になった箇所をまとめていきます。
 
 ## ユーザ向けポータルの更新
 
-ユーザ向けポータルが最近の Azure ポータルと同じ雰囲気になりました。ここ数か月のユーザ向けポータルの見た目は Azure ポータルの進化のスピードに追随できていませんでした。ですが、1904 Update によって「Azure との一貫性」という Azure Stack のコンセプト象徴である見た目が Azure に追いつきました。
+ユーザ向けポータルが最近の Azure ポータルと同じ雰囲気になりました。ここ数か月のユーザ向けポータルの見た目は Azure ポータルの進化のスピードに追随できていませんでした。ですが、1904 Update によって、「Azure との一貫性」という Azure Stack のコンセプトの象徴である見た目が Azure に追いつきました。めでたい。
 
-{{< figure src="/images/2019-05-03-004.png" title="Update 画面" >}}
+{{< figure src="/images/2019-05-03-004.png" title="ユーザ向けポータルの画面" >}}
 
 ## Syslog のフィルタ
 
-Azure Stack のインフラ部分のログを syslog で送信する機能に Severity によるフィルタが追加されました。過去のバージョンで Syslog を設定した際には大量のログが飛んできて困ったのですが、Set-SyslogClient の -OutputSeverity を Default にすれば、warning と critical、error のログだけを syslog で送信するようです。どんなログが飛んでくるのかそのうち試します。
+Azure Stack のインフラ部分のログを syslog で送信する機能に Severity によるフィルタが追加されました。過去のバージョンで Syslog を設定した際には大量のログが飛んできて困りました。1904 Update では、Set-SyslogClient の -OutputSeverity を Default にすると、warning と critical、error のログだけを syslog で送信するようです。どんなログが飛んでくるのかそのうち試そうと思います。
 
 ## インフラ側が利用するメモリの増加
 
@@ -50,13 +50,19 @@ Invoke-Command -Session $pep -ScriptBlock {
 
 一見すると地味な機能ですが、Connected な Integrated system の場合、Integrated system 上のログファイルを Microsoft のサポートが利用する Blob に直接アップロードできるようになったということです。ありがたい。
 
-## Resource Provider の ダウンロード 画面
+## Resource Provider の ダウンロード画面
 
 マーケットプレイス連携の画面に Resource Provider が増えました。
 
-{{< figure src="/images/2019-05-03-001.png" title="マーケットプレイス連携に追加された Resource Provider" >}}
+{{< figure src="/images/2019-05-03-002.png" title="マーケットプレイス連携に追加された Resource Provider" >}}
 
-Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでインストールしなければなりません。これがつらい。@Darmour_MSFTが「今後 Azure Stack 上でリリースが予定されている IoT Hub と Event Hub はマーケットプレイスからぽちっとダウンロードする形でインストールできる」旨をTweetしていたので、その実装が着実に進んでいるということでしょう。
+Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでインストールしなければなりません。正直面倒です。
+
+- [Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-app-service-deploy)
+- [Deploy the SQL Server resource provider on Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-sql-resource-provider-deploy)
+- [Deploy the MySQL resource provider on Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-mysql-resource-provider-deploy)
+
+@Darmour_MSFTが「今後 Azure Stack 上でリリースが予定されている IoT Hub と Event Hub はマーケットプレイスからぽちっとダウンロードする形でインストールできる」旨をTweetしていたので、その実装が着実に進んでいるということでしょう。
 
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">When <a href="https://twitter.com/hashtag/AzureIoTHub?src=hash&amp;ref_src=twsrc%5Etfw">#AzureIoTHub</a> &amp; <a href="https://twitter.com/hashtag/AzureEventHubs?src=hash&amp;ref_src=twsrc%5Etfw">#AzureEventHubs</a> on <a href="https://twitter.com/hashtag/AzureStack?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStack</a> private preview customers install the ResourceProvider they go through a 3 step process - Prereqs, Secrets, RP install. Others will see this in the public preview. Thx <a href="https://twitter.com/shriramnat?ref_src=twsrc%5Etfw">@shriramnat</a> <a href="https://t.co/S9g2NyKUis">pic.twitter.com/S9g2NyKUis</a></p>&mdash; David Armour (@Darmour_MSFT) <a href="https://twitter.com/Darmour_MSFT/status/1096390166673944576?ref_src=twsrc%5Etfw">2019年2月15日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -67,7 +73,7 @@ Update の画面にも Resource Provider が増えました。
 
 {{< figure src="/images/2019-05-03-003.png" title="Update 画面" >}}
 
-Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでアップデートしなければなりません。これがつらい。Azure Stack 自体の完全に自動化されたアップデートと同じように追加の Resource Provider もアップデートできるようになるのだとしたら素晴らしい。
+Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでアップデートしなければなりません。正直面倒です。Azure Stack 自体の完全に自動化されたアップデートと同じように追加の Resource Provider もアップデートできるようになるのだとしたら素晴らしい。
 
 ## リリースノートと Known issue の分離
 
@@ -79,3 +85,8 @@ Azure Stack Operator は、現在リリースされている App Service や MyS
 また、Known issue が、Applicable, Cause, Remediation, Occurrence の4項目で整理されるようになりました。Known issue を正しく理解しなければならない運用担当にとってはありがたい改善です。
 
 {{< figure src="/images/2019-05-03-005.png" title="Known issue" >}}
+
+## おわりに
+
+Azure Stack 1904 Update で気になった部分をまとめました。やはり、リソースプロバイダのダウンロードとアップデートの部分が期待大です。Azure Stack の特徴の一つである PaaS が、より簡単にインストール・運用できるようになってくれると嬉しいです。
+
