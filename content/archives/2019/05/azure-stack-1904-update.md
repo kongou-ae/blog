@@ -54,7 +54,7 @@ Invoke-Command -Session $pep -ScriptBlock {
 
 マーケットプレイス連携の画面に Resource Provider が増えました。
 
-{{< figure src="/images/2019-05-03-002.png" title="マーケットプレイス連携に追加された Resource Provider" >}}
+{{< figure src="/images/2019-05-03-003.png" title="マーケットプレイス連携に追加された Resource Provider" >}}
 
 Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでインストールしなければなりません。正直面倒です。
 
@@ -71,7 +71,7 @@ Azure Stack Operator は、現在リリースされている App Service や MyS
 
 Update の画面にも Resource Provider が増えました。
 
-{{< figure src="/images/2019-05-03-003.png" title="Update 画面" >}}
+{{< figure src="/images/2019-05-03-004.png" title="Update 画面" >}}
 
 Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでアップデートしなければなりません。正直面倒です。Azure Stack 自体の完全に自動化されたアップデートと同じように追加の Resource Provider もアップデートできるようになるのだとしたら素晴らしい。
 
