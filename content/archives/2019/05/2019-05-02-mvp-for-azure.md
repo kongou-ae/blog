@@ -2,7 +2,7 @@
 title: Microsoft MVP for Microsoft Azure を受賞した
 author: kongou_ae
 date: 2019-05-02
-url: /archives/2019-05-02-mvp-for-azure
+url: /archives/2019/05/mvp-for-azure
 categories:
   - azure
 ---
