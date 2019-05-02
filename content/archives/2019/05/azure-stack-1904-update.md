@@ -78,4 +78,4 @@ Azure Stack Operator は、現在リリースされている App Service や MyS
 
 また、Known issue が、Applicable, Cause, Remediation, Occurrence の4項目で整理されるようになりました。Known issue を正しく理解しなければならない運用担当にとってはありがたい改善です。
 
-{{< figure src="/images/2019-05-03-00５.png" title="Known issue" >}}
+{{< figure src="/images/2019-05-03-005.png" title="Known issue" >}}
