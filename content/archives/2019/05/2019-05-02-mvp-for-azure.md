@@ -14,6 +14,6 @@ Microsoft MVP を受賞しました。初受賞です。当ブログにアクセ
 
 カテゴリは Microsoft Azure です。審査に対して Azure Stack に関する活動だけを申告したので、Azure Stack に関する活動を Microsoft に評価いただけたのだと理解しています。
 
-参考：(MVP アワードの技術構造)[https://mvp.microsoft.com/ja-jp/Pages/mvp-award-update]
+参考：[MVP アワードの技術構造](https://mvp.microsoft.com/ja-jp/Pages/mvp-award-update)
 
 「令和になったけど、これといって何もないなー」とぼけーっと過ごしていたら受賞のメールが届いたので、びっくりしました。今後も Azure Stack に関わる者として Azure Stack に貢献し続けていきますので、よろしくお願いいたします。
