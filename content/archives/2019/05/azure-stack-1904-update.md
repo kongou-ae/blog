@@ -71,7 +71,7 @@ Azure Stack Operator は、現在リリースされている App Service や MyS
 
 Update の画面にも Resource Provider が増えました。
 
-{{< figure src="/images/2019-05-03-004.png" title="Update 画面" >}}
+{{< figure src="/images/2019-05-03-002.png" title="Update 画面" >}}
 
 Azure Stack Operator は、現在リリースされている App Service や MySQL、MsSQL などの追加の Resource Provider を、Admin Portal とは全く別の仕組みでアップデートしなければなりません。正直面倒です。Azure Stack 自体の完全に自動化されたアップデートと同じように追加の Resource Provider もアップデートできるようになるのだとしたら素晴らしい。
 
