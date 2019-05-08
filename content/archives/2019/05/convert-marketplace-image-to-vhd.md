@@ -25,7 +25,7 @@ Image Builder は、ビルドしたイメージを Managed Image と Shared Imag
 
 Image Builder は Public Preview のサービスなので、個別に有効化しなければなりません。
 
-```shell
+```bash
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 az provider register -n Microsoft.VirtualMachineImages
 ```
@@ -36,7 +36,7 @@ Microsoft.VirtualMachineImages 以外にも、Microsoft.Storage と Microsoft.Co
 
 Image Builder は、イメージを作成するために、利用者のサブスクリプション上に Virtual Machine を作成します。Virtual Machine を作成するには権限が必要なので、Image Builder に対して RBAC で権限を付与します。
 
-```shell
+```bash
 az role assignment create \
     --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
     --role Contributor \
@@ -49,7 +49,7 @@ Image Builder が利用するテンプレートを作ります。文法は [Prev
 
 Azure のマーケットプレイスに登録されている Windows Server 2019 Datacenter Small Disk を カスタマイズなしで VHD ファイルとして保存するテンプレートは次の通りです。
 
-```
+```json
 {
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
     "apiVersion": "2019-05-01-preview",
@@ -104,7 +104,7 @@ Azure のマーケットプレイスに登録されている Windows Server 2019
 
 作成したテンプレートを Azure 上のリソースとして登録します。
 
-```shell
+```bash
 az resource create \
     --resource-group $imageResourceGroup \
     --properties @2019.json \
@@ -125,7 +125,7 @@ az resource create \
 
 登録したテンプレートを利用してイメージを作成します。
 
-```shell
+```bash
 az resource invoke-action \
      --resource-group $imageResourceGroup \
      --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
