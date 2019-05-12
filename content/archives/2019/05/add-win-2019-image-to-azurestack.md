@@ -58,7 +58,7 @@ Version FilterExpression Skus            Offer PublisherName Location Id
 1.0.0                    2019-small-0512 2019  aimless       uda      /Subscriptions/2ca9cea2-0832-4865-a4d4-c98caef5ad20/Provider...
 ```
 
-## 実際に VM を作る
+## VM 作成
 
 ### 手順
 
