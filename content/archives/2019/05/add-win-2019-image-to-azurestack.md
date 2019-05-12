@@ -46,12 +46,11 @@ Blob Storage に VHD ファイルを配置したら、Azure Stack を操作し�
 
 必要事項を入力して "Create" を押すとイメージの作成が始まります。"Status" が "Succeeded" になれば OK です。Azure Stack が VHD ファイルにアクセスできない場合は、イメージの作成に失敗して "Status" が "Failed" になります。 
 
-{{< figure src="/images/2019-05-12-002.png" title="イメージの登録画面" >}}
+{{< figure src="/images/2019-05-12-002.png" title="イメージのステータス" >}}
 
 なお、必須項目には任意の値を入れられますので、例えば "aimless" という適当な Publisher を設定しても Get-AzureVMImage で選択できるようになります。
 
-```
-
+```powershell
 PS > Get-AzureRmVMImage -PublisherName aimless -Offer 2019 -Skus 2019-small-0512 -Location uda
 
 Version FilterExpression Skus            Offer PublisherName Location Id                                                             
@@ -67,7 +66,7 @@ Version FilterExpression Skus            Offer PublisherName Location Id
 
 ただし、イメージ自体は Azure Stack に登録されているので、PowerShell を利用すれば Virtual Machine を作成できます。サンプルコードは次の通りです。Azure と全く同じです。Get-AzureRmVMImage の引数に、イメージを登録した際に入力した値を利用するところがポイントです。
 
-```
+```powershell
 $rg = New-AzureRmResourceGroup -Name 2019 -Location uda
 $images = Get-AzureRmVMImage -Location uda -PublisherName MicrosoftWindowsServer `
     -Offer WindowsServer -Skus 2019-Datacenter-smalldisk -Version 2019.0.20190410
