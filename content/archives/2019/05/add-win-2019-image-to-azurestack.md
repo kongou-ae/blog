@@ -91,7 +91,7 @@ New-azurermvm -VM $vm -ResourceGroupName $rg.ResourceGroupName -Location uda
 
 ### ライセンス認証
 
-ただし、構築できた Virtual Machine はライセンス認証に失敗します。これは、Azure 上の Windows Server が Azure 上の KMS でライセンス認証を行うためです。Azure Stack は KMS ではなく AVMA によってライセンス認証を行います。そのため、次のリンク先に記載されている通りライセンスの認証方式を KMS から AVMA に切り替える必要があります。
+構築した Virtual Machine はライセンス認証に失敗します。これは、Azure 上の Windows Server が Azure 上の KMS でライセンス認証を行うためです。Azure Stack は KMS ではなく AVMA によってライセンス認証を行います。そのため、次のリンク先に記載されている通りライセンスの認証方式を KMS から AVMA に切り替える必要があります。
 
 参考：[My VM is not set up to use AVMA, how can I fix it?](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-windows-server-faq#my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it)
 
