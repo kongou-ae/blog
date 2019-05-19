@@ -43,7 +43,7 @@ az ad sp create-for-rbac --name k8s1905 --years 100
 ssh-keygen -t rsa -b 2048
 ```
 
-また、作成した Service Principle が Azure Stack にアクセスできるようにするために、作成した SPN を K8s Cluster をデプロイするサブスクリプションのContributor に追加します。
+また、作成した Service Principle が Azure Stack にアクセスできるようにするために、K8s Cluster をデプロイするサブスクリプションの Contributor に作成した SPN を追加します。
 
 ## リソース構築
 
@@ -56,15 +56,16 @@ Azure Stack ポータルを利用して、K8s Cluster をデプロイします�
 - sshPublicKey
   - Ubuntu Virtual Machine にログインする際に利用する秘密鍵の対になる公開鍵
 - masterProfileDnsPrefix
-  - k8s にアクセスする URL に付与される prefix
+  - K8s Cluster のFQDN に付与される prefix
+  - Cluster の FQDN は <masterProfileDnsPrefix>.<リージョン名>.cloudapp.<外部ドメイン名>になります
 - agentPoolProfileCount
-  - Pool となる Virtual Machine の台数
+  - Node となる Virtual Machine の台数
 - agentPoolProfileVMSize
-  - Pool となる Virtual Machine のサイズ
+  - Node となる Virtual Machine のサイズ
 - masterPoolProfileCount
-  - Master Node となる Virtual Machine の台数
+  - Master となる Virtual Machine の台数
 - masterPoolProfileVMSize
-  - Master Node となる Virtual Machine の台数
+  - Master となる Virtual Machine の台数
 - identitySystem
   - Azure Stack の認証方式
 - servicePrincipalClientId
@@ -76,7 +77,7 @@ Azure Stack ポータルを利用して、K8s Cluster をデプロイします�
 
 {{< figure src="/images/2019-05-19-004.png" title="出来上がったリソースの一部" >}}
 
-master の prefix が付いている Virtual Machine に SSH でアクセスして kubectl すると、デプロイ時に指定した Master と Node の台数から成る k8s 環境ができあがっているのが分かります。
+Master の prefix が付いている Virtual Machine に SSH でアクセスして kubectl すると、デプロイ時に指定した Master と Node の台数からなる k8s 環境ができあがっているのが分かります。
 
 ```
 azureuser@k8s-master-18292203-0:~$ kubectl  get node
@@ -91,7 +92,7 @@ k8s-master-18292203-2      Ready     master    8h        v1.11.9
 
 ## ダッシュボードに接続する準備
 
-デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`kubernetes-dashboard is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです
+デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです。
 
 ```bash
 azureuser@k8s-master-18292203-0:~$ kubectl cluster-info 
