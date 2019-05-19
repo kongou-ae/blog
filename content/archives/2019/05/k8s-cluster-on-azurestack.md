@@ -11,9 +11,10 @@ categories:
 
 Azure Stack の Merketplace には Kubernetes Cluster が登録されています。実際にデプロイしてみました。
 
+参考：[Deploy Kubernetes to use containers with Azure Stack](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+
 {{< figure src="/images/2019-05-19-001.png" title="Marketplace での紹介画面" >}}
 
-参考：[Deploy Kubernetes to use containers with Azure Stack](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
 ## 留意事項
 
@@ -29,7 +30,7 @@ Azure Stack の Merketplace には Kubernetes Cluster が登録されていま�
 
 {{< figure src="/images/2019-05-19-002.png" title="Compute のサービス一覧" >}}
 
-Azure Stack 上で提供される k8s Cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes Cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master Node と  Pool がデプロイされます。利用者は、これらの Virtual Machine を自分で運用管理しなければなりません。
+Azure Stack 上で提供される k8s Cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes Cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master と Node がデプロイされます。利用者は、これらの Virtual Machine を自分で運用管理しなければなりません。
 
 仕組みは違いますが、k8s Cluster を利用すると 自分で一から構築するよりも簡単に Kubernetes 環境を用意できます。実際にやってみます。
 
@@ -75,7 +76,7 @@ Azure Stack ポータルを利用して、K8s Cluster をデプロイします�
 
 {{< figure src="/images/2019-05-19-004.png" title="出来上がったリソースの一部" >}}
 
-master の prefix が付いている Virtual Machine に SSH でアクセスして kubectl すると、デプロイ時に指定した Master と Pool の台数から成る k8s 環境ができあがっているのが分かります。
+master の prefix が付いている Virtual Machine に SSH でアクセスして kubectl すると、デプロイ時に指定した Master と Node の台数から成る k8s 環境ができあがっているのが分かります。
 
 ```
 azureuser@k8s-master-18292203-0:~$ kubectl  get node
@@ -90,7 +91,7 @@ k8s-master-18292203-2      Ready     master    8h        v1.11.9
 
 ## ダッシュボードに接続する準備
 
-デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master Node に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`kubernetes-dashboard is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです
+デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`kubernetes-dashboard is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです
 
 ```bash
 azureuser@k8s-master-18292203-0:~$ kubectl cluster-info 
@@ -104,11 +105,16 @@ tiller-deploy is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
-ポータルの認証を突破するためには、証明書と Token を取得します。Master Node で自己証明書をエクスポートします。
+ポータルの認証を突破するためには証明書と Token が必要d素。Master にSSHで接続して自己証明書をエクスポートします。あわせて、ダッシュボードに接続する際に利用する Token を取得します。
 
 ```bash
 sudo su 
 openssl pkcs12 -export -out /etc/kubernetes/certs/client.pfx -inkey /etc/kubernetes/certs/client.key  -in /etc/kubernetes/certs/client.crt -certfile /etc/kubernetes/certs/ca.crt 
+azureuser@k8s-master-18292203-0:~$ kubectl -n kube-system get secrets | grep dashboard-token
+kubernetes-dashboard-token-5sdf7                 kubernetes.io/service-account-token   3         9h
+azureuser@k8s-master-18292203-0:~$ kubectl -n kube-system describe secret kubernetes-dashboard-token-5sdf7| awk '$1=="token:"{print $2}'
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi01c2RmNyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjA4MmJmNDQ3LTc5ODMtMTFlOS05NDQyLTAwMWRkOGI3MWMwYiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UH3rjaDoFOQXC2qDt--ucdCxqAfONO_co5I4SlLwMp2QyE6-a9yLbXdMdfBoPgrLA9QTWTmko5T55b01j7zLjKZ6kjJMxau95JtUZLIeqSHmXprUUS7L3KsC6PP5jqUgSQyjRl0ov4kmTqsDvNURit_sZuGtXb3lvBRtqVcYySVXnpYulh_cy7WYQzyAgVn0LuwDsPhtZ_IXhNItT1I0aczhU_47AMyfp8LoVZDfDJnoGEoAvOm8flpL5pMTTfEu5SC45zMyC-DCb9jVPnpjipxFpOSbxw2BxdB_XnhBeafCZi7hXfaHjHWehGa2LdnBQbnL4_11XKtYjhUYXptstLEc3_EE_AP5sr3k4QjJ765h7uFwj7KIUOIlkZXjbtxxRdY2Doi3aBbagIq_7RHe0iklbKE2Nc_wo23z5AKUMz0iSm9via3IKpBHUqjdcdmhLjVE3fg2YOOMCOMMq2bKXEkk5ASx1pRdqwG8cS58NvtuorZM5877dItwGIhQEe6jc8ikE35SdXEBsKGNxl9zL1NUP92yJ1Y_oTbgHH-N-BzBiOax904Q5E_b7nZsUhDC3dgGa9uz8a1h_LnNnH5Ke-x71qjOEvz-4rTL-taVfmvB4TaRzk9zP9tmwXuny5Cy_1xxCChtHw4Ebjn-I7cK3uGeQ-AXy38avaDijhw2oAc
+azureuser@k8s-master-18292203-0:~$ 
 ```
 
 エクスポートした証明書を、ダッシュボードに接続するクライアントにインポートします。
@@ -117,18 +123,6 @@ openssl pkcs12 -export -out /etc/kubernetes/certs/client.pfx -inkey /etc/kuberne
 Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
 Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My
 ```
-
-ダッシュボードに接続する際に利用する Token を取得します。
-
-```bash
-azureuser@k8s-master-18292203-0:~$ kubectl -n kube-system get secrets | grep dashboard-token
-kubernetes-dashboard-token-5sdf7                 kubernetes.io/service-account-token   3         9h
-azureuser@k8s-master-18292203-0:~$ kubectl -n kube-system describe secret kubernetes-dashboard-token-5sdf7| awk '$1=="token:"{print $2}'
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi01c2RmNyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjA4MmJmNDQ3LTc5ODMtMTFlOS05NDQyLTAwMWRkOGI3MWMwYiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.UH3rjaDoFOQXC2qDt--ucdCxqAfONO_co5I4SlLwMp2QyE6-a9yLbXdMdfBoPgrLA9QTWTmko5T55b01j7zLjKZ6kjJMxau95JtUZLIeqSHmXprUUS7L3KsC6PP5jqUgSQyjRl0ov4kmTqsDvNURit_sZuGtXb3lvBRtqVcYySVXnpYulh_cy7WYQzyAgVn0LuwDsPhtZ_IXhNItT1I0aczhU_47AMyfp8LoVZDfDJnoGEoAvOm8flpL5pMTTfEu5SC45zMyC-DCb9jVPnpjipxFpOSbxw2BxdB_XnhBeafCZi7hXfaHjHWehGa2LdnBQbnL4_11XKtYjhUYXptstLEc3_EE_AP5sr3k4QjJ765h7uFwj7KIUOIlkZXjbtxxRdY2Doi3aBbagIq_7RHe0iklbKE2Nc_wo23z5AKUMz0iSm9via3IKpBHUqjdcdmhLjVE3fg2YOOMCOMMq2bKXEkk5ASx1pRdqwG8cS58NvtuorZM5877dItwGIhQEe6jc8ikE35SdXEBsKGNxl9zL1NUP92yJ1Y_oTbgHH-N-BzBiOax904Q5E_b7nZsUhDC3dgGa9uz8a1h_LnNnH5Ke-x71qjOEvz-4rTL-taVfmvB4TaRzk9zP9tmwXuny5Cy_1xxCChtHw4Ebjn-I7cK3uGeQ-AXy38avaDijhw2oAc
-azureuser@k8s-master-18292203-0:~$ 
-```
-
-{{< figure src="/images/2019-05-19-004.png" title="出来上がったリソースの一部" >}}
 
 ## ダッシュボードへの接続
 
