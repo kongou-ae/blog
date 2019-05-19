@@ -92,7 +92,7 @@ k8s-master-18292203-2      Ready     master    8h        v1.11.9
 
 ## ダッシュボードに接続する準備
 
-デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです。
+デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy のようです。
 
 ```bash
 azureuser@k8s-master-18292203-0:~$ kubectl cluster-info 
@@ -106,7 +106,7 @@ tiller-deploy is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
-ポータルの認証を突破するためには証明書と Token が必要d素。Master にSSHで接続して自己証明書をエクスポートします。あわせて、ダッシュボードに接続する際に利用する Token を取得します。
+ポータルの認証を突破するためには証明書と Token が必要です。Master に SSH で接続して自己証明書をエクスポートします。あわせて、ダッシュボードに接続する際に利用する Token を取得します。
 
 ```bash
 sudo su 
