@@ -1,5 +1,5 @@
 ---
-title: Azure Stack に kubernetes cluster をデプロイする
+title: Azure Stack に Kubernetes Cluster をデプロイする
 author: kongou_ae
 date: 2019-05-19
 url: /archives/2019/05/k8s-cluster-on-azurestack
@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-Azure Stack では Merketplace を通じて Kubernetes cluster を利用できます。実際にデプロイしてみました。
+Azure Stack の Merketplace には Kubernetes Cluster が登録されています。実際にデプロイしてみました。
 
 {{< figure src="/images/2019-05-19-001.png" title="Marketplace での紹介画面" >}}
 
@@ -19,19 +19,19 @@ Azure Stack では Merketplace を通じて Kubernetes cluster を利用でき�
 
 ### リリース状況
 
-2019年5月現在、Azure Stack 上の k8s cluster は Public Preview です。ご利用は計画的に。
+2019年5月現在、Azure Stack 上の k8s Cluster は Public Preview です。ご利用は計画的に。
 
 ### Azure Kubernetes Service との違い
 
-1904 Update 時点での Azure Stack には Azure kubernetes service(AKS) が存在しません。したがって、Azure Stack 上の k8s cluster は、AKS ではありません。AKS on Azure Stack は絶賛開発中です。
+1904 Update 時点での Azure Stack には Azure kubernetes service(AKS) が存在しません。したがって、Azure Stack 上の k8s Cluster は、AKS ではありません。AKS on Azure Stack は絶賛開発中です。
 
 参考：[開発中: Azure Stack 上の Azure Kubernetes Service (AKS)](https://azure.microsoft.com/ja-jp/updates/azure-container-service-aks-on-azure-stack/)
 
 {{< figure src="/images/2019-05-19-002.png" title="Compute のサービス一覧" >}}
 
-Azure Stack 上で提供される k8s cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master Node と  Pool がデプロイされます。利用者は、これらの Virtual Machine を自分で運用管理しなければなりません。
+Azure Stack 上で提供される k8s Cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes Cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master Node と  Pool がデプロイされます。利用者は、これらの Virtual Machine を自分で運用管理しなければなりません。
 
-仕組みは違いますが、k8s cluster を利用すると 自分で一から構築するよりも簡単に Kubernetes 環境を用意できます。実際にやってみます。
+仕組みは違いますが、k8s Cluster を利用すると 自分で一から構築するよりも簡単に Kubernetes 環境を用意できます。実際にやってみます。
 
 ## 事前準備
 
@@ -42,11 +42,11 @@ az ad sp create-for-rbac --name k8s1905 --years 100
 ssh-keygen -t rsa -b 2048
 ```
 
-また、作成した Service Principle が Azure Stack にアクセスできるようにするために、作成した SPN を K8s cluster をデプロイするサブスクリプションのContributer に追加します。
+また、作成した Service Principle が Azure Stack にアクセスできるようにするために、作成した SPN を K8s Cluster をデプロイするサブスクリプションのContributor に追加します。
 
 ## リソース構築
 
-Azure Stack ポータルを利用して、K8s cluster をデプロイします。ポータルの案内に従って次の情報を入力します。
+Azure Stack ポータルを利用して、K8s Cluster をデプロイします。ポータルの案内に従って次の情報を入力します。
 
 {{< figure src="/images/2019-05-19-003.png" title="ポータルでの入力項目" >}}
 
@@ -90,7 +90,7 @@ k8s-master-18292203-2      Ready     master    8h        v1.11.9
 
 ## ダッシュボードに接続する準備
 
-デプロイされた k8s cluster には、ダッシュボードもインストールされています。構築された Maste Node に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`kubernetes-dashboard is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです
+デプロイされた k8s Cluster には、ダッシュボードもインストールされています。構築された Master Node に SSH で接続して、 ダッシュボードの接続先を確認します。今回の環境の場合、ダッシュボードの接続先は`kubernetes-dashboard is running at https://azurestack-k8s.uda.cloudapp.asdk.aimless.jp/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`のようです
 
 ```bash
 azureuser@k8s-master-18292203-0:~$ kubectl cluster-info 
@@ -132,9 +132,7 @@ azureuser@k8s-master-18292203-0:~$
 
 ## ダッシュボードへの接続
 
-証明書をインポートした端末でダッシュボードに接続します。
-
-先ほど確認したダッシュボードのURLにアクセスすると、クライアント証明書を求められます。インポートした証明書を選択します。
+証明書をインポートした端末でダッシュボードに接続します。先ほど確認したダッシュボードのURLにアクセスすると、クライアント証明書を求められます。インポートした証明書を選択します。
 
 {{< figure src="/images/2019-05-19-005.png" title="クライアント証明書の要求画面" >}}
 
@@ -157,7 +155,7 @@ clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 
 ## 終わりに
 
-Azure Stack の k8s cluster における留意事項と手順をまとめました。手順のとおり、簡単に k8s 環境を構築できました。簡単すぎて怖いくらいです・・今回は単純にクラスタをデプロイしただけですので、引き続き以下の項目に挑戦しようと思います。
+Azure Stack の k8s Cluster における留意事項と手順をまとめました。手順のとおり、簡単に k8s 環境を構築できました。簡単すぎて怖いくらいです・・今回は単純にクラスタをデプロイしただけですので、引き続き以下の項目に挑戦しようと思います。
 
 - 監視
 - スケールイン/アウト
