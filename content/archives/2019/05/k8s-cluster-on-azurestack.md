@@ -23,15 +23,15 @@ Azure Stack では Merketplace を通じて Kubernetes cluster を利用でき�
 
 ### Azure Kubernetes Service との違い
 
-1904 Update 時点での Azure Stack には Azure kubernetes service(AKS) が存在しません。したがって、Azure Stack 上の k8s cluster は AKS ではありません。AKS on Azure Stack は絶賛開発中です。
+1904 Update 時点での Azure Stack には Azure kubernetes service(AKS) が存在しません。したがって、Azure Stack 上の k8s cluster は、AKS ではありません。AKS on Azure Stack は絶賛開発中です。
 
 参考：[開発中: Azure Stack 上の Azure Kubernetes Service (AKS)](https://azure.microsoft.com/ja-jp/updates/azure-container-service-aks-on-azure-stack/)
 
 {{< figure src="/images/2019-05-19-002.png" title="Compute のサービス一覧" >}}
 
-Azure Stack 上で提供される k8s cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master Node と  Pool がデプロイされます。利用者は、これらの Virtual Machine を自分で運用管理しなければなりません。
+Azure Stack 上で提供される k8s cluster とは、利用者の IaaS 上に [AKS engine](https://github.com/Azure/aks-engine) を利用して Kubernetes cluster を作ってくれる仕組みです。実際にデプロイしてみると、利用者が管理する Virtual Machine として Master Node と  Pool がデプロイされます。利用者はこれらの Virtual Machine を自分で運用管理しなければなりません。
 
-仕組みは違いますが、k8s cluster を利用すると 自分で一から構築するよりも簡単に Kubernetes 環境を用意できます。実際にやってみます。
+仕組みは違いますが、k8s cluster を利用すると自分で一から構築するよりも簡単に Kubernetes 環境を用意できます。実際にやってみます。
 
 ## 事前準備
 
@@ -42,7 +42,7 @@ az ad sp create-for-rbac --name k8s1905 --years 100
 ssh-keygen -t rsa -b 2048
 ```
 
-また、作成した Service Principle が Azure Stack にアクセスできるようにするために、作成した SPN を K8s cluster をデプロイするサブスクリプションのContributor に追加します。
+また、作成した Service Principle が Azure Stack にアクセスできるようにするために、作成した SPN を K8s cluster をデプロイするサブスクリプションのContributer に追加します。
 
 ## リソース構築
 
@@ -157,4 +157,8 @@ clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 
 ## 終わりに
 
-Azure Stack の k8s cluster における留意事項と手順をまとめました。手順のとおり、簡単に k8s 環境を構築できました。簡単すぎて怖いくらいです・・
+Azure Stack の k8s cluster における留意事項と手順をまとめました。手順のとおり、簡単に k8s 環境を構築できました。簡単すぎて怖いくらいです・・今回は単純にクラスタをデプロイしただけですので、引き続き以下の項目に挑戦しようと思います。
+
+- 監視
+- スケールイン/アウト
+- アプリのデプロイ
