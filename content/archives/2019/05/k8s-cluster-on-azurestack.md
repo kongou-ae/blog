@@ -73,9 +73,9 @@ Azure Stack ポータルを利用して、K8s Cluster をデプロイします�
 - servicePrincipalClientSecret
   - SPN のパスワード
 
-構築には数十分かかりますのでしばらく放置します。デプロイに成功するとデプロイ先に指定したリソースグループに大量のリソースが出来上がっています。
+構築には数十分かかりますのでしばらく放置します。デプロイに成功するとデプロイ先に指定したリソースグループに大量のリソースができあがります。できあがった構成の概要図は次の通りです。独立した Virtual Network の中に、Public LB で構成される Master 群と Private LB で構成される Node 群が存在しています。
 
-{{< figure src="/images/2019-05-19-004.png" title="出来上がったリソースの一部" >}}
+{{< figure src="/images/2019-05-19-010.png" title="概要図" >}}
 
 Master の prefix が付いている Virtual Machine に SSH でアクセスして kubectl すると、デプロイ時に指定した Master と Node の台数からなる k8s 環境ができあがっているのが分かります。
 
@@ -146,7 +146,9 @@ clusterrolebinding.rbac.authorization.k8s.io/kubernetes-dashboard created
 
 先ほどでていたアラートが消えて、ダッシュボードでクラスタの情報を見られるようになりました。
 
-{{< figure src="/images/2019-05-19-008.png" title="ダッシュボードの画面" >}}
+{{< figure src="/images/2019-05-19-008.png" title="ダッシュボードの画面１" >}}
+
+{{< figure src="/images/2019-05-19-009.png" title="ダッシュボードの画面２" >}}
 
 ## 終わりに
 
