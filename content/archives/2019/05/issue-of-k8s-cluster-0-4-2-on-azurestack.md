@@ -9,11 +9,9 @@ categories:
 
 ## Introduction
 
-This entry is additional information about the following entry. 
+This entry is additional information about the following entry. I believe that this entry will help who deploy k8s cluster 0.4.2 on Azure Stack.
 
 [Azure Stack に Kubernetes Cluster をデプロイする](https://aimless.jp/blog/archives/2019/05/k8s-cluster-on-azurestack/)
-
-I believe that this entry will help who deploy k8s cluster 0.4.2 on Azure Stack.
 
 ## Environment
 
@@ -23,7 +21,7 @@ ASDK 1904 @[physical container](https://thinkit.co.jp/article/13243)
 
 when you deploy k8s cluster on Azure Stack by using k8s template 0.4.2, you can set only 1 to the count of muster node.
 
-{{< figure src="/images/2019-05-23-001" title="1" >}}
+{{< figure src="/images/2019-05-23-001.png" title="1" >}}
 
 ## Cause
 
