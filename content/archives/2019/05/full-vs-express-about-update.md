@@ -24,7 +24,7 @@ categories:
 
 hccjp の Azure Stack Integrated system に適用されている Microsoft 版アップデートの一覧は次の通りです。
 
-{{< figure src="/images/2019-05-29-001" title="これまでのアップデート時間" >}}
+{{< figure src="/images/2019-05-29-001.png" title="これまでのアップデート時間" >}}
 
 "VERSION" が 1.1902.0 までのアップデートが従来の "Full" アップデートです。20時間から30時間ほどかかっているのが分かります。一方で1.1903.0 は新たに導入された "Express" アップデートです。このアップデートは12時間で終わっています。"Full" と比較してほぼ半分になっています。
 
