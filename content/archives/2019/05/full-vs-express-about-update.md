@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-[Azure Stack のアップデートがちょっと変わった](https://aimless.jp/blog/archives/2019/05/full-and-express-for-update-of-azure-stack/)で説明した通り、Microsoft のリリースする Azure Stack のアップデートが "Full" と "Express" という2種類になりました。前回のエントリでは方式による具体的な時間の差を取り上げられませんでしたが、[ハイブリッドクラウド研究会(hccjp)](http://www.hccjp.org/)の検証環境を借りられましたので実際の比較します。
+[Azure Stack のアップデートがちょっと変わった](https://aimless.jp/blog/archives/2019/05/full-and-express-for-update-of-azure-stack/)で説明した通り、Microsoft のリリースする Azure Stack のアップデートが "Full" と "Express" という2種類になりました。前回のエントリでは方式による具体的な時間の差を取り上げられませんでしたが、[ハイブリッドクラウド研究会(hccjp)](http://www.hccjp.org/)の検証環境を借りられましたので具体的な時間を比較します。
 
 ## 環境
 
@@ -26,8 +26,8 @@ hccjp の Azure Stack Integrated system に適用されている Microsoft 版�
 
 {{< figure src="/images/2019-05-29-001.png" title="これまでのアップデート時間" >}}
 
-"VERSION" が 1.1902.0 までのアップデートが従来の "Full" アップデートです。20時間から30時間ほどかかっているのが分かります。一方で1.1903.0 は新たに導入された "Express" アップデートです。このアップデートは12時間で終わっています。"Full" と比較してほぼ半分になっています。
+"VERSION" が 1.1902.0 までのアップデートが従来の "Full" アップデートです。20時間から30時間ほどかかっているのが分かります。一方で1.1903.0 は新たに導入された "Express" アップデートです。このアップデートは12時間で終わっています。"Full" と比較してアップデートにかかった時間がほぼ半分になっています。"Express" アップデートおそるべし。Microsoft が "Full" と "Express" という名称で区別したくなるのも納得です。
 
 ## まとめ
 
-[ハイブリッドクラウド研究会](http://www.hccjp.org/)の検証環境を利用して、"Full" と "Express" のアップデートにかかる具体的な時間をご紹介しました。"Express" パッケージによる時間の短縮具合をご理解いただけたと思います。
+[ハイブリッドクラウド研究会](http://www.hccjp.org/)の検証環境を利用して、"Full" と "Express" のアップデートにかかる具体的な時間をご紹介しました。"Express" アップデートによる時間の短縮具合をご理解いただけたと思います。
