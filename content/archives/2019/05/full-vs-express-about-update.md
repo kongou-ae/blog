@@ -13,7 +13,7 @@ categories:
 
 ## 環境
 
-- [ハイブリッドクラウド研究会(hccjp)](http://www.hccjp.org/)が所有する Azure Stack Integrated systems
+- [ハイブリッドクラウド研究会](http://www.hccjp.org/)が所有する Azure Stack Integrated systems
   - Huawei
   - 4 Node
   - MS 1.1903.2.39
@@ -30,4 +30,4 @@ hccjp の Azure Stack Integrated system に適用されている Microsoft 版�
 
 ## まとめ
 
-[ハイブリッドクラウド研究会(hccjp)](http://www.hccjp.org/)の検証環境を利用して、"Full" と "Express" のアップデートにかかる具体的な時間をご紹介しました。"Express" パッケージによる時間の短縮具合をご理解いただけたと思います。
+[ハイブリッドクラウド研究会](http://www.hccjp.org/)の検証環境を利用して、"Full" と "Express" のアップデートにかかる具体的な時間をご紹介しました。"Express" パッケージによる時間の短縮具合をご理解いただけたと思います。
