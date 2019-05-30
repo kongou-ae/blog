@@ -4,7 +4,7 @@ author: kongou_ae
 date: 2019-05-30
 url: /archives/2019/05/service-tag-of-virtual-network-contains-udr
 categories:
-  - azurestack
+  - azure
 ---
 
 単なるメモなのでさらっと。
