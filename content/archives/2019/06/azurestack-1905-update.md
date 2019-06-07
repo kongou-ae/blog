@@ -15,7 +15,7 @@ Azure Stack 1905 Update がリリースされました。本エントリーで�
 
 ## アップデートの種類
 
-1905 Update は Full なアップデートです。ホスト OS に対する Windows Update が含まれるので、アップデートにかかる時間は20時間から30時間になります。
+1905 Update は Full なアップデートです。Host Node の OS に対する Windows Update が含まれるので、アップデートにかかる時間は20時間から30時間になります。
 
 [Azure Stack 1905 update](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-security-updates-1905#1905-update)
 
