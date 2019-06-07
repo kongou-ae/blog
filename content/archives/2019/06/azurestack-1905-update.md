@@ -81,7 +81,7 @@ Azure Stack 内部で動作しているドメインコントローラが2台か�
 
 ## 新しい Infrastructure Role Instance の追加
 
-ASDK に "Azs-SRNG01" という新しい Infrastructure Role Instance が追加されました。リリースノートには全く記載されていません。
+ASDK に "Azs-SRNG01" という新しい Infrastructure Role Instance が追加されました。ADSK に追加されたということは Integrated systems にも登録されているのでしょう。リリースノートには全く記載されていません。。。
 
 "Azs-SRNG01" にログインして調べたところ、ServiceFabric 上に SupportBridgeController というアプリケーションの LogCollectorService というサービスが動作していました。名前からすると、管理者ポータルの "Help + Support" を支える Infrastructure Role Instance でしょうか。
 
@@ -93,7 +93,7 @@ ServiceName                                         ServiceStatus HealthState
 fabric:/SupportBridgeController/LogCollectorService        Active          Ok
 ```
 
-Log Collector Service というくらいなので、管理ポータルの "Help + support" から Azure Stack のログを取得・サポートに送付できるようになったりしませんかね・・・
+Log Collector Service というくらいなので、管理ポータルの "Help + support" から Azure Stack のログを取得・サポートに送付できるようになったりしないかな・・・
 
 ## おわりに
 
