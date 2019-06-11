@@ -55,6 +55,12 @@ Azure Stack 1905 Update がリリースされました。本エントリーで�
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">Where is Windows Server 2019?  <a href="https://twitter.com/hashtag/azurestack?src=hash&amp;ref_src=twsrc%5Etfw">#azurestack</a> <a href="https://twitter.com/hashtag/asdk?src=hash&amp;ref_src=twsrc%5Etfw">#asdk</a> <a href="https://t.co/b42f3PBxl1">pic.twitter.com/b42f3PBxl1</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1136913416457601024?ref_src=twsrc%5Etfw">2019年6月7日</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+**06/11追記**
+
+Azure Stack のマーケットプレイスに Windows Server 2019 が表示されるようになりました。良かった。
+
+{{< figure src="/images/2019-06-11-001.png" title="マーケットプレイスの画面" >}}
+
 ## Support 画面の実装
 
 管理者ポータル側に "Help + support" が追加されました。
