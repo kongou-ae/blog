@@ -51,23 +51,3 @@ Origin codes: i - IGP, e - EGP, ? - incomplete
  
 Total number of prefixes 4
 ```
-
-Network      : 172.21.0.1/32
-NextHop      : 10.0.1.254
-SourcePeer   :
-Origin       : Igp
-AsPath       : 65515
-Weight       : 0
-
-LocalAddress : 10.0.1.254
-Network      : 10.1.0.0/16
-NextHop      : 10.0.1.254
-SourcePeer   :
-AsPath       : 65515
-
-LocalAddress : 10.0.1.254
-Network      : 10.2.0.0/16
-SourcePeer   :
-AsPath       : 65515
-Weight       : 0
-```
