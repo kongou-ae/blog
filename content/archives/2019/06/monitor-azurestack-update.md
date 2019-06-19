@@ -26,7 +26,7 @@ categories:
 
 アップデートの成功がアラートとして表示されれば、その成功を監視サーバで検知・通知できます。しかし、Azure Stack のアラートテンプレートに定義されている Update Resource Provider のアラートは失敗と注意だけであり、成功はありません。
 
-```Powershell
+```
     "UrpAlertTemplates": [
         {
             "Title": "Update failed.",
@@ -47,7 +47,7 @@ categories:
 
 Get-AzsUpdate を利用すると、アップデートの一覧を取得できます。
 
-```
+```Powershell
 PS C:\> Get-AzsUpdate | ft  Name, State, InstalledDate
 
 Name                             State     InstalledDate      
@@ -71,7 +71,7 @@ iijhuawei/Microsoft1.1904.0.36   Ready
 
 Get-AzsUpdate で取得した Name を利用して Get-AzsUpdateRun を実行すると、実際に走っているアップデートの状況を確認できます。このコマンドをループさせて結果の中の State をチェックし続けて State が Suceeded になったらメールやチャットに通知するスクリプトを自作すれば、アップデートが成功したことを通知できます。
 
-```
+```Powershell
 PS C:\> Get-AzsUpdateRun -UpdateName iijhuawei/Microsoft1.1903.2.39 
 
 Progress    : Hotfix - Success
