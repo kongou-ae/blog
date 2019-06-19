@@ -4,7 +4,7 @@ author: kongou_ae
 date: 2019-06-17
 url: /archives/2019/06/scope-of-vnet-which-vgw-advertize-address-in
 categories:
-  - azurestack
+  - azure
 ---
 
 VNet Peering で Hub&Spoke 構成を組んだ場合に、VPG Gateway がどこまで先のアドレスを広報してくれるかを実際に試したのでメモ
