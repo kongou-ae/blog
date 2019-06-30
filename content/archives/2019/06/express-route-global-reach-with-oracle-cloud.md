@@ -53,7 +53,7 @@ Express Route お馴染みの情報を入力していきます。ただし、AS�
 
 リージョンの異なる Express Route Circuit を用意したうえで、Global Reach を有効にします。その結果、片方の Peering の中に Connections というパラメータが入ります。
 
-```
+```powershell
 > $ckt_1 = Get-AzExpressRouteCircuit -Name je-ora-washinton1 -ResourceGroupName ergr
 > $ckt_1.Location
 japaneast
@@ -135,7 +135,7 @@ GatewayManagerEtag               :
 
 ただし、2つの Circuit のうち片方にだけ Connections のパラメータが入りました。ちょっと気持ち悪いですね。
 
-```
+```powershell
 > $ckt_1.Peerings.Connections
 
 Name                           : globalreach
@@ -157,7 +157,7 @@ PeerExpressRouteCircuitPeering : Microsoft.Azure.Commands.Network.Models.PSResou
 
 AS 番号の重複によって経路を学習しない都合で Oracle Cloud 同士の疎通確認ができないので、Express Route Circuit が学習したルーティングを確認します。Global Reach していない場合、Private Peering の先に存在している Oracle Cloud の仮想クラウド・ネットワークのサブネットを学習しています。
 
-```
+```powershell
 # japaneast の Peering 1本目
 > Get-AzExpressRouteCircuitRouteTable -ResourceGroupName ergr -ExpressRouteCircuitName je-ora-washinton1 -PeeringType AzurePrivatePeering -DevicePath Primary | ft * -AutoSize
 
@@ -197,7 +197,7 @@ Express Route Circuit が学習したルーティングを見る限りだと、O
 
 Global Reach を有効にすると、Global Reach した Private Peering の先にいる経路も学習します。この状態であれば、異なるオンプレミス拠点同士が Express Route Circuit 経由で通信できそうです。
 
-```
+```powershell
 # japaneast の Peering 1本目
 > Get-AzExpressRouteCircuitRouteTable -ResourceGroupName ergr -ExpressRouteCircuitName je-ora-washinton1 -PeeringType AzurePrivatePeering -DevicePath Primary | ft * -AutoSize
 
