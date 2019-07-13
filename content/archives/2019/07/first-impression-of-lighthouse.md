@@ -92,7 +92,7 @@ Azure Lighthouse が発表されました。自分のリソースの管理を他
 
 {{< figure src="/images/2019-0713-002.png" title="Service providers offers の表示" >}}
 
-そして、Service Providers > Delegations にどのリソースに対してどの権限を委譲しているかが表示されます。
+そして、Service Providers > Delegations にどのリソースがどの権限を委譲しているかが表示されます。
 
 {{< figure src="/images/2019-0713-003.png" title="Delegations の表示その1" >}}
 
@@ -112,7 +112,7 @@ Azure Lighthouse が発表されました。自分のリソースの管理を他
 
 委譲された側の Azure ポータルでは、自分のリソースと同じように委譲されたリソースが表示されます。MVP のサブスクリプションに紐づく Function App が自分のリソース、PAYG に紐づく Function App が委譲されたリソースです。
 
-{{< figure src="/images/2019-0713-008.png" title="自分のリソースと委譲されたリソース" >}}
+{{< figure src="/images/2019-0713-009.png" title="自分のリソースと委譲されたリソース" >}}
 
 今回は Contributor 権限を委譲されていますので、委譲された Function App の設定を自分のポータル上で操作できます。
 
@@ -120,7 +120,7 @@ Azure Lighthouse が発表されました。自分のリソースの管理を他
 
 表示されない場合は、Global subscription filter で対象を絞っている可能性があります。委譲されたリソースの AAD も表示するようにしましょう。
 
-{{< figure src="/images/2019-0713-009.png" title="Global subscription filter の表示" >}}
+{{< figure src="/images/2019-0713-008.png" title="Global subscription filter の表示" >}}
 
 ## まとめ
 
