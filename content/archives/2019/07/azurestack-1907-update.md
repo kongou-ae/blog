@@ -30,7 +30,7 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 1. PowerShell を利用して Privileged Endpoint に接続する
 2. Privileged Endpoint 上の Get-AzureStackLog コマンドを利用して、診断ログを外部のファイル共有にを保存する
-3. AzCopy ベースの PowerShell スクリプトを利用して、診断ログを Microsoft のサポートのストレージアカウントに転送する
+3. AzCopy ベースの PowerShell スクリプトを利用して、ファイル共有上の診断ログを Microsoft のサポートのストレージアカウントに転送する
 
 手間を生み出す行為は次の2つです。
 
@@ -67,11 +67,13 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ## バックアップ容量の削減
 
-参考：[Changes](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-release-notes-1907#changes)
+参考：
+- [Changes](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-release-notes-1907#changes)
+- [Backup Controller requirements](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-backup-reference#backup-controller-requirements)
 
 > Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
 
-Azure Active Direcorty を認証で利用している場合、バックアップの容量が大幅に減ります。具体的には約 20GB から約 1GB になります。バックアップの容量が減ることは、バックアップにかかる時間が大幅にへるだけでなく、バックアップのトラフィックが利用者のトラフィックにあたえる可能性を減らします。いいこと尽くしです。
+Azure Active Direcorty を認証で利用している場合、バックアップの容量が大幅に減ります。具体的には約 20GB から約 1GB になります。バックアップの容量が減ることは、バックアップにかかる時間が大幅に減るだけでなく、バックアップのトラフィックが利用者のトラフィックに影響を与える可能性を減らします。いいこと尽くしです。
 
 ## テナント向けサブスクリプション削除時の動作
 
@@ -81,7 +83,7 @@ Azure Active Direcorty を認証で利用している場合、バックアップ
 
 ずーーーーっと known issue になっていた、「テナントのリソースが存在する状態で管理者がテナント向けのサブスクリプションを消すと、テナントのリソースが残り続ける」という不具合が解消されました。
 
-実際に、ASDK 1907 を利用して、テナント側に Virtual Machine が存在する状態で管理者側からテナント向けのサブスクリプションを削除してみました。その結果、Virtual Machine が自動的に削除されました。不具合はちゃんと回収されていそうです。
+実際に、ASDK 1907 を利用して、テナント側に Virtual Machine が存在する状態で管理者側からテナント向けのサブスクリプションを削除してみました。その結果、Virtual Machine が自動的に削除されました。不具合はちゃんと改修されていそうです。
 
 {{< figure src="/images/2019-07-28-001.png" title="テナント上の Virtual Machine の ID" >}}
 
@@ -93,4 +95,4 @@ Azure Active Direcorty を認証で利用している場合、バックアップ
 
 このまま、日常の運用で Privileged Endpoint を使わない世界になってほしいです。日常的な運用が Admin Portal だけで済むようになれば、ローカル認証にもかかわらず強い権限を有する Privileged Endpoint のアカウントを知る人を最小限に減らせるからです。
 
-日常的に Privileged Endpoint を使うのは Get-AzureStackLog するときと Test-AzureStack するときです。1907 Update によって、 Get-AzureStackLog を実行するために Privileged Endpoint を使う機会が大幅に減りました。次は Admin Portal 上で Test-AzureStack できるようになってほしいです。そうすれば 普段の運用で Privileged Endpoint を使わなくて済みます。
+日常的に Privileged Endpoint を使うのは、Get-AzureStackLog するときと Test-AzureStack するときです。1907 Update によって、 Get-AzureStackLog のために Privileged Endpoint を使う機会が大幅に減りました。次は Admin Portal 上で Test-AzureStack できるようになってほしいです。そうすれば 普段の運用で Privileged Endpoint を使う機会が激減します。
