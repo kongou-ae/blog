@@ -20,7 +20,7 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ログの保存先は SAS トークンつきの Blob コンテナです。Azure の Blob だけでなく Azure Stack の Blob も利用できるので、Disconnected な環境でも利用できます。SAS トークンを利用することで他人のストレージアカウントにも診断ログを保存できます。
 
-{{< figure src="/images/2019-0728-003.png" title="ログを取得する画面" >}}
+{{< figure src="/images/2019-07-28-003.png" title="ログを取得する画面" >}}
 
 この機能のリリースによって、Microsoft のサポートに診断ログを提供する手順がさらに簡素化されました。
 
@@ -61,7 +61,7 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 任意の SAS トークン付き Blob コンテナに手動で診断ログを保存する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
 
-{{< figure src="/images/2019-0728-004.png" title="自動ログアップデートを設定する画面" >}}
+{{< figure src="/images/2019-07-28-004.png" title="自動ログアップデートを設定する画面" >}}
 
 ドキュメントによると、自動ログアップロードが発動するタイミングは「Critical なアラートが発生して、さらにこのアラートが30分間 Open し続けていた場合」のようです。トリガを見る限りだと、ガチなトラブルのログを確実に保全するための機能という印象を受けます。
 
@@ -83,9 +83,9 @@ Azure Active Direcorty を認証で利用している場合、バックアップ
 
 実際に、ASDK 1907 を利用して、テナント側に Virtual Machine が存在する状態で管理者側からテナント向けのサブスクリプションを削除してみました。その結果、Virtual Machine が自動的に削除されました。不具合はちゃんと回収されていそうです。
 
-{{< figure src="/images/2019-0728-001.png" title="テナント上の Virtual Machine の ID" >}}
+{{< figure src="/images/2019-07-28-001.png" title="テナント上の Virtual Machine の ID" >}}
 
-{{< figure src="/images/2019-0728-002.png" title="Virtual Machine Hyper-Vのイベントログ" >}}
+{{< figure src="/images/2019-07-28-002.png" title="Virtual Machine Hyper-Vのイベントログ" >}}
 
 ## 所感
 
