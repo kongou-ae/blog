@@ -48,18 +48,18 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ### 1907 Update 以降
 
-1997 Update によって、Admin Portal 上の操作で 診断ログを Blob コンテナに直接転送できるようになりました。その結果、1907 Update 以降の手順は次のように変わります。
+1997 Update によって、Admin Portal 上の操作で診断ログを Blob コンテナに直接転送できるようになりました。その結果、1907 Update 以降の手順は次のように変わります。
 
 1. ブラウザで Admin Portal に接続する
 2. "On-demand diagnostic log collection" を利用して、Microsoft のサポートのストレージアカウントに診断ログを直接転送する
 
-ポータルから診断ログを取得する機能が生きている限り、診断ログを取得するために Privileged Endpoint を使うことはありません。手間の原因がすべて消滅しました。
+ポータルから診断ログを取得する機能が生きている限り、診断ログを取得するために Privileged Endpoint を使うことはありません。手間の原因がすべて消滅しました。最高です。
 
 ## 診断ログの自動アップロード
 
 参考：[Automatic diagnostic log collection](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-diagnostic-log-collection-overview#on-demand-diagnostic-log-collection)
 
-手動で診断ログを保存する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
+診断ログを手動で取得する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
 
 {{< figure src="/images/2019-07-28-004.png" title="自動ログアップデートを設定する画面" >}}
 
@@ -87,7 +87,7 @@ Azure Active Direcorty を認証で利用している場合、バックアップ
 
 {{< figure src="/images/2019-07-28-001.png" title="テナント上の Virtual Machine の ID" >}}
 
-{{< figure src="/images/2019-07-28-002.png" title="Virtual Machine Hyper-Vのイベントログ" >}}
+{{< figure src="/images/2019-07-28-002.png" title="テナント向けサブスクリプションを削除した後のイベントログ" >}}
 
 ## 所感
 
