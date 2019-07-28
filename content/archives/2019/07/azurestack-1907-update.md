@@ -53,7 +53,7 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 1. ブラウザで Admin Portal に接続する
 2. "On-demand diagnostic log collection" を利用して、Microsoft のサポートのストレージアカウントに診断ログを直接転送する
 
-このこの機能が生きている限り、診断ログを取得するために Privileged Endpoint を使うことはありません。手間の原因がすべて消滅しました。
+ポータルから診断ログを取得する機能が生きている限り、診断ログを取得するために Privileged Endpoint を使うことはありません。手間の原因がすべて消滅しました。
 
 ## ログの自動アップロード
 
