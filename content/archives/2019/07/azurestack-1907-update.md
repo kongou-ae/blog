@@ -55,11 +55,11 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ポータルから診断ログを取得する機能が生きている限り、診断ログを取得するために Privileged Endpoint を使うことはありません。手間の原因がすべて消滅しました。
 
-## ログの自動アップロード
+## 診断ログの自動アップロード
 
 参考：[Automatic diagnostic log collection](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-diagnostic-log-collection-overview#on-demand-diagnostic-log-collection)
 
-任意の SAS トークン付き Blob コンテナに手動で診断ログを保存する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
+手動で診断ログを保存する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
 
 {{< figure src="/images/2019-07-28-004.png" title="自動ログアップデートを設定する画面" >}}
 
@@ -67,13 +67,13 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ## バックアップ容量の削減
 
-参考：
-- [Changes](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-release-notes-1907#changes)
-- [Backup Controller requirements](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-backup-reference#backup-controller-requirements)
+- 参考：
+  - [Changes](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-release-notes-1907#changes)
+  - [Backup Controller requirements](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-backup-reference#backup-controller-requirements)
 
 > Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
 
-Azure Active Direcorty を認証で利用している場合、バックアップの容量が大幅に減ります。具体的には約 20GB から約 1GB になります。バックアップの容量が減ることは、バックアップにかかる時間が大幅に減るだけでなく、バックアップのトラフィックが利用者のトラフィックに影響を与える可能性を減らします。いいこと尽くしです。
+Azure Active Direcorty を認証で利用している場合、バックアップの容量が大幅に減ります。具体的には約 20GB から約 1GB になります。バックアップの容量が減ると、バックアップにかかる時間が大幅に減少するだけでなく、バックアップのトラフィックが利用者のトラフィックに影響を与える可能性も減少します。いいこと尽くしです。
 
 ## テナント向けサブスクリプション削除時の動作
 
@@ -93,6 +93,6 @@ Azure Active Direcorty を認証で利用している場合、バックアップ
 
 ポータルから診断ログを転送できるようになったのが目玉ですね。慣れ親しんだ Get-AzureStackLog コマンドを使わなくなると思うと、少々寂しいです。
 
-このまま、日常の運用で Privileged Endpoint を使わない世界になってほしいです。日常的な運用が Admin Portal だけで済むようになれば、ローカル認証にもかかわらず強い権限を有する Privileged Endpoint のアカウントを知る人を最小限に減らせるからです。
+このまま、日常の運用で Privileged Endpoint を使わない世界になってほしいです。日常的な運用が Admin Portal だけで済むようになれば、ローカル認証にもかかわらず強い権限を有する Privileged Endpoint のアカウントを知る人を最小限にできるからです。
 
 日常的に Privileged Endpoint を使うのは、Get-AzureStackLog するときと Test-AzureStack するときです。1907 Update によって、 Get-AzureStackLog のために Privileged Endpoint を使う機会が大幅に減りました。次は Admin Portal 上で Test-AzureStack できるようになってほしいです。そうすれば 普段の運用で Privileged Endpoint を使う機会が激減します。
