@@ -20,6 +20,8 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 
 ログの保存先は SAS トークンつきの Blob コンテナです。Azure の Blob だけでなく Azure Stack の Blob も利用できるので、Disconnected な環境でも利用できます。SAS トークンを利用することで他人のストレージアカウントにも診断ログを保存できます。
 
+{{< figure src="/images/2019-0728-003.png" title="ログを取得する画面" >}}
+
 この機能のリリースによって、Microsoft のサポートに診断ログを提供する手順がさらに簡素化されました。
 
 ### リリース当初
@@ -58,6 +60,8 @@ Azure stack 1907 Update がリリースされました。1907 Update で気に�
 参考：[Automatic diagnostic log collection](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-diagnostic-log-collection-overview#on-demand-diagnostic-log-collection)
 
 任意の SAS トークン付き Blob コンテナに手動で診断ログを保存する機能だけでなく、SAS トークン付き Blob コンテナに自動的に診断ログをアップロードする機能も追加されました。
+
+{{< figure src="/images/2019-0728-004.png" title="自動ログアップデートを設定する画面" >}}
 
 ドキュメントによると、自動ログアップロードが発動するタイミングは「Critical なアラートが発生して、さらにこのアラートが30分間 Open し続けていた場合」のようです。トリガを見る限りだと、ガチなトラブルのログを確実に保全するための機能という印象を受けます。
 
