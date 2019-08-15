@@ -11,7 +11,10 @@ Microsoft released on-demand diagnostic log collection in 1907 update. So we can
 
 [On-demand diagnostic log collection](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-diagnostic-log-collection-overview#on-demand-diagnostic-log-collection)
 
-When we use on-demand diagnostic log collection, the admin portal accesses to Rest API. We can also use this API.
+When we use on-demand diagnostic log collection, the admin portal accesses to Rest API. We can also use this API. This blog explans the following operations.
+
+- Run on-demand diagnostic log collection
+- Check the history of on-demand diagnostic log collection
 
 ## Run on-demand diagnostic log collection
 
