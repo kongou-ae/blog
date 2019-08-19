@@ -66,7 +66,7 @@ Invoke-RestMethod -Method POST -Uri "$adminManagementUrl$url" -Headers $requestH
 The url to the history of on-demand diagnostic log collection is as follows.
 
 ```
-GET https://adminmanagement.<region>.<external fqdn>/subscriptions/$subscriptionId/resourcegroups/system.$region/providers/Microsoft.SupportBridge.Admin/regions/$region/tky001/logCollectionHistory?api-version=2018-12-01"
+GET https://adminmanagement.<region>.<external fqdn>/subscriptions/$subscriptionId/resourcegroups/system.$region/providers/Microsoft.SupportBridge.Admin/regions/$region/logCollectionHistory?api-version=2018-12-01"
 ```
 
 ## Final thoughts
