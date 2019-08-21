@@ -1,7 +1,7 @@
 ---
 title: Collect the logs of App Service Resource Provider with Azure Stack REST API
 author: kongou_ae
-date: 2019-08-15
+date: 2019-08-21
 url: /archives/2019/08/collect-appservice-rp-log-with-restapi
 categories:
   - azurestack
