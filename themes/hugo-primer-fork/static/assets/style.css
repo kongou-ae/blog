@@ -108,7 +108,7 @@ aside {
   display: block;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .amazon-ad {
     display: none;
   }
