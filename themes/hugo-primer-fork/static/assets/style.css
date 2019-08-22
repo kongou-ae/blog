@@ -27,7 +27,7 @@ body {
 }
 #side {
   grid-area: side;
-  width: 230px;
+  width: 250px;
 }
 #footer {
   grid-area: footer;
@@ -102,4 +102,14 @@ aside {
 .markdown-body img {
   border: solid;
   border-color: darkgray;
+}
+
+.amazon-ad {
+  display: block;
+}
+
+@media screen and (max-width: 900px) {
+  .amazon-ad {
+    display: none;
+  }
 }

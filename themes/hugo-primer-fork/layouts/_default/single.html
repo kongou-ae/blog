@@ -28,6 +28,10 @@
     {{ .Content }}
   </section>
 
+  <section class="amazon-ad">
+    <iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=48&l=ur1&category=amazonrotate&f=ifr&linkID=759d031fa48c8a9a82b5ac339c227ee3&t=kongou00-22&tracking_id=kongou00-22" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+  </section>
+  
   <section>
     {{ if (default true .Params.comments) }}
       {{ template "_internal/disqus.html" . }}
@@ -66,12 +70,22 @@
           <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
           <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
         {{ end }}
-
       </div>
     {{ end }}
   {{ else }}
     <div>
-      <!-- Do not share -->
     </div>
   {{ end }}
+
+  <div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- blog22 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:200px;height:200px"
+         data-ad-client="ca-pub-6172178439361228"
+         data-ad-slot="4666811716"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 {{ end }}
