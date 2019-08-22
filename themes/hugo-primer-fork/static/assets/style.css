@@ -103,3 +103,13 @@ aside {
   border: solid;
   border-color: darkgray;
 }
+
+.amazon-ad {
+  display: block;
+}
+
+@media screen and (max-width: 700px) {
+  .amazon-ad {
+    display: none;
+  }
+}
