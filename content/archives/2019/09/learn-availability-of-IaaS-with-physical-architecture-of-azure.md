@@ -207,6 +207,8 @@ https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#pai
 - リージョンの切り替えが、Microsoft の判断によって行われる。
   - 利用者がリージョンを切り替える機能が実装予定だが、現時点では特定リージョンでプレビュー中
 
+参考となる URL は次の通りです。
+
 - https://azure.microsoft.com/ja-jp/support/legal/sla/storage/v1_5/
 - https://blogs.msdn.microsoft.com/windowsazurej/2013/12/19/windows-azure-5/
 - https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions
