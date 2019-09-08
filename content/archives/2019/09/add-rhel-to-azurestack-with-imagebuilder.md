@@ -9,7 +9,7 @@ categories:
 
 ## はじめに
 
-Microsoft と Redhat は Red Hat Enterprise Linux 7.1 以降を Azure Stack 上で動作させることをサポートしています。
+Microsoft と Red Hat は Red Hat Enterprise Linux 7.1 以降を Azure Stack 上で動作させることをサポートしています。
 
 - https://access.redhat.com/articles/3413531
 - https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-supported-os#linux
@@ -18,9 +18,9 @@ Microsoft と Redhat は Red Hat Enterprise Linux 7.1 以降を Azure Stack 上�
 
 - https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-redhat-create-upload-vhd
 
-上記の手順は、Redhat のサイトから ISO をダウンロードして仮想マシンを起動して、Azure Stack に適した設定に変更した VHD ファイルを用意するものです。正直めんどくさい。
+上記の手順は、Red Hat のサイトから ISO をダウンロードして仮想マシンを起動して、Azure Stack に適した設定に変更した VHD ファイルを用意するものです。正直めんどくさい。
 
-そこで本エントリでは、Azure に登録されている Red Hat Enterprise Linux のイメージを Azure Image Builder で VHD としてエクスポートしたうえで Azure Stack に登録します。なぜならば、自分で作ったイメージよりも、Azure 上で動いているイメージの方が信頼できるからです。
+そこで本エントリでは、Azure に登録されている Red Hat Enterprise Linux 8.0 のイメージを Azure Image Builder で VHD としてエクスポートしたうえで Azure Stack に登録します。なぜならば、自分で作ったイメージよりも、Azure 上で動いているイメージの方が信頼できるからです。
 
 ## 環境
 
@@ -32,7 +32,7 @@ Image Builder の手順は次の通りです。
 
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/image-builder
 
-テンプレートは次を利用します。
+テンプレートは次を利用します。source の箇所に Azure Stack に持ち込みたいイメージのバージョンを記入します。
 
 ```json
 {
@@ -74,7 +74,7 @@ Deployment failed. Correlation ID: 7f91b6c7-0eaa-45bb-af79-fe147844c3ae. Build (
 
 ### VDH をストレージアカウントに配置する
 
-Azure Image Builder が作成した VHD ファイルをストレージアカウントに配置します。作成した VHD ファイルを Azure Stack がダウンロードするため、コンテナのアクセスレベルを「Blob」に、ファイルタイプを「Page blob」するのを忘れないようにしましょう。
+Azure Image Builder が作成した VHD ファイルをストレージアカウントに配置します。配置した VHD ファイルを Azure Stack がダウンロードするため、コンテナのアクセスレベルを「Blob」に、ファイルタイプを「Page blob」するのを忘れないようにしましょう。
 
 ### VHD をイメージとして取り込む
 
@@ -128,7 +128,7 @@ $vm | Set-AzureRmVMSourceImage -PublisherName $images.PublisherName -Offer $imag
 
 https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/deployment_guide/registering-machine-ui
 
-サブスクリプションを有効化できた仮想マシンは Red hat のカスタマーポータルに「仮想システム - Microsoft Azure」として登録されました。
+サブスクリプションを有効化できた仮想マシンは Red Hat のカスタマーポータルに「仮想システム - Microsoft Azure」として登録されました。
 
 ### Azure 用 Red Hat Update Infrastructure の削除
 
@@ -169,9 +169,20 @@ Goal state agent: 2.2.38
 
 https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-linux#azure-linux-agent
 
-リポジトリには Azure Stack がサポートするバージョンが存在しないので、手動でアップデートします。次の手順によって新しいバージョンで動きましたが、正しいのか自信がありません。python36をインストールしていない状態で動いていた Agent を起動するのに、ユーザ側に Python36 が必要になっているので何かが間違っているような気がします。本番環境で利用する場合は Microsoft と Redhat に SR します。
+リポジトリには Azure Stack がサポートするバージョンが存在しないので、手動でアップデートします。次の手順によって新しいバージョンで動きましたが、正しいのか自信がありません。アップデート前は python36をインストールしていない状態でエージェントが動いていたのですが、アップデート後はユーザ側に Python36 が必要になってしましました。何かが間違っているような気がするので本番環境で利用する場合は Microsoft と Redhat に SR します。
 
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/update-linux-agent#update-the-linux-agent-when-no-agent-package-exists-for-distribution
+
+```
+yum install python36
+alternatives --set python /usr/bin/python3
+wget https://github.com/Azure/WALinuxAgent/archive/v2.2.42.zip
+unzip v2.2.42.zip 
+cd WALinuxAgent-2.2.42/
+sudo python setup.py install
+service waagent restart
+waagent -version
+```
 
 ## おわりに
 
