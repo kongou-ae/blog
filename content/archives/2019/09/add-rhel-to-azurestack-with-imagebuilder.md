@@ -84,7 +84,7 @@ Dashboard > Compute - VM images > Add a VM image から、ストレージアカ�
 
 登録が完了すると、登録した内容が Get-AzureRmVMImage に表示されるようになります。
 
-```
+```powershell
 PS C:\Users\AzureStackAdmin> Get-AzureRmVMImage -Location local -PublisherName aimless `
     -Offer rhel8 -Skus rhel8 -Version 1.0.0
 
@@ -138,7 +138,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/update-infrastruct
 
 Azure 上の RHUI には Azure 上のグローバル IP アドレスからのみアクセスできます。オンプレミスの Azure Stack で動作する仮想マシンは Azure 上の RHUI ににアクセスできません。
 
-```
+```bash
 [rhui-rhel-8-for-x86_64-baseos-rhui-rpms]
 name=Red Hat Enterprise Linux 8 for x86_64 - BaseOS from RHUI (RPMs)
 baseurl=https://rhui-1.microsoft.com/pulp/repos/content/dist/rhel8/rhui/$releasever/x86_64/baseos/os
@@ -158,7 +158,7 @@ sslclientkey=/etc/pki/rhui/private/key.pem
 
 Azure 上のイメージに含まれている Azure Linux エージェントのバージョンは2.2.32.2です。
 
-```
+```bash
 [root@rhel8-2 aimless]# waagent -version
 WALinuxAgent-2.2.32.2 running on redhat 8.0
 Python: 3.6.8
@@ -173,7 +173,7 @@ https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-linux#azure-li
 
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/update-linux-agent#update-the-linux-agent-when-no-agent-package-exists-for-distribution
 
-```
+```bash
 yum install python36
 alternatives --set python /usr/bin/python3
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.42.zip
