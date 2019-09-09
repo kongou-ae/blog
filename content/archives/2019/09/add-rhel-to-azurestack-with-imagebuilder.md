@@ -14,13 +14,13 @@ Microsoft と Red Hat は Red Hat Enterprise Linux 7.1 以降を Azure Stack 上
 - https://access.redhat.com/articles/3413531
 - https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-supported-os#linux
 
-ただし、2019年9月現在の Azure Stack Marketplace には Red Hat Enterprise Linux のイメージが存在しません。Azure Stack Operator が自分でイメージを作成して Azure Stack に登録する必要があります。
+ただし、2019年9月現在の Azure Stack Marketplace には Red Hat Enterprise Linux のイメージが存在しません。そのため、Azure Stack Operator が Red Hat Enterprise Linux のイメージを作成して Azure Stack に登録する必要があります。
+
+Microsoft は Azure Stack Operator 向けに次の手順を公開しています。この手順は Red Hat のサイトから ISO をダウンロードして仮想マシンを起動して、Azure Stack に適した設定に変更した VHD ファイルを用意するものです。正直めんどくさい。
 
 - https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-redhat-create-upload-vhd
 
-上記の手順は、Red Hat のサイトから ISO をダウンロードして仮想マシンを起動して、Azure Stack に適した設定に変更した VHD ファイルを用意するものです。正直めんどくさい。
-
-そこで本エントリでは、Azure に登録されている Red Hat Enterprise Linux 8.0 のイメージを Azure Image Builder で VHD としてエクスポートしたうえで Azure Stack に登録します。なぜならば、自分で作ったイメージよりも、Azure 上で動いているイメージの方が信頼できるからです。
+そこで本エントリでは、Azure に登録されている Red Hat Enterprise Linux 8.0 のイメージを Azure Image Builder で VHD としてエクスポートしたうえで Azure Stack に登録する方法を説明します。なぜならば、自分で作ったイメージよりも、Azure 上で動いているイメージの方が信頼できるからです。
 
 ## 環境
 
@@ -78,7 +78,7 @@ Azure Image Builder が作成した VHD ファイルをストレージアカウ�
 
 ### VHD をイメージとして取り込む
 
-Dashboard > Compute - VM images > Add a VM image から、ストレージアカウントに保存した VHD を Azure Stack のイメージとして取り込みます。
+管理者向けポータルの Dashboard > Compute - VM images > Add a VM image から、ストレージアカウントに保存した VHD を Azure Stack のイメージとして取り込みます。
 
 {{< figure src="/images/2019-09-08-001.png" title="イメージの登録画面" >}}
 
@@ -109,7 +109,7 @@ DataDiskImages   : []
 
 Azure 上のイメージを Azure Stack に登録できました。ただし、あくまでもイメージとして登録しただけマーケットプレイスのアイテムとしては登録していないので、テナントのポータルには Red Hat Enterprise Linux が表示されません。
 
-登録したイメージを利用する場合は、PowerShell や テンプレートを利用して仮想マシンを作成する必要があります。イメージを利用するPowerShell のサンプルコードは次の通りです。
+登録したイメージを利用する場合は、PowerShell や テンプレートを利用して仮想マシンを作成する必要があります。今回登録したイメージを利用する PowerShell のサンプルコードは次の通りです。
 
 ```powershell
 $images = Get-AzureRmVMImage -Location local -PublisherName aimless `
@@ -136,8 +136,6 @@ Azure 上の Red Hat Enterprise Linux は Azure 上に存在する Red Hat Updat
 
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/update-infrastructure-redhat
 
-Azure 上の RHUI には Azure 上のグローバル IP アドレスからのみアクセスできます。オンプレミスの Azure Stack で動作する仮想マシンは Azure 上の RHUI ににアクセスできません。
-
 ```bash
 [rhui-rhel-8-for-x86_64-baseos-rhui-rpms]
 name=Red Hat Enterprise Linux 8 for x86_64 - BaseOS from RHUI (RPMs)
@@ -152,7 +150,7 @@ sslclientcert=/etc/pki/rhui/product/content.crt
 sslclientkey=/etc/pki/rhui/private/key.pem
 ```
 
-そこで、/etc/yum.repos.d/rh-cloud.repo の enabled=1 をすべて0に書き換えて、Azure 上の RHUI を参照しないようにします。
+Azure 上の RHUI には Azure 上のグローバル IP アドレスからのみアクセスできます。そのため、オンプレミスの Azure Stack で動作する仮想マシンは Azure 上の RHUI にアクセスできません。そこで、/etc/yum.repos.d/rh-cloud.repo の enabled=1 をすべて0に書き換えて、Azure 上の RHUI を参照しないようにします。
 
 ### Azure Linux エージェント のアップデート
 
@@ -169,7 +167,7 @@ Goal state agent: 2.2.38
 
 https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-linux#azure-linux-agent
 
-リポジトリには Azure Stack がサポートするバージョンが存在しないので、手動でアップデートします。次の手順によって新しいバージョンで動きましたが、正しいのか自信がありません。アップデート前は python36をインストールしていない状態でエージェントが動いていたのですが、アップデート後はユーザ側に Python36 が必要になってしましました。何かが間違っているような気がするので本番環境で利用する場合は Microsoft と Redhat に SR します。
+リポジトリには Azure Stack がサポートするバージョンが存在しないので、手動でアップデートします。次の手順によって新しいバージョンで動きましたが、正しいのか自信がありません。アップデート前は python36 をインストールしていない状態でエージェントが動いていたのですが、アップデート後はユーザ側の Python36 が必要になってしましました。何かが間違っているような気がするので、本番環境で利用する場合は Microsoft と Redhat に SR します。
 
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/update-linux-agent#update-the-linux-agent-when-no-agent-package-exists-for-distribution
 
