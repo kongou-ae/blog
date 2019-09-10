@@ -214,7 +214,7 @@ https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#pai
 - https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions
 - https://docs.microsoft.com/ja-jp/azure/storage/common/storage-initiate-account-failover
 
-## ジオゾーン冗長ストレージ (GZRS) 
+### ジオゾーン冗長ストレージ (GZRS) 
 
 GRS には弱点があります。それはメインリージョン側の可用性が LRS であるという点です。もし、１つのスケールユニットが停止した場合、メインリージョン側に保存されているデータにアクセスできなくなります。スケールユニット内のデータが消失した場合、上述のとおり Microsoft がリージョンの切り替えを判断するまでペアリージョンのデータを読み書きできません。
 
