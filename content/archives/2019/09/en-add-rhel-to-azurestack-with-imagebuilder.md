@@ -123,7 +123,7 @@ $vm | Set-AzureRmVMSourceImage -PublisherName $images.PublisherName -Offer $imag
 
 The Virtual Machine which you created is Red Hat Enterprise Linux. But you can't execute yum because the valid subscription doesn't attach with this Red Hat Enterprise Linux. You need to change the configuration of Red Hat Enterprise Linux to run yum correctly on Azure Stack.
 
-### サブスクリプションの有効化
+### Enable a subscription
 
 You need to prepare a valid subscription for this Red Hat Enterprise Linux and attach this subscription to this Red Hat Enterprise Linux. The detailed information is as follows.
 
@@ -131,7 +131,7 @@ https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/de
 
 Red Hat Enterprise Linux which a valid subscription attached to is shown as "Virtual System - Microsoft Azure" in Red Hat's customer portal.
 
-### Azure 用 Red Hat Update Infrastructure の削除
+### Delete Red Hat Update Infrastructure for Azure
 
 Red Hat Enterprise Linux which is running on Azure is configured to access Red Hat Update Infrastructure(RHUI) on Azure for downloading packages.
 
