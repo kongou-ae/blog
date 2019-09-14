@@ -190,8 +190,7 @@ end wait:0
 
 最後に UDR のネクストホップを1号機の IP アドレスに書き換えます。
 
-``
-
+```
 get route table FGTDefaultAPRouteTable
 result:200
 matching route:toDefault:toDefault
