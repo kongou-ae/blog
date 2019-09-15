@@ -10,7 +10,7 @@ categories:
 
 ## はじめに
 
-このエントリでは、Active/Passive な FortiGate を Azure 上にデプロイする方法と、切り替えたときの挙動を説明します。
+このエントリでは、Active/Passive な FortiGate を Azure 上に構築する手順と、切り替えたときの挙動を説明します。
 
 ## 参考ドキュメント
 
@@ -18,7 +18,7 @@ categories:
 - https://docs.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/632940/single-fortigate-vm-deployment
 - https://docs.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/227656/deploying-and-configuring-active-passive-ha-between-multiple-zones
 
-## 構築方法
+## 構築の手順
 
 ### Azure リソースの構築
 
@@ -47,7 +47,7 @@ Active/Passive な HA は、切り替わり時に Azure の API と連携して�
 - 1号機の NIC(fg-A-NIC1) に Public IP アドレス(FGTAPClusterPublicIP) をつける
 - UDR のネクストホップを 10.2.0.4(1号機のプライベートIPアドレス)に変更する
 
-```
+```text
 config system sdn-connector
   edit "AZConnector"
   set type azure
@@ -79,7 +79,7 @@ end
 
 当然、2号機側の設定は違います。具体的な違いは、PIP を関連付ける NIC の名前と、UDR のネクストホップの IP アドレスです。
 
-```
+```text
 config system sdn-connector
   edit "AZConnector"
   set type azure
@@ -117,7 +117,7 @@ end
 
 切り替え中の挙動をデバックログで確認できます。
 
-```
+```text
 fg-A # diag debug application azd -1
 fg-A # diag debug enable
 ```
@@ -126,7 +126,7 @@ fg-A # diag debug enable
 
 まずは設定されているサービスプリンシパルを利用して API をたたくためのトークンを取得します。
 
-```
+```text
 fg-A # HA event
 Become HA master mode 2
 azd sdn connector  getting token
@@ -137,8 +137,7 @@ resourcegroup:fortigate, sub:76cd33dc-2d53-4bf7-a356-1558cc49f261
 
 次に、付け替える Public IP Address の存在を確認したうえで、停止した2号機の NIC から Public IP Address を外すリクエストを投げます。そしてリクエストが完了するまで待ちます。
 
-```
-
+```text
 get pubip FGTAPClusterPublicIP
 found pub ip FGTAPClusterPublicIP
 id /subscriptions/76cd33dc-2d53-4bf7-a356-1558cc49f261/resourceGroups/fortigate/providers/Microsoft.Network/networkInterfaces/fg-B-NIC1/ipConfigurations/ipconfig1
@@ -161,7 +160,7 @@ status:InProgress
 
 リクエストの完了を確認次第、外した Public IP Address を1号機の NIC に関連付けるリクエストを投げます。そしてリクエストの完了を待ちます。
 
-```
+```text
 fg-A # waiting for operation:https://management.azure.com/subscriptions/76cd33dc-2d53-4bf7-a356-1558cc49f261/providers/Microsoft.Network/locations/japaneast/operations/fe64d145-d79e-4812-b06c-9952573752ea?api-version=2018-06-01
 result:200
 {
@@ -190,7 +189,7 @@ end wait:0
 
 最後に UDR のネクストホップを1号機の IP アドレスに書き換えます。
 
-```
+```text
 get route table FGTDefaultAPRouteTable
 result:200
 matching route:toDefault:toDefault
@@ -211,7 +210,7 @@ nexthop and add is done
 
 切り替えにかかった時間は約1分半です。
 
-```
+```text
 System time: Fri Sep 13 21:28:18 2019 # 切り替え開始直前のシステム時刻
 System time: Fri Sep 13 21:29:59 2019 # 切り替え完了直後のシステム時刻
 ```
