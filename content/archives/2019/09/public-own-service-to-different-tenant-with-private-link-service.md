@@ -126,7 +126,7 @@ IIS のログを見ると、Private Link Service の IP アドレスである 10
 
 ## まとめ
 
-Private Link Service を利用して異なるテナント間で通信する方法をまとめました。Private Link Service を利用すると Standard LoadBalancer を利用しているシステムを異なるテナントに対して簡単に公開できます。今回は Virtual Machine を使いましたが、VMSS や AKS などの Standard LoadBalancer をサポートするリソースを使ったシステムも公開できそうです。夢が広がりますね。
+Private Link Service を利用して異なるテナントにシステムを公開する方法をまとめました。Private Link Service を利用すると Standard LoadBalancer を利用しているシステムを異なるテナントに対して簡単に公開できます。今回は Virtual Machine を使いましたが、VMSS や AKS などの Standard LoadBalancer をサポートするリソースを使ったシステムも公開できそうです。夢が広がりますね。
 
 Private Link の登場によって、Azure 上の異なるテナント間の通信を実現する方法は次の3つになりました。要件にあったものを選択しましょう。
 
