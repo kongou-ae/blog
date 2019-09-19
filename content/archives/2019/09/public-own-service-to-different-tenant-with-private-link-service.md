@@ -83,7 +83,7 @@ Private Link Center を見ると、otherTenantPe　という Private Endpoint �
 
 {{< figure src="/images/2019-09-19-002.png" title="Private Endpoint の状態" >}}
 
-利用者が作成した Privaete Endpoint がサービスプロバイダによってすぐに承認されるかどうかは Private Link Service 側の設定によります。パラメータを指定せずに作成した Private Link Service の場合、Private Endpoint からの接続要求をサービスプロバイダが手動で承認する必要があります。
+利用者が作成した Private Endpoint がサービスプロバイダによってすぐに承認されるかどうかは Private Link Service 側の設定によります。パラメータを指定せずに作成した Private Link Service の場合、Private Endpoint からの接続要求をサービスプロバイダが手動で承認する必要があります。
 
 {{< figure src="/images/2019-09-19-003.png" title="サービスプロバイダが接続要求を承認する" >}}
 
