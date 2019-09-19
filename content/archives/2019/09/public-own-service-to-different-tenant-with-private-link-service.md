@@ -7,7 +7,7 @@ categories:
   - azure
 ---
 
-# はじめに
+## はじめに
 
 Azure Private Link が Public Preview になりました。
 
@@ -62,7 +62,7 @@ $privateLinkService = New-AzPrivateLinkService `
 /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/pls/providers/Microsoft.Network/privateLinkServices/pls
 ```
 
-## 利用者側
+### 利用者側
 
 サービスプロバイダから入手した Private Link Service の ID を利用して、Private Endpoint を作ります。
 
