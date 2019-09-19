@@ -111,7 +111,7 @@ $peNic.IpConfigurations[0].PrivateIpAddress
 
 設定がうまくできていれば、IIS のデフォルト画面が表示されます。
 
-{{< figure src="/images/2019-09-19-005.png" title="Private Endpoint の先の VM の IIS の画面" >}
+{{< figure src="/images/2019-09-19-005.png" title="Private Endpoint の先の VM の IIS の画面" >}}
 
 IIS のログを見ると、Private Link Service の IP アドレスである 10.0.1.100 からアクセスされているのが分かります。
 
