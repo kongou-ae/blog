@@ -15,7 +15,7 @@ Azure Private Link が Public Preview になりました。
 
 Private Link は Private Endpoint と Private Link Service の2つで構成されています。本エントリでは、Private Link Service を利用して別テナントにシステムを公開する方法に触れます。想定しているユースケースは、「Azure 上でサービスを運用しているサービスプロバイダが Azure の利用者に対して Private EndPoint 経由でサービスを公開する」です。
 
-## 事前準備
+## 設定
 
 ### サービスプロバイダ側
 
