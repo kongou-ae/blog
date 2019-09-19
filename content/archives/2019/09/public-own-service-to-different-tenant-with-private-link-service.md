@@ -1,8 +1,8 @@
 ---
-title: Azure Private Link Service を利用して別テナントのシステムにアクセスする
+title: Azure Private Link Service を利用して別テナントにシステムを公開する
 author: kongou_ae
 date: 2019-09-19
-url: /archives/2019/09/connect-different-tenant-with-private-link-service
+url: /archives/2019/09/public-own-service-to-different-tenant-with-private-link-service
 categories:
   - azure
 ---
@@ -13,7 +13,7 @@ Azure Private Link が Public Preview になりました。
 
 [https://azure.microsoft.com/ja-jp/updates/private-link-now-available-in-preview/](https://azure.microsoft.com/ja-jp/updates/private-link-now-available-in-preview/)
 
-Private Link は Private Endpoint と Private Link Service の2つで構成されています。本エントリでは、Private Link Service を利用して別テナントのシステムにアクセスする方法に触れます。想定しているユースケースは、「Azure 上でサービスを運用しているサービスプロバイダが Azure の利用者に対して Private EndPoint 経由でサービスを提供する」です。
+Private Link は Private Endpoint と Private Link Service の2つで構成されています。本エントリでは、Private Link Service を利用して別テナントにシステムを公開する方法に触れます。想定しているユースケースは、「Azure 上でサービスを運用しているサービスプロバイダが Azure の利用者に対して Private EndPoint 経由でサービスを公開する」です。
 
 ## 事前準備
 
@@ -21,7 +21,7 @@ Private Link は Private Endpoint と Private Link Service の2つで構成さ�
 
 Private Link Service と紐づけられる Azure リソースは Standard LoadBalancer だけです。したがって、Private Link Service 経由でのサービス提供する場合、クライアントが Standard LoadBalancer にアクセスするようなアーキテクチャにしなければなりません。
 
-今回は、Virtual Machine 上の IIS で動作する Web サービスを Private Endpoint 経由で公開してみます。Standard LoadBalancer と Virtual Machine を用意して、Standard LoadBalancer の Frontend に TCP/80 でアクセスすると Virtual Machine の IIS の画面が表示されるようにします。
+本エントリでは、Virtual Machine 上の IIS で動作する Web サービスを Private Endpoint 経由で公開します。まずは、Standard LoadBalancer と Virtual Machine を用意して、Standard LoadBalancer の Frontend に TCP/80 でアクセスすると Virtual Machine の IIS の画面が表示されるようにします。
 
 準備ができたら、Private Link Service を作ります。
 
@@ -51,15 +51,15 @@ $privateLinkService = New-AzPrivateLinkService `
     -IpConfiguration $IPConfig 
 ```
 
-作成した Private Link Service の設定はポータル上で確認できます。先ほど指定したプライベート IP アドレスを利用していることが分かります。
+作成した Private Link Service の設定はポータル上でも確認できます。作成した Private Link Service が先ほど指定したプライベート IP アドレスを利用していることが分かります。
 
 {{< figure src="/images/2019-09-19-001.png" title="Private Link Service の概要" >}}
 
-異なるテナントの利用者がこの Private Link Service につなぐためには、Private Link Service の ID が必要です。メモしたうえで利用者に伝えます。
+異なるテナントの利用者がこの Private Link Service に利用するためには、Private Link Service の ID が必要です。メモしたうえで利用者に伝えます。
 
 ```powershell
 > $privateLinkService.Id
-/subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/pls/providers/Microsoft.Network/privateLinkServices/pls
+/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/pls/providers/Microsoft.Network/privateLinkServices/pls
 ```
 
 ## 利用者側
@@ -69,7 +69,7 @@ $privateLinkService = New-AzPrivateLinkService `
 ```powershell
 $plsConnection = New-AzPrivateLinkServiceConnection `
     -Name otherTenantPlsConnection `
-    -PrivateLinkServiceId /subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/pls/providers/Microsoft.Network/privateLinkServices/pls
+    -PrivateLinkServiceId /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/pls/providers/Microsoft.Network/privateLinkServices/pls
 
 $otherTenantrg = Get-azResourceGroup -Name azurelab
 $otherVnet = Get-azVirtualNetwork -Name azurelabvnet648 -ResourceGroupName azurelab
@@ -89,7 +89,7 @@ Private Link Center を見ると、otherTenantPe　という Private Endpoint �
 
 [https://docs.microsoft.com/ja-jp/azure/private-link/private-link-service-overview#control-service-access](https://docs.microsoft.com/ja-jp/azure/private-link/private-link-service-overview#control-service-access)
 
-誰でも勝手につないで良い Private Link Service にしたい場合は、自動承認を有効化しましょう。
+誰でも勝手につないで良い Private Link Service にしたい場合は、自動承認を有効化します。
 
 ```bash
 # 特定のサブスクリプションを指定して自動承認を有効化
@@ -109,7 +109,7 @@ $peNic.IpConfigurations[0].PrivateIpAddress
 10.2.0.9
 ```
 
-設定がうまくできていれば、IIS のデフォルト画面が表示されます。
+ブラウザで 10.2.0.9 にアクセスすると、IIS のデフォルト画面が表示されます。
 
 {{< figure src="/images/2019-09-19-005.png" title="Private Endpoint の先の VM の IIS の画面" >}}
 
