@@ -36,13 +36,13 @@ categories:
 
 次の URL でジオの一覧を確認できます。
 
-https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions
+[https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions](https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions?WT.mc_id=AZ-MVP-5003408)
 
 ### リージョン
 
 1つのジオには、1つ以上のデータセンタが存在しています。データセンタの存在する地域のことをリージョンと呼びます。
 
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/regions#what-are-azure-regions
+[https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/regions#what-are-azure-regions](https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/regions#what-are-azure-regions?WT.mc_id=AZ-MVP-5003408)
 
 {{< figure src="/images/2019-09-07-003.png" title="リージョンのイメージ" >}}
 
@@ -52,7 +52,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/regions#what-are
 
 > リージョンのペアの間で、Azure はプラットフォームの更新をシリアル化し (計画メンテナンス)、一度に 1 つのペアになったリージョンだけが更新されるようにします。 障害のイベントが複数のリージョンに影響を与える場合、各ペアの少なくとも 1 つのリージョンが優先的に復旧されます。
 
-https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions#what-are-paired-regions
+[https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions#what-are-paired-regions](https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-regions#what-are-paired-regions?WT.mc_id=AZ-MVP-5003408)
 
 ### ゾーン
 
@@ -64,7 +64,7 @@ https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-region
 
 > それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 
 
-https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview
+[https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview](https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview?WT.mc_id=AZ-MVP-5003408)
 
 『１つまたは複数のデータセンタ』と書かれていますので、ゾーンを構成するデータセンタが１つの場合もあるのでしょう。
 
@@ -74,11 +74,11 @@ https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview
 
 > Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
 
-https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview
+[https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview](https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview?WT.mc_id=AZ-MVP-5003408)
 
 > Azure では、リージョン内で 1 度に 1 つのゾーンで重要なメンテナンスが実行されます。これは、何らかの障害が発生した場合でも、リージョン内の可用性ゾーン全体にデプロイされたお客様のリソースに影響が及ばないようにするためです。
 
-https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview
+[https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview](https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview?WT.mc_id=AZ-MVP-5003408)
 
 ### スケールユニットまたはクラスタ
 
@@ -94,7 +94,7 @@ https://docs.microsoft.com/ja-jp/azure/availability-zones/az-overview
 
 > 障害ドメインは電源とネットワーク スイッチを共有する仮想マシンのグループを定義します。
 
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
+[https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy](https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy?WT.mc_id=AZ-MVP-5003408)
 
 スケールユニットを構成する個々のラックを障害ドメインと理解するとわかりやすいです。ただし、障害ドメインとラックは完全に一致しません。
 
@@ -106,7 +106,7 @@ https://blogs.msdn.microsoft.com/dsazurejp/2011/06/29/windows-azure-12/
 
 > 障害ドメインは電源とネットワーク スイッチを共有する仮想マシンのグループを定義します。 既定では、可用性セット内に構成された仮想マシンは、Resource Manager のデプロイ用に最大 3 つの障害ドメインに分けられます (クラシックの場合は 2 つの障害ドメイン)。
 
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
+[https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy](https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy?WT.mc_id=AZ-MVP-5003408)
 
 ### 更新ドメイン
 
@@ -116,7 +116,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availabil
 
 > 所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す、ユーザーが構成できない 5 つの更新ドメインが既定で割り当てられます
 
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
+[https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy](https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy?WT.mc_id=AZ-MVP-5003408)
 
 冗長化している2台の仮想マシンが同一の更新ドメイン上で動作している場合、2台の仮想マシンはメンテナンスで一緒に再起動する可能性があります。
 
@@ -168,13 +168,13 @@ Azure 上でシステムを構築する際は、この物理構成を理解し�
 
 > LRS では、データをストレージ スケール ユニットにレプリケートすることで、ストレージこのオブジェクトの持続性が提供されます。 ストレージ アカウントを作成したリージョンのデータセンターでは、ストレージ スケール ユニットがホストされています。 LRS ストレージ アカウントへの書き込み要求は、データがすべてのレプリカに書き込まれた後にのみ、正常に返されます。 レプリカはそれぞれ、ストレージ スケール ユニット内の異なる障害ドメインとアップグレード ドメインに存在します。
 
-https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs
+[https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs?WT.mc_id=AZ-MVP-5003408)
 
 一方で、スケールユニットが全停止したり、スケールユニットが配置されているデータセンタが停止した場合、LRSのストレージに保存されているデータが消失する可能性があります。
 
 > LRS は、コストが最も安いレプリケーションのオプションであり、他のオプションと比較して最低の持続性が提供されます。 データセンターレベルの障害 (火災、洪水など) が発生した場合は、レプリカすべてが失われたり、回復不能になる可能性があります。
 
-https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs
+[https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-lrs?WT.mc_id=AZ-MVP-5003408)
 
 ### ゾーン冗長ストレージ (ZRS)
 
@@ -184,7 +184,7 @@ LRSのリスクを回避する手段の１つがゾーン冗長ストレージ �
 
 > ゾーン冗長ストレージ (ZRS) は、1 つのリージョン内の 3 つのストレージ クラスターにデータを同期してレプリケートします。
 
-https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-zrs
+[https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-zrs](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-zrs?WT.mc_id=AZ-MVP-5003408)
 
 ゾーンにまたがってデータが複製されているので、可用性ゾーンと同じようにデータセンタ単位の障害を回避できます。一方で、リージョン全体が影響を受けるような障害や災害が発生した場合、ZRS のストレージに保存されているデータが消失する可能性があります。
 
@@ -196,7 +196,7 @@ ZRS のリスクを回避する手段の１つがジオ冗長ストレージ （
 
 > GRS または RA-GRS が有効なストレージ アカウントでは、すべてのデータが最初にローカル冗長ストレージ (LRS) でレプリケートされます。 更新は、まずプライマリの場所にコミットされ、LRS を使用してレプリケートされます。 更新は、GRS を使用してセカンダリ リージョンに非同期にレプリケートされます。 データがセカンダリの場所に書き込まれると、LRS を使用してその場所内にレプリケートされます。
 
-https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions
+[https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions?WT.mc_id=AZ-MVP-5003408)
 
 複数のリージョンにデータが複製されているので、リージョン単位の障害を回避できます。複数のリージョンが同時に停止するような事象が発生しない限り安心です。
 
@@ -211,8 +211,8 @@ https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#pai
 
 - https://azure.microsoft.com/ja-jp/support/legal/sla/storage/v1_5/
 - https://blogs.msdn.microsoft.com/windowsazurej/2013/12/19/windows-azure-5/
-- https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions
-- https://docs.microsoft.com/ja-jp/azure/storage/common/storage-initiate-account-failover
+- [https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy-grs#paired-regions?WT.mc_id=AZ-MVP-5003408)
+- [https://docs.microsoft.com/ja-jp/azure/storage/common/storage-initiate-account-failover](https://docs.microsoft.com/ja-jp/azure/storage/common/storage-initiate-account-failover?WT.mc_id=AZ-MVP-5003408)
 
 ### ジオゾーン冗長ストレージ (GZRS) 
 
