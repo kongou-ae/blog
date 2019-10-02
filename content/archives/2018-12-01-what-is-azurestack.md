@@ -30,7 +30,7 @@ Microsoft 公式の言葉を借りると、Azure Stack とは「オンプレミ�
 - ソリューションの概要
   - [Azure Stack とは](https://azure.microsoft.com/ja-jp/overview/azure-stack/)
   - [コンピューティングの未来: インテリジェント クラウドとインテリジェント エッジ](https://azure.microsoft.com/ja-jp/overview/future-of-cloud/)
-  - [Azure Stack とは](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-poc)
+  - [Azure Stack とは](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-poc?WT.mc_id=AZ-MVP-5003408)
 - 一般公開時のアナウンス
   - [Microsoft Azure Stack is ready to order now](https://azure.microsoft.com/ja-jp/blog/microsoft-azure-stack-is-ready-to-order-now/)
 
@@ -75,10 +75,10 @@ Azure 上の IaaS を使ったことのある方にとっては見慣れたサ�
 
 さらに、各サービスには、Azure との差異があります。具体的な差異は次のURLに記載されています。Azure と100%同じサービスではないことに注意が必要です。
 
-- [Azure Stack Storage: 違いと考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-acs-differences)
-- [Azure Stack で仮想マシンを操作する際の考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-vm-considerations)
-- [Azure Stack のマネージド ディスク: 相違点と考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-managed-disk-considerations)
-- [Azure Stack ネットワークに関する考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-network-differences)
+- [Azure Stack Storage: 違いと考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-acs-differences?WT.mc_id=AZ-MVP-5003408)
+- [Azure Stack で仮想マシンを操作する際の考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-vm-considerations?WT.mc_id=AZ-MVP-5003408)
+- [Azure Stack のマネージド ディスク: 相違点と考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-managed-disk-considerations?WT.mc_id=AZ-MVP-5003408)
+- [Azure Stack ネットワークに関する考慮事項](https://docs.microsoft.com/ja-jp/azure/azure-stack/user/azure-stack-network-differences?WT.mc_id=AZ-MVP-5003408)
 
 なお、Azure と一貫性のある Azure Stack では、Azure がサポートしていない機能を利用できません。Azure に存在しない機能を追加すると、Azure との一貫性が損なわれるためです。この最たる例がレイヤ2接続です。オンプレミスの仮想基盤であれば当たり前のようにサポートされるレイヤ2での接続は、Azure Stack ではサポートされていません。なぜならば、レイヤ2での接続が Azure でサポートされていないからです。
 
