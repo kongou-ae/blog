@@ -10,7 +10,7 @@ categories:
 ## サマリ
 
 - Lighthouse を使えば、Shared Image Gallary を簡単に異なるテナントに共有できる
-- 2019年10月現在、Ansible で Shared Image Gallary を利用して VM を作る場合は Developブランチが必要
+- 2019年10月現在、Ansible で Shared Image Gallary を利用して VM を作る場合は devel ブランチが必要
 
 ## Shared Image Gallary を異なるテナントに共有する
 
