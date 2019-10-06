@@ -18,7 +18,7 @@ categories:
 
 [Azure テナント間でギャラリー VM イメージを共有する](https://docs.microsoft.com/ja-jp/azure/virtual-machines/windows/share-images-across-tenants?WT.mc_id=AZ-MVP-5003408)
 
-ですが、イメージを共有するためだけに 共有する側と共有される側の両方に Azure Active Direcroty の Service Principle を作るのは手間がかかりすぎです。実際に運用で利用する場合、AWS の AMI を異なるアカウントに共有するときのように、共有するテナント側の作業だけで共有が完了する手法が望ましいです。
+ですが、イメージを共有するためだけに共有する側と共有される側の両方に Azure Active Direcroty の Service Principle を作るのは手間がかかりすぎです。実際に運用で利用する場合、AWS の AMI を異なるアカウントに共有するときのように、共有するテナント側の作業だけで共有が完了する手法が望ましいです。
 
 [[EC2] カスタムAMIの活用：共有とコピー](https://dev.classmethod.jp/cloud/aws/ec2-using-ami/)
 
@@ -26,7 +26,7 @@ categories:
 
 参考：[Azure の委任されたリソース管理に顧客をオンボードする](https://docs.microsoft.com/ja-jp/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template?WT.mc_id=AZ-MVP-5003408)
 
-設定が完了すると、イメージを共有する側のテナントのサービスプロバイダに、イメージを共有される側のテナントが表示されます。
+設定が完了すると、イメージを共有する側のテナントの Service Provider に、イメージを共有される側のテナントが表示されます。
 
 {{< figure src="/images/2019-10-06-001.png" title="共有する側の Lighthouse の画面" >}}
 
@@ -42,7 +42,7 @@ categories:
 
 ポータルから Virtual Machine を作っても面白くないので、今回は Anbile を使って Virtual Machine を作ります。
 
-Ansible 2.8 の azure_rm_virtualmachine は Shared Image Gallay に対応していません。Ansible で Shared Image Gallary を利用するためには、devel ブランチを利用する必要があります。
+CloudShell にインストールされている Ansible 2.8 の azure_rm_virtualmachine は Shared Image Gallay に対応していません。azure_rm_virtualmachine で Shared Image Gallary を利用するためには、devel ブランチの Ansible を利用する必要があります。
 
 次のコマンドで CloudShell に devel な Ansible をインストールします。
 
@@ -62,9 +62,21 @@ devel な Ansible は image の部分に id が指定できるようになって
 
 {{< figure src="/images/2019-10-06-004.png" title="イメージの ID" >}}
 
-```yaml
-image:
-  id: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/sharedimage/providers/Microsoft.Compute/galleries/customWindows/images/Windows/versions/1.0.0
+```yml
+- name: provision new Azure virtual host
+  azure_rm_virtualmachine:
+    admin_username: '{{ vm_user }}'
+    admin_password: "{{ vm_password }}"
+    os_type: Windows
+    image:
+      id: /subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/sharedimage/providers/Microsoft.Compute/galleries/customWindows/images/Windows/versions/1.0.0
+    name: "{{ vm_name }}"
+    resource_group: "{{ resource_group }}"
+    vm_size: Standard_D1
+    storage_account_name: "{{ vm_name }}"
+    virtual_network_name: "{{ vm_name }}"
+    subnet_name: "{{ vm_name }}"
+    managed_disk_type: "Standard_LRS"
 ```
 
 
