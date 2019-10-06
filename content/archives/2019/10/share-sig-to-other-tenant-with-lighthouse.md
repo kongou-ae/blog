@@ -69,7 +69,7 @@ devel な Ansible は image の部分に id が指定できるようになって
     admin_password: "{{ vm_password }}"
     os_type: Windows
     image:
-      id: /subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/sharedimage/providers/Microsoft.Compute/galleries/customWindows/images/Windows/versions/1.0.0
+      id: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/sharedimage/providers/Microsoft.Compute/galleries/customWindows/images/Windows/versions/1.0.0
     name: "{{ vm_name }}"
     resource_group: "{{ resource_group }}"
     vm_size: Standard_D1
