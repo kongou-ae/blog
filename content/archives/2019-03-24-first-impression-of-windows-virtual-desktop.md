@@ -30,19 +30,19 @@ Windows Virtual Desktop が Public Preview になったので、構成を理解�
 
 何も考えずにポータルからポチポチ作れるサービスではありません。次の前提条件を満たしてから挑戦しましょう。
 
-https://docs.microsoft.com/ja-jp/azure/virtual-desktop/overview#requirements
+[Windows Virtual Desktop とは](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/overview#requirements?WT.mc_id=AZ-MVP-5003408)
 
 ### WVD の構造
 
 WVD で登場する新しい用語の基本的な考え方は次の URL に記載されています。WVD(PaaS) を設定する前に一読すると、設定に対する理解が進みます。写経する前にこのページの存在を知りたかったです。
 
-https://docs.microsoft.com/ja-jp/azure/virtual-desktop/environment-setup
+[Windows Virtual Desktop の環境](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/environment-setup?WT.mc_id=AZ-MVP-5003408)
 
 ### 設定方法
 
 2019年3月現在、WVD(PaaS) を設定する方法は PowerShell のみです。Azure Portal からは設定できません。
 
-[Windows Virtual Desktop Powershel](https://docs.microsoft.com/en-us/powershell/module/windowsvirtualdesktop/?view=windows-virtual-desktop-1.0.0-preview)
+[Windows Virtual Desktop Powershel](https://docs.microsoft.com/en-us/powershell/module/windowsvirtualdesktop/?WT.mc_id=AZ-MVP-5003408&view=windows-virtual-desktop-1.0.0-preview)
 
 ただし、次の動画では Azure Portal を使ったデモが行われています。一時期、プレビュー版の Azure Portal に WVD の開発中の画面が表示されていたので、いずれ Azure Portal で WVD(PaaS)を設定できるようになるでしょう。
 
@@ -94,15 +94,15 @@ Virtual Machine からの Outbound が必要ということは、VNet の環境�
 Windows Virtual Desktop の基本的な部分を試してみて気になった部分をまとめました。実際に作ってみると仕組みを理解できますね。もし、本格的に取り組むことがあれば、VDI として必要不可欠な次の要素も確認しようと思います。
 
 - FSLogix profile containers
-  - [Set up a user profile share for a host pool](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-user-profile)
+  - [Set up a user profile share for a host pool](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-user-profile?WT.mc_id=AZ-MVP-5003408)
 - カスタムイメージの利用
-  - [Prepare and customize a master VHD image](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/set-up-customize-master-image)
+  - [Prepare and customize a master VHD image](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/set-up-customize-master-image?WT.mc_id=AZ-MVP-5003408)
 - Host Pool のスケールアウト
   - そもそも、一度作った Host Pool の Virtual Machine を増やせるのかが不明。ポータルから作ると、別のリソースグループに Virtual Machine が配置されてしまう気がする。
   - スケールアウトは PowerShell や ARM テンプレートでやるのかな？
-    - [Create a host pool with PowerShell (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-powershell)
-    - [Create a host pool with an Azure Resource Manager template (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-arm-template)
+    - [Create a host pool with PowerShell (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-powershell?WT.mc_id=AZ-MVP-5003408)
+    - [Create a host pool with an Azure Resource Manager template (Preview)](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/create-host-pools-arm-template?WT.mc_id=AZ-MVP-5003408)
 - 時間に応じた Host Pool の停止・起動
   - 専用のスクリプトが公開されている
-    - [Automatically scale session hosts](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/set-up-scaling-script)
+    - [Automatically scale session hosts](https://docs.microsoft.com/ja-jp/azure/virtual-desktop/set-up-scaling-script?WT.mc_id=AZ-MVP-5003408)
     - [Azure/RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)
