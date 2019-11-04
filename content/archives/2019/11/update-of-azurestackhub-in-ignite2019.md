@@ -1,9 +1,17 @@
-Azure Stack Integrated system のアナウンス@Ignite 2019
+---
+title: Azure Stack Integrated system のアナウンス@Ignite 2019
+author: kongou_ae
+date: 2019-11-04
+url: /archives/2019/11/update-of-azurestackhub-in-ignite2019
+categories:
+  - azure
+  - network
+---
 
-Microsoft Ignite 1029 で発表になった Azure Stack Integrated system 関連のアナウンスをまとめるためのページです。随時更新。
+Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連のアナウンスをまとめるためのページです。随時更新。
 
 ## ソース
-https://news.microsoft.com/wp-content/uploads/prod/sites/563/2019/11/Ignite-2019-Book-of-News.pdf
+- https://news.microsoft.com/wp-content/uploads/prod/sites/563/2019/11/Ignite-2019-Book-of-News.pdf
 
 ## サマリ
 
