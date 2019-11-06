@@ -86,7 +86,7 @@ Azure Stack Hub 上の Windows Virtual Desktop がプライベートプレビュ
 
 ## GPU サポート（Public preview）
 
-Azure Stack が GPU をサポートすることを発表しました。2020年1月からパブリックプレビューの予定です。Azure Stack Hub でサポートされる GPU とインスタンスタイプは次の通りです。
+Azure Stack Hub が GPU をサポートすることが発表されました。2020年1月からパブリックプレビューの予定です。Azure Stack Hub でサポートされる GPU とインスタンスタイプは次の通りです。
 
 | GPU | インスタンスタイプ |
 |----|--------------------|
@@ -98,39 +98,39 @@ Azure Stack が GPU をサポートすることを発表しました。2020年1�
 
 ## マルチスケールユニット（開発中）
 
-2020年末までに Azure Stack に2つ目のスケールユニットを追加できるようになることが発表されました。ただし、初期段階のリリースではキャパシティーが拡張するだけです。Azure Stack のコントロールプレーンである Infrastructure Role Instances は1本目のみに存在するため、可用性は向上しません。
+2020年末までに Azure Stack Hub に2つ目のスケールユニットを追加できるようになることが発表されました。ただし、初期段階のリリースではキャパシティーが拡張するだけです。Azure Stack のコントロールプレーンである Infrastructure Role Instances は1本目のみに存在するため、可用性は向上しません。
 
 {{< figure src="/images/2019-1106-001.png" title="初期段階のマルチスケールユニットのイメージ" >}}
 
 ## インフラのコンテナ化
 
-Azure Stack のコントロールプレーン部分をコンテナ化していることを公式に発表しました。ニュースになっていたやつですね。コンテナ化に伴い、コンテナ内部で利用するネットワークアドレスが追加で必要になるようです。
+Azure Stack Hub のコントロールプレーン部分をコンテナ化していることが公式に発表されました。ニュースになっていたやつですね。コンテナ化に伴い、コンテナ内部で利用するネットワークアドレスが追加で必要になるようです。
 
 ニュース：https://www.zdnet.com/article/microsoft-plans-to-rearchitect-azure-stack-by-making-it-container-based/
 
 ## アップデートの改善
 
-アップデートの改善について様々な取り組みが発表されました。
+アップデートの改善に関する様々な取り組みが発表されました。
 
-- 1910 Update で Express なアップデート中のダウンタウンをなくす
+- 1910 Update で Express Update 中のダウンタウンをなくす
 - 2020年上半期を目標に Full Update 中のダウンタウンをなくす
-- Full Update の時間を15時間以内にする
+- Full Update の時間を短縮する（目標は15時間以内）
 
 {{< figure src="/images/2019-1106-002.png" title="Patch and Update の改善一覧" >}}
 
-そもそも、ライブマイグレーションやストレージレプリケーションの支援によって、アップデート中のダウンタイムは発生しない理解です。Vijay も「多くの顧客では Update 中にダウンタイムは発生してない」と付け加えていたので、ダウンタイムという表現が何を示しているのか別途調べます。
+そもそも、ライブマイグレーションやストレージレプリケーションの支援によって、アップデート中のダウンタイムは発生しない理解です。Vijay も「多くの顧客ではアップデート中にダウンタイムは発生してない」と付け加えていたので、ダウンタイムという表現が何を示しているのか別途調べます。
 
 ## Azure Stack Foundation - Core
 
-Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack をさらっと学習するのに持って来いのネタのように見えます。
+Azure Stack Hub の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack Hub をさらっと学習するのに持って来いのネタのように見えます。
 
 参考：http://aka.ms/azsasfvideos
 
 ## cloud-init
 
-cloud-init を開発中であることを発表しました。
+cloud-init を開発中であることが発表されました。
 
 ## Instance Metadata
 
-169.254.169.254 にアクセスすると自分の情報を取得できる Instance Metadata を開発中であることを発表しました。ただし、開発中なのは Compute だけであり /instance/network は未対応です。開発者が「スーパースーパープレビュー」といっていたので、リリースは先になりそうです。。
+169.254.169.254 にアクセスすると自分の情報を取得できる Instance Metadata を開発中であることが発表されました。ただし、開発中なのは Compute だけであり /instance/network は未対応です。開発者が「スーパースーパープレビュー」といっていたので、リリースは先になりそうです。。
 
