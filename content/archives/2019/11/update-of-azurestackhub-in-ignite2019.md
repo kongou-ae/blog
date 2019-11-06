@@ -10,11 +10,11 @@ categories:
 Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連のアナウンスをまとめました。
 
 ## ソース
-- https://news.microsoft.com/wp-content/uploads/prod/sites/563/2019/11/Ignite-2019-Book-of-News.pdf
-- https://techcommunity.microsoft.com/t5/Azure-Stack-Blog/Azure-Stack-Hub-extends-capabilities-on-the-Edge/ba-p/984483
-- https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions
-- https://myignite.techcommunity.microsoft.com/sessions/82908?source=sessions
-- https://community.emc.com/mobile/mobile-access.jspa#jive-document?content=%2Fapi%2Fcore%2Fv2%2Fposts%2F15240
+- [Book of News - Ignite 2019 - Microsoft News](https://news.microsoft.com/wp-content/uploads/prod/sites/563/2019/11/Ignite-2019-Book-of-News.pdf)
+- [Azure Stack Hub extends capabilities on the Edge](https://techcommunity.microsoft.com/t5/Azure-Stack-Blog/Azure-Stack-Hub-extends-capabilities-on-the-Edge/ba-p/984483)
+- [Now is the time to modernize your datacenter and migrate your applications to Microsoft Azure Stack](https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions)
+- [Building high-value integrated data center solutions for Microsoft Azure Stack](https://myignite.techcommunity.microsoft.com/sessions/82908?source=sessions)
+- [Dell EMC Tech Previews: Microsoft Ignite 2019](https://community.emc.com/mobile/mobile-access.jspa#jive-document?content=%2Fapi%2Fcore%2Fv2%2Fposts%2F15240)
 
 ## サマリ
 
@@ -135,3 +135,4 @@ cloud-init を開発中であることを発表しました。
 ## Instance Metadata
 
 169.254.169.254 にアクセスすると自分の情報を取得できる Instance Metadata を開発中であることを発表しました。ただし、開発中なのは Compute だけであり /instance/network は未対応です。開発者が「スーパースーパープレビュー」といっていたので、リリースは先になりそうです。。
+
