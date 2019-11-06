@@ -26,11 +26,11 @@ Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連
 - Windows Virtual Desktop on Azure Stack Hub (Private Preview)
 - GPU サポート（Public preview）
 - マルチスケールユニット（開発中）
-- インフラのコンテナ化
-- アップデートの改善
+- インフラのコンテナ化（開発中）
+- アップデートの改善（開発中）
 - Azure Stack Foundation - Core
-- Instance Metadata
-- cloud-init
+- Instance Metadata（開発中）
+- cloud-init（開発中）
 
 ## 名称変更
 
@@ -102,13 +102,13 @@ Azure Stack Hub が GPU をサポートすることが発表されました。20
 
 {{< figure src="/images/2019-1106-001.png" title="初期段階のマルチスケールユニットのイメージ" >}}
 
-## インフラのコンテナ化
+## インフラのコンテナ化（開発中）
 
 Azure Stack Hub のコントロールプレーン部分をコンテナ化していることが公式に発表されました。ニュースになっていたやつですね。コンテナ化に伴い、コンテナ内部で利用するネットワークアドレスが追加で必要になるようです。
 
 ニュース：https://www.zdnet.com/article/microsoft-plans-to-rearchitect-azure-stack-by-making-it-container-based/
 
-## アップデートの改善
+## アップデートの改善（開発中）
 
 アップデートの改善に関する様々な取り組みが発表されました。
 
@@ -126,11 +126,11 @@ Azure Stack Hub の基本を説明する動画集「Azure Stack Foundation - Cor
 
 参考：http://aka.ms/azsasfvideos
 
-## cloud-init
+## cloud-init（開発中）
 
 cloud-init を開発中であることが発表されました。
 
-## Instance Metadata
+## Instance Metadata（開発中）
 
 169.254.169.254 にアクセスすると自分の情報を取得できる Instance Metadata を開発中であることが発表されました。ただし、開発中なのは Compute だけであり /instance/network は未対応です。開発者が「スーパースーパープレビュー」といっていたので、リリースは先になりそうです。。
 
