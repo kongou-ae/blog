@@ -26,7 +26,22 @@ Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連
 
 ## Availability of BC/DR foundational pattern for Azure Stack Hub to Azure Stack Hub
 
-2020年上半期に、2つの Azure Stack Hub 間での Virtual Machine をフェイルオーバ/フェイルバックする手法を発表するようです。[BRK3116のセッション](https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions)では、サードパーティーの製品を使ってデータをレプリケーションする手法を案内していましたが、これとは違う何かがでるのでしょうか・・
+Azure Stack の災害対策に関する手法が発表されました。具体的には、ARM 上のリソースを[subscription replicator
+](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/subscription%20replicator)で複製したうえで、次の 3rd パーディを使ってデータを戻してねというパターンです。
+
+- Migration and DR Tools
+  - Veeam
+  - VERITAS
+  - COHECITY
+  - CARBONITE
+  - COMMVAULT
+  - cloudbase(CORIOLIS)
+  - Corent
+- HA/FT
+  - ZERODOWN
+  - SIOS
+
+参考：https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions
 
 ## Event Hubs on Azure Stack Hub (Public Preview)
 
@@ -56,9 +71,17 @@ Azure Stack Hub 上の Windows Virtual Desktop がプライベートプレビュ
 
 ## GPU サポート（開発中）
 
-Azure Stack が NVIDIA V100 NC Series と NVIDAI T4、AMD MI25 NV Series をサポートすることを発表しました。GPU のサポートにともない Azure Stack 上で N シリーズを利用できるようになります。
+Azure Stack が GPU をサポートすることを発表しました。2020年1月からパブリックプレビューの予定です。
 
-GPU のサポートは2020年1月からパブリックプレビューの予定です。プレビューの申し込み先：aka.ms/azurestackgpupreview
+プレビューの申し込み先：aka.ms/azurestackgpupreview
+
+サポートされる GPU とインスタンスタイプは次の通りです。
+
+| GPU | インスタンスタイプ |
+|----|--------------------|
+|NVIDIA V100|NCv3|
+|AMD Mi25|NVv4|
+|NVIDIA T4| 検討中 |
 
 ## マルチスケールユニット（開発中）
 
@@ -66,15 +89,19 @@ GPU のサポートは2020年1月からパブリックプレビューの予定�
 
 ## インフラのコンテナ化
 
-Azure Stack のコントロールプレーン部分をコンテナ化していることが明言しました。コンテナ化に伴いコンテナ内部で利用するネットワークアドレスが追加で必要になるようです。
+Azure Stack のコントロールプレーン部分をコンテナ化していることを公式に発表しました。ニュースになっていたやつですね。コンテナ化に伴い、コンテナ内部で利用するネットワークアドレスが追加で必要になるようです。
+
+ニュース：https://www.zdnet.com/article/microsoft-plans-to-rearchitect-azure-stack-by-making-it-container-based/
 
 ## アップデートの改善
 
-1910 Update で Express なアップデート中のダウンタウンがなくなります。CY20H1を目標にFull Update 中のダウンタウンもなくなる予定です。
+1910 Update で Express なアップデート中のダウンタウンがなくなります。CY20H1を目標にFull Update 中のダウンタウンもなくなる予定です。すばらしい
 
-## Aka.ms/azsasfslides
+## 
 
 Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。
+
+Aka.ms/azsasfslides
 
 ## Instance Metadata
 
@@ -83,5 +110,3 @@ Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」
 ## CloudInit
 
 コンピュートの担当であるがCloudInitを開発中であることを発表しました。
-
-## Storage Attach
