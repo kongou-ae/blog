@@ -34,7 +34,7 @@ Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連
 
 ## 名称変更
 
-これまで Azure Stack という名称で語られていた Azure Stack Integrated system が、Azure Stack Hub という名前になりました。そして、Azure Stack という単語は、「Azure StaCk HCI」と「Azure Stack Edge（元 Data Box Edge）」「Azure Stack Hub」という3つのソリューションを包括するものに変わりました。Ignite では、「Azure Stack Family」や「 Azure Stack Portfolio」という表現で使われています。
+これまで Azure Stack という名称で語られていた Azure Stack Integrated system が、Azure Stack Hub という名前になりました。そして、Azure Stack という単語は、「Azure StaCk HCI」と「Azure Stack Edge（元 Data Box Edge）」「Azure Stack Hub」という3つのソリューションを包括するものに変わりました。Ignite では「Azure Stack Family」や「 Azure Stack Portfolio」という表現が多く使われました。
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/AzureStack?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStack</a> is now a family:<a href="https://twitter.com/hashtag/AzureStackHub?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStackHub</a> (<a href="https://twitter.com/hashtag/AzureStack?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStack</a>)<a href="https://twitter.com/hashtag/AzureStackEdge?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStackEdge</a> (<a href="https://twitter.com/hashtag/DataBoxEdge?src=hash&amp;ref_src=twsrc%5Etfw">#DataBoxEdge</a>)<a href="https://twitter.com/hashtag/AzureStackHCI?src=hash&amp;ref_src=twsrc%5Etfw">#AzureStackHCI</a> <a href="https://t.co/xjqKpcdMSp">pic.twitter.com/xjqKpcdMSp</a></p>&mdash; David Armour (@Darmour_MSFT) <a href="https://twitter.com/Darmour_MSFT/status/1191355165116420096?ref_src=twsrc%5Etfw">November 4, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -42,8 +42,8 @@ Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連
 
 ## Availability of BC/DR foundational pattern for Azure Stack Hub to Azure Stack Hub
 
-Azure Stack の災害対策に関する手法が発表されました。具体的には、ARM 上のリソースを[subscription replicator
-](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/subscription%20replicator)で複製したうえで、次の 3rd パーディを使ってデータを戻してねというパターンです。
+Azure Stack Hub の BC/DR に関する手法が発表されました。具体的には、ARM 上のリソースを [subscription replicator
+](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/subscription%20replicator) で複製したうえで、次の 3rd パーディを使ってデータをコピーするというパターンです。
 
 - Migration and DR Tools
   - Veeam
@@ -57,8 +57,6 @@ Azure Stack の災害対策に関する手法が発表されました。具体�
 - HA/FT
   - ZERODOWN
   - SIOS
-
-参考：https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions
 
 ## Event Hubs on Azure Stack Hub (Public Preview)
 
@@ -84,7 +82,7 @@ Azure Stack Hub 上の AKS Engine ベースの K8s が GA しました。
 
 Azure Stack Hub 上の Windows Virtual Desktop がプライベートプレビューになりました。WVD のコントロールプレーンは Azure のままで、リソースプールとなる Virtual Machine を Azure Stack Hub 上で稼働できるようです。
 
-プレビューの申し込み先：aka.ms/azswvd
+プレビューの申し込み先：http://aka.ms/azswvd
 
 ## GPU サポート（Public preview）
 
@@ -96,7 +94,7 @@ Azure Stack が GPU をサポートすることを発表しました。2020年1�
 |AMD Mi25|NVv4|
 |NVIDIA T4| 検討中 |
 
-プレビューの申し込み先：aka.ms/azurestackgpupreview
+プレビューの申し込み先：http://aka.ms/azurestackgpupreview
 
 ## マルチスケールユニット（開発中）
 
@@ -126,7 +124,7 @@ Azure Stack のコントロールプレーン部分をコンテナ化してい�
 
 Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack をさらっと学習するのに持って来いのネタのように見えます。
 
-参考：aka.ms/azsasfvideos
+参考：http://aka.ms/azsasfvideos
 
 ## cloud-init
 
