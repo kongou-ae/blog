@@ -37,6 +37,7 @@ Azure Stack の災害対策に関する手法が発表されました。具体�
   - COMMVAULT
   - cloudbase(CORIOLIS)
   - Corent
+  - Dell EMC
 - HA/FT
   - ZERODOWN
   - SIOS
@@ -95,18 +96,20 @@ Azure Stack のコントロールプレーン部分をコンテナ化してい�
 
 ## アップデートの改善
 
-1910 Update で Express なアップデート中のダウンタウンがなくなります。CY20H1を目標にFull Update 中のダウンタウンもなくなる予定です。すばらしい
+1910 Update で Express なアップデート中のダウンタウンがなくなります。2020年上半期を目標にFull Update 中のダウンタウンもなくなる予定です。
 
-## 
+また、Full Update の時間を15時間くらいにするという目標も発表されました。現在の Full Update は40時間ほどかかっているので、これが15時間になるのであれば素晴らしい。
 
-Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。
+## Azure Stack Foundation - Core
 
-Aka.ms/azsasfslides
+Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack をさらっと学習するのに持って来いのネタです。
+
+aka.ms/azsasfslides
 
 ## Instance Metadata
 
-コンピュートの担当であるが169.254.169.254 にアクセスすると自分の情報を取得できるInstance Metadataを開発中であることを発表しました。
+169.254.169.254 にアクセスすると自分の情報を取得できるInstance Metadataを開発中であることを発表しました。ただし、Compute だけであり /instance/network は未対応です。
 
-## CloudInit
+## cloud-init
 
-コンピュートの担当であるがCloudInitを開発中であることを発表しました。
+cloud-init を開発中であることを発表しました。
