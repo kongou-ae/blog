@@ -7,14 +7,30 @@ categories:
   - azurestack
 ---
 
-Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連のアナウンスをまとめるためのページです。随時更新。
+Microsoft Ignite 2019 で発表になった Azure Stack Integrated system 関連のアナウンスをまとめました。
 
 ## ソース
 - https://news.microsoft.com/wp-content/uploads/prod/sites/563/2019/11/Ignite-2019-Book-of-News.pdf
 - https://techcommunity.microsoft.com/t5/Azure-Stack-Blog/Azure-Stack-Hub-extends-capabilities-on-the-Edge/ba-p/984483
+- https://myignite.techcommunity.microsoft.com/sessions/81962?source=sessions
+- https://myignite.techcommunity.microsoft.com/sessions/82908?source=sessions
 - https://community.emc.com/mobile/mobile-access.jspa#jive-document?content=%2Fapi%2Fcore%2Fv2%2Fposts%2F15240
 
 ## サマリ
+
+- Azure Stack Hub への名称変更
+- Availability of BC/DR foundational pattern for Azure Stack Hub to Azure Stack Hub
+- Event Hubs on Azure Stack Hub (Public Preview)
+- Azure data services (Arc) on Azure Stack Hub (Private preview)
+- Kubernetes on Azure Stack Hub (GA)
+- Windows Virtual Desktop on Azure Stack Hub (Private Preview)
+- GPU サポート（Public preview）
+- マルチスケールユニット（開発中）
+- インフラのコンテナ化
+- アップデートの改善
+- Azure Stack Foundation - Core
+- Instance Metadata
+- cloud-init
 
 ## 名称変更
 
@@ -50,7 +66,7 @@ Azure Stack Hub 上の Event Hub が2020年にパブリックプレビューに�
 
 ## Azure data services (Arc) on Azure Stack Hub (Private preview)
 
-Azure Stack 上の Azure Data service (Arc)がプライベートプレビューが始まりました。次の URL を見る限りだと、Azure Data service on K8s cluster on Azure Stack Hub ってことでしょうかね・・・そもそも Azure Data service (Arc) 自体が発表されたばかりなのでさっぱり分からん・・・
+Azure Stack 上の Azure Data service (Arc)がプライベートプレビューになりました。次の URL を見る限りだと、Azure Stack 上の k8S cluster で Azure SQL Database と Azure Database for PostgreSQL Hyperscale を動かせるってことだと思います。
 
 https://azure.microsoft.com/en-us/services/azure-arc/hybrid-data-services/
 
@@ -70,13 +86,9 @@ Azure Stack Hub 上の Windows Virtual Desktop がプライベートプレビュ
 
 プレビューの申し込み先：aka.ms/azswvd
 
-## GPU サポート（開発中）
+## GPU サポート（Public preview）
 
-Azure Stack が GPU をサポートすることを発表しました。2020年1月からパブリックプレビューの予定です。
-
-プレビューの申し込み先：aka.ms/azurestackgpupreview
-
-サポートされる GPU とインスタンスタイプは次の通りです。
+Azure Stack が GPU をサポートすることを発表しました。2020年1月からパブリックプレビューの予定です。Azure Stack Hub でサポートされる GPU とインスタンスタイプは次の通りです。
 
 | GPU | インスタンスタイプ |
 |----|--------------------|
@@ -84,9 +96,13 @@ Azure Stack が GPU をサポートすることを発表しました。2020年1�
 |AMD Mi25|NVv4|
 |NVIDIA T4| 検討中 |
 
+プレビューの申し込み先：aka.ms/azurestackgpupreview
+
 ## マルチスケールユニット（開発中）
 
 2020年末までに Azure Stack に2つ目のスケールユニットを追加できるようになることが発表されました。ただし、初期段階のリリースではキャパシティーが拡張するだけです。Azure Stack のコントロールプレーンである Infrastructure Role Instances は1本目のみに存在するため、可用性は向上しません。
+
+{{< figure src="/images/2019-1106-001.png" title="初期段階のマルチスケールユニットのイメージ" >}}
 
 ## インフラのコンテナ化
 
@@ -96,20 +112,26 @@ Azure Stack のコントロールプレーン部分をコンテナ化してい�
 
 ## アップデートの改善
 
-1910 Update で Express なアップデート中のダウンタウンがなくなります。2020年上半期を目標にFull Update 中のダウンタウンもなくなる予定です。
+アップデートの改善について様々な取り組みが発表されました。
 
-また、Full Update の時間を15時間くらいにするという目標も発表されました。現在の Full Update は40時間ほどかかっているので、これが15時間になるのであれば素晴らしい。
+- 1910 Update で Express なアップデート中のダウンタウンをなくす
+- 2020年上半期を目標に Full Update 中のダウンタウンをなくす
+- Full Update の時間を15時間以内にする
+
+{{< figure src="/images/2019-1106-002.png" title="Patch and Update の改善一覧" >}}
+
+そもそも、ライブマイグレーションやストレージレプリケーションの支援によって、アップデート中のダウンタイムは発生しない理解です。Vijay も「多くの顧客では Update 中にダウンタイムは発生してない」と付け加えていたので、ダウンタイムという表現が何を示しているのか別途調べます。
 
 ## Azure Stack Foundation - Core
 
-Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack をさらっと学習するのに持って来いのネタです。
+Azure Stack の基本を説明する動画集「Azure Stack Foundation - Core」（全16個）が発表されました。Azure Stack をさらっと学習するのに持って来いのネタのように見えます。
 
-aka.ms/azsasfslides
-
-## Instance Metadata
-
-169.254.169.254 にアクセスすると自分の情報を取得できるInstance Metadataを開発中であることを発表しました。ただし、Compute だけであり /instance/network は未対応です。
+参考：aka.ms/azsasfvideos
 
 ## cloud-init
 
 cloud-init を開発中であることを発表しました。
+
+## Instance Metadata
+
+169.254.169.254 にアクセスすると自分の情報を取得できる Instance Metadata を開発中であることを発表しました。ただし、開発中なのは Compute だけであり /instance/network は未対応です。開発者が「スーパースーパープレビュー」といっていたので、リリースは先になりそうです。。
