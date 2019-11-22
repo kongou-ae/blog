@@ -89,7 +89,7 @@ Peering している VNet のルーティングは次の通りです。Nexthop �
 
 ### Secured Virtual Hub のルーティング
 
-Secured Virtual Hub のルーティングも変更なしです。
+Secured Virtual Hub のルーティングも変更なしです。Azure Firewall を Nexthop とするデフォルトルートが乗ってくると思いましたが乗ってこず。
 
 ### VNet のルーティング
 
@@ -113,7 +113,7 @@ aimless@vm01:~$
 
 - Ping は飛ぶ
 - tnc で TCP/22 に接続できる
-- SSH がタイムアウトになる
+- SSH がタイムアウトになり接続できない
 
 ## 3. オンプレミスからインターネットへの通信を制御
 
@@ -139,7 +139,9 @@ VNet のルーティングは変化しません。
 
 ### 動作確認
 
-始めに張り付けた Twitter のように、オンプレの端末からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
+冒頭に張り付けた Twitter のように、オンプレの端末からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">オンプレミスの端末が Proxy なしで<br> Azure から外に出て行っているの図 <a href="https://t.co/KpbrNKgV6U">pic.twitter.com/KpbrNKgV6U</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1197172039120908289?ref_src=twsrc%5Etfw">November 20, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## 4. プライベートネットワーク 間の通信を制御
 
@@ -171,7 +173,7 @@ Azure Firewall には全許可のポリシーを設定しました。
 
 オンプレと VNet 側のサーバの両方でキャプチャをとると、VNet 側のサーバがオンプレからのパケットに対して応答を返していることが見えます。ただし、その応答がオンプレ側にまで届いていません。なぜ・・・
 
-試しに、オンプレミスのサブネットを対象から外すと、Ping が飛ぶ状態に戻りました。非対称ルーティングになっていて戻りの通信が Azure Firewall で破棄されているのかも。
+試しに、Azure Firewall を経由させるサブネットからオンプレミスのサブネットを除外すると、Ping が飛ぶ状態に戻りました。非対称ルーティングになっていて戻りの通信が Azure Firewall で破棄されているのかも。
 
 {{< figure src="/images/2019-11-21-017.png" title="オンプレのサブネットを除外したときの設定" >}}
 
@@ -179,4 +181,4 @@ Azure Firewall には全許可のポリシーを設定しました。
 
 ## 振り返り
 
-オンプレに対してデフォルトルートを広報できたものの、オンプレと VNet の通信がうまくいきませんでした。なぞ。プレビューになりたてのサービスなので、半年後くらいに改めて挑戦しようと思います。
+オンプレに対してデフォルトルートを広報できたものの、オンプレと VNet の通信がうまくいきませんでした。プレビューになりたてのサービスなので、半年後くらい後に改めて挑戦しようと思います。
