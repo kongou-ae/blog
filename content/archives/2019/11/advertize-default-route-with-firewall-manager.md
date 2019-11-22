@@ -45,7 +45,7 @@ Virtual Hub に S2S VPN Gateway をデプロイして、普通の Virtual WAN �
 
 # ルーティングの制御
 
-## 初期状態
+## 1. 初期状態
 
 Secured Virtual Hub の設定画面で、Secured Virtual Hub 上のルーティングを制御できます。
 
@@ -79,7 +79,7 @@ Peering している VNet のルーティングは次の通りです。Nexthop �
 
 {{< figure src="/images/2019-11-21-008.png" title="作業前のVNet のルーティング" >}}
 
-## VNet からインターネットへの通信を制御
+## 2. VNet からインターネットへの通信を制御
 
 「Traffic from Virtual Network」のみを "Send via Azure Firewall" に変更します。
 
@@ -115,7 +115,7 @@ aimless@vm01:~$
 - tnc で TCP/22 に接続できる
 - SSH がタイムアウトになる
 
-## オンプレミスからインターネットへの通信を制御
+## 3. オンプレミスからインターネットへの通信を制御
 
 S2S VPN のコネクションを Internet security の対象にしたうえで、「Traffic from Virtual Branches」も "Send via Azure Firewall" に変更します。
 
@@ -141,7 +141,7 @@ VNet のルーティングは変化しません。
 
 始めに張り付けた Twitter のように、オンプレの端末からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
 
-## プライベートネットワーク 間の通信を制御
+## 4. プライベートネットワーク 間の通信を制御
 
 Azure Private traffic の Traffic to Virtual Networks を "Send via Azure Firewall" に変更します。
 
