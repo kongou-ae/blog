@@ -23,19 +23,19 @@ Virtual Hub 上のルートテーブルに設定されている「Next Hop が A
 
 # 初期設定
 
-Azure Firewall Manager を利用して Standard で Firewall こみの Secure Virtual Hub を作ります。
+Azure Firewall Manager を利用して Standard で Firewall を持った Secured Virtual Hub を作ります。
 
 {{< figure src="/images/2019-11-21-002.png" title="Firewall Manager の設定画面その１" >}}
 
 {{< figure src="/images/2019-11-21-003.png" title="Firewall Manager の設定画面その２" >}}
 
-Virtual Hub に S2S VPN Gateway をデプロイして、普通の Virtual WAN と同じようにオンプレミスのネットワーク機器と S2S VPN を確立します。そして、ルーティングが聞こえてこないと面白くないので、Virtual Hub に2つの VNet を接続します。
+Virtual Hub に S2S VPN Gateway をデプロイして、普通の Virtual WAN と同じようにオンプレミスのネットワーク機器と S2S VPN を確立します。そして、オンプレミス側にルーティングが聞こえてきたほうが面白いので、Virtual Hub に2つの VNet を接続します。
 
 {{< figure src="/images/2019-11-21-004.png" title="Virtual Hub に接続している VNet" >}}
 
 ここまでのアドレス体系は次の通りです。
 
-- 192.168.100.0/24 Secure Virtual Hub
+- 192.168.100.0/24 Secured Virtual Hub
   - 192.168.100.12 VPN Gateway #1 
   - 192.168.100.13 VPN Gateway #1 
   - 192.168.100.68 Azure Firewall 
@@ -47,9 +47,9 @@ Virtual Hub に S2S VPN Gateway をデプロイして、普通の Virtual WAN �
 
 ## 初期状態
 
-Secure Virtual Hub の設定画面で、Secure Virtual Hub 上のルーティングを制御できます。
+Secured Virtual Hub の設定画面で、Secured Virtual Hub 上のルーティングを制御できます。
 
-{{< figure src="/images/2019-11-21-005.png" title="Secure Virtual Hub のルーティング設定" >}}
+{{< figure src="/images/2019-11-21-005.png" title="Secured Virtual Hub のルーティング設定" >}}
 
 制御できる通信は次の3つです。
 
@@ -59,19 +59,19 @@ Secure Virtual Hub の設定画面で、Secure Virtual Hub 上のルーティン
 
 ### オンプレミスのルーティング
 
-初期状態の場合、オンプレミス側に聞こえてくるルーティングは次の3つです。デフォルトルートが聞こえてこないのでインターネットにはアクセスできません。
+初期状態の場合、オンプレミス側に聞こえてくるルーティングは次の3つです。デフォルトルートが聞こえてこないので、オンプレミスから Azure 経由でインターネットにはアクセスできません。
 
-- 192.168.100.0/24 Secure Virtual Hub
+- 192.168.100.0/24 Secured Virtual Hub
 - 192.168.120.0/24 VNet その1
 - 192.168.212.0/24 VNet その2
 
 {{< figure src="/images/2019-11-21-006.png" title="オンプレミスのルーティング" >}}
 
-### Secure Virtual Hub のルーティング
+### Secured Virtual Hub のルーティング
 
-Secure Virtual Hub 上のルーティングは次の通りです。デフォルトルートが存在しません。また、VNet 向けのルーティングの Nexthop が Virtual Network Connection になっているので、VNet への通信は Azure Firewall を経由しません。
+Secured Virtual Hub 上のルーティングは次の通りです。デフォルトルートが存在しません。また、VNet 向けのルーティングの Nexthop が Virtual Network Connection になっているので、VNet への通信は Azure Firewall を経由しません。
 
-{{< figure src="/images/2019-11-21-007.png" title="Secure Virtual Hub のルーティング" >}}
+{{< figure src="/images/2019-11-21-007.png" title="Secured Virtual Hub のルーティング" >}}
 
 ### VNet のルーティング
 
@@ -87,9 +87,9 @@ Peering している VNet のルーティングは次の通りです。Nexthop �
 
 オンプレミスのルーティングは変更なしです。
 
-### Secure Virtual Hub のルーティング
+### Secured Virtual Hub のルーティング
 
-Secure Virtual Hub のルーティングも変更なしです。
+Secured Virtual Hub のルーティングも変更なしです。
 
 ### VNet のルーティング
 
@@ -99,9 +99,7 @@ VNet のルーティングは変化します。具体的には Azure Firewall �
 
 ### 動作確認
 
-始めに張り付けた Twitter のように、オンプレの端末からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
-
-同様に、VNet 内の Virtual Machine からインターネットにアクセスしても、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
+VNet 内の Virtual Machine からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
 
 ```
 aimless@vm01:~$  curl httpbin.org/ip
@@ -129,15 +127,19 @@ S2S VPN のコネクションを Internet security の対象にしたうえで�
 
 {{< figure src="/images/2019-11-21-011.png" title="オンプレミスにデフォルトルートが追加された図" >}}
 
-### Secure Virtual Hub のルーティング
+### Secured Virtual Hub のルーティング
 
-Secure Virtual Hub にもデフォルトルートが追加されます。このルーティングを BGP でオンプレミスに広報しているように見えます。
+Secured Virtual Hub にもデフォルトルートが追加されます。このルーティングを BGP でオンプレミスに広報しているように見えます。
 
-{{< figure src="/images/2019-11-21-012.png" title="Secure Virtual Hub にデフォルトルートが追加された図" >}}
+{{< figure src="/images/2019-11-21-012.png" title="Secured Virtual Hub にデフォルトルートが追加された図" >}}
 
 ### VNet のルーティング
 
 VNet のルーティングは変化しません。
+
+### 動作確認
+
+始めに張り付けた Twitter のように、オンプレの端末からインターネットにアクセスすると、送信元 IP が Azure Firewall のグローバル IP アドレスになります。
 
 ## プライベートネットワーク 間の通信を制御
 
@@ -149,9 +151,9 @@ Azure Private traffic の Traffic to Virtual Networks を "Send via Azure Firewa
 
 オンプレミスのルーティングは変更なしです。
 
-### Secure Virtual Hub のルーティング
+### Secured Virtual Hub のルーティング
 
-Secure Virtual Hub のルーティングも変更なしです。Nexthop が Azure Firewall とする VNet 宛てのルーティングを注入しないと、オンプレから VNet への通信の行きが Azure Firewall を経由しないと思うんだけどなぁ・・・
+Secured Virtual Hub のルーティングも変更なしです。Nexthop を Azure Firewall とする VNet 宛てのルーティングを注入しないと、オンプレから VNet への通信の行きが Azure Firewall を経由しないと思うんだけどなぁ・・・
 
 ### VNet のルーティング
 
@@ -161,9 +163,11 @@ VNet のルーティングは変化します。具体的には Azure Firewall �
 
 ### 動作確認
 
-Azure Firewall に全許可のポリシーを設定しているにも関わらず、オンプレから VNet への通信が Ping すら飛ばなくなりました。謎・・
+Azure Firewall には全許可のポリシーを設定しました。
 
 {{< figure src="/images/2019-11-21-016.png" title="Firewall Manager で配布したポリシー中の全許可ルール" >}}
+
+異なる VNet 内のサーバ同士は Ping が飛びます。一方で、オンプレから VNet への通信が Ping すら飛ばなくなりました。謎・・
 
 オンプレと VNet 側のサーバの両方でキャプチャをとると、VNet 側のサーバがオンプレからのパケットに対して応答を返していることが見えます。ただし、その応答がオンプレ側にまで届いていません。なぜ・・・
 
@@ -171,8 +175,7 @@ Azure Firewall に全許可のポリシーを設定しているにも関わら�
 
 {{< figure src="/images/2019-11-21-017.png" title="オンプレのサブネットを除外したときの設定" >}}
 
-{{< figure src="/images/2019-11-21-016.png" title="オンプレのサブネットを除外したときの Effective routes" >}}
-
+{{< figure src="/images/2019-11-21-018.png" title="オンプレのサブネットを除外したときの Effective routes" >}}
 
 ## 振り返り
 
