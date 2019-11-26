@@ -28,7 +28,7 @@ Azure Stack Hub 1910 Update が配信されました。1910 Update ではデプ�
 
 参考：[Network integration planning for Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-network?WT.mc_id=AZ-MVP-5003408&view=azs-1910#private-network)
 
-この Private Network は/20を要求します。なかなかのサイズ感です。しかも、次の通り重複不可です。
+その結果、Private Network が/20になりました。なかなかのサイズ感です。しかも、次の通り重複不可です。
 
 > While the network is private to Azure Stack, it must not overlap with a network in your datacenter.
 
