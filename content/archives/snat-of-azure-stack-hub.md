@@ -18,9 +18,9 @@ Azure と一貫性のある Azure Stack Hub にも SNAT が実装されていま
 
 ## いつ確保されるか
 
-簡単に検証した結果を踏まえると、Azure Stack Hub は、VNet に一台目の Virtual Machine を作成した時点で、SNAT に利用する Public IP address を確保します。VNet だけを作っても Public IP Address の資料量は変わりませんでしたが、仮想マシンを作成した途端に使用量が１つ増えました。
+簡単に検証した結果を踏まえると、Azure Stack Hub は、VNet に一台目の Virtual Machine を作成した時点で、SNAT に利用する Public IP address を確保します。VNet だけを作っても Public IP Address の使用量は変わりませんでしたが、仮想マシンを作成した途端に使用量が１つ増えました。
 
-{{< figure src="/images/2019-12-20-001.png" title="VNet を作った直後の使用量" >}}
+{{< figure src="/images/2019-12-20-002.png" title="VNet を作った直後の使用量" >}}
 
 {{< figure src="/images/2019-12-20-001.png" title="1台目の Virtual Machine を作った直後の使用量" >}}
 
@@ -28,15 +28,15 @@ VNet ごとに SNAT 用のアドレスを確保しますので、Azure Stack Hub
 
 ## どのアドレスが使われているのか
 
-残念なことに、管理者は SNAT 用に確保された IP アドレスを管理者ポータルから確認できません。また、Get-AzsPublicIPAddress のコマンドでも確認できません。ただし、キャパシティに表示されている Public IP Addeess の個数には SNAT 用に確保されたアドレスが反映されます。この仕様は次のドキュメントに明記されています。
+残念なことに、管理者は SNAT 用に確保された IP アドレスを管理者ポータルから確認できません。また、Get-AzsPublicIPAddress のコマンドでも確認できません。ただし、先ほどのキャプチャのとおり、キャパシティに表示されている Public IP Addeess の個数には SNAT 用に確保されたアドレスが反映されます。この仕様は次のドキュメントに明記されています。
 
 https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption?view=azs-1910#view-the-public-ip-address-information-summary-table
 
 ## いつ解放されるか
 
-簡単に検証した結果を踏まえると、Azure Stack Hub は VNet が削除されたタイミングで SNAT 用のアドレスを解放するようです。VNet から仮想マシンを削除しても Public IP Address の使用量は変わりませんでしたが、VNet を削除したら Public IP Address の使用量が１つ減りました。
+簡単に検証した結果を踏まえると、Azure Stack Hub は VNet が削除されたタイミングで SNAT 用のアドレスを解放します。VNet から仮想マシンを削除しても Public IP Address の使用量は変わりませんでしたが、VNet を削除したら Public IP Address の使用量が１つ減りました。
 
 ## まとめ
 
-Azure Stack Hub の SNAT の挙動をまとめました。Public VIP Network に割り当てるサブネットを決める際には、SNAT 用に確保される Public IP Address を考慮したうえで必要なアドレスの総量を数えましょう。
+Azure Stack Hub における Virtual Machine の SNAT の挙動をまとめました。Public VIP Network に割り当てるサブネットを決める際には、SNAT 用に確保される Public IP Address を考慮したうえで必要なアドレスの総量を数えましょう。
 
