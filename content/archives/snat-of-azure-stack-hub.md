@@ -1,10 +1,10 @@
 ---
-title: Azure Stack Hub の SNAT(Virtual Machine 編)
+title: Azure Stack Hub の SNAT (Virtual Machine 編)
 author: kongou_ae
 date: 2019-12-20
 url: /archives/2019/10/snat-of-azure-stack-hub
 categories:
-  - azurestac
+  - azurestack
 ---
 
 Azure を使う際に知っておくべきことの一つが SNAT です。
@@ -18,25 +18,23 @@ Azure と一貫性のある Azure Stack Hub にも SNAT が実装されていま
 
 ## いつ確保されるか
 
-Azure Stack Hub は、VNet に一台目の Virtual Machine を作成した時点で、SNAT に利用する Public IP address を確保するようです。VNet だけを作っても Public IP Address の残量は変わりませんでしたが、仮想マシンを作成した途端に残量が１つ減りました。
+簡単に検証した結果を踏まえると、Azure Stack Hub は、VNet に一台目の Virtual Machine を作成した時点で、SNAT に利用する Public IP address を確保します。VNet だけを作っても Public IP Address の資料量は変わりませんでしたが、仮想マシンを作成した途端に使用量が１つ増えました。
 
-{{< figure src="/images/2019-12-20-001.png" title="VNet を作った直後の残量" >}}
+{{< figure src="/images/2019-12-20-001.png" title="VNet を作った直後の使用量" >}}
 
-{{< figure src="/images/2019-12-20-001.png" title="1台目の Virtual Machine を作った直後の残量" >}}
+{{< figure src="/images/2019-12-20-001.png" title="1台目の Virtual Machine を作った直後の使用量" >}}
 
-VNet ごとに SNAT 用のアドレスを確保しますので、Public IP Address が10個の状態で「VNet １つ、Public IP Address つきの Virtual Machine １つの環境」を10個作ろうとすると、１つの環境あたり Public IP Address を２つ使うため、５つのデプロイが「ネットワークリソースプロバイダがリソースを割り当てられなかった」という旨のエラーによって失敗します。
+VNet ごとに SNAT 用のアドレスを確保しますので、Azure Stack Hub 全体の Public IP Address の残量が10個の状態で「VNet １つ、Public IP Address つきの Virtual Machine １つの環境」を10個作ろうとすると、１つの環境あたり Public IP Address を２つ使うため、Public IP Address を確保できなかった５つのデプロイが「ネットワークリソースプロバイダがリソースを割り当てられなかった」という旨のエラーによって失敗します。
 
 ## どのアドレスが使われているのか
 
-残念なことに、管理者は SNAT 用に確保された IP アドレスを管理者ポータルから確認できません。また、Get-AzsPublicIPAddress のコマンドでも確認できません。ただし、キャパシティに表示されているPublic IP Addeess の個数にはSNAT用に確保されたアドレスが反映されます。
-
-この仕様は次のドキュメントに明記されています。
+残念なことに、管理者は SNAT 用に確保された IP アドレスを管理者ポータルから確認できません。また、Get-AzsPublicIPAddress のコマンドでも確認できません。ただし、キャパシティに表示されている Public IP Addeess の個数には SNAT 用に確保されたアドレスが反映されます。この仕様は次のドキュメントに明記されています。
 
 https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption?view=azs-1910#view-the-public-ip-address-information-summary-table
 
 ## いつ解放されるか
 
-Azure Stack Hub は、VNet が削除されたタイミングで SNAT 用のアドレスを解放するようです。VNet から仮想マシンを削除しても Public IP Address の残量は変わりませんでしたが、VNet を削除したら Public UP Arress の残りが１つ増えました。
+簡単に検証した結果を踏まえると、Azure Stack Hub は VNet が削除されたタイミングで SNAT 用のアドレスを解放するようです。VNet から仮想マシンを削除しても Public IP Address の使用量は変わりませんでしたが、VNet を削除したら Public IP Address の使用量が１つ減りました。
 
 ## まとめ
 
