@@ -2,7 +2,7 @@
 title: よくわかる Azure Stack Hub
 author: kongou_ae
 date: 2019-12-29
-url: /archives/azurestack-summary
+url: /archives/azurestackhub-summary
 categories:
   - azurestack
 ---
