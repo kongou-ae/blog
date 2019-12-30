@@ -6,7 +6,11 @@ url: /archives/2018-12-19-diagnose-azure-stack
 categories:
   - azurestack
 ---
-##  はじめに
+
+- 初版：2018年12月
+- 第二版：2019年12月
+
+## はじめに
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の19日目です。
 
@@ -30,6 +34,8 @@ categories:
 アラートの中には、具体的な対処方法が書かれているものがあります。これらの対処方法は管理者の権限で対処できます。「A physical disk has failed」のRemediation に記載されているディスクの交換や、「Scale unit node is offline」の Remediation に記載されている再起動などです。管理者による対処で状況が解消しない場合は、「Scale unit node is offline」の Remediation に記載されているとおりサポートに障害を申告して対処してもらいましょう。
 
 また、一部の障害については、アラート内に Repair のボタンが表示されているものがあります。このようなアラートは Repair ボタンを押すことで管理者自身で対象できます。
+
+参考：[Azure Stack Integrated system を自分で直す](https://aimless.jp/blog/archives/2019/04/repair-azurestack-myself/)
 
 ## 自己診断する
 
