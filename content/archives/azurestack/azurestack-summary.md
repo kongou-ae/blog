@@ -70,17 +70,9 @@ Azure Stack Hub に関する情報を全25本のエントリで広くまとめ�
 
 ### 登壇資料
 
-#### なれる！Azure Stack Operator
-
-- [https://speakerdeck.com/kongou_ae/nareru-azure-stack-operator](https://speakerdeck.com/kongou_ae/nareru-azure-stack-operator)
-- Azure Stack Hub の運用に特化した登壇資料です @[Interact 2018](https://interact.connpass.com/event/77420/)
-
-#### Azure Stack Integrated systems を検討・導入する際のポイント
-
-- [https://speakerdeck.com/kongou_ae/the-points-when-considering-and-deploying-azure-stack](https://speakerdeck.com/kongou_ae/the-points-when-considering-and-deploying-azure-stack)
-- Azure Stack Hub を検討・導入する際に考慮すべき点、注意すべき点をまとめた登壇資料です @[Interact 2019](https://interact.connpass.com/event/91059/)
-
-### Azure Stack Hub を導入して分かった10のこと
-
-- [https://speakerdeck.com/kongou_ae/10-things-i-learned-after-installing-azure-stack-hub-1cd823f9-7ce9-44c0-881a-56d49f5772f6](https://speakerdeck.com/kongou_ae/10-things-i-learned-after-installing-azure-stack-hub-1cd823f9-7ce9-44c0-881a-56d49f5772f6)
-- Azure Stack Hub を導入して気が付いたことをまとめた登壇資料です @[HCCJP(ハイブリッドクラウド研究会) 第9回勉強会](https://hybridcloud.connpass.com/event/156781/)
+- [なれる！Azure Stack Operator](https://speakerdeck.com/kongou_ae/nareru-azure-stack-operator)
+  - Azure Stack Hub の運用に特化した登壇資料です @[Interact 2018](https://interact.connpass.com/event/77420/)
+- [Azure Stack Integrated systems を検討・導入する際のポイント](https://speakerdeck.com/kongou_ae/the-points-when-considering-and-deploying-azure-stack)
+  - Azure Stack Hub を検討・導入する際に考慮すべき点、注意すべき点をまとめた登壇資料です @[Interact 2019](https://interact.connpass.com/event/91059/)
+- [Azure Stack Hub を導入して分かった10のこと](https://speakerdeck.com/kongou_ae/10-things-i-learned-after-installing-azure-stack-hub-1cd823f9-7ce9-44c0-881a-56d49f5772f6)
+  - Azure Stack Hub を導入して気が付いたことをまとめた登壇資料です @[HCCJP(ハイブリッドクラウド研究会) 第9回勉強会](https://hybridcloud.connpass.com/event/156781/)
