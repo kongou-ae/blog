@@ -1,5 +1,5 @@
 ---
-title: Azure Stack の認証認可
+title: Azure Stack Hub の認証認可
 author: kongou_ae
 date: 2018-12-13
 url: /archives/2018-12-12-anthn-anthz-for-azurestack
@@ -11,13 +11,13 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の12日目です。
 
-先日までのエントリでは、Dploymemt Worksheet をもとにして、Azure Stack を設置するために必要な準備をまとめました。本日以降のエントリでは、OEM ベンダが導入した Azure Stack を運用していくために必要なことをまとめていきます。
+先日までのエントリでは、Dploymemt Worksheet をもとにして、Azure Stack を設置するために必要な準備をまとめました。本日以降のエントリでは、OEM ベンダが導入した Azure Stack Hub を運用していくために必要なことをまとめていきます。
 
-運用するためには Azure Stack にログインしなければなりません。というわけで、本日エントリでは、Azure Stack における認証認可をまとめます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用した Azure Stack のみを対象とします。
+運用するためには Azure Stack Hub にログインしなければなりません。というわけで、本日エントリでは、Azure Stack Hub における認証認可をまとめます。なお、私は、ADFS で認証する Azure Stack Hub を触ったことがありません。そのため、本エントリでは、AAD を利用した Azure Stack Hub のみを対象とします。
 
 ## ３つの接続先
 
-Azure Stack には次の通り大きく３つの接続先があり、接続先に応じて認証認可の仕組みが異なります。
+Azure Stack Hub には次の通り大きく３つの接続先があり、接続先に応じて認証認可の仕組みが異なります。
 
 1. 管理者向け Azure Resource Manager(ARM)
 1. 利用者向け Azure Resource Manager(ARM)
@@ -27,9 +27,9 @@ Azure Stack には次の通り大きく３つの接続先があり、接続先�
 
 ### 認証
 
-管理者向けARMの認証基盤は、Deployment Worksheet で指定した Azure Active Directory のテナントです。したがって、管理者向けポータルや管理者向け PowerShell などの管理者向け ARM を利用する機能にアクセスする際は、Deployment worksheetに指定したテナントに存在するユーザーでログインします。
+管理者向け ARM の認証基盤は、Deployment Worksheet で指定した Azure Active Directory のテナントです。したがって、管理者向けポータルや管理者向け PowerShell などの管理者向け ARM を利用する機能にアクセスする際は、Deployment worksheet に指定したテナントに存在するユーザーでログインします。
 
-{{<img src="./../../images/2018-12-12-009.png">}}
+{{<img src="./../../images/2019-12-30-001.png">}}
 
 なお、具体的なログイン方法については、明日のエントリーでフォローします。
 
@@ -47,7 +47,7 @@ Azure Stack には次の通り大きく３つの接続先があり、接続先�
 
 ### 認証
 
-利用者向け ARM の認証基盤は、利用者のサブスクリプションに紐付いているAADテナントです。サブスクリプションと Azure Active Directory の紐づけは、管理者が利用者向けのサブスクリプションを作成する際に行われます。
+利用者向け ARM の認証基盤は、利用者のサブスクリプションに紐付いている AAD テナントです。サブスクリプションと Azure Active Directory の紐づけは、管理者が利用者向けのサブスクリプションを作成する際に行われます。
 
 {{<img src="./../../images/2018-12-12-005.png">}}
 
@@ -69,7 +69,7 @@ Azure Stack には次の通り大きく３つの接続先があり、接続先�
 
 ### 認証
 
-PEP の認証基盤は Azure Stack 内部の Active Directory です。この Active Directory が Deployment Worksheet で指定した内部ドメイン名を管理しています。
+PEP の認証基盤は Azure Stack Hub 内部の Active Directory です。この Active Directory が Deployment Worksheet で指定した内部ドメイン名を管理しています。
 
 デプロイ直後には「内部ドメイン名¥CloudAdmin」という初期ユーザーだけが存在します。共有アカウントは好ましくないので、このユーザを利用して PEP に接続できる個人アカウントを増やしましょう。具体的な手順については[Azure StackのPrivileged Endpointにユーザを追加する](https://aimless.jp/blog/archives/2018-06-11-add-user-to-pep/)を確認ください。
 
@@ -79,10 +79,10 @@ PEP の認証基盤は Azure Stack 内部の Active Directory です。この Ac
 
 ただし、一部の障害対応においては、コマンドが制限されている PEP の権限だけでは復旧作業ができません。その場合、Microsoft のサポート担当の許可によって、PEP 上の権限を一時的に特権に切り替えることかできます。
 
-具体的な流れを説明します。次の画像のとおり、Get-SupportSessionToken でトークンを生成してサポート担当に送付すると、サポート担当が制限を解除するためのトークンをくれます。そのトークンを Unlock-SupportSession に引数として渡すと、PEP が一時的に特権に切り替わります。特権への切り替えには、Microsoft のサポート担当が発行したトークンが必要不可欠です。利用者だけで自由に特権を行使することは不可能です。
+具体的な流れを説明します。次の画像のとおり、Get-SupportSessionToken でトークンを生成してサポート担当に送付すると、サポート担当が制限を解除するためのトークンをくれます。このトークンを Unlock-SupportSession に引数として渡すと、PEP が一時的に特権に切り替わります。特権への切り替えには、Microsoft のサポート担当が発行したトークンが必要不可欠です。利用者だけで自由に特権を行使することは不可能です。
 
 {{<img src="./../../images/2018-12-12-008.png">}}
 
 ## まとめ
 
-本日のエントリーでは Azure Stack の接続先ごとに認証と認可をまとめました。Azure Stack の管理者向け ARM と利用者向け ARM の認証と認可は、Azure と同じ Azure Active Directory ＋ RBAC の仕組みです。Azure の仕組みに慣れている人であればすぐに理解できると思います。
+本日のエントリーでは Azure Stack の接続先ごとに認証と認可をまとめました。Azure Stack Hub の管理者向け ARM と利用者向け ARM の認証と認可は、Azure と同じ Azure Active Directory ＋ RBAC の仕組みです。Azure の仕組みに慣れている人であればすぐに理解できると思います。

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack にアクセスする
+title: Azure Stack Hub にアクセスする
 author: kongou_ae
 date: 2018-12-13
 url: /archives/2018-12-13-how-to-access-azurestack
@@ -11,13 +11,13 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の13日目です。
 
-先日のエントリでは、Azure Stack の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
+先日のエントリでは、Azure Stack Hub の認証と認可をまとめました。本日のエントリでは、実際に Azure Stack Hub にアクセスしてみます。なお、私は、ADFS で認証する Azure Stack Hub を触ったことがありません。そのため、本エントリでは、AAD を利用したアクセス方法のみを対象とします。
 
 ## 管理者と利用者の違い
 
-Azure Stack にアクセスする人は、管理者と利用者に分けられます。管理者とは Azure Stack のインフラを運用管理する人です。利用者とは、Azure Stack が提供する Azure のサービスを利用する人です。
+Azure Stack Hub にアクセスする人は、管理者と利用者に分けられます。管理者とは Azure Stack Hub のインフラを運用管理する人です。利用者とは、Azure Stack Hub が提供する Azure のサービスを利用する人です。
 
-管理者と利用者の大きな違いの１つがアクセス先です。次のとおり、Azure Stack では、管理者と利用者のアクセス先が異なります。
+管理者と利用者の大きな違いの１つがアクセス先です。次のとおり、Azure Stack Hub では、管理者と利用者のアクセス先が異なります。
 
 | アクセス先 | 管理者 | 利用者 |
 |------------|------------|----------------|
@@ -26,7 +26,7 @@ Azure Stack にアクセスする人は、管理者と利用者に分けられ�
 
 ## 管理者のアクセス方法
 
-Azure Stack に管理者としてアクセスする代表的な方法であるプラウザと PowerShell を例に、管理者のアクセス方法を説明します。
+Azure Stack Hub に管理者としてアクセスする代表的な方法であるプラウザと PowerShell を例に、管理者のアクセス方法を説明します。
 
 ### プラウザ
 
@@ -63,7 +63,7 @@ Install-Module -Name AzureRm.BootStrapper
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 
 # Azure Stack 専用のモジュールをインストール
-Install-Module -Name AzureStack -RequiredVersion 1.5.0
+Install-Module -Name AzureStack -RequiredVersion 1.8.0
 ```
 
 Azure Stack がサポートする API バージョンにあった PowerShell モジュールがインストールできました。次に専用のツールである　[Azure/AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) をダウンロードします。
@@ -81,7 +81,7 @@ expand-archive master.zip `
   -Force
 ```
 
-そして、接続先を変更してログインします。初期状態だと、Azure の PowerShell は Azure に接続するように設定されています。ですので、PowerShell で Azure Stack に接続する場合は、Azure Stack の接続情報を明示的に指定しなければなりません。
+そして、接続先を変更してログインします。初期状態だと、Azure の PowerShell は Azure に接続するように設定されています。ですので、PowerShell で Azure Stack Hub に接続する場合は、Azure Stack Hub の接続情報を明示的に指定しなければなりません。
 
 ```powershell
 Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
@@ -89,7 +89,7 @@ Import-Module $HOME\AzureStack-Tools-master\Connect\AzureStack.Connect.psm1
 $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
 $AADTenantName = "<YOURNAME>.onmicrosoft.com" 
 
-# Azure Stack の 管理者向け ARM エンドポイントを、AzureStackAdmin という名前で追加
+# Azure Stack Hub の 管理者向け ARM エンドポイントを、AzureStackAdmin という名前で追加
 Add-AzureRMEnvironment `
   -Name "AzureStackAdmin" `
   -ArmEndpoint $ArmEndpoint
@@ -106,7 +106,7 @@ Login-AzureRmAccount `
 
 ## 利用者のアクセス方法
 
-Azure Stack に利用者としてアクセスする方法についても、管理者と同様にブラウザと PowerShell を例にして説明します。また、サードパーティーのツールである Terraform で Azure Stack に接続する方法にも触れます。
+Azure Stack Hub に利用者としてアクセスする方法についても、管理者と同様にブラウザと PowerShell を例にして説明します。また、サードパーティーのツールである Terraform で Azure Stack Hub に接続する方法にも触れます。
 
 ### プラウザ
 
@@ -135,7 +135,7 @@ Install-Module -Name AzureRm.BootStrapper
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 
 # Azure Stack 専用のモジュールをインストール
-Install-Module -Name AzureStack -RequiredVersion 1.5.0
+Install-Module -Name AzureStack -RequiredVersion 1.8.0
 
 # AzureStack-Toolsをダウンロード
 cd $HOME
@@ -172,7 +172,7 @@ Login-AzureRmAccount `
 
 ### Infrastrucute as code ツール
 
-Azure をサポートする Infrastrucute as code のツールが、 Azure Stack に対応しています。代表的なものは Ansible と Terraforn です。
+Azure をサポートする Infrastrucute as code のツールは Azure Stack Hub にも対応しています。代表的なものは Ansible と Terraforn です。
 
 - [Ansible](https://docs.ansible.com/ansible/2.5/scenario_guides/guide_azure.html#other-cloud-environments)
 - [Terraform](https://www.terraform.io/docs/providers/azurestack/index.html)
@@ -181,4 +181,4 @@ Azure をサポートする Infrastrucute as code のツールが、 Azure Stack
 
 ## おわりに
 
-本日のエントリでは、管理者と利用者が Azure Stack にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があることの2つがポイントです。正直ちょっとめんどくさいです。今後改善されることを願います。
+本日のエントリでは、管理者と利用者が Azure Stack Hub にアクセスする方法をまとめました。古い PowerShell モジュールを使う必要があること、API のエンドポイントが違うため接続先を切り替える必要があることの2つがポイントです。正直ちょっとめんどくさいです。今後改善されることを願います。

@@ -7,28 +7,31 @@ categories:
   - azurestack
 ---
 
+- 初版：2018年12月
+- 第二版：2019年12月
+
 ## はじめに
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の3日目です。
 
-先日のエントリでは、Azure Stack のユースケースについて説明しました。本エントリ以降では、Azure Stack そのものについて説明していきます。
+先日のエントリでは、Azure Stack Hub のユースケースについて説明しました。本エントリ以降では、Azure Stack Hub そのものについて説明していきます。
 
-## 2種類の Azure Stack
+## 2種類の Azure Stack Hub
 
-Microsoft は、2種類の Azure Stack をリリースしています。Integrated systems と Development Kit です。2つの大きな違いは、用途と対応するハードウェアです。
+Microsoft は、2種類の Azure Stack Hub をリリースしています。Integrated systems と Development Kit です。2つの大きな違いは、用途と対応するハードウェアです。
 
-- Azure Stack Integrated systems
-  - 製品版の Azure Stack 
+- Azure Stack Hub Integrated systems
+  - 製品版の Azure Stack Hub
   - OEM ベンダから購入する
-- Azure Stack Development Kit
-  - 評価版の Azure Stack
+- Azure Stack Hub Development Kit
+  - 評価版の Azure Stack Hub
   - Microsoft がソフトウェアのみを公開している
   - Integrated System 上で動作しているソフトウェアとほぼ一緒。ただし、違う個所もある
   - 前提条件を満たすハードウェアであれば、どのベンダのサーバにもインストールできる
 
 ## Integrated System の特徴
 
-本エントリでは、Azure Stack Integrated systems の特徴をざっくりと説明します。Development Kit には無い Integrated systems 固有の特徴は次の3点です。
+本エントリでは、Azure Stack Hub Integrated systems の特徴をざっくりと説明します。Development Kit には無い Integrated systems 固有の特徴は次の3点です。
 
 1. OEM ベンダが決まっている
 1. ハードウェア構成が本番を想定している
@@ -36,7 +39,7 @@ Microsoft は、2種類の Azure Stack をリリースしています。Integrat
 
 ### 1. OEM ベンダが決まっている
 
-Azure Stack Integrated systems は、Integrated systems を販売できるOEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。これらの OEM ベンダからのみ Azure Stack Integrated systems を購入できます。
+Azure Stack Hub Integrated systems は、Integrated systems を販売できるOEM ベンダが決まっています。現時点で Microsoft の公式サイトにパートナして載っている OEM ベンダは次の通りです。これらの OEM ベンダからのみ Azure Stack Hub Integrated systems を購入できます。
 
 | OEM ベンダ | 参考リンク |
 |-----------------------|---------------------------|
@@ -52,7 +55,7 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 
 参考：[クラウドをより簡単に導入できる「PRIMEFLEX for Microsoft Azure Stack」を発表](http://pr.fujitsu.com/jp/news/2018/11/9.html)
 
-ハードウェア上で動作する「Azureのサービスを提供するソフトウェア」は Microsoft によって開発されているため、すべての OEM ベンダの Azure Stack で共通です。OEM ベンダによって差異が出る部分は「サーバの構成」と「運用管理の仕組み」です。CPU の種類やメモリ量などのハードウェア構成を自由に選べる OEM ベンダと、事前に構成されたパターンから選択する OEM ベンダが存在しています。また、ハードウェアの運用管理には OEM ベンダ独自のツールを利用するので、OEM ベンダごとに特色が出ます。これらの差異を理解したうえで、自分にあった OEM ベンダから Azure Stack を買いましょう。
+ハードウェア上で動作する「Azure のサービスを提供するソフトウェア」は Microsoft によって開発されているため、すべての OEM ベンダの Azure Stack で共通です。OEM ベンダによって差異が出る部分は「サーバの構成」と「運用管理の仕組み」です。CPU の種類やメモリ量などのハードウェア構成を自由に選べる OEM ベンダと、事前に構成されたパターンから選択する OEM ベンダが存在しています。また、ハードウェアの運用管理には OEM ベンダ独自のツールを利用するので、OEM ベンダごとに特色が出ます。これらの差異を理解したうえで、自分にあった OEM ベンダから Azure Stack Hub を買いましょう。
 
 ### 2. ハードウェア構成が本番を想定している
 
@@ -75,16 +78,16 @@ Azure Stack Integrated systems は、Integrated systems を販売できるOEM �
 
 引用：[Azure Stack 受け入れ準備_20180630](https://www.slideshare.net/HiroshiMatsumoto1/azure-stack-20180630/21)
 
-ただし、UCS を利用している Cisco Systems の Azure Stack の場合、他の OEM ベンダの Azure Stack と違う点があります。Cisco systems の Azure Stack には Hardware Lifecycle Host が存在しません。そのかわりに ハードウェアの運用管理に Fabric Interconnect が利用されています。また BMC Switch が2台に冗長化されています。
+ただし、UCS を利用している Cisco Systems の Azure Stack Hub の場合、他の OEM ベンダの Azure Stack Hub と違う点があります。Cisco systems の Azure Stack には Hardware Lifecycle Host が存在しません。そのかわりに ハードウェアの運用管理に Fabric Interconnect が利用されています。また BMC Switch が2台に冗長化されています。
 
 ### 3. メーカのサポートを受けられる
 
 製品版である Integrated systems は、Microsoft と OEM ベンダによるサポートを受けられます。Micorosoft のサポート範囲は Azure のサービスを提供するためのソフトウェアです。OEM ベンダのサポートは、ハードウェアと運用管理用のソフトウェアです。
 
-OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Standard 以上 の Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでかなりお買い得です。Azure Stack の重要度を鑑みて、Azure サポートとプレミアムサポートを併用するのが良いでしょう。
+OEM ベンダのサポートは、従来のハードウェア・ソフトウェアサポートと同じです。特筆すべきは、Microsoft のサポートです。従来のオンプレミス製品で Microsoft のサポートを受けるためには、プレミアムサポートが必要でした。ですが、Azure Stackでは、Azure との一貫性を考慮したのか、Standard 以上 の Azure サポートを利用できます。Azure サポートは月額定額・チケット無制限ですのでかなりお買い得です。Azure Stack Hub の重要度を鑑みて、Azure サポートとプレミアムサポートを併用するのが良いでしょう。
 
 参考：[Azure のサポート プラン](https://azure.microsoft.com/ja-jp/support/plans/)
 
 ## おわりに
 
-本日のエントリーでは、 Integrated systems と Development Kit という2つの Azure Stack に触れたうえで、Integrated systems の基本的な特徴を説明しました。明日のエントリーでは、もう1つの Azure Stack である Development Kit について説明します。
+本日のエントリーでは、 Integrated systems と Development Kit という2つの Azure Stack Hub に触れたうえで、Integrated systems の基本的な特徴を説明しました。明日のエントリーでは、もう1つの Azure Stack である Development Kit について説明します。

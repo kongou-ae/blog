@@ -1,5 +1,5 @@
 ---
-title: Azure Stack で PaaS を利用する
+title: Azure Stack Hub で PaaS を利用する
 author: kongou_ae
 date: 2018-12-23
 url: /archives/2018-12-23-paas-of-azurestack
@@ -9,11 +9,11 @@ categories:
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の23日目です。
 
-本日のエントリでは Azure Stack の PaaSについてまとめます。ただし、PaaS をちゃんと触れていないのでさらっとです。
+本日のエントリでは Azure Stack Hub の PaaSについてまとめます。ただし、PaaS をちゃんと触れていないのでさらっとです。
 
 ## Azure Stack と PaaS
 
-Azure Stack は Azure の拡張であり、Azure と一貫性をもって設計されています。そのため、管理者は利用者に対して IaaS だけでなく PaaS も提供できます。1811 update 時点の Azure Stack で利用できる PaaS は次の通りです。
+Azure Stack Hub は Azure の拡張であり、Azure と一貫性をもって設計されています。そのため、管理者は利用者に対して IaaS だけでなく PaaS も提供できます。1911 update 時点の Azure Stack Hub で利用できる PaaS は次の通りです。
 
 - App Service
   - Web Apps
@@ -35,7 +35,7 @@ Azure Stack は Azure の拡張であり、Azure と一貫性をもって設計�
 
 ## 利用者目線での PaaS
 
-ただし、1811 時点の Azure Stack で提供される PaaS には注意点があります。それは、特定の PaaS が、PaaS を名乗る IaaS であるということです。次の5つの PaaS をテンプレートで展開すると、利用者のサブスクリプションに Virtual Machine が出来上がります。したがって、展開したあとは利用者自身が Virtual Machine のお守りをしなければなりません。
+ただし、1911 時点の Azure Stack で提供される PaaS には注意点があります。それは、特定の PaaS が PaaS を名乗る IaaS であるということです。次の5つの PaaS をテンプレートで展開すると、利用者のサブスクリプションに Virtual Machine が出来上がります。したがって、展開したあとは利用者自身が Virtual Machine のお守りをしなければなりません。
 
 - Pivotal Cloud Foundry 
 - Service Fabric clusters
@@ -49,7 +49,7 @@ Azure Stack は Azure の拡張であり、Azure と一貫性をもって設計�
 
 ## 管理者目線での PaaS
 
-Azure Stack 上で利用者に対して App Service と SQL Server、MySQL Server を提供するかどうかを決めるのは、Azure Stack の管理者です。したがって、PaaS を Azure Stack にインストールするのは管理者の仕事です。公式ドキュメントには PaaS のインストール方法が記載されています。
+Azure Stakc Hub の管理者は、利用者に対して App Service と SQL Server、MySQL Server を提供するかどうかを決めなければなりません。そして、PaaS を Azure Stack Hub にインストールするのは管理者の仕事です。公式ドキュメントには PaaS のインストール方法が記載されています。
 
 - 参考：[App Service リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-app-service-deploy)
 - 参考：[SQL Server リソース プロバイダーを Azure Stack にデプロイする](https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-sql-resource-provider)
@@ -59,11 +59,11 @@ Azure Stack 上で利用者に対して App Service と SQL Server、MySQL Serve
 
 {{< figure src="./../../images/2018-12-23-002.png" title="App Service を構成する主要なリソース" >}}
 
-Azure Stack の PaaS は利用者にとっての PaaS であって、管理者にとっては IaaS です。そのため、これらのリソースを運用するのは Azure Stack の管理者の仕事です。ただし、これらのリソースの運用管理方法は、Azure Stack 本体のようにドキュメントが充実していません。本体のように高度に抽象化された仕組みだとよいのですが・・・
+Azure Stack Hub の PaaS は利用者にとっての PaaS であって、管理者にとっては IaaS です。そのため、これらのリソースを運用するのは Azure Stack Hub の管理者の仕事です。ただし、これらのリソースの運用管理方法には、Azure Stack Hub 本体のようなドキュメントが充実していません。本体のように高度に抽象化された仕組みだとよいのですが・・・
 
 ## まとめ
 
-本日のエントリでは、Azure Stack 上の PaaS についてまとめました。Azure Stack の PaaS はまだまだこれからの領域です。利用を検討する際には次のことを考慮する必要があります。本番利用の前に PoC を行って、管理者と利用者がそれぞれ何をすべきなのかを明確にしましょう。
+本日のエントリでは、Azure Stack Hub 上の PaaS についてまとめました。Azure Stack Hub の PaaS はまだまだこれからの領域です。利用を検討する際には次のことを考慮する必要があります。本番利用の前に PoC を行って、管理者と利用者がそれぞれ何をすべきなのかを明確にしましょう。
 
 - PaaS の皮をかぶった Iaas なのか、PaaS なのか
 - PaaS を提供するリソースを管理者がどのように運用管理するか
