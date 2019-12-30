@@ -7,6 +7,9 @@ categories:
   - azurestack
 ---
 
+- 初版：2018年12月
+- 第二版：2019年12月
+
 ## はじめに
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の13日目です。

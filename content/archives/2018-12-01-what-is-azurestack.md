@@ -1,7 +1,7 @@
 ---
 title: Azure Stack Hub とは
 author: kongou_ae
-date: 2019-12-25
+date: 2018-12-01
 url: /archives/2018-12-01-what-is-azurestack
 categories:
   - azurestack
