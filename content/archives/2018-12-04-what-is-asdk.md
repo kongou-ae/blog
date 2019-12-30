@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Development Kit とは
+title: Azure Stack Hub Development Kit とは
 author: kongou_ae
 date: 2018-12-04
 url: /archives/2018-12-04-what-is-asdk
@@ -7,15 +7,18 @@ categories:
   - azurestack
 ---
 
+- 初版：2018年12月
+- 第二版：2019年12月
+
 ## はじめに
 
 本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の4日目です。
 
-先日のエントリでは、2つの Azure Stack の1つである Integrated systems について説明しました。本日のエントリでは、もう1つの Azure Stack である Development Kit について説明します。
+先日のエントリでは、2つの Azure Stack Hub の1つである Integrated systems について説明しました。本日のエントリでは、もう1つの Azure Stack Hub である Development Kit について説明します。
 
 ## Development Kit の特徴
 
-Development Kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack という仕組みが自分たちの組織に合うかどうかを評価するためのソリューションです。
+Development Kit は、その名のとおり評価用の Azure Stack です。高価な Integrated systems を買う前に、Azure Stack Hub という仕組みが自分たちの組織に合うかどうかを評価するためのソリューションです。
 
 Developmet Kit の特徴をざっくりと説明します。
 
@@ -25,11 +28,11 @@ Developmet Kit の特徴をざっくりと説明します。
 
 |     | 最小 | 推奨 |
 |-----|------|------|
-|CPU  | 12コア | 16コア |
-|メモリ | 96GB | 128GB |
+|CPU  | 16コア | 20コア |
+|メモリ | 192GB | 256GB |
 |OS Disk| 200GB | 200GB|
-|データ Disk | 140GB×4本 | 250GB×4本 |
-| OS | Windows Server 2016 | Windows Server 2016 |
+|データ Disk | 240GB×4本 | 400GB×4本 |
+| OS | Windows Server 2016 以降 | Windows Server 2016 以降|
 
 その他の条件については、次のドキュメントをご確認ください。特に、データ Disk については、複数の Disk を Storage Spaces Direct で1つのプールにする都合上、細かな条件が定められています、
 
@@ -53,7 +56,7 @@ ASDK は1台のサーバ上で動作します。Integrated systems のように�
 
 Azure のサービスを提供するネットワークが、サーバ内部のSDNに閉じています。そのため、サーバ外部のネットワークから Azure Stack 上の Azure のサービスを利用できません。
 
-これらの制限から、Development Kit で Azure Stack を評価する際は、原則として、Development Kit をインストールしたサーバに RDP または VPN で接続する必要があります。
+これらの制限から、Development Kit で Azure Stack Hub を評価する際は、原則として、Development Kit をインストールしたサーバに RDP または VPN で接続する必要があります。
 
 ### オレオレドメイン名
 
@@ -69,4 +72,4 @@ Development Kit 上の Azure のサービスは、loacl.azurestack.external と�
 
 ## まとめ
 
-本日のエントリーでは、評価版の Azure Stack である Development Kit について説明しました。Azure Stack に興味のある方は、いきなり Integrated systems を買うのではなく、Development Kit を利用してみることをお勧めします。Azure Stack が何を提供してくれるのかということを身をもって体験できます。
+本日のエントリーでは、評価版の Azure Stack Hub である Development Kit について説明しました。Azure Stack Hub に興味のある方は、いきなり Integrated systems を買うのではなく、Development Kit を利用してみることをお勧めします。Azure Stack Hub が何を提供してくれるのかということを身をもって体験できます。
