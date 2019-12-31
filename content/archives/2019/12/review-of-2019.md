@@ -2,7 +2,7 @@
 title: 2019年の振り返り
 author: kongou_ae
 date: 2019-12-31
-url: /archives/2019-12-31-review-of-2018
+url: /archives/2019-12-31-review-of-2019
 categories:
   - etc
 ---
@@ -21,7 +21,7 @@ categories:
 
 ## ブログ
 
-2019年には58本の記事を書きました。Azure Stack Hub が38本、Azure が20本です。記事の作成に時間のかかる「実際にやってみた」系のネタが主なので、月に4本から5本のペースでアウトプットした自分を自分で褒めてあげたいと思います。Azure Stack Hub の記事を量産できたのは、Azure Stack Development kit が動作する NUC を貸してくれた[@syuheiuda](https://twitter.com/syuheiuda) のおかげです。昨年と同様、改めて感謝申し上げます。
+2019年には58本の記事を書きました。Azure Stack Hub が38本、Azure が20本です。主なネタが記事の作成に時間のかかる「実際にやってみた」系なので、月に4本から5本のペースでアウトプットした自分を自分で褒めてあげたいと思います。なお、Azure Stack Hub の記事を量産できたのは、Azure Stack Development kit が動作する NUC を貸してくれた [@syuheiuda](https://twitter.com/syuheiuda) のおかげです。昨年と同様、改めて感謝申し上げます。
 
 Azure Stack Hub の記事を英語で執筆することにも挑戦しました。Twitter での反応は英語の方が大きかったです。英語のお勉強もかねて、Azure Stack Hub の「実際にやってみた」的な記事の英語化を続けていきます。
 
