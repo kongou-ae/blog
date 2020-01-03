@@ -24,7 +24,7 @@ New-AzsCertificateSigningRequest -IncludePaaS -RegionName $regionName -FQDN $ext
 
 ## 1912以降
 
-1912以降の ReadinessChecker では、`-IncludePaaS` というスイッチが廃止になりました。そのかわりに、作りたい CSR を `-certificateType` というオプションで指定する方式になりました。1912で指定できる値は次の6つです。
+1912以降の ReadinessChecker では `-IncludePaaS` というスイッチが廃止になりました。そのかわりに、作りたい CSR を `-certificateType` というオプションで指定する方式になりました。1912で指定できる値は次の6つです。
 
 1. EventHubs
 1. IoTHub
@@ -42,10 +42,10 @@ $externalFQDN = 'azurestack.contoso.com'
 New-AzsCertificateSigningRequest -requestType SingleCSR -certificateType Deployment,AppServices,DBadapter,IoTHub,EventHubs,Databoxedge -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem 
 ```
 
-また、`-requestType` を `SingleCSR` とした時の挙動が変わっています。1912よりも前のバージョンで `-requestType SingleCSR` と `-IncludePaaS` を併用した場合、IaaS と AppService、DB Adapter に関連するすべての SANs を含む1つの CSR が生成されました。そして、この CSR から作成される証明書は1枚のマルチドメインワイルドカード証明書でした。
+また、`-requestType` を `SingleCSR` とした時の挙動も変わっています。1912よりも前のバージョンで `-requestType SingleCSR` と `-IncludePaaS` を併用した場合、IaaS と AppService、DB Adapter に関連するすべての SANs を含む1つの CSR が生成されました。当然、この CSR から作成される証明書は1枚のマルチドメインワイルドカード証明書でした。
 
-1912 では、`-requestType SingleCSR` と `-certificateType Deployment,AppServices,DBadapter,IoTHub,EventHubs,Databoxedge` を併用した場合、サービスごとに CSR が生成されました。具体的には、`-certificateType Deployment,AppServices,DBadapter,IoTHub,EventHubs,Databoxedge` とした場合、次のように6つの CSR が生成されました。
+1912では `-requestType SingleCSR` と `-certificateType` を併用した場合、サービスごとに CSR が生成されました。具体的には、`-certificateType Deployment,AppServices,DBadapter,IoTHub,EventHubs,Databoxedge` とした場合、次のように6つの CSR が生成されました。
 
 {{< figure src="/images/2020/01-03-001.png" title="生成された CSR の一覧" >}}
 
-これらの CSR から生成される証明書は、4枚のワイルドカード証明書と2枚のマルチドメインワイルドカード証明書です。つまり、1912以前に生成した証明書を ReadinessChecker を利用して更新する場合、証明書の構成と枚数が変わります。証明書の金額が変わるかもしれませんので、1912 が生成する CSR を前提に証明書の金額を予算に入れておきましょう。
+これらの CSR から生成される証明書は、4枚のワイルドカード証明書と2枚のマルチドメインワイルドカード証明書です。つまり、1912以前に生成した証明書を 1912 の ReadinessChecker を利用して更新する場合、証明書の構成と枚数が変わります。証明書の金額が変わるかもしれませんので、1912 が生成する CSR を前提に証明書の金額を予算に入れておきましょう。
