@@ -48,4 +48,4 @@ New-AzsCertificateSigningRequest -requestType SingleCSR -certificateType Deploym
 
 {{< figure src="/images/2020/01-03-001.png" title="生成された CSR の一覧" >}}
 
-これらの CSR から生成される証明書は、4枚のワイルドカード証明書と2枚のマルチドメインワイルドカード証明書です。つまり、1912よりも前に生成した証明書を1912の ReadinessChecker を利用して更新する場合、証明書の構成と枚数が変わります。証明書の金額が変わるかもしれませんので、1912が生成する CSR を前提に証明書の金額を予算に入れておきましょう。
+これらの CSR から生成される証明書は、4枚のワイルドカード証明書と2枚のマルチドメインワイルドカード証明書です。つまり、1912よりも前の ReadinessChecker で生成した証明書を1912の ReadinessChecker で更新する場合、証明書の構成と枚数が変わります。証明書の金額が変わるかもしれませんので、1912の ReadinessChecker が生成する CSR を前提にした上で証明書の金額を予算に入れましょう。
