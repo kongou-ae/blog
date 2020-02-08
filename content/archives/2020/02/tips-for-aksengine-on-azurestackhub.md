@@ -1,5 +1,5 @@
 ---
-title: TIPs for AKS Engine on Azure Stack Hub
+title: Tips for AKS Engine on Azure Stack Hub
 author: kongou_ae
 date: 2020-02-08
 url: /archives/2020/02/tips-for-aksengine-on-azurestackhub
@@ -7,9 +7,9 @@ categories:
   - azurestack
 ---
 
-## TIPs for AKS Engine on Azure Stack Hub
+## Tips for AKS Engine on Azure Stack Hub
 
-We can use AKS Engine on Azure Stack Hub in production bacause this became GA at Ignite 2019. I created kubernetec cluster on Azure Stack Hub and learned some tips. I'm happy if this entry will help Azure Stack Hub Operator.
+We can use AKS Engine on Azure Stack Hub in production bacause this became GA at Ignite 2019. I created kubernetec cluster on Azure Stack Hub and learned some Tips. I'm happy if this entry will help Azure Stack Hub Operator.
 
 ### 1. Keep enough quotas
 
