@@ -18,7 +18,7 @@ categories:
 
 Nat Gateway は、Azure Firewall のような専用のサブネットを使いません。Service Endpoint のように NAT Gateway を利用したいサブネットを NAT Gateway と関連付けるだけで OK です。
 
-{{< figure src="/images/2020-02-19.png" title="NAT Gateway とサブネットを関連付ける画面" >}}
+{{< figure src="/images/2020/2020-02-19.png" title="NAT Gateway とサブネットを関連付ける画面" >}}
 
 Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされてる方式ではなく、Azure の SDN そのものの機能として実現されているようです。そのため、UDR を利用して 0.0.0.0/0 を NAT Gatway に向ける必要はありません。
 
@@ -60,7 +60,7 @@ NAT Gateway を利用するサブネットに存在する Virtual Machine に Pu
 
 ドキュメントには["NSG flow logging isn't supported when using NAT."](https://docs.microsoft.com/ja-jp/azure/virtual-network/nat-overview#limitations)と記載されているのですが、実際に NSG FlowLogs を有効にしてみたところ Outbound の通信が記録されていました。謎。
 
-{{< figure src="/images/2010-0219-002.jpg" title="NSG FlowLogs の結果" >}}
+{{< figure src="/images/2020/2020-0219-002.jpg" title="NSG FlowLogs の結果" >}}
 
 
 ### NSG が効かない？
