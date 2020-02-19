@@ -18,7 +18,7 @@ categories:
 
 Nat Gateway は、Azure Firewall のような専用のサブネットを使いません。Service Endpoint のように NAT Gateway を利用したいサブネットを NAT Gateway と関連付けるだけで OK です。
 
-{{< figure src="/images/2020/2020-02-19.png" title="NAT Gateway とサブネットを関連付ける画面" >}}
+{{< figure src="/images/2020/2020-0219-001.png" title="NAT Gateway とサブネットを関連付ける画面" >}}
 
 Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされてる方式ではなく、Azure の SDN そのものの機能として実現されているようです。そのため、UDR を利用して 0.0.0.0/0 を NAT Gatway に向ける必要はありません。
 
