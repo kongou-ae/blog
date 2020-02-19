@@ -22,9 +22,7 @@ Nat Gateway は、Azure Firewall のような専用のサブネットを使い�
 
 Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされてる方式ではなく、Azure の SDN そのものの機能として実現されているようです。そのため、UDR を利用して 0.0.0.0/0 を NAT Gatway に向ける必要はありません。
 
-```
-All outbound traffic for the subnet is processed by NAT automatically without any customer configuration. User-defined routes aren't necessary. NAT takes precedence over other outbound scenarios and replaces the default Internet destination of a subnet.
-```
+> All outbound traffic for the subnet is processed by NAT automatically without any customer configuration. User-defined routes aren't necessary. NAT takes precedence over other outbound scenarios and replaces the default Internet destination of a subnet.
 
 参考：[Static IP addresses for outbound-only](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview#static-ip-addresses-for-outbound-only)
 
