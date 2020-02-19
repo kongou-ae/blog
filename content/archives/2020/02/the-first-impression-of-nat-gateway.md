@@ -20,7 +20,7 @@ Nat Gateway は、Azure Firewall のような専用のサブネットを使い�
 
 {{< figure src="/images/2020/2020-0219-001.jpg" title="NAT Gateway とサブネットを関連付ける画面" >}}
 
-Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされてる方式ではなく、Azure の SDN そのものの機能として実現されているようです。そのため、UDR を利用して 0.0.0.0/0 を NAT Gatway に向ける必要はありません。
+Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされてる方式ではなく、Azure の SDN そのものの機能として実現されているようです。そのため、UDR を利用して 0.0.0.0/0 を NAT Gatway に向ける必要はありません。VM が建たないからか、デプロイは早かったです。
 
 > All outbound traffic for the subnet is processed by NAT automatically without any customer configuration. User-defined routes aren't necessary. NAT takes precedence over other outbound scenarios and replaces the default Internet destination of a subnet.
 
@@ -28,7 +28,7 @@ Nat Gateway は、Azure Firewall のように裏で VMSS がデプロイされ�
 
 ### 利用できる IP アドレス
 
-Public IP Address だけでなく、Public IP Prefix にも対応しています。20.46.184.180/30 の Public IP Prefix を利用した場合、次のようにすべての Public IP Address を利用して送信元 NAT してくれました。
+Public IP Address だけでなく、Public IP Prefix にも対応しています。20.46.184.180 /30 の Public IP Prefix を利用した場合、次のようにすべての Public IP Address を利用して送信元 NAT してくれました。
 
 ```
 $ while true;do  curl ifconfig.me;echo;done
