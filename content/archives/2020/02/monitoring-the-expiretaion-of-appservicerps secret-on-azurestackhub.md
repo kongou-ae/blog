@@ -28,7 +28,7 @@ It is good that Azure Stack Hub Operator can monitor the expiration with Rest AP
 
 This script confirms the expiration of these secrets with Rest API and shows the result to Azure Stack Hub Operator like the following capture.
 
-{{< figure src="/images/2020-0222-001.jpg" title="The output of the sample script" >}}
+{{< figure src="/images/2020/2020-0222-001.jpg" title="The output of the sample script" >}}
 
 If you use a service principal and notification methods like a webhook or E-mail, you can create an automatic notification system for the secret of App Service RP. 
 
