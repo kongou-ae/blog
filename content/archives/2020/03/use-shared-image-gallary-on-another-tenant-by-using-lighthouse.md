@@ -37,7 +37,7 @@ Shared Image Gallary は別テナントにイメージを共有する機能を�
 
 [Azure Resource Manager テンプレートの作成](https://docs.microsoft.com/ja-jp/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template)
 
-{{< figure src="/images/2020/2020-0306-002.png" title="リソースグループに限定して権限を委任" >}}
+{{< figure src="/images/2020/2010-0306-002.png" title="リソースグループに限定して権限を委任" >}}
 
 Lighthouse のパラメータを検討する際の注意点が principalId です。principalId には権限を委任する先の ID を入れます。もし principalId にユーザの ID を指定してしまうと、テナント B 側で Shared Image Gallary を使いたい人が増えるたびに、テナント A 側で Lighthouse の設定を追加しなければなりません。面倒です。principalId には テナント B 側の Azure AD のグループの ID を指定したうえで、テナント B 側でグループにユーザを追加・削除してもらう方式が望ましいです。
 
@@ -45,13 +45,13 @@ Lighthouse のパラメータを検討する際の注意点が principalId で�
 
 テナント B に接続した状態でポータルのサブスクリプションフィルタを修正して、テナント A のサブスクリプションとテナント B のサブスクリプションが表示されるようにします。
 
-{{< figure src="/images/2020/2020-0306-003.png" title="サブスクリプションフィルタの状態" >}}
+{{< figure src="/images/2020/2010-0306-003.png" title="サブスクリプションフィルタの状態" >}}
 
 テナント B に紐づくサブスクリプションに対して Virtual Machine を作る際にイメージを選択すると、テナント A から権限を委任された Shared Image Gallary が選択できるようになります。
 
-{{< figure src="/images/2020/2020-0306-004.png" title="Virtual Machine 作成画面の表示その1" >}}
+{{< figure src="/images/2020/2010-0306-004.png" title="Virtual Machine 作成画面の表示その1" >}}
 
-{{< figure src="/images/2020/2020-0306-005.png" title="Virtual Machine 作成画面の表示その2" >}}
+{{< figure src="/images/2020/2010-0306-005.png" title="Virtual Machine 作成画面の表示その2" >}}
 
 ## 振り返り
 
