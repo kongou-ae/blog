@@ -11,7 +11,7 @@ Azure Stack Hub 2002 Update がリリースされました。本エントリで�
 
 [Azure Stack Hub release notes](https://docs.microsoft.com/en-us/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
 
-なお、同じタイミングで 2002 Hotfix (Hotfix 1.2002.10.55)も配信されています。ただし、ドキュメントはまだ出ていません。。。Update と同じタイミングで Hotfix を配信するなら、Hotfix の内容を Update に含めてほしい。。。
+なお、同じタイミングで 2002 Hotfix (Hotfix 1.2002.10.55)も配信されています。ただし、ドキュメントがまだ出ていません。。。Update と同じタイミングで Hotfix を配信するなら、Hotfix の内容を Update に含めてほしい。。。
 
 ## サポートポリシーの一時的な緩和
 
@@ -34,10 +34,11 @@ Ignite 2019 で Vijay が発表した「2020年上半期を目標に Full Update
 - 変更前：ログをアップロードするストレージアカウントを利用者が指定する
 - 変更後：ストレージアカウントを指定しなくていい。つまりシステム側に埋め込まれている
 
-- 参考：[Send Azure Stack Hub diagnostic logs now](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl?view=azs-2002)
-- 参考：[Send Azure Stack Hub diagnostic logs proactively](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl?view=azs-2002)
+参考：
+- [Send Azure Stack Hub diagnostic logs now](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl?view=azs-2002)
+- [Send Azure Stack Hub diagnostic logs proactively](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-configure-automatic-diagnostic-log-collection-tzl?view=azs-2002)
 
-この破壊的な変更に伴い、ポータルからログを取得する際に任意の SAS Token つき URL を指定できなくなりました。ポータルのログ取得機能を使って自分たちのストレージアカウントにログを保存している人は、Privileged Endpoint の Get-AzureStackLog コマンドを使った実装に変更する必要があります。
+この破壊的な変更に伴い、ポータルからログを取得する際に任意の SAS Token つき URL を指定できなくなりました。ポータルのログ取得機能を使って自分たちのストレージアカウントにログを保存している人は、ポータルによるログ取得から　Privileged Endpoint の Get-AzureStackLog コマンドを使った方法に切り替える必要があります。
 
 ただし、この破壊的な変更に伴い、障害時に Microsoft のサポートに対してログを送る段取りが簡素化されました。とてもありがたい。2002 Update 前後の変更点は次の通りです。
 
@@ -47,7 +48,7 @@ Ignite 2019 で Vijay が発表した「2020年上半期を目標に Full Update
 
 1. 何かしら異常を検知する
 2. Azure ポータルから SR をあげる
-3. Microsoft のサポートから返信が来る。この時に、Microsoft のサポートが使っているストレージアカウントの SAS Token つき URL をもらえる
+3. Microsoft のサポート担当から返信が来る。この時に、Microsoft のサポートが使っているストレージアカウントの SAS Token つき URL をもらえる
 4. もらった SAS Token つき URL を使って、Azure Stack Hub のポータルからログを集めて送る
 
 この段取りではログを送るまでに一定の時間がかかります。なぜなら、Microsoft のサポート担当から SAS Token つき URL をもらわないとログを送れないからです。不要な待ち時間が発生してしまいます。
@@ -78,7 +79,7 @@ Connected な Azure Stack Hub は、アップデートで利用するパッケ�
 
 > The administrator portal now indicates if an operation is in progress, with an icon next to the Azure Stack region. 
 
-裏で動いているタスクをポータルから確認できるようになりました。裏でタスクが動いている際に新規のタスクを走らせると、新規のタスクが失敗するケースがありました。例えば過去には、バックアップ中にアップデート走らせた結果アップデートが失敗しました。
+裏で動いているタスクをポータルから確認できるようになりました。タスクが裏で動いている際に新規のタスクを走らせると、新規のタスクが失敗するケースがありました。例えば過去には、バックアップ中にアップデート走らせた結果アップデートが失敗しました。
 
 新規のタスクを走らせる前にタスクが裏で動いていないことを確認したいのですが、「裏で動いているタスクを確認するためにはマイクロソフトのサポート担当の協力が必要」というちょっといけてない実装でした。この改善により裏で動いているタスクを自分で確認できるようになったので、タスクの競合による失敗を避けられるようになります。地味だけど嬉しい改善です。
 
