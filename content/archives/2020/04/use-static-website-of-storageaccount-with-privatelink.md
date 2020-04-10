@@ -19,7 +19,7 @@ Storage Account 向けの Private Link を作る際には、ターゲットと�
 
 さらに、Static website にアクセスする端末が Static website の FQDN を Private Link のプライベート IP アドレスに名前解決できるように、DNS の設定を変更する必要があります。今回の検証では、Private Link が存在する Virtual Network 内にデプロイした動作確認用 Windows Server の Hosts ファイルに、<Private Link の IP アドレス> <Static website の FQDN(例：aimlessprivateweb.z11.web.core.windows.net)>の設定を追加します。
 
-{{< figure src="/images/2020/2020-0408-008.jpg" title="Hosts ファイルに追加した Static website 用の設定" >}}
+{{< figure src="/images/2020/2020-0408-009.jpg" title="Hosts ファイルに追加した Static website 用の設定" >}}
 
 ## 動作確認
 
@@ -41,7 +41,7 @@ $web コンテナにコンテンツをアップロードするために、Sub Re
 
 さらに、Static website と同様、Private Link が存在する Virtual Network 内の Windows Server の Hosts ファイルに<Private Link の IP アドレス> <blob の FQDN（例：aimlessprivateweb.blob.core.windows.net）>の設定を追加します。
 
-{{< figure src="/images/2020/2020-0408-009.jpg" title="Hosts ファイルに追加した blob 用の設定" >}}
+{{< figure src="/images/2020/2020-0408-008.jpg" title="Hosts ファイルに追加した blob 用の設定" >}}
 
 
 ## 動作確認
