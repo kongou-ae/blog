@@ -36,7 +36,7 @@ ResourceTypes : {Microsoft.AzureStack/registrations}
 
 サービスを識別する ID を利用して、ProblemClassificationId を取得します。利用するコマンドは Get-AzSupportProblemClassification です。
 
-```
+```powershell
 $problemClassificationId = Get-AzSupportProblemClassification -serviceid $supportServiceName.Id | where-object {$_.DisplayName -eq "ASDK - Azure Stack Development Kit / Azure Stack Development Kit"}
 
 PS C:\Users\MatsumotoYusuke> $problemClassificationId | fl *
@@ -53,7 +53,7 @@ DisplayName : ASDK - Azure Stack Development Kit / Azure Stack Development Kit
 
 取得した ProblemClassificationId を利用して、サポートリクエストを送信します。利用するコマンドは New-AzSupportTicket です。
 
-```
+```powershell
 New-AzSupportTicket -Name $Name.Guid `
     -Title "The test for support API" `
     -Description "Sorry. This is for test of Support API. I will close this SR. You can ignore this SR." `
@@ -78,7 +78,7 @@ New-AzSupportTicket -Name $Name.Guid `
 
 私の検証用サブスクリプションで上記のコマンドを実行した結果、次のエラーが発生してサポートリクエストを送信できませんでした。
 
-```
+```powershell
 New-AzSupportTicket : Long running operation failed with status 'Failed'. Additional Info:'Your support plan type is Developer. To create and update support tickets,
     and add communication operations, you need access to our high tier-support plans. Learn more at https://aka.ms/supportapi'
    発生場所 行:1 文字:1
