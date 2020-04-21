@@ -15,12 +15,12 @@ Event Hub on Azure Stack Hub が Public Preview になりました。
 
 ## インストール
 
-App Service Resource Provider のインストールには専用のインストーラを利用します。Azure Stack Hub にアクセスできる端末上でこのインストーラを実行したうえで、インストーラが要求する様々な情報をインプットする必要があります。具体的な手順は次の通りです。
+App Service Resource Provider のインストールには専用のインストーラを利用します。Azure Stack Hub にアクセスできる端末上でこのインストーラを実行したうえで、インストーラが要求する様々な情報を入力する必要があります。具体的な手順は次の通りです。
 
 - [Azure Stack Hub に App Service をデプロイする](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-app-service-deploy?view=azs-2002)
 - [App Service on Azure Stack（ Resource Provider 編）](https://aimless.jp/blog/archives/2019-03-05-install-appservice-resource-provider-to-azurestack/)
 
-新しい PaaS を提供するリソースプロバイダのインストールには Azure Stack Hub の管理ポータルを使います。独自のインストーラは不要です。管理ポータルのマーケットプレイスの画面でリソースプロバイダのダウンロードとインストールを一気に実行できるので、次の通り手順がとてもシンプルです。素晴らしい。
+新しい PaaS を提供するリソースプロバイダのインストールには Azure Stack Hub の管理ポータルを使います。独自のインストーラは不要です。管理ポータルのマーケットプレイスの画面でリソースプロバイダのダウンロードとインストールを一気に実行できるので、手順が次のようにとてもシンプルです。素晴らしい。
 
 1. 管理ポータルのマーケットプレイスで Event Hub をダウンロードして、インストールを開始する
 1. 管理ポータルのインストール画面で前提条件をチェックするボタンを押す
@@ -39,7 +39,7 @@ App Service Resource Provider は、アップデートにも専用のインス�
 
 参考：[Azure App Service on Azure Stack Hub を更新する](https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-app-service-update?view=azs-2002)
 
-新しい PaaS のリソースプロバイダのアップデートには Azure Stack Hub の管理ポータルを利用します。独自のインストーラは不要です。Azure Stack Hub の Update の画面で、Azure Stack Hub 本体のアップデートと同じように、PaaS の更新に利用するパッケージのダウンロードと適用を一気に実行できます。素晴らしい。
+新しい PaaS のリソースプロバイダのアップデートには Azure Stack Hub の管理ポータルを利用します。独自のインストーラは不要です。管理ポータルの Update の画面で、Azure Stack Hub 本体のアップデートと同じように、PaaS の更新に利用するパッケージのダウンロードと適用を一気に実行できます。素晴らしい。
 
 [Azure Stack Hub リソース プロバイダーを更新する方法](https://docs.microsoft.com/ja-jp/azure-stack/operator/resource-provider-apply-updates?view=azs-2002)
 
