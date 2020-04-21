@@ -31,7 +31,7 @@ App Service Resource Provider のインストールには専用のインスト�
 
 オランダの MVP の Mark Scholman さんが具体的な手順を Youtube に公開していますので、気になる方は次の動画をご確認ください。とてもシンプルなインストール方法になっていることをご理解いただけるはずです。
 
-<iframe width="817" height="586" src="https://www.youtube.com/embed/X2xSw0GMwqw?list=PLCABiA1cIxgIPt7A6YuFTjFlcwMHKSzIS" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="409" height="293" src="https://www.youtube.com/embed/X2xSw0GMwqw?list=PLCABiA1cIxgIPt7A6YuFTjFlcwMHKSzIS" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## アップデート
 
