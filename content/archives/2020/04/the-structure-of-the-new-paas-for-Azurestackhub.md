@@ -4,7 +4,7 @@ author: kongou_ae
 date: 2020-04-19
 url: /archives/2020/04/the-structure-of-the-new-paas-for-Azurestackhub
 categories:
-  - azure
+  - azurestack
 ---
 
 Event Hub on Azure Stack Hub が Public Preview になりました。
