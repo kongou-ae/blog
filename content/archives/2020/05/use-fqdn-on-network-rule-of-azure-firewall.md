@@ -78,6 +78,24 @@ admin@36.xxx.xxx.xxx's password:
 
 ただし、Network rule の FQDN の仕様が公式ドキュメントに書かれていないので、どのような仕組みで動いているのかが不明です。FortiGate のように、Network rule に登録されている FQDN を名前解決して、返ってきた IP アドレスを使って通信を制御する方式でしょうか。知りたい。
 
+Log Analytics に転送されてきたログの出力は IP アドレスで許可したときと同じです。ログ上では FQDN ではなく IP アドレスが記録されるにも関わらず、どのルールで処理されたかが記録されていないので、通信がどの FQDN に該当して処理されたのかを後追いできません。がっかり実装。
+
+|Property| Value |
+|---------------|-----------------|
+|TenantId | xxxxxxxx-xxxx-xxxx-xxxx-8092c65a78c1|
+|SourceSystem|Azure|
+|TimeGenerated [UTC]|2020-05-02T12:49:09.237Z|
+|msg_s|TCP request from 10.0.5.4:32794 to 36.xxx.xxx.xxx:22. Action: Allow|
+|ResourceId|/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-8092c65a78c1/RESOURCEGROUPS/FGNEW/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/AZFW01|
+|Category|AzureFirewallNetworkRule|
+|OperationName|AzureFirewallNetworkRuleLog|
+|SubscriptionId|xxxxxxxx-xxxx-xxxx-xxxx-8092c65a78c1|
+|ResourceGroup|FGNEW|
+|ResourceProvider|MICROSOFT.NETWORK|
+|Resource|AZFW01|
+|ResourceType|AZUREFIREWALLS|
+|Type|AzureDiagnostics|
+
 ## まとめ
 
 Network rule に FQDN を使う方法をまとめました。具体的な挙動が不明ではありますが、Azure Firewall と Network Virtual Appliance との差が縮まったのは良いことです。ポータルが Network rule の FQDN をサポートしてくれることを待っています。
