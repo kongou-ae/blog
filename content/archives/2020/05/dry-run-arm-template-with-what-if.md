@@ -167,7 +167,7 @@ Resource changes: 1 to modify.
 
 デプロイ時に確認を挟みたい場合は、`New-AzResourceGroupDeployment` を `-Confirm` つきで実行します。`-Confirm` をつけて上記のテンプレートをデプロイしたら、`Get-AzResourceGroupDeploymentWhatIfResult` と同じメッセージが出力されたあとに、デプロイするかどうかを確認するメッセージがでました。
 
-```
+```powershell
 Are you sure you want to execute the deployment?
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
 ```
@@ -212,7 +212,7 @@ Are you sure you want to execute the deployment?
 
 デプロイする前に期待される変更が表示されます。今回は subnet02 が削除されることが表示されていました。
 
-```
+```powershell
 > New-AzResourceGroupDeployment -TemplateFile .\vnet.json -Confirm -Name whatif -ResourceGroupName whatif 
 
 Note: As What-If is currently in preview, the result may contain false positive predictions (noise).
@@ -246,4 +246,5 @@ Are you sure you want to execute the deployment?
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">削除は赤く表示されます。 <a href="https://t.co/HNakInhjcp">pic.twitter.com/HNakInhjcp</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1256931672622116865?ref_src=twsrc%5Etfw">May 3, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## まとめ
+
 What if を利用した ARM テンプレートの Dry run をまとめました。最高です。
