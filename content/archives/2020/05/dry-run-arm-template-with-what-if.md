@@ -25,7 +25,7 @@ https://github.com/MicrosoftDocs/azure-docs/commit/83df3c1fc32b9e5d76a0536fb0381
 
 ## 準備
 
-What if は PowerShell 5.x では動きません。PowerShell Core の6.x か 7.x が必要です。今回は PowerShell Core の 6.4 をインストールしました。
+What if は PowerShell 5.x では動きません。PowerShell Core の6.x か 7.x が必要です。今回は PowerShell Core の 6.2.4 をインストールしました。
 
 ```powershell
 > $PSVersionTable
