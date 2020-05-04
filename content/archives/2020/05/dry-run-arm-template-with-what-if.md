@@ -11,11 +11,11 @@ categories:
 
 Infrastructure as code(IaC) を実現するツールの中には Dry run の機能を有するものがあります。有名どころだと Terraform の terraform plan でしょうか。Dry run の機能があればツールがどのような変更を実施するかを事前に確認できますので、ツールを用いた変更作業のリスクを軽減できます。
 
-Azure で IaC を実現する仕組みの一つである ARM テンプレートには、Dry run の機能がありませんでした。ですが Ignite 2019 で Dry run を実現する機能である What if が Private Preview として発表されました。
+Azure で IaC を実現する仕組みの一つである ARM テンプレートには、Dry run の機能がありませんでした。ですが Ignite 2019 で Dry run を実現する機能である what-if が Private Preview として発表されました。
 
 [What’s new with Azure Resource Manager (ARM) templates for your deployments](https://myignite.techcommunity.microsoft.com/sessions/84121?source=SessionDeck)
 
-この What if が 4月上旬に Public Preview になっていました。
+この what-if が 4月上旬に Public Preview になっていました。
 
 [ARM template deployment what-if operation (Preview)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-deploy-what-if?tabs=azure-powershell)
 
@@ -25,7 +25,7 @@ https://github.com/MicrosoftDocs/azure-docs/commit/83df3c1fc32b9e5d76a0536fb0381
 
 ## 準備
 
-What if は PowerShell 5.x では動きません。PowerShell Core の6.x か 7.x が必要です。今回は PowerShell Core の 6.2.4 をインストールしました。
+what-if は PowerShell 5.x では動きません。PowerShell Core の6.x か 7.x が必要です。今回は PowerShell Core の 6.2.4 をインストールしました。
 
 ```powershell
 > $PSVersionTable
@@ -51,7 +51,7 @@ Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
 
 ## 動作確認
 
-What if の動作確認のために、前提となるシンプルな VNet をデプロイしました。
+what-if の動作確認のために、前提となるシンプルな VNet をデプロイしました。
 
 ```
 {
@@ -85,7 +85,7 @@ What if の動作確認のために、前提となるシンプルな VNet をデ
 }
 ```
 
-Dry run のみ実行する場合、`Get-AzResourceGroupDeploymentWhatIfResult` を利用します。`Get-AzResourceGroupDeploymentWhatIfResult` を利用して、この VNet に対して新規サブネットの追加と DNS サーバの追加を実施する次のテンプレートをデプロイしました。
+Dry run のみを実行する場合、`Get-AzResourceGroupDeploymentWhatIfResult` を利用します。`Get-AzResourceGroupDeploymentWhatIfResult` を利用して、この VNet に対して新規サブネットの追加と DNS サーバの追加を実施する次のテンプレートをデプロイしました。
 
 ```
 {
@@ -247,4 +247,4 @@ Are you sure you want to execute the deployment?
 
 ## まとめ
 
-What if を利用した ARM テンプレートの Dry run をまとめました。What if は最高です。
+what-if　を利用した ARM テンプレートの Dry run をまとめました。what-if は最高です。
