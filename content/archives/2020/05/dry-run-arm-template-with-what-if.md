@@ -247,4 +247,4 @@ Are you sure you want to execute the deployment?
 
 ## まとめ
 
-What if を利用した ARM テンプレートの Dry run をまとめました。最高です。
+What if を利用した ARM テンプレートの Dry run をまとめました。What if は最高です。
