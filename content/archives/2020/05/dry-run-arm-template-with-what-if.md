@@ -210,7 +210,7 @@ Are you sure you want to execute the deployment?
 }
 ```
 
-デプロイする前に期待される変更が表示されます。今回は subnet02 が削除されることが表示されていました。
+デプロイする前に期待される変更が表示されます。今回は subnet02 が削除されることが表示されました。
 
 ```powershell
 > New-AzResourceGroupDeployment -TemplateFile .\vnet.json -Confirm -Name whatif -ResourceGroupName whatif 
