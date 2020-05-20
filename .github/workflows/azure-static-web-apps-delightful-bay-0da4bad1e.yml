@@ -27,6 +27,7 @@ jobs:
     - name: Build
       run: hugo --buildFuture -t hugo-primer-fork -d public/blog && mv public/blog/feed.xml public/blog/feed
       
+      
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
