@@ -24,6 +24,7 @@ jobs:
       with:
         hugo-version: "latest"
 
+
     - name: Build
       run: hugo --buildFuture -t hugo-primer-fork -d public/blog && mv public/blog/feed.xml public/blog/feed
       
