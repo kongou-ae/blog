@@ -5,7 +5,7 @@ hasCJKLanguage = true
 summaryLength = 70
 copyright = "Written by kongou_ae"
 canonifyurls = true
-relativeURLs = true
+relativeURLs = false
 enableGitInfo = true
 
 pygmentsUseClasses = true
