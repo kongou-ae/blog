@@ -1,4 +1,4 @@
-baseurl = "https://aimless.jp/blog/"
+baseurl = "https://blog.aimless.jp/"
 languageCode = "ja"
 title = "Aimless"
 hasCJKLanguage = true
