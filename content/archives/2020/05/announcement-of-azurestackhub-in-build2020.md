@@ -17,12 +17,12 @@ categories:
 - [Azure Stack Hub now supports cross-platform compatibility on PowerShell](https://azure.microsoft.com/en-us/updates/azure-stack-hub-now-supports-crossplatform-compatibility-on-powershell/)
 - [Azure Container Registry on Azure Stack Hub private preview](https://azure.microsoft.com/en-us/updates/azure-container-registry-on-azure-stack-hub-private-preview/)
 - [FHIR Server on Azure Stack Hub](https://azure.microsoft.com/en-us/updates/fhir-server-on-azure-stack-hub/)
-- [Azure Stack Hub updates will simplify fleet and resource management and enable graphics-heavy scenarios](https://news.microsoft.com/build-2020-book-of-news/#1121-azure-stack-hub-updates-will-simplify-fleet-and-resource-management-and-enable-graphics-heavy-scenarios)
+- [Azure Stack Hub updates will simplify fleet and resource management and enable graphics-heavy scenarios](https://news.microsoft.com/build-2020-book-of-news/#1121-azure-stack-hub-updates-will-simplify-fleet-and-resource-management-and-enable-graphics-heavy-scenarios) 
 
-なお、2020年5月20日現在、これらの情報を詳細に解説するであろう次のブログが404のままです。早く公開されてほしい。
+なお、公式のサマリは次をご確認ください。
 
-[https://azure.microsoft.com/en-us/blog/azure-stack-updates-and-how-it-enables-intelligence-at-the-edge/](https://azure.microsoft.com/en-us/blog/azure-stack-updates-and-how-it-enables-intelligence-at-the-edge/)
- 
+[Azure Stack Announcements at Build 2020](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-announcements-at-build-2020/ba-p/1406969)
+
 
 ## Azure Stakc Hub fleet management
 
