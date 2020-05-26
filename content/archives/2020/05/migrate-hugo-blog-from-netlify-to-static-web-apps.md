@@ -52,7 +52,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 そして、先ほどポータルに入力したビルド用のフォルダの情報が このファイルの中の Azure/static-web-apps-deploy@v0.0.1-preview の app_location と api_location、app_artifact_location に挿入されます。
 
-```yaml
+```txt
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
@@ -79,13 +79,9 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 [Tutorial: Publish a Hugo site to Azure Static Web Apps Preview](https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo)
 
-この変更を実施していない GitHub Actions 用の設定ファイルだと、Azure/static-web-apps-deploy@v0.0.1-preview の中で動作している Oryx が / 直下の config.toml を発見して Oryx に標準搭載されている Hugo を用いてビルドを実施します。私の環境では、標準搭載されている Hugo が Shortcode を見つけられないエラーを吐いてビルドが失敗しました。GitHub Actions 用の設定ファイル の app_build_command で Shortcode を定義しているカスタムテーマを利用するように Hugo コマンドを上書きしているにも関わらずです。謎。
-
-参考：[Azure Static Web Apps プレビューの GitHub Actions ワークフロー](https://docs.microsoft.com/ja-jp/azure/static-web-apps/github-actions-workflow#custom-build-commands)
-
 次に、必要に応じてビルドを実行する hugo コマンドを変更します。私の環境では hugo コマンドを実行する際にテーマの指定と RSS フィードのリネームを実施しているので、次のようにGitHub Actions 用の設定ファイルに記載されている Hugo コマンドを変更しました。
 
-```yaml
+```txt
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2.4.8
       with:
@@ -97,13 +93,13 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 最後に app_location に Hugo がビルド結果を出力するフォルダを指定します。私の環境では public フォルダにビルド結果を出力するようになっているので、Github Actions 用の設定ファイルを次のように変更しました。
 
-```
+```txt
 ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
 app_location: 'public' # App source code path
 ###### End of Repository/Build Configurations ######
 ```
 
-app_location フォルダにフレームワークを判定するためのファイルが入っていない場合、Azure/static-web-apps-deploy@v0.0.1-preview はビルドをあきらめて app_location フォルダを ZIP で固めて Static Web Apps にアップロードしてくれました。Azure/static-web-apps-deploy@v0.0.1-preview がアップロード処理だけを実施してくれるのであれば、Azure/static-web-apps-deploy@v0.0.1-preview にはアップロードの処理だけを任せて、ビルドの処理は使い慣れた方法で個別に GitHub Actions に定義する形が良さそうに思えます。
+app_location フォルダにフレームワークを判定するためのファイルが入っていない場合、Azure/static-web-apps-deploy@v0.0.1-preview はビルドをあきらめて app_location フォルダを ZIP で固めて Static Web Apps にアップロードしてくれます。であれば、Azure/static-web-apps-deploy@v0.0.1-preview にはアップロードの処理だけを任せて、ビルドの処理は使い慣れた方法で個別に GitHub Actions に定義する形が良さそうに思えます。
 
 ```txt
 ---End of Oryx build logs---
@@ -124,7 +120,7 @@ Visit your site at: https://proud-pebble-043e3ae1e.azurestaticapps.net
 
 ## カスタムドメインの設定
 
-カスタムドメインの所有者確認のために Static Web Apps は 追加するカスタムドメインの CNAME が Static Web Apps に向いているかどうかを検証します。カスタムドメインを追加する前に ドメインの CNAME を Static Web Apps に向けます。CNANE の登録さえ完了すれば、あとはポータルからポチポチするだけでカスタムドメインを追加できます。
+カスタムドメインの所有者確認のために、Static Web Apps は 追加するカスタムドメインの CNAME が Static Web Apps に向いているかどうかを検証します。カスタムドメインを追加する前に ドメインの CNAME を Static Web Apps に向けます。CNANE の登録さえ完了すれば、あとはポータルからポチポチするだけでカスタムドメインを追加できます。
 
 {{< figure src="/images/2020/2020-0525-004.jpg" title="カスタムドメインの設定画面" >}}
 
@@ -135,7 +131,7 @@ Visit your site at: https://proud-pebble-043e3ae1e.azurestaticapps.net
 
 ## 動作確認
 
-次の dig の結果のとおり、blog.aimless.jp を Netlify から Static Web Apps 上に移行できました。Static Web Apps というリソースは West US2 にあるのですが、実際のコンテンツは Traffic Manager で負荷分散されて EastAsia（香港）にある App Service にあるようです。体感でのレスポンスは移行前と移行後で差がありません。快適。
+次の dig の結果のとおり、blog.aimless.jp を Netlify から Static Web Apps 上に移行できました。Static Web Apps というリソースは West US2 にあるのですが、実際のコンテンツは Traffic Manager で負荷分散されて EastAsia（香港）の App Service にあるようです。体感でのレスポンスは移行前と移行後で差がありません。快適。
 
 ```txt
 blog.aimless.jp.	60	IN	CNAME	proud-pebble-043e3ae1e.azurestaticapps.net.
@@ -146,7 +142,7 @@ waws-prod-hk1-0a7ad652.sip.p.azurewebsites.windows.net.	1800 IN	CNAME waws-prod-
 waws-prod-hk1-0a7ad652.cloudapp.net. 10	IN A	52.175.36.249
 ```
 
-紐づいている GitHub のリポジトリに Pull request を作ると、そのブランチが別環境に自動デプロイされました。本番環境にマージする前に動作確認できます。とても良い。
+また、紐づいている GitHub のリポジトリに Pull request を作ると、そのブランチが別環境に自動デプロイされました。本番環境にマージする前に動作確認できます。とても良い。
 
 {{< figure src="/images/2020/2020-0525-005.jpg" title="GitHub ation 用の設定ファイル" >}}
 
