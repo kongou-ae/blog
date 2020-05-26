@@ -148,6 +148,6 @@ waws-prod-hk1-0a7ad652.cloudapp.net. 10	IN A	52.175.36.249
 
 紐づいている GitHub のリポジトリに Pull request を作ると、そのブランチが別環境に自動デプロイされました。本番環境にマージする前に動作確認できます。とても良い。
 
-{{< figure src="/images/2020/2020-0525-004.jpg" title="GitHub ation 用の設定ファイル" >}}
+{{< figure src="/images/2020/2020-0525-005.jpg" title="GitHub ation 用の設定ファイル" >}}
 
 実際に使ってみて、Static Web Apps の良さを再確認しました。今後は、Blob Storage の Static web site では要件を満たさないような場合に Static Web Apps を積極的に活用していきます。
