@@ -31,7 +31,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 また、aimless.jp の A レコードが向いている Netlify に次の内容の `_redirects` を配置して、ルートに来たアクセスと個別の URL に来たアクセスの両方が blog.aimless.jp にリダイレクトされるようにしました。
 
-```
+```txt
 /        https://blog.aimless.jp/  301!
 /blog/*  https://blog.aimless.jp/:splat  301!
 ```
@@ -52,7 +52,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 そして、先ほどポータルに入力したビルド用のフォルダの情報が このファイルの中の `Azure/static-web-apps-deploy@v0.0.1-preview` の `app_location` と `api_location`、`app_artifact_location`　に挿入されます。
 
-```
+```yaml
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
@@ -85,7 +85,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 次に、必要に応じてビルドを実行する hugo コマンドを変更します。私の環境では hugo コマンドを実行する際にテーマの指定と RSS フィードのリネームを実施しているので、次のようにGitHub Actions 用の設定ファイルに記載されている Hugo コマンドを変更しました。
 
-```
+```yaml
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2.4.8
       with:
@@ -105,7 +105,7 @@ app_location: 'public' # App source code path
 
 `app_location` フォルダにフレームワークを判定するためのファイルが入っていない場合、`Azure/static-web-apps-deploy@v0.0.1-preview` はビルドをあきらめて `app_location` フォルダを ZIP で固めて Static Web Apps にアップロードしてくれました。`Azure/static-web-apps-deploy@v0.0.1-preview` がアップロード処理だけを実施してくれるのであれば、`Azure/static-web-apps-deploy@v0.0.1-preview` にはアップロードの処理だけを任せて、ビルドの処理は使い慣れた方法で個別に GitHub Actions に定義する形が良さそうに思えます。
 
-```
+```txt
 ---End of Oryx build logs---
 Oryx was unable to determine the build steps. Continuing assuming the assets in this folder are already built. If this is an unexpected behavior please contact support.
 Finished building app with Oryx
@@ -137,7 +137,7 @@ Visit your site at: https://proud-pebble-043e3ae1e.azurestaticapps.net
 
 次の dig の結果のとおり、blog.aimless.jp を Netlify から Static Web Apps 上に移行できました。Static Web Apps というリソースは West US2 にあるのですが、実際のコンテンツは Traffic Manager で負荷分散されて EastAsia（香港）にある App Service にあるようです。体感でのレスポンスは移行前と移行後で差がありません。快適。
 
-```
+```txt
 blog.aimless.jp.	60	IN	CNAME	proud-pebble-043e3ae1e.azurestaticapps.net.
 proud-pebble-043e3ae1e.azurestaticapps.net. 3600 IN CNAME azurestaticapps.trafficmanager.net.
 azurestaticapps.trafficmanager.net. 60 IN CNAME	msha-hk1-0.staticsites-prod-eastasia.p.azurewebsites.net.
