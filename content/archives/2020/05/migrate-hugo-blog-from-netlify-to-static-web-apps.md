@@ -135,7 +135,7 @@ Visit your site at: https://proud-pebble-043e3ae1e.azurestaticapps.net
 
 ## 動作確認
 
-次の dig の結果のとおり、blog.aimless.jp を Netlify から Static Web Apps 上に移行できました。Static Web Apps というリソースは West US2 にあるのですが、実際のコンテンツは Traffic Manager で負荷分散されて EastAsia（香港）にある App Service にあるようです。体感でのレスポンスは移行前と移行後で差がありません。快適。今後は、Blob Storage の Static web site では要件を満たさないような場合に Static Web Apps を積極的に活用していきます。
+次の dig の結果のとおり、blog.aimless.jp を Netlify から Static Web Apps 上に移行できました。Static Web Apps というリソースは West US2 にあるのですが、実際のコンテンツは Traffic Manager で負荷分散されて EastAsia（香港）にある App Service にあるようです。体感でのレスポンスは移行前と移行後で差がありません。快適。
 
 ```
 blog.aimless.jp.	60	IN	CNAME	proud-pebble-043e3ae1e.azurestaticapps.net.
@@ -145,3 +145,9 @@ msha-hk1-0.staticsites-prod-eastasia.p.azurewebsites.net. 30 IN	CNAME waws-prod-
 waws-prod-hk1-0a7ad652.sip.p.azurewebsites.windows.net.	1800 IN	CNAME waws-prod-hk1-0a7ad652.cloudapp.net.
 waws-prod-hk1-0a7ad652.cloudapp.net. 10	IN A	52.175.36.249
 ```
+
+紐づいている GitHub のリポジトリに Pull request を作ると、そのブランチが別環境に自動デプロイされました。本番環境にマージする前に動作確認できます。とても良い。
+
+{{< figure src="/images/2020/2020-0525-004.jpg" title="GitHub ation 用の設定ファイル" >}}
+
+実際に使ってみて、Static Web Apps の良さを再確認しました。今後は、Blob Storage の Static web site では要件を満たさないような場合に Static Web Apps を積極的に活用していきます。
