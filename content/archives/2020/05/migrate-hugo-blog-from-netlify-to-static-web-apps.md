@@ -29,7 +29,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 引用：[ルート ドメインを構成する](https://docs.microsoft.com/ja-jp/azure/static-web-apps/custom-domain#configure-a-root-domain)
 
-また、aimless.jp の A レコードが向いている Netlify に次の内容の `_redirects` を配置して、ルートに来たアクセスと個別の URL に来たアクセスの両方が blog.aimless.jp にリダイレクトされるようにしました。
+また、aimless.jp の A レコードが向いている Netlify に次の内容の _redirects を配置して、ルートに来たアクセスと個別の URL に来たアクセスの両方が blog.aimless.jp にリダイレクトされるようにしました。
 
 ```txt
 /        https://blog.aimless.jp/  301!
@@ -50,7 +50,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 {{< figure src="/images/2020/2020-0525-003.jpg" title="GitHub ation 用の設定ファイル" >}}
 
-そして、先ほどポータルに入力したビルド用のフォルダの情報が このファイルの中の `Azure/static-web-apps-deploy@v0.0.1-preview` の `app_location` と `api_location`、`app_artifact_location`　に挿入されます。
+そして、先ほどポータルに入力したビルド用のフォルダの情報が このファイルの中の Azure/static-web-apps-deploy@v0.0.1-preview の app_location と api_location、app_artifact_location に挿入されます。
 
 ```yaml
   build_and_deploy_job:
@@ -79,7 +79,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
 
 [Tutorial: Publish a Hugo site to Azure Static Web Apps Preview](https://docs.microsoft.com/en-us/azure/static-web-apps/publish-hugo)
 
-この変更を実施していない GitHub Actions 用の設定ファイルだと、`Azure/static-web-apps-deploy@v0.0.1-preview` の中で動作している Oryx が / 直下の `config.toml` を発見して Oryx に標準搭載されている Hugo を用いてビルドを実施します。私の環境では、標準搭載されている Hugo が Shortcode を見つけられないエラーを吐いてビルドが失敗しました。GitHub Actions 用の設定ファイル の `app_build_command` で Shortcode を定義しているカスタムテーマを利用するように Hugo コマンドを上書きしているにも関わらずです。謎。
+この変更を実施していない GitHub Actions 用の設定ファイルだと、Azure/static-web-apps-deploy@v0.0.1-preview の中で動作している Oryx が / 直下の config.toml を発見して Oryx に標準搭載されている Hugo を用いてビルドを実施します。私の環境では、標準搭載されている Hugo が Shortcode を見つけられないエラーを吐いてビルドが失敗しました。GitHub Actions 用の設定ファイル の app_build_command で Shortcode を定義しているカスタムテーマを利用するように Hugo コマンドを上書きしているにも関わらずです。謎。
 
 参考：[Azure Static Web Apps プレビューの GitHub Actions ワークフロー](https://docs.microsoft.com/ja-jp/azure/static-web-apps/github-actions-workflow#custom-build-commands)
 
@@ -95,7 +95,7 @@ Static Web Apps が Netlify で利用している次の機能をサポートし�
       run: hugo --buildFuture -t hugo-primer-fork -d public && mv public/feed.xml public/feed
 ```
 
-最後に `app_location` に Hugo がビルド結果を出力するフォルダを指定します。私の環境では `public` にビルド結果を出力するようになっているので、Github Actions 用の設定ファイルを次のように変更しました。
+最後に app_location に Hugo がビルド結果を出力するフォルダを指定します。私の環境では public フォルダにビルド結果を出力するようになっているので、Github Actions 用の設定ファイルを次のように変更しました。
 
 ```
 ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
@@ -103,7 +103,7 @@ app_location: 'public' # App source code path
 ###### End of Repository/Build Configurations ######
 ```
 
-`app_location` フォルダにフレームワークを判定するためのファイルが入っていない場合、`Azure/static-web-apps-deploy@v0.0.1-preview` はビルドをあきらめて `app_location` フォルダを ZIP で固めて Static Web Apps にアップロードしてくれました。`Azure/static-web-apps-deploy@v0.0.1-preview` がアップロード処理だけを実施してくれるのであれば、`Azure/static-web-apps-deploy@v0.0.1-preview` にはアップロードの処理だけを任せて、ビルドの処理は使い慣れた方法で個別に GitHub Actions に定義する形が良さそうに思えます。
+app_location フォルダにフレームワークを判定するためのファイルが入っていない場合、Azure/static-web-apps-deploy@v0.0.1-preview はビルドをあきらめて app_location フォルダを ZIP で固めて Static Web Apps にアップロードしてくれました。Azure/static-web-apps-deploy@v0.0.1-preview がアップロード処理だけを実施してくれるのであれば、Azure/static-web-apps-deploy@v0.0.1-preview にはアップロードの処理だけを任せて、ビルドの処理は使い慣れた方法で個別に GitHub Actions に定義する形が良さそうに思えます。
 
 ```txt
 ---End of Oryx build logs---
