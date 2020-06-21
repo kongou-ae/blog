@@ -19,7 +19,7 @@ categories:
 - Change tracking
 - Insight
 
-{{< figure src="/images/2020/2020-0619-007.jpg" title="Arc enabled servers の画面" >}}
+{{< figure src="/images/2020/2020-0619-007.png" title="Arc enabled servers の画面" >}}
 
 これまで、Azure Virtual Machine と Azure Arc enabled servers では Azure の運用管理サービスを利用する場合の操作性が異なっていました。Azure Virtual Machine の場合、Azure の運用管理サービスの情報を見る方法が2つあります。1つ目は運用管理サービスの画面から管理対象になっている複数の Virtual Machine の情報を網羅的に見る方法です。2つ目は個々の Virtual Machine の画面からその Virtual Machine の情報だけを見る方法です。一方の Azure Arc enabled servers は、個々のサーバの画面からそのサーバの情報だけを見ることができませんでした。
 
@@ -46,7 +46,7 @@ Azure Arc enabled servers に拡張機能をインストールできるように
 
 また、ポータルから Azure Monitor for VMs を有効にすると、マシンに Microsoft Dependency agent がインストールされました。少し待てば Insight の画面に対象のマシンのメトリクスが表示されます。とても楽。
 
-{{< figure src="/images/2020/2020-0619-003.png" title="for VMs の設定画面その１" >}}
+{{< figure src="/images/2020/2020-0619-005.png" title="for VMs の設定画面その１" >}}
 
 つまり、マシンに Azure Connected Machine Agent さえインストールすれば、Azure の運用管理サービスの前提となるエージェントをマシンにログインせずにインストールできるようになったということです。便利
 
