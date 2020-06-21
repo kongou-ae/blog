@@ -15,7 +15,7 @@ categories:
 
 - Extensions
 - Update Management
-- INventory
+- Inventory
 - Change tracking
 - Insight
 
@@ -23,13 +23,13 @@ categories:
 
 これまで、Azure Virtual Machine と Azure Arc enabled servers では Azure の運用管理サービスを利用する場合の操作性が異なっていました。Azure Virtual Machine の場合、Azure の運用管理サービスの情報を見る方法が2つあります。1つ目は運用管理サービスの画面から管理対象になっている複数の Virtual Machine の情報を網羅的に見る方法です。2つ目は個々の Virtual Machine の画面からその Virtual Machine の情報だけを見る方法です。一方の Azure Arc enabled servers は、個々のサーバの画面からそのサーバの情報だけを見ることができませんでした。
 
-今回のアップデートでこの差分が埋まりました。Azure の運用管理サービスの情報を Azure Virtual Machine と Azure Arc enabled servers で同じように閲覧できるようになりました。操作の一貫性はとても大事。
+今回のアップデートでこの差分が埋まりました。下図のとおり、Azure の運用管理サービスの情報を Azure Virtual Machine と Azure Arc enabled servers で同じように閲覧できるようになりました。操作の一貫性はとても大事。
 
 {{< figure src="/images/2020/2020-0619-008.jpg" title="今回のアップデートで改善された箇所" >}}
 
-## 拡張機能がインストール可能
+## 拡張機能のインストールをサポート
 
-Azure Arc enabled servers に拡張機能をインストールできるようになりました。現時点でサポートされている拡張機能は次の3つです。
+Azure Arc enabled servers に拡張機能をインストールできるようになりました。現時点でサポートされている拡張機能は次の4つです。
 
 - CustomScriptExtension
 - DSC
@@ -38,11 +38,13 @@ Azure Arc enabled servers に拡張機能をインストールできるように
 
 試しに拡張機能で Microsoft Monitoring Agent をインストールしてみました。インストール時の操作性は Azure Virtual Machine と同じです。
 
-{{< figure src="/images/2020/2020-0619-002.png" title="拡張機能の設定画面その１" >}}
+{{< figure src="/images/2020/2020-0619-002.png" title="拡張機能のインストール画面その１" >}}
 
-{{< figure src="/images/2020/2020-0619-003.png" title="拡張機能の設定画面その２" >}}
+{{< figure src="/images/2020/2020-0619-003.png" title="拡張機能のインストール画面その２" >}}
 
-拡張機能のデプロイが完了すると、拡張機能をインストールしたマシンに Microsoft Monitoring agent がインストールされました。Log Analytics の Workspace とも接続済みです。とても楽。
+拡張機能のデプロイが完了すると、拡張機能をインストールしたマシンに Microsoft Monitoring agent がインストールされました。インストール直後から Log Analytics の Workspace と接続済みです。とても楽。
+
+{{< figure src="/images/2020/2020-0619-004.png" title="Microsoft Monitoring Agent の設定画面" >}}
 
 また、ポータルから Azure Monitor for VMs を有効にすると、マシンに Microsoft Dependency agent がインストールされました。少し待てば Insight の画面に対象のマシンのメトリクスが表示されます。とても楽。
 
