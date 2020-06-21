@@ -1,10 +1,17 @@
-# Azure Arc enabled servers が Azure の運用管理サービスとの連携を強化した
+---
+title: Azure Arc enabled servers が Azure の運用管理サービスとの連携を強化した
+author: kongou_ae
+date: 2020-06-22
+url: /archives/2020/06/update-of-azure-arc-enabled-servers-about-management-service-of-azure
+categories:
+  - azure
+---
 
 6/17 に Azure Arc のドキュメントが更新されました。この時に追加されたドキュメントが [Virtual machine extension management with Azure Arc for servers (preview)](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/azure-arc/servers/manage-vm-extensions.md) です。ドキュメントによると、Azure ポータルから Arc の管理下にあるサーバに対して拡張機能が入れられるようです。早速試してみました。
 
 ## ポータルのアップデート
 
-Extension の追加に合わせて、Azure ポータルの Azure Arc enabled servers の画面に次のサービスが増えました。もともとは Policy と Log だけでしたので、運用管理サービスが大幅に増えました。地味な機能改善のように見えますが「ハイブリッドクラウドな環境を運用する際の一貫性」という観点でとても大事なアップデートです。
+拡張機能の追加に合わせて、Azure ポータルの Azure Arc enabled servers の画面に次のサービスが増えました。もともとは Policy と Log だけでしたので、運用管理サービスが大幅に増えました。地味な機能改善のように見えますが「ハイブリッドクラウドな環境を運用する際の一貫性」という観点でとても大事なアップデートです。
 
 - Extensions
 - Update Management
