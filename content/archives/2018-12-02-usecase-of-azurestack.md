@@ -21,7 +21,7 @@ categories:
 2018年9月に開催された Microsoft Ignite 2018 において、Azure Stack 開発チームのジェネラルマネージャーである Natalia Mackevicius 氏は、次の3つのユースケースを語りました。これら3つのユースケースについて1つずつ説明していきます。
 
 1. Edge & Disconnected
-2. Reguatory & Data Sovereignty
+2. Regulatory & Data Sovereignty
 3. Application Modernization
 
 {{<img src="./../../images/2018-12-02-001.png">}}
