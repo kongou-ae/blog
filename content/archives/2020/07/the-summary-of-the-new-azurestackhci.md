@@ -29,11 +29,7 @@ Azure Stack HCI OS は、仮想化ホストとしての機能に最適化され�
 
 ## 課金体系
 
-Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数に応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。
-
-{{< figure src="/images/2020/2020-0723-003.jpg" title="コア数に応じたライセンス料金" >}}
-
-1コア当たりの月額料金は$10のようです。
+Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数に応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。1コア当たりの月額料金は$10のようです。
 
 {{< figure src="/images/2020/2020-0723-004.jpg" title="サーバのモデルに応じたライセンス料金" >}}
 
@@ -45,7 +41,11 @@ Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作している
 
 ## Azure への登録
 
-新しい Azure Stack HCI は課金のためにクラスタを Azure に登録する必要があります。そして料金の計算に必要な物理コア数を Azure にアップロードするために、最低でも30日に一回、クラスタを構成する各ノードがインターネット上の特定の FQDN にアクセスする必要があります。したがって、新しい Azure Stack HCI は Disconnected なシナリオでは利用できません。
+新しい Azure Stack HCI は課金のためにクラスタを Azure に登録する必要があります。登録には Az.StackHCI モジュールの Register-AzStackHCI コマンドを利用します。
+
+{{< figure src="/images/2020/2020-0723-002.jpg" title="Azure Resource Manager との連携" >}}
+
+そして料金の計算に必要な物理コア数を Azure にアップロードするために、最低でも30日に一回、クラスタを構成する各ノードがインターネット上の特定の FQDN にアクセスする必要があります。したがって、新しい Azure Stack HCI は Disconnected なシナリオでは利用できません。
 
 > An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to the following endpoint at least every 30 days: *-azurestackhci-usage.azurewebsites.net
 
@@ -64,6 +64,8 @@ Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作している
 {{< figure src="/images/2020/2020-0723-005.jpg" title="Azure Portal で クラスタを見る画面" >}}
 
 さらに 他の Azure リソースと同じように Azure ポータルからサポートリクエストを作成できます。月額29ドルの Developer サポートから問い合わせを上げられるのは、中小企業にとってメリットがあると思います。
+
+{{< figure src="/images/2020/2020-0723-003.jpg" title="新しいサポート方式" >}}
 
 今後は次のような機能の拡張が予定されています。
 
