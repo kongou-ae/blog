@@ -15,9 +15,9 @@ Inspire 2019 で新しい Azure Stack HCI が発表されました。セッシ�
 
 ## ざっくりまとめ
 
-従来の Azure Stack HCI は認定されたハードウェア上と推奨構成の Windows Server 2019を使って HCI を実現したものです。Azure Stack という冠が付いてはいたものの Windows Server の延長でした。ホスト OS のライセンス体系は従来の Windows Server のライセンスモデルですし、ホスト OS が Azure と連携することもありませんでした。Windows Admin Cetner を利用して Azure のサービスと簡単に接続できる点のみをもって Azure Stack ファミリーに仲間入りしたのは少々無理がありました。
+従来の Azure Stack HCI は認定されたハードウェアと推奨構成の Windows Server 2019を使って HCI を実現したものです。Azure Stack という冠が付いてはいたものの Windows Server の延長でした。ホスト OS のライセンス体系は従来の Windows Server のライセンスモデルですし、ホスト OS が Azure と連携することもありませんでした。Windows Admin Center を利用して Azure のサービスと簡単に接続できる点のみをもって Azure Stack ファミリーに仲間入りしたのは少々無理がありました。
 
-新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。ホスト OS は 普通の Windows Server 2019 ではなく、Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になりました。Azure Stack HCI OS のライセンスはコアベースの月額課金となり、その料金は Azure サブスクリプションの利用料金として請求されます。さらに、HCI クラスタを Azure に登録することが必須となり、Azure ポータルでクラスタを確認できます。Azure のサービスなので サポートも Azure の枠組みに従います。新しい Azure Stack HCI は Azure Stack Edge や Azure Stack Hub と比較しても遜色ないくらい Azure な世界に参加しました。
+新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。ホスト OS は 普通の Windows Server 2019 ではなく、Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になりました。Azure Stack HCI OS のライセンスは物理コアベースの月額課金となり、その料金は Azure サブスクリプションの利用料金として請求されます。さらに HCI クラスタを Azure に登録することが必須となり、Azure ポータルでクラスタを確認できます。Azure のサービスなので サポートもAzure の枠組みに従います。今回の変更によって Azure Stack HCI の Azure 色はとても濃くなりました。立派な Azure Stack ファミリーの一員になったといってよいでしょう。
 
 ## Azure Stack HCI OS とは
 
@@ -29,11 +29,15 @@ Azure Stack HCI OS は、仮想化ホストとしての機能に最適化され�
 
 ## 課金体系
 
-Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。1コア当たりの月額料金は$10のようです。
+Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数に応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。
 
 {{< figure src="/images/2020/2020-0723-003.jpg" title="コア数に応じたライセンス料金" >}}
 
-この利用料金の中に ゲストOS で Windows Server を実行する権利が含まれているのかは明記されていません。公式ドキュメントの次の記載だけでは白黒を理解できず・・・
+1コア当たりの月額料金は$10のようです。
+
+{{< figure src="/images/2020/2020-0723-004.jpg" title="サーバのモデルに応じたライセンス料金" >}}
+
+ただし、この利用料金の中にゲストOS で Windows Server を実行する権利が含まれているのかは明記されていません。公式ドキュメントの次の記載だけでは白黒を理解できず・・・
 
 > No traditional on-premises software license is required, although guest virtual machines (VMs) may require individual operating system licensing
 
@@ -41,7 +45,7 @@ Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作している
 
 ## Azure への登録
 
-新しい Azure Stack HCI は課金のためにクラスタを Azure に登録する必要があります。そして課金に必要なコア数を Azure にアップロードするために、最低でも30日に一回、クラスタを構成する各ノードがインターネット上の特定の FQDN にアクセスする必要があります。したがって、新しい Azure Stack HCI は Disconnected なシナリオでは利用できません。
+新しい Azure Stack HCI は課金のためにクラスタを Azure に登録する必要があります。そして料金の計算に必要な物理コア数を Azure にアップロードするために、最低でも30日に一回、クラスタを構成する各ノードがインターネット上の特定の FQDN にアクセスする必要があります。したがって、新しい Azure Stack HCI は Disconnected なシナリオでは利用できません。
 
 > An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to the following endpoint at least every 30 days: *-azurestackhci-usage.azurewebsites.net
 
@@ -55,11 +59,11 @@ Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作している
 
 ## Azure でできること
 
-登録したクラスタの状態を Azure ポータルから確認できるようになります。残念なことに、私がアクセスしている Azure ポータルにはこの機能がまだ展開されていませんでした・・・
+クラスタを Azure に登録すると、登録したクラスタの状態を Azure ポータルから確認できるようになります。残念なことに、私がアクセスしている Azure ポータルにはこの機能がまだ展開されていませんでした・・・
 
 {{< figure src="/images/2020/2020-0723-005.jpg" title="Azure Portal で クラスタを見る画面" >}}
 
-さらに 他の Azure リソースと同じように Azure ポータルからサポートリクエストを作成できます。月額29ドルの Developer サポートから問い合わせを上げられるのは中小企業にとってメリットがあると思います。
+さらに 他の Azure リソースと同じように Azure ポータルからサポートリクエストを作成できます。月額29ドルの Developer サポートから問い合わせを上げられるのは、中小企業にとってメリットがあると思います。
 
 今後は次のような機能の拡張が予定されています。
 
