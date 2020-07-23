@@ -29,7 +29,13 @@ Azure Stack HCI OS は、仮想化ホストとしての機能に最適化され�
 
 ## 課金体系
 
-Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数に応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。1コア当たりの月額料金は$10のようです。
+Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作しているサーバの物理コア数に応じたの月額課金です。その料金は Azure サブスクリプションの利用料金として請求されます。買い切りの永久ライセンスはありません。
+
+> Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes.
+
+[Licensing, billing, and pricing](https://docs.microsoft.com/en-us/azure-stack/hci/overview#licensing-billing-and-pricing)
+
+1コア当たりの月額料金は$10のようです。
 
 {{< figure src="/images/2020/2020-0723-004.jpg" title="サーバのモデルに応じたライセンス料金" >}}
 
