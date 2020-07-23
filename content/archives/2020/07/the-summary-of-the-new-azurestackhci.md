@@ -17,9 +17,9 @@ Inspire 2019 で新しい Azure Stack HCI が発表されました。セッシ�
 
 従来の Azure Stack HCI は認定されたハードウェアと推奨構成の Windows Server 2019を使って HCI を実現したものです。Azure Stack という冠が付いてはいたものの Windows Server の延長でした。ホスト OS のライセンス体系は従来の Windows Server のライセンスモデルですし、ホスト OS が Azure と連携することもありませんでした。Windows Admin Center を利用して Azure のサービスと簡単に接続できる点のみをもって Azure Stack ファミリーに仲間入りしたのは少々無理がありました。
 
-新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。ホスト OS は 普通の Windows Server 2019 ではなく、Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になりました。Azure Stack HCI OS のライセンスは物理コアベースの月額課金となり、その料金は Azure サブスクリプションの利用料金として請求されます。さらに HCI クラスタを Azure に登録することが必須となり、Azure ポータルでクラスタを確認できます。Azure のサービスなので サポートもAzure の枠組みに従います。今回の変更によって Azure Stack HCI の Azure 色はとても濃くなりました。立派な Azure Stack ファミリーの一員になったといってよいでしょう。
+新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。ホスト OS は 普通の Windows Server 2019 ではなく、Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になりました。Azure Stack HCI OS のライセンスは物理コアベースの月額課金となり、その料金は Azure サブスクリプションの利用料金として請求されます。さらに HCI クラスタを Azure に登録することが必須となり、Azure ポータルでクラスタを確認できます。Azure のサービスなので サポートも Azure の枠組みに従います。今回の変更によって Azure Stack HCI の Azure 色はとても濃くなりました。立派な Azure Stack ファミリーの一員になったといってよいでしょう。
 
-## Azure Stack HCI OS とは
+## Azure Stack HCI OS
 
 {{< figure src="/images/2020/2020-0723-001.png" title="Azure Stack HCI OS" >}}
 
