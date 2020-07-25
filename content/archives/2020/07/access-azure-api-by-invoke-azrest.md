@@ -27,7 +27,7 @@ Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [x-ms
 Version    : 1.1
 StatusCode : 200
 Method     : GET
-Content    : {"id":"/subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/azshci-registration/providers/Microsoft.AzureStackHCI/clusters/azshciclus","name":"azshciclus","type":"Microsoft.AzureStackHCI/clusters","location":"eastus","tags":{},"properties":{"provisioningState":"Succeeded","status":"Disconnected","cloudId":"2a3746fe-9ba4-4aaf-b4b4-524c347f2450","aadClientId":"5babd374-6cab-4660-9b41-fb5ffca293be","aadTenantId":"95b57fbb-b9c6-443f-91e0-d69fad0f2565","reportedProperties":{"clusterName":"AZSHCICLUS","clusterId":"70244155-6423-4b03-bc01-0bfa88df252c","clusterVersion":"10.0.17784","nodes":[{"name":"AZSHCINODE01","id":1,"manufacturer":"Microsoft Corporation","model":"Virtual Machine","osName":"Azure Stack HCI","osVersion":"10.0.17784.1068","serialNumber":"1844-8425-4411-3410-9623-0336-66","coreCount":2,"memoryInGiB":4},{"name":"AZSHCINODE02","id":2,"manufacturer":"Microsoft Corporation","model":"VirtualMachine","osName":"Azure Stack HCI","osVersion":"10.0.17784.1068","serialNumber":"4452-2741-5854-6413-1790-0626-37","coreCount":2,"memoryInGiB":4}],"lastUpdated":"2020-07-23T04:00:00.3896307Z"},"trialDaysRemaining":28,"billingModel":"Trial"}}
+Content    : {"id":"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci-registration/providers/Microsoft.AzureStackHCI/clusters/azshciclus","name":"azshciclus","type":"Microsoft.AzureStackHCI/clusters","location":"eastus","tags":{},"properties":{"provisioningState":"Succeeded","status":"Disconnected","cloudId":"xxxxxxxx-xxxx-xxxx-xxxx-524c347f2450","aadClientId":"xxxxxxxx-xxxx-xxxx-xxxx-fb5ffca293be","aadTenantId":"xxxxxxxx-xxxx-xxxx-xxxx-d69fad0f2565","reportedProperties":{"clusterName":"AZSHCICLUS","clusterId":"70244155-6423-4b03-bc01-0bfa88df252c","clusterVersion":"10.0.17784","nodes":[{"name":"AZSHCINODE01","id":1,"manufacturer":"Microsoft Corporation","model":"Virtual Machine","osName":"Azure Stack HCI","osVersion":"10.0.17784.1068","serialNumber":"1844-8425-4411-3410-9623-0336-66","coreCount":2,"memoryInGiB":4},{"name":"AZSHCINODE02","id":2,"manufacturer":"Microsoft Corporation","model":"VirtualMachine","osName":"Azure Stack HCI","osVersion":"10.0.17784.1068","serialNumber":"4452-2741-5854-6413-1790-0626-37","coreCount":2,"memoryInGiB":4}],"lastUpdated":"2020-07-23T04:00:00.3896307Z"},"trialDaysRemaining":28,"billingModel":"Trial"}}
 ```
 
 API を直接たたいているので JSON の文字列が返ってきます。返ってきた文字列を ConvertFrom-Json してあげれば PowerShell で扱える形式になります。
@@ -36,7 +36,7 @@ API を直接たたいているので JSON の文字列が返ってきます。�
 > $res = Invoke-AzRest -Path "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci-registration/providers/Microsoft.AzureStackHCI/clusters/azshciclus?api-version=2020-03-01-preview" -Method GET
 > $res.Content | ConvertFrom-Json -Depth 100
 
-id         : /subscriptions/9c171efd-eab4-4f0b-91d7-c5bd3103e127/resourceGroups/azshci-registration/providers/Microsoft.AzureStackHCI/clusters/azshciclus
+id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci-registration/providers/Microsoft.AzureStackHCI/clusters/azshciclus
 name       : azshciclus
 type       : Microsoft.AzureStackHCI/clusters
 location   : eastus
