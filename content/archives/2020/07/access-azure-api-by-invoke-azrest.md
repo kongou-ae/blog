@@ -2,7 +2,7 @@
 title: Invoke-AzRest を使って Azure の API を直接叩く
 author: kongou_ae
 date: 2020-07-25
-url: /archives/2020/07/access-azure-api-by-Invoke-AzRest
+url: /archives/2020/07/access-azure-api-by-invoke-azrest
 categories:
   - azure
 ---
