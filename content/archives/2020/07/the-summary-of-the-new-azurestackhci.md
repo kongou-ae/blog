@@ -1,11 +1,13 @@
 ---
 title: 新しい Azure Stack HCI のざっくりまとめ
 author: kongou_ae
-date: 2020-07-23
+date: 2020-08-01
 url: /archives/2020/07/the-summary-of-the-new-azurestackhci
 categories:
   - azure
 ---
+
+**08/01 ゲスト OS のライセンスを更新**
 
 Inspire 2019 で新しい Azure Stack HCI が発表されました。セッション動画や公式ドキュメントをもとに何が変わったのかを振り返ります。
 
@@ -15,9 +17,21 @@ Inspire 2019 で新しい Azure Stack HCI が発表されました。セッシ�
 
 ## ざっくりまとめ
 
-従来の Azure Stack HCI は認定されたハードウェアと推奨構成の Windows Server 2019を使って HCI を実現したものです。Azure Stack という冠が付いてはいたものの Windows Server の延長でした。ホスト OS のライセンス体系は従来の Windows Server のライセンスモデルですし、ホスト OS が Azure と連携することもありませんでした。Windows Admin Center を利用して Azure のサービスと簡単に接続できる点のみをもって Azure Stack ファミリーに仲間入りしたのは少々無理がありました。
+従来の Azure Stack HCI は認定されたハードウェアと推奨構成の Windows Server 2019を使って HCI を実現したものです。Azure Stack という冠が付いてはいたものの、次のような実情を踏まえると Azure Stack HCI はオンプレミス Windows Server の延長でした。
 
-新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。ホスト OS は 普通の Windows Server 2019 ではなく、Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になりました。Azure Stack HCI OS のライセンスは物理コアベースの月額課金となり、その料金は Azure サブスクリプションの利用料金として請求されます。さらに HCI クラスタを Azure に登録することが必須となり、Azure ポータルでクラスタを確認できます。Azure のサービスなので サポートも Azure の枠組みに従います。今回の変更によって Azure Stack HCI の Azure 色はとても濃くなりました。立派な Azure Stack ファミリーの一員になったといってよいでしょう。
+- ホスト OS は Windows Server 2019 である
+- ホスト OS のライセンス体系は従来の Windows Server のライセンスモデルである
+- ホスト OS は Azure と連携しない
+
+新しい Azure Stack HCI は Azure のサービスとして生まれ変わりました。従来の Azure Stack HCI からの主な変更点は次の通りです。
+
+- ホスト OS が、普通の Windows Server 2019 から Azure Stack HCI のホスト OS 用にカスタマイズされた Azure Stack HCI OS になった
+- Azure Stack HCI OS のライセンスが、物理コアベースの月額課金になった。この料金は Azure サブスクリプションの利用料金として請求される
+- 料金を計算する観点から、HCI クラスタを Azure に登録することが必須となった
+- Azure ポータルでクラスタを確認できるようになった
+- Azure サポート契約の対象となった
+
+今回の変更によって Azure Stack HCI の Azure 色はとても濃くなりました。立派な Azure Stack ファミリーの一員になったといってよいでしょう。
 
 ## Azure Stack HCI OS
 
@@ -39,11 +53,9 @@ Azure Stack HCI OS の利用料金は、Azure Stack HCI OS が動作している
 
 {{< figure src="/images/2020/2020-0723-004.jpg" title="サーバのモデルに応じたライセンス料金" >}}
 
-ただし、この利用料金の中にゲストOS で Windows Server を実行する権利が含まれているのかは明記されていません。公式ドキュメントの次の記載だけでは白黒を理解できず・・・
+ただし、この利用料金の中にゲスト OS として Windows Server を実行する権利は含まれていません。ゲスト OS で Windows Server を実行したい場合は、Windows Server のライセンスを別途用意する必要があります。
 
-> No traditional on-premises software license is required, although guest virtual machines (VMs) may require individual operating system licensing
-
-[Azure Stack HCI billing and payment](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/billing)
+参考：https://github.com/MicrosoftDocs/azure-stack-docs/issues/918#issuecomment-663314001
 
 ## Azure への登録
 
