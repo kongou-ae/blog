@@ -27,7 +27,7 @@ COVID-19 に伴う運用への影響を鑑みて、サポートポリシが「�
 
 GPU VM のサポートは Ignite 2019 で発表になった機能です。ついに利用可能になりました。ただし、Azure Stack Hub 上の GPU VM には、「ハードウェア障害対応やアップデートの適用中に利用できなくなり利用再開のために手動操作が必要」という制約があるようなので注意が必要です。
 
-参考：[https://docs.microsoft.com/ja-jp/azure-stack/user/gpu-vms-about?view=azs-2005#patch-and-update-fru-behavior-of-vms](修正プログラム、更新プログラムの適用時、および FRU の際の VM の動作)
+参考：[修正プログラム、更新プログラムの適用時、および FRU の際の VM の動作](https://docs.microsoft.com/ja-jp/azure-stack/user/gpu-vms-about?view=azs-2005#patch-and-update-fru-behavior-of-vms)
 
 > GPU VM では、修正プログラムと更新プログラム (PnU) の適用時や、Azure Stack Hub のハードウェア交換 (FRU) などの操作中にダウンタイムが発生することがあります。
 
