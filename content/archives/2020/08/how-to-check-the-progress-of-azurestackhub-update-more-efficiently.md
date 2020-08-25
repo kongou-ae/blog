@@ -29,9 +29,9 @@ And the sample URL for the 2005 update is as follows.
 
 ## Sample Code
 
-My idea to convert this response to a more readable format is to use Out-Gridview. The sample code is [https://github.com/kongou-ae/AzureStackOperatorScripts/blob/master/Get-AzsUpdateProgress.ps1](here). This script requires you to select the update and the updaterun. After selecting these, this script shows you the readable detailed progress.
+My idea to convert this response to a more readable format is to use Out-Gridview. The sample code is [here](https://github.com/kongou-ae/AzureStackOperatorScripts/blob/master/Get-AzsUpdateProgress.ps1). This script requires you to select the update and the updaterun. After selecting these, this script shows you the readable detailed progress.
 
-{{< figure src="/images/2020/2020-0825-001.png" title="The result of this sample script" >}}
+{{< figure src="/images/2020/2020-0825-001.jpg" title="The result of this sample script" >}}
 
 ## Conclusion
 
