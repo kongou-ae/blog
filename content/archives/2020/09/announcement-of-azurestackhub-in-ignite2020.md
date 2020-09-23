@@ -27,7 +27,7 @@ Azure Stack Hub 2005 Update で GPU を利用する次の VM がサポートさ�
 
 ### Azure Arc enabled data services on AKS engine on Azure Stack Hub
 
-Ignite 2020 でプレビューが始まった Azure Arc enabled data services は Azure Stack Hub 上で動作する AKS engine をサポートしています。AKS engine on Azure Stack Hub という KUbernetes  Cluster と クラウドプラットフォームの両方を自前で運用しなければならない辛い方式が前提となりますが、構成自体はサポートはされます。
+Ignite 2020 でプレビューが始まった Azure Arc enabled data services は Azure Stack Hub 上で動作する AKS engine をサポートしています。AKS engine on Azure Stack Hub という Kubernetes  Cluster と クラウドプラットフォームの両方を自前で運用しなければならない辛い方式が前提となりますが、構成自体はサポートはされます。
 
 ### AKS Resource Provider
 
