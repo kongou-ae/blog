@@ -7,7 +7,7 @@ categories:
   - azurestack
 ---
 
-Ignite 2020 で発表になった Azure Stack Hub 関連のアナウンスをまとめます。なお、Ignite 2020 における Azure Stack Hub のアナウンスは控えめでした。おそらく、Build 2020 で新機能や今後のロードマップを発表してしまってたせいだと思います。
+Ignite 2020 で発表になった Azure Stack Hub 関連のアナウンスをまとめます。なお、Ignite 2020 における Azure Stack Hub のアナウンスは控えめでした。おそらく、Build 2020 で新機能や今後のロードマップを発表してしまったせいだと思います。
 
 参考：[Azure Stack Hub のアナウンス（Microsoft Build 2020）](https://blog.aimless.jp/archives/2020/05/announcement-of-azurestackhub-in-build2020)
 
@@ -27,7 +27,7 @@ Azure Stack Hub 2005 Update で GPU を利用する次の VM がサポートさ�
 
 ### Azure Arc enabled data services on AKS engine on Azure Stack Hub
 
-Ignite 2020 でプレビューが始まった Azure Arc enabled data services は Azure Stack Hub 上で動作する AKS engine をサポートします。
+Ignite 2020 でプレビューが始まった Azure Arc enabled data services は Azure Stack Hub 上で動作する AKS engine をサポートしています。AKS engine on Azure Stack Hub という KUbernetes  Cluster と クラウドプラットフォームの両方を自前で運用しなければならない辛い方式が前提となりますが、構成自体はサポートはされます。
 
 ### AKS Resource Provider
 
@@ -39,13 +39,13 @@ Build 2020 でアナウンスされた Azure Container Registory on Azure Stack 
 
 ### VNet Peering
 
-feedback.azure.com で最も票を集めている VNet Peering が一般公開になりました。次のアップデートで振ってくると思われます。これで Azure Stack Hub 上でも気軽に Hub-and-spoke モデルを実現できるようになります。
+feedback.azure.com で最も票を集めている VNet Peering が一般公開になりました。今回の Ignite で Azure Stack Hub 界隈が喜んでいるのがこのアップデートです。次のアップデートで振ってくると思われます。これで Azure Stack Hub 上でも気軽に Hub-and-spoke モデルを実現できるようになります。VNet Peering のために NVA を導入しなくて済みます。
 
 参考：[VNET Peering in Azure Stack](https://feedback.azure.com/forums/344565-azure-stack-hub/suggestions/19001737-vnet-peering-in-azure-stack)
 
 ### ASR フェイルバック
 
-ASR のフェイルバックを簡易にするスクリプトが公開されます。現時点での Azure Stack Hub は構成サーバを利用する方式の ASR をサポートしています。（[Azure Stack VM を Azure にレプリケートする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-over-and-fail-back?WT.mc_id=AZ-MVP-5003408)）ただし、この方式のフェイルオーバーは、フェイルオーバーした後のフェイルバックが課題でした。具体的には、[Azure Stack にフェールバックする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-back-to-azure-stack?WT.mc_id=AZ-MVP-5003408)に記載されている通り、「手でやればフェイルバックできないことはない」という次元の方法でフェイルバックしなければならないのです。この手作業を自動化するスクリプトが提供されるようです。微妙・・・
+ASR のフェイルバックを簡易にするスクリプトが公開されます。現時点での Azure Stack Hub は構成サーバを利用する方式の ASR をサポートしています。（[Azure Stack VM を Azure にレプリケートする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-over-and-fail-back?WT.mc_id=AZ-MVP-5003408)）ただし、この方式のフェイルオーバーは、フェイルオーバーした後のフェイルバックが課題でした。具体的には、[Azure Stack にフェールバックする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-back-to-azure-stack?WT.mc_id=AZ-MVP-5003408)に記載されている通り、「手でやればフェイルバックできないことはない」という次元の方法でフェイルバックしなければならないのです。この手作業を自動化するスクリプトが提供されるようです。正直微妙・・・
 
 ### マネージドディスクの増分スナップショット
 
@@ -53,7 +53,7 @@ ASR のフェイルバックを簡易にするスクリプトが公開されま�
 
 ### Stream Analytics on Azure Stack Hub
 
-Azure Stack Hub 上で IoT Edge モジュールとして Stream Analytics を動作させることがパブリックプレビューになりました。ネイティブな Stream Analytics が動くわけではなく IoT Edge モジュールとして動作させる点に注意です。コントロールプレーンは Azure のままです。
+Azure Stack Hub 上で IoT Edge モジュールとして Stream Analytics を動作させることがパブリックプレビューになりました。ネイティブな Stream Analytics が動くわけではなく IoT Edge モジュールとして動作させる点に注意です。リソースプロバイダとしての Stream Analytics が来るわけではないので、コントロールプレーンは Azure のままです。
 
 Stream Analytics を Azure Stack Hub 上で動作させることで、Event Hub on Azure Stack Hub や IoT Hub on Azure Stack Hub で集めたデータを Stream Analytics で処理できるようになります。
 
@@ -74,7 +74,7 @@ GitHub Action が Azure Stack をサポートする機能がベータプレビ�
 
 ### 新しい API プロファイル
 
-10月に 2020-09-01-hybrid がリリースされる予定です。Azure Stack Hub の API がまた一歩 Azure の API に近づきます。その結果、「Azure で動いたスクリプトやテンプレートが Azure Stack Hub でそのまま動かない」というリスクが軽減されます。ありがたい。
+10月に 2020-09-01-hybrid がリリースされる予定です。Azure Stack Hub の API がまた一歩 Azure の API に近づきます。その結果「Azure で動いたスクリプトやテンプレートが Azure Stack Hub でそのまま動かない」というリスクが軽減されます。ありがたい。
 
 ### Az モジュール
 
@@ -82,6 +82,6 @@ GitHub Action が Azure Stack をサポートする機能がベータプレビ�
 
 ### Azure Account 拡張
 
-VS code の Azure Account 拡張が Azure Stack Hub をサポートします。VSCode から Azure 上の Function や IoT Hub をデプロイするのと同じように、VSCode から Azure Stack Hub 上の Function や IoT Hub をデプロイできるようになります。
+VS code の Azure Account 拡張が Azure Stack Hub をサポートします。VSCode から Azure 上の Function や IoT Hub をデプロイするのと同じように、VSCode から Azure Stack Hub 上の Function や IoT Hub をデプロイできるようになります。ありがたい。
 
 参考：[Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-vscode-azure?view=azs-2005&WT.mc_id=AZ-MVP-5003408)
