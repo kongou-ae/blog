@@ -80,7 +80,7 @@ GitHub Action が Azure Stack をサポートする機能がベータプレビ�
 
 プレビュー中の Az モジュールが一般公開になりました。Azure 上には Az モジュール、Azure Stack Hub には AzureRM モジュールという苦痛から解放されることになります。ありがたい。
 
-### Azure Account 拡張
+### VSCode の Azure Account 拡張
 
 VS code の Azure Account 拡張が Azure Stack Hub をサポートします。VSCode から Azure 上の Function や IoT Hub をデプロイするのと同じように、VSCode から Azure Stack Hub 上の Function や IoT Hub をデプロイできるようになります。ありがたい。
 
