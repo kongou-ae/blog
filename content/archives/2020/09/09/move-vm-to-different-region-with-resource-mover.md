@@ -55,7 +55,7 @@ Ignite 2020 で発表になった Azure Resource Mover を利用して、東日�
 
 {{< figure src="/images/2020/2020-0924-008.png" title="移動対象 VM の ASR 画面" >}}
 
-## 移動
+## 移動という名の複製
 
 準備が終わると各リソースの状態が Intiate move pending になりますので、リソースを選択して Initiate move を実行します。
 
@@ -63,7 +63,7 @@ Ignite 2020 で発表になった Azure Resource Mover を利用して、東日�
 
 {{< figure src="/images/2020/2020-0924-012.jpg" title="Initiate move その２" >}}
 
-移動が終わると ステータスは Commit move pending になります。移動が終わったリソースは 米国西部2リージョンに新しいリソースが作成されます。
+移動が終わると ステータスは Commit move pending になります。移動が終わったリソースは米国西部2リージョンに新しいリソースが作成されます。東日本リージョンのリソースは残ったままです。
 
 {{< figure src="/images/2020/2020-0924-013.jpg" title="Resource Mover の表示" >}}
 
@@ -85,15 +85,15 @@ Ignite 2020 で発表になった Azure Resource Mover を利用して、東日�
 
 {{< figure src="/images/2020/2020-0924-019.jpg" title="Commit その２" >}}
 
-コミットが完了するとリソースのステータスが Delete source pending に変わります。仮想マシンも ASR が解除されて初期設定の画面が表示されるようになります。
+コミットが完了するとリソースのステータスが Delete source pending に変わります。東日本リージョンの仮想マシンも ASR が解除されて初期設定の画面が表示されるようになります。
 
 {{< figure src="/images/2020/2020-0924-020.jpg" title="コミットした後の状態" >}}
 
-{{< figure src="/images/2020/2020-0924-021.jpg" title="移行対象 VM の ASR の画面" >}}
+{{< figure src="/images/2020/2020-0924-021.jpg" title="移動対象 VM の ASR の画面" >}}
 
 ## お片付け
 
-移行された仮想マシンには ASR に必要な Mobility Service がインストールされています。このサービスは自動で削除されませんので手作業で削除する必要があります。
+移動した仮想マシンには ASR に必要な Mobility Service がインストールされています。このサービスは自動で削除されませんので手作業で削除する必要があります。
 
 参考：[Configure settings after the move](https://docs.microsoft.com/en-us/azure/resource-mover/tutorial-move-region-virtual-machines#configure-settings-after-the-move)
 
@@ -103,14 +103,14 @@ Ignite 2020 で発表になった Azure Resource Mover を利用して、東日�
 
 参考：[Delete additional resources created for move](https://docs.microsoft.com/en-us/azure/resource-mover/tutorial-move-region-virtual-machines#delete-additional-resources-created-for-move)
 
-Resource Mover に登録したリソースたちも自動的には削除されません。普段通りの方法で移行元のリソースを削除する必要があります。
+Resource Mover に登録したリソースたちも自動的には削除されません。普段通りの方法で移動元のリソースを削除する必要があります。
 
-{{< figure src="/images/2020/2020-0924-023.jpg" title="残ったままの移行元リソース" >}}
+{{< figure src="/images/2020/2020-0924-023.jpg" title="残ったままの移動元リソース" >}}
 
-移行元リソース自体を削除しても Resource Mover 上での登録が削除されないようなので、Resource Mover 的にも移行元リソースを削除します。
+さらに、移動元のリソース自体を削除しても Resource Mover 上での登録が削除されないようなので、Resource Mover 的にも移動元リソースを削除します。
 
-{{< figure src="/images/2020/2020-0924-024.jpg" title="移行が済んだリソースを Resource Mover から削除する" >}}
+{{< figure src="/images/2020/2020-0924-024.jpg" title="移動が済んだリソースを Resource Mover から削除する" >}}
 
 ## 振り返り
 
-Azure Resource Mover で仮想マシンを別リージョンに移動してみました。仮想マシンの場合、Resource Mover は Azure Site Recovery のラッパとして動作するようです。「素の ASR を使えばいいのでは？」と思いましたが、Resouce Mover を利用すると「シンプルな操作性」や「一つの画面で全部済む」といったメリットを得られます。お掃除まで全自動でやってくれれば完璧なのですが・・・
+Azure Resource Mover で仮想マシンを別リージョンに移動してみました。仮想マシンの場合、Resource Mover は Azure Site Recovery のラッパーとして動作するようです。「素の ASR を使えばいいのでは？」と思いましたが、Resouce Mover を利用すると「シンプルな操作性」や「複数のリソースをまとめて動かす場合に一つの画面で全部の操作が済む」といったメリットを得られます。お掃除まで全自動でやってくれれば完璧なのですが・・・
