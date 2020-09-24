@@ -47,7 +47,7 @@ Ignite 2020 で発表になった Azure Resource Mover を利用して、東日�
 
 {{< figure src="/images/2020/2020-0924-005.jpg" title="準備の実行１" >}}
 
-{{< figure src="/images/2020/2020-0924-006.jpg" title="準備の実行２" >}}
+{{< figure src="/images/2020/2020-0924-006.png" title="準備の実行２" >}}
 
 準備を開始します。VM だけ準備に時間がかかります。裏で何をしているかというと 対象の仮想マシンに Azure Site Recovery を有効化して、初回のレプリケーションを実行しています。そりゃ時間かかるわ・・・
 
