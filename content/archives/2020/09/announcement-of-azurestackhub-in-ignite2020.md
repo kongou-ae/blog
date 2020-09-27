@@ -16,6 +16,7 @@ Ignite 2020 で発表になった Azure Stack Hub 関連のアナウンスをま
 - [Azure Stack Hub Updates at Ignite 2020](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hub-updates-at-ignite-2020/ba-p/1684581?WT.mc_id=AZ-MVP-5003408)
 - [Azure Stack Hub Platform Improvements for Ignite 2020](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hub-platform-improvements-for-ignite-2020/ba-p/1686217?WT.mc_id=AZ-MVP-5003408)
 - [Azure Stack Hub developer announcements - September 2020](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hub-developer-announcements-september-2020/ba-p/1694726?WT.mc_id=AZ-MVP-5003408)
+- [How Azure IoT enables business resilience](https://azure.microsoft.com/en-us/blog/how-azure-iot-enables-business-resilience?WT.mc_id=AZ-MVP-5003408)
 
 ### GPU VM
 
@@ -45,7 +46,9 @@ feedback.azure.com で最も票を集めている VNet Peering が一般公開�
 
 ### ASR フェイルバック
 
-ASR のフェイルバックを簡易にするスクリプトが公開されます。現時点での Azure Stack Hub は構成サーバを利用する方式の ASR をサポートしています。（[Azure Stack VM を Azure にレプリケートする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-over-and-fail-back?WT.mc_id=AZ-MVP-5003408)）ただし、この方式のフェイルオーバーは、フェイルオーバーした後のフェイルバックが課題でした。具体的には、[Azure Stack にフェールバックする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-back-to-azure-stack?WT.mc_id=AZ-MVP-5003408)に記載されている通り、「手でやればフェイルバックできないことはない」という次元の方法でフェイルバックしなければならないのです。この手作業を自動化するスクリプトが提供されるようです。正直微妙・・・
+ASR のフェイルバックを簡易にするスクリプトが公開されます。現時点での Azure Stack Hub は構成サーバを利用する方式の ASR をサポートしています。（[Azure Stack VM を Azure にレプリケートする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-over-and-fail-back?WT.mc_id=AZ-MVP-5003408)）ただし、この方式のフェイルオーバーは、フェイルオーバーした後のフェイルバックが課題でした。具体的には、[Azure Stack にフェールバックする](https://docs.microsoft.com/ja-jp/azure/site-recovery/azure-stack-site-recovery#fail-back-to-azure-stack?WT.mc_id=AZ-MVP-5003408)に記載されている通り、「手でやればフェイルバックできないことはない」という次元の方法でフェイルバックしなければならないのです。この手作業を自動化するスクリプトが提供されました。
+
+参考：[Azure Site Recovery failback tool](https://docs.microsoft.com/en-us/azure-stack/operator/site-recovery-failback?view=azs-2005)
 
 ### マネージドディスクの増分スナップショット
 
@@ -85,3 +88,9 @@ GitHub Action が Azure Stack をサポートする機能がベータプレビ�
 VS code の Azure Account 拡張が Azure Stack Hub をサポートします。VSCode から Azure 上の Function や IoT Hub をデプロイするのと同じように、VSCode から Azure Stack Hub 上の Function や IoT Hub をデプロイできるようになります。ありがたい。
 
 参考：[Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dev-start-vscode-azure?view=azs-2005&WT.mc_id=AZ-MVP-5003408)
+
+### IoT Hub Resource provider
+
+プライベートプレビューであった IoT Hub RP が10月中にパブリックプレビューになる予定であることが発表されました。
+
+> We are putting the finishing touches on preview, which will be available in October.
