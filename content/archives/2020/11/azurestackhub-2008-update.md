@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 2008 Update
+title: Azure Stack Hub 2008 Update
 author: kongou_ae
 date: 2020-11-15
 url: /archives/2020/11/azurestackhub-2008-update
