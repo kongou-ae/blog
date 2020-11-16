@@ -22,9 +22,9 @@ VNet peering が [Azure Stack Hub のフィードバックサイト](https://fee
 
 ポータル上での操作性も Azure と同じです。素晴らしい。
 
-{{< figure src="/images/2020-1116-003.png" title="VNet Peering の設定画面" >}}
+{{< figure src="/images/2020/2020-1116-003.png" title="VNet Peering の設定画面" >}}
 
-{{< figure src="/images/2020-1116-004.png" title="VNet Peering の確認画面" >}}
+{{< figure src="/images/2020/2020-1116-004.png" title="VNet Peering の確認画面" >}}
 
 
 ## immutable blob
@@ -39,17 +39,17 @@ Azure Stack Hub における特定のオペレーションは時間がかかる�
 
 これを避けるために、以前のアップデートで通知マークが実装されました。
 
-{{< figure src="/images/2020-1116-002.png" title="通知マーク" >}}
+{{< figure src="/images/2020/2020-1116-002.png" title="通知マーク" >}}
 
 ですがこのマークがわかりにくい。。わかりにくさを解消するために Exclusive Operations banners が実装されたのでしょう。これだけ大きく表示されていれば裏で実行されているオペレーションがわかりやすくなりますね。
 
-{{< figure src="/images/2020-1116-001.png" title="通知バナー" >}}
+{{< figure src="/images/2020/2020-1116-001.png" title="通知バナー" >}}
 
 ## レーティングツール
 
 Azure ポータルでおなじみのレーティングツールが Azure Stack Hub ポータルにも実装されました。・・・必要？
 
-{{< figure src="/images/2020-1116-005.png" title="レーティングツール" >}}
+{{< figure src="/images/2020/2020-1116-005.png" title="レーティングツール" >}}
 
 ## Azure Kubernetes Service and Azure Container Registry
 
