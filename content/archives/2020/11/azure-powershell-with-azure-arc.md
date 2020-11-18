@@ -50,7 +50,7 @@ function Get-AzArcToken {
 
 スクリプトを実行した後には C:\ProgramData\AzureConnectedMachineAgent\Tokens 配下にベーシック認証用のトークンが記載されたファイルが格納されます。このフォルダのアクセス権は次の通りです。一般ユーザではログインできなさそうになってます。良い。
 
-{{< figure src="/images/2020-1118-001.png" title="Token 置き場の権限" >}}
+{{< figure src="/images/2020/2020-1118-001.png" title="Token 置き場の権限" >}}
 
 ## 何かしらの GUID の取得方法
 
@@ -85,7 +85,7 @@ Account                              SubscriptionName TenantId                  
 
 何かしらの操作を実行すると、Activity log 上にサービスプリンシパルからの操作という形でイベントが記録されます。Azure PowerShell 経由で Azure 上の VM を停止した際に記録されたログは次の通りです。
 
-{{< figure src="/images/2020-1118-001.png" title="Token 置き場の権限" >}}
+{{< figure src="/images/2020/2020-1118-001.png" title="Token 置き場の権限" >}}
 
 
 ## まとめ
