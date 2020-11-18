@@ -70,18 +70,18 @@ function Get-AzHybridVMId {
 
 ## Azure PowerShell の認証
 
-用意した2つの関数を利用して必要な情報を取得します。そして Connect-AzAccount を実行します。
+用意した2つの関数を利用して必要な情報を取得します。そして Connect-AzAccount を実行します。無事にログインできました。
 
+```powershell
 $token = Get-AzArcToken
 $vmId = Get-AzHybridVMId
 
 Connect-AzAccount -AccessToken $token -AccountId $vmId
 
-無事にログインできました。
-
 Account                              SubscriptionName TenantId                             Environment
 -------                              ---------------- --------                             -----------
 216373db-9c58-xxxx-xxxx-xxxxxxxxxxxx Microsoft Azure  40cfd58b-8c43-xxxx-xxxx-xxxxxxxxxxxx AzureCloud 
+```
 
 何かしらの操作を実行すると、Activity log 上にサービスプリンシパルからの操作という形でイベントが記録されます。Azure PowerShell 経由で Azure 上の VM を停止した際に記録されたログは次の通りです。
 
