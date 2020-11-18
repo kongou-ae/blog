@@ -56,7 +56,7 @@ function Get-AzArcToken {
 
 [Guid]::NewGuid() で GUID を生成するのは面白くないので、今回は Azure Hybrid Instance Metadata Service から VM の GUID を取得します。今回は Get-AzHybridVMId という関数を作りました。
 
-```
+```powershell
 function Get-AzHybridVMId {
     $medatada = Invoke-WebRequest -Uri http://localhost:40342/metadata/instance?api-version=2019-11-01 -Headers @{Metadata="True"}
     $medatada = $medatada.content | ConvertFrom-Json
