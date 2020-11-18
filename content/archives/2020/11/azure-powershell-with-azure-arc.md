@@ -85,7 +85,7 @@ Account                              SubscriptionName TenantId                  
 
 何かしらの操作を実行すると、Activity log 上にサービスプリンシパルからの操作という形でイベントが記録されます。Azure PowerShell 経由で Azure 上の VM を停止した際に記録されたログは次の通りです。
 
-{{< figure src="/images/2020/2020-1118-001.png" title="Token 置き場の権限" >}}
+{{< figure src="/images/2020/2020-1118-002.png" title="Activity log に記録された名前" >}}
 
 
 ## まとめ
