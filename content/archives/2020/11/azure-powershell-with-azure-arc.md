@@ -14,7 +14,7 @@ Azure Arc enabled servers を有効にすると、対象のマシン上で Azure
 参考：
 
 - [Connected Machine エージェントの技術概要](https://docs.microsoft.com/ja-jp/azure/azure-arc/servers/agent-overview#connected-machine-agent-technical-overview?WT.mc_id=AZ-MVP-5003408)
-- [get-kvsecrets-from-arc-servers.ps1](https://github.com/Azure/azure-docs-powershell-samples/blob/master/azure-arc-for-servers/get-kvsecrets-from-arc-servers.ps1
+- [get-kvsecrets-from-arc-servers.ps1](https://github.com/Azure/azure-docs-powershell-samples/blob/master/azure-arc-for-servers/get-kvsecrets-from-arc-servers.ps1)
 - [Using an Azure Arc Token to access Azure KeyVault](https://bcthomas.com/2020/10/using-an-azure-arc-token-to-access-azure-keyvault/)
 
 トークンさえあれば API を直接叩きたい放題なわけですが、スクリプトを使って気軽に処理を自動化することを考えると Azure PowerShell を使えた方が便利です。というわけでこのエントリーでは、Azure Arc enabled servers の Azure Hybrid Instance Metadata Service を利用して Azure PowerShell の認証を突破する方法をまとめます。
