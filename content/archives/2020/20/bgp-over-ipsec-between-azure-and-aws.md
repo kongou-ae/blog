@@ -76,7 +76,7 @@ Local network Gateway を作り終えたら、VPN Gateway に Connection を作�
 
 現在の状態は下図の通りです。
 
-{{< figure src="/images/2020/2020-1126-001.jpg title="Azure 側の設定が終わった状態" >}}
+{{< figure src="/images/2020/2020-1126-001.jpg" title="Azure 側の設定が終わった状態" >}}
 
 ## AWS Route table
 
