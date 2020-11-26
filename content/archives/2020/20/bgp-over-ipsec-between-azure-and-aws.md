@@ -19,7 +19,7 @@ categories:
 
 AWS と Azure の IPsec VPN の仕様を踏まえて、次のような構成を実現します。黒矢印が確立する VPN トンネル、灰色→が設定するものの確立しない VPN トンネルです。
 
-{{< figure src="/images/2020/2020-1126-003.jpg title="構成のポンチ絵" >}}
+{{< figure src="/images/2020/2020-1126-003.jpg" title="構成のポンチ絵" >}}
 
 「AWS はトンネルごとに BGP 用アドレスを持つのに対して、Azure は VPN Gateway ごとに BGP 用アドレスを持つ」という大きな違いを吸収するために、このようなとても汚い構成になりました。捨て VPN トンネルが大量に生まれます。もう少しスマートな実装が思いつけばよかったのですがこれが限界でした。
 
@@ -44,7 +44,7 @@ AWS と Azure の IPsec VPN の仕様を踏まえて、次のような構成を�
 
 まずは Azure の VPN Gateway を作成します。AWS の VPN connection を作成するためには対向のグローバル IP アドレスが必要ですが、Azure の VPN Gateway は対向のグローバル IP アドレスが無くても作成できるからです。作成時には Active/Active と BGP の有効化を忘れずに。
 
-{{< figure src="/images/2020/2020-1126-004.png title="Active/Active と BGP の有効化" >}}
+{{< figure src="/images/2020/2020-1126-004.png" title="Active/Active と BGP の有効化" >}}
 
 また、BGP の動作確認で診断ログを利用するので、診断ログを有効化します。
 
@@ -52,17 +52,17 @@ AWS と Azure の IPsec VPN の仕様を踏まえて、次のような構成を�
 
 30分ほど待つと、Azure VPN Gateway のグローバル IP アドレスが決定します。
 
-{{< figure src="/images/2020/2020-1126-008.jpg title="Active/Active な VPN Gateway のグローバル IP アドレス" >}}
+{{< figure src="/images/2020/2020-1126-008.jpg" title="Active/Active な VPN Gateway のグローバル IP アドレス" >}}
 
 このグローバル IP アドレスを Customer Gateway とする形で VPN connection を作成します。VPN connection を作成する際の Inside IPv4 CIDR for Tunnel に、Azure で利用できる 169.254.21.0/24 または 169.254.22.0/24 を細切れにしたサブネットを明示的に指定します。
 
-{{< figure src="/images/2020/2020-1126-007.png title="Inside IPv4 CIDR for Tunnel の設定画面" >}}
+{{< figure src="/images/2020/2020-1126-007.png" title="Inside IPv4 CIDR for Tunnel の設定画面" >}}
 
 対向のグローバル IP アドレスごとに VPN トンネルが2つ設定されますので、合計で4つのトンネルが出来上がります。
 
 現在の状態は下図の通りです。
 
-{{< figure src="/images/2020/2020-1126-002.jpg title="AWS 側の VPN 設定が終わった状態" >}}
+{{< figure src="/images/2020/2020-1126-002.jpg" title="AWS 側の VPN 設定が終わった状態" >}}
 
 ## Azure Local network Gateway の作成
 
@@ -70,7 +70,7 @@ AWS 側にできた2つの VPN Connection から1つずつトンネルを選び�
 
 そして選んだトンネルのグローバル IP アドレスを、Azure 上に Local network Gateway として登録します。登録する際には、Local network Gateway の BGP peer IP address として、AWS の グローバル IP アドレスに関連する 169.254.xxx.xxx のアドレスを指定します。
 
-{{< figure src="/images/2020/2020-1126-009.png title="Local network Gateway の設定画面" >}}
+{{< figure src="/images/2020/2020-1126-009.png" title="Local network Gateway の設定画面" >}}
 
 Local network Gateway を作り終えたら、VPN Gateway に Connection を作ります。BGP を有効化するのを忘れずに。
 
@@ -88,7 +88,7 @@ BGP over IPsec で学習した経路を VPC の Route table に反映させる�
 
 このままでは Azure VPN Gateway がデフォルトの Gateway subnet のプライベート IP アドレスで BGP を確立しようとしてしまうため、Azure VPN Gateway が AWS の期待する 169.254. なアドレスで BGP を確立するように修正します。
 
-{{< figure src="/images/2020/2020-1126-010.png title="BGP で利用するアドレスの設定箇所" >}}
+{{< figure src="/images/2020/2020-1126-010.png" title="BGP で利用するアドレスの設定箇所" >}}
 
 ## 動作確認
 
@@ -96,24 +96,24 @@ BGP over IPsec で学習した経路を VPC の Route table に反映させる�
 
 AWS 向けの Connection が Connected になっていることを確認します。Connected であれば IPsec は確立しています。2本中1本は VPN トンネルが落ちているはずなのですが Connected になるのは少々気持ち悪い。
 
-{{< figure src="/images/2020/2020-1126-011.png title="VPN connection 1つ目の状態" >}}
+{{< figure src="/images/2020/2020-1126-011.png" title="VPN connection 1つ目の状態" >}}
 
 そして、Log Analytics に吐き出されているルーティング周りのログで、BGP peer が上がったことと経路を学習していることを確認します。
 
-{{< figure src="/images/2020/2020-1126-012.png title="BGP 関連の出力" >}}
+{{< figure src="/images/2020/2020-1126-012.png" title="BGP 関連の出力" >}}
 
 ### Azure VPN connection
 
 Azure 向けの VPN Connection が available になっていること、そして2本中1つのトンネルが UP していることを確認します。
 
-{{< figure src="/images/2020/2020-1126-005.png title="VPN connection 1つ目の状態" >}}
-{{< figure src="/images/2020/2020-1126-006.png title="VPN connection 2つ目の状態" >}}
+{{< figure src="/images/2020/2020-1126-005.png" title="VPN connection 1つ目の状態" >}}
+{{< figure src="/images/2020/2020-1126-006.png" title="VPN connection 2つ目の状態" >}}
 
 ### 経路の確認
 
 Azure 側が経路を受信しているかどうかを確認するためには、NIC の Effective routes を見ます。AWS の VPC で利用している 172.24.0.0/24 と 172.24.1.0/24 がルートテーブルに乗ってきていることが分かります。
 
-{{< figure src="/images/2020/2020-1126-013.png title="Effective routes の表示" >}}
+{{< figure src="/images/2020/2020-1126-013.png" title="Effective routes の表示" >}}
 
 AWS 側が経路を受信しているかどうかを確認するためには、Route table を見ます。VNet で利用している 10.2.0.0/24 と 10.3.0.0/24 が有効な経路として乗ってきていることが分かります。
 
@@ -127,7 +127,7 @@ AWS VPC 側に CIDR を足したら、足した CIDR が Azure 側 のNIC の Ef
 
 ただし、Azure の VNet 側に CIDR を足すと BGP が一度切断されました。謎挙動・・・
 
-{{< figure src="/images/2020/2020-1126-014.png title="CIDR 追加後の診断ログ" >}}
+{{< figure src="/images/2020/2020-1126-014.png" title="CIDR 追加後の診断ログ" >}}
 
 ## まとめ
 
