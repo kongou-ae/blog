@@ -119,7 +119,7 @@ AWS 側が経路を受信しているかどうかを確認するためには、R
 
 Azure の VNet と AWS の VPC に仮想マシンを起動して、クラウドまたぎで Ping を実施します。Azure NSG と AWS SG の設定で許可されている通信であれば、問題なく到達します。
 
-<blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><p lang="ja" dir="ltr">Azure の VM から AWS の VM に BGP over IPsec な経路で Ping が飛んだ。やりましたね。 <a href="https://t.co/WIUA9Xs8kY">pic.twitter.com/WIUA9Xs8kY</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1331600426655903745?ref_src=twsrc%5Etfw">November 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{< rawhtml >}}<blockquote class="twitter-tweet" data-dnt="true" data-theme="light"><p lang="ja" dir="ltr">Azure の VM から AWS の VM に BGP over IPsec な経路で Ping が飛んだ。やりましたね。 <a href="https://t.co/WIUA9Xs8kY">pic.twitter.com/WIUA9Xs8kY</a></p>&mdash; こんごー (@kongou_ae) <a href="https://twitter.com/kongou_ae/status/1331600426655903745?ref_src=twsrc%5Etfw">November 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>{{< /rawhtml >}}
 
 ### 経路の更新
 
