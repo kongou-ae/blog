@@ -62,7 +62,7 @@ AWS と Azure の IPsec VPN の仕様を踏まえて、次のような構成を�
 
 {{< figure src="/images/2020/2020-1126-002.jpg" title="AWS 側の VPN 設定が終わった状態" >}}
 
-## Azure Local network Gateway の作成
+### Azure Local network Gateway の作成
 
 AWS 側にできた2つの VPN Connection から1つずつトンネルを選びます。本当は AWS 側が用意してくれた 4つのトンネルをすべて利用したいのですが、Azure 側には BGP 用の 169.254 なアドレスが2つしかありません。したがって4つすべてを利用することは困難です。
 
@@ -74,13 +74,13 @@ Local network Gateway を作り終えたら、VPN Gateway に Connection を作�
 
 {{< figure src="/images/2020/2020-1126-001.jpg" title="Azure 側の設定が終わった状態" >}}
 
-## AWS Route table
+### AWS Route table
 
 BGP over IPsec で学習した経路を VPC の Route table に反映させるためには、ルート伝搬の設定が必要です。Azure と通信したい VM が接続しているサブネットの Route table を確認したうえで、ルート伝搬が有効でない場合は有効化します。
 
 [ルート伝達を有効および無効にする](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/WorkWithRouteTables.html#EnableDisableRouteProp)
 
-## Azure VPN Gateway の修正
+### Azure VPN Gateway の修正
 
 このままでは Azure VPN Gateway がデフォルトの Gateway subnet のプライベート IP アドレスで BGP を確立しようとしてしまうため、Azure VPN Gateway が AWS の期待する 169.254. なアドレスで BGP を確立するように修正します。AWS と同様、グローバル IP アドレスと 169.254.x.x の紐づけを間違えないようにしましょう。
 
