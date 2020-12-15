@@ -88,7 +88,7 @@ My confusing point is `-CSRPath` of `New-PACertificate`. `-CSRPath` is the path 
 
 My sample script based on this blog is [kongou-ae/AzureStackOperatorScripts/New-AzsPaaSCertificate.ps1](https://github.com/kongou-ae/AzureStackOperatorScripts/blob/master/New-AzsPaaSCertificate.ps1). This script allows you to create the certificate for EevntHubs with one command.
 
-```
+```powershell
 PS C:\Users\me> .\New-AzsCertificate.ps1 -rp EventHubs -subject "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub" -regionName tky002 -externalFQDN aimless.jp -email YOUR-EMAIL-ADDRESS -pfxpass YOUR-PASSWORD -subscriptionId 76cd33dc-xxxx-xxxx-xxxx-xxxxxxx9f261
 C:\Users\me\azscsr already exist.
 [2020-12-14 23:58:11] Create the CSR for EventHubs
