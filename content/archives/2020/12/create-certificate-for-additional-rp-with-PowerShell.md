@@ -19,7 +19,7 @@ Azure Stack Hub supports some Azure PaaS. At the this time, Azure Stack Hub supp
 - Azure Kuvernetes service(Private preview)
 - Azure container registry(Private preview)
 
-Some PaaS requires a certificate to install it. The best certificate for PaaS is a public certificate because every user and every device can access PaaS without any additional action. But you may not want to use a paid certificate to join the preview of some PaaS. Based on this situation, it is good way to use Let's encrypt for prepering the public certificate for the private preview of PaaS, because it is free.
+Some PaaS requires a certificate to install it. The best certificate for PaaS is a public certificate because every user and every device can access PaaS without any additional action. But you may not want to use a paid certificate to join the preview of some PaaS. Based on this situation, it is a good way to use Let's encrypt for preparing the public certificate for the private preview of PaaS, because it is free.
 
 But you need to create the certificate every three months due to the limitation of let's encrypt. So you need to use an automatic way to use Let's encrypt. This blog explains how to create the certificate for Azure Stack Hub PaaS automatically with PowerShell.
 
@@ -213,4 +213,4 @@ New-AzsCertificate.ps1 Completed
 
 ## Conclusion
 
-This blog explains about how to automate the task to create the certificate for Azure Stack PaaS with Let's encrypt and PowerShell. To use Azure PaaS is the one of the benefit of Azure Stack Hub. If the main blocker to try Azure Stack Hub PaaS is to prepare a public certificate, you can use the certificate of Let's encrypt with PowerShell. This way can reduce your manual action.
+This blog explained about how to automate the task to create the certificate for Azure Stack PaaS with Let's encrypt and PowerShell. To use Azure PaaS is the one of the benefit of Azure Stack Hub. If the main blocker to try Azure Stack Hub PaaS is to prepare a public certificate, you can use the certificate of Let's encrypt with PowerShell. This way can reduce your manual action.
