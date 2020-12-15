@@ -1,5 +1,5 @@
 ---
-title: Create the certificate for additional resource provider with PowerShell
+title: Create the certificate for Azure Stack Hub PaaS automatically with PowerShell
 author: kongou_ae
 date: 2020-12-15
 url: /archives/2020/12/create-certificate-for-additional-rp-with-PowerShell
@@ -9,7 +9,7 @@ categories:
 
 ## Introduction
 
-This blog talks about the way to create the Let's encrypt's certificate for Azure Stack PaaS with PowerShell. Because this way may be needed to join the preview of the new Azure Stack PaaS.
+This blog talks about the way to create the Let's encrypt's certificate for Azure Stack PaaS automatically with PowerShell. Because this way may be needed to join the preview of the new Azure Stack PaaS.
 
 Azure Stack Hub supports some Azure PaaS. At the this time, Azure Stack Hub supports the following PaaS.
 
