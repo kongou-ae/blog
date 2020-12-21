@@ -12,6 +12,11 @@ pygmentsUseClasses = true
 PygmentsCodeFences = true
 googleAnalytics = "UA-1736780-2"
 
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
 [outputs]
 home = [ "HTML", "RSS" ]
 
