@@ -22,7 +22,9 @@ categories:
 - [How to check the progress of Azure Stack Hub Update more efficiently](https://blog.aimless.jp/archives/2020/08/how-to-check-the-progress-of-azurestackhub-update-more-efficiently)
 - [Monitoring the expiration of App Service RP's secret on Azure Stack Hub](https://blog.aimless.jp/archives/2020/02/monitoring-the-expiration-of-appservicerps-secret-on-azurestackhub/)
 
-Azure 関連では、昨年と同様、ハイブリッドクラウドやネットワーク、運用といったネタを投稿しました。また、ブログとしてアウトプットするには量が多いネタを単独のスライドとして公開することにも挑戦してみました。（参考：[仮想アプライアンス担当者向け Azure ネットワーク](https://speakerdeck.com/kongou_ae/azure-network-that-focus-on-network-virtual-appliance)）ただし「評価・検証したものの Twitter でつぶやいて終了」なネタがちらほら見受けられました。Twitter で何となくつぶやいて満足してしまうと未来の自分が改めて調べるときに困るので、来年はしっかりとブログに残します。
+Azure 関連では、昨年と同様、ハイブリッドクラウドやネットワーク、運用といったネタを投稿しました。また、ブログとしてアウトプットするには量が多いネタを単独のスライドとして公開することにも挑戦してみました。（参考：[仮想アプライアンス担当者向け Azure ネットワーク](https://speakerdeck.com/kongou_ae/azure-network-that-focus-on-network-virtual-appliance)）
+
+ただし「評価・検証したものの Twitter でつぶやいて終了」なネタがちらほら見受けられました。Twitter で何となくつぶやいて満足してしまうと未来の自分が改めて調べるときに困るので、来年はしっかりとブログに残します。
 
 ## 登壇
 
@@ -67,7 +69,7 @@ Azure 関連では、昨年と同様、ハイブリッドクラウドやネッ�
 
 ## COVID-19関連
 
-COVID-19 を踏まえて、原則として在宅勤務に切り替えました。自分の部屋が存在しないので、子供部屋の一角を仕事場所にするためにそれなりの出費がかかりました。辛い。いずれ仕事部屋が欲しい・・・
+COVID-19 を踏まえて、原則として在宅勤務に切り替えました。自分の部屋が存在しないので子供部屋の一角を仕事場所にしました。高価なものを買う予算はないのでぼちぼちのものを買った結果、それなりの出費がかかりました。辛い。いずれ仕事部屋が欲しい・・・
 
 **主要なお買い物**
 
