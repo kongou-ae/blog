@@ -15,7 +15,7 @@ Windows Virtual Desktop が Public Preview になったので、構成を理解�
 
 ドキュメントを写経した結果、次のような構成が出来上がりました。写経で作れたので、具体的な手順には触れません。
 
-{{< figure src="./../../images/2019-03-23-001.PNG" title="WVS の構成要素" >}}
+{{< figure src="./../../images/2019-03-23-001.png" title="WVS の構成要素" >}}
 
 主な構成要素は次の通りです。実際に作ってみて気になった点をまとめていきます。
 
@@ -52,11 +52,11 @@ WVD で登場する新しい用語の基本的な考え方は次の URL に記�
 
 WVD(PaaS) とクライアントアプリが Azure Active Directory にアクセスする必要があるため、Azure Active Direcotry 上にアプリケーションを登録します。したがって、WVD(PaaS)  を設定する際は、Azure サブスクリプションに対する権限だけでなく Azure Active Direcotry に対する権限も必要です。AAD にアプリを登録するための専用ページ（[Windows Virtual Desktop consent page](https://rdweb.wvd.microsoft.com/)）が用意されているので、登録作業自体は簡単です。
 
-{{< figure src="./../../images/2019-03-23-002.PNG" title="登録されたアプリ" >}}
+{{< figure src="./../../images/2019-03-23-002.png" title="登録されたアプリ" >}}
 
 アプリを登録したら、WVD(PaaS) を操作したいアカウントをアプリケーションに追加する必要があります。初期状態では、専用ページでの登録作業時に利用したアカウントだけが権限を有しています。
 
-{{< figure src="./../../images/2019-03-23-003.PNG" title="アプリケーションのユーザ登録画面" >}}
+{{< figure src="./../../images/2019-03-23-003.png" title="アプリケーションのユーザ登録画面" >}}
 
 ## 3. Active Directory
 
@@ -70,7 +70,7 @@ Host Pool を作成する際に Virtual Machine が `JsonADDomainExtension` を�
 
 手順に従って Host Pool を作成すると、Host Pool を構成する Virtual Machine は 他の Virtual Machine と同じように一覧で表示されます。Host Pool を作成する際にVirtual Machine の Prefix を指定できるので、他の Virtual Machine と混同しない Prefix を指定しましょう。
 
-{{< figure src="./../../images/2019-03-23-005.PNG" title="Virtual Machine の Prefix" >}}
+{{< figure src="./../../images/2019-03-23-005.png" title="Virtual Machine の Prefix" >}}
 
 上記の Prefix の場合、実際に構築される Virtual Machine の名前は、台数に応じて wvdpoolvm-0、wvdpoolvm-1 になります。
 
@@ -80,7 +80,7 @@ Host Pool の Virtual Machine には Public IP Address が割り当てられま�
 
 ドキュメントにはトラフィックフローの記載が見当たりません。現時点では、Ignite 2018 のセッション動画にて、WDV を利用する際のトラフィックフローが説明されています。この資料によると、WVD(PaaS) と Virtual Machine とのトラフィックは常に Virtual Machine から WVD(PaaS) への TCP/443のアウトバウンドのみのようです。この実装であれば Virtual Machine に Public IP Address が不要なことが理解できます。
 
-{{< figure src="./../../images/2019-03-23-006.PNG" title="トラフィックフロー" >}}
+{{< figure src="./../../images/2019-03-23-006.png" title="トラフィックフロー" >}}
 
 引用：[Windows Virtual Desktop deep dive - BRK3312](https://youtu.be/VQSsgEYamBs?t=688)
 

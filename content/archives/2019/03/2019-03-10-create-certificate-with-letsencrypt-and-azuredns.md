@@ -86,7 +86,7 @@ $ acme.sh --signcsr --dns dns_azure --csr adminportal_test_asdk_aimless_jp_CertR
 
 無事に署名が完了すると、Let's Encrypt に署名されたサーバ証明書が `$HOME/.acme.sh/` 配下に配置されます。簡単。DNS Zone の Activity Log を見ると、acme.sh が Service Principle を利用して TXTレコードを追加・削除しているのを確認できます。
 
-{{< figure src="./../../images/2019-03-10-001.PNG" title="実際にできたサーバ証明書" >}}
+{{< figure src="./../../images/2019-03-10-001.png" title="実際にできたサーバ証明書" >}}
 
 なお、Let's Encrypt でマルチドメインワイルドカード証明書を発行する場合、すべての SANs がユニークでなければならないようです。Azure Stack の証明書を1枚のマルチドメインワイルド証明書で発行しようと試みたら、`*.appservice.<region>.<fqdn>` の SANs が `	api.appservice.<region>.<fqdn>` や `ftp.appservice.<region>.<fqdn>` 、 ` sso.appservice.<region>.<fqdn>` と重複するため、署名要求が次のとおりエラーになりました。
 
