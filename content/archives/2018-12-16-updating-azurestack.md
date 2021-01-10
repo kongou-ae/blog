@@ -56,15 +56,15 @@ Microsoft がリリースするアップデートと Hotfix の適用方法は�
 
 アップデートパッケージがポータルに表示された後に管理者が行うことは、適用するアップデートを選択して「Update now」を押すことだけです。あとは Azure Stack Hub が全自動で自分をアップデートします。Connected deployment の場合は、このタイミングで Azure Stack Hub 自身がパッケージをダウンロードします。
 
-{{< figure src="./../../images/2018-12-16-001.png" title="アップデート画面と Update now ボタン" >}}
+{{< figure src="/images/2018-12-16-001.png" title="アップデート画面と Update now ボタン" >}}
 
 Azure Stack Hub は、特徴的なアップデート方法を採用しています。Azure Stack Hub のアップデートは、既存の環境にパッチをあてるのではなく、既存の環境を捨てて新しい環境を新規構築します。アップデートの間に、Host Node と Infrastructure Role Instance は、アップデート前まで使っていたイメージを捨てて、アップデートが適用された新しいイメージでブートします。
 
-{{< figure src="./../../images/2018-12-16-003.png" title="アップデートパッケージを使って新しいイメージを作る" >}}
+{{< figure src="/images/2018-12-16-003.png" title="アップデートパッケージを使って新しいイメージを作る" >}}
 
-{{< figure src="./../../images/2018-12-16-004.png" title="新しいイメージを Host Node に配備" >}}
+{{< figure src="/images/2018-12-16-004.png" title="新しいイメージを Host Node に配備" >}}
 
-{{< figure src="./../../images/2018-12-16-005.png" title="Host Node を新しいイメージから起動" >}}
+{{< figure src="/images/2018-12-16-005.png" title="Host Node を新しいイメージから起動" >}}
 
 引用：[The guide to becoming a Microsoft Azure Stack operator - BRK3334](https://www.youtube.com/watch?v=CXH_KvMZpDo)
 
