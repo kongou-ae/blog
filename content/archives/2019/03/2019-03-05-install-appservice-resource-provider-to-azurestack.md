@@ -21,7 +21,7 @@ categories:
 
 [App Service on Azure Stack （ファイルサーバとSQLサーバの用意編）](https://aimless.jp/blog/archives/2018-11-11-appservice-on-asdk-about-infra/)では、公式が用意している [ARM テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha)を利用してファイルサーバと SQL サーバを用意しました。その結果、Azure Stack の管理者側には次のような環境が出来上がっています。
 
-{{< figure src="./../../images/2019-03-05-001.PNG" title="テンプレートで作成された環境" >}}
+{{< figure src="./../../images/2019-03-05-001.png" title="テンプレートで作成された環境" >}}
 
 ## App Service resource provider のインストール
 
@@ -44,7 +44,7 @@ App Service resource provider のインストールは、公式ドキュメン�
 
 Virtual Network の名前とサブネットは、テンプレートがデプロイした VNet の値を確認しましょう。それ以外の項目はテンプレートのアウトプットに表示されています。便利。
 
-{{< figure src="./../../images/2019-03-05-002.PNG" title="テンプレートのアウトプット" >}}
+{{< figure src="./../../images/2019-03-05-002.png" title="テンプレートのアウトプット" >}}
 
 ### インストーラの実行場所
 
@@ -101,21 +101,21 @@ Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $workerNsg
 
 ２つ目が、Availability Group への データベース追加です。App Service Resource Provider をデプロイすると、SQL サーバ上に「appservice_hosting」と「appservice_metering」というデータベースができます。ただし、これらのデータベースは Availability Group に追加されていません。このままでは正系の SQL サーバが停止した際に、アクセスできるデータベースがなくなってしまいます。手動で Availability Group にデータベースを追加して、正系と副系の両系が「appservice_hosting」と「appservice_metering」というデータベースを持つようにしましょう。
 
-{{< figure src="./../../images/2019-03-05-003.PNG" title=" Availability Group へのデータベース追加" >}}
+{{< figure src="./../../images/2019-03-05-003.png" title=" Availability Group へのデータベース追加" >}}
 
 ### SKU を増やす
 
 デプロイ直後の App Service Resource Provider は利用者に対して、F1 Free と D1 Shared の SKU のみを提供します。Standard な SKU を提供したい場合は、SKU に対応した VMSS をスケールアウトしましょう。スケールアウトしたインスタンスが実際に使えるようになるまでには数十分かかります。じっくり待ちましょう。
 
-{{< figure src="./../../images/2019-03-05-004.PNG" title="App Service Resource Provider の設定画面" >}}
+{{< figure src="./../../images/2019-03-05-004.png" title="App Service Resource Provider の設定画面" >}}
 
-{{< figure src="./../../images/2019-03-05-005.PNG" title="VMSS の設定画面" >}}
+{{< figure src="./../../images/2019-03-05-005.png" title="VMSS の設定画面" >}}
 
 ## デプロイの結果
 
 App Service Resource Provider をデプロイすると、テンプレートでデプロイした VNet を利用して次のリソースが作成されます。なかなか壮大な仕組みです。当然、これらのリソースは Host Node のリソースを消費して動作します。また、Azure Stack Operator はこれらのリソースを維持管理しなければなりません。
 
-{{< figure src="./../../images/2019-03-05-006.PNG" title="App Service Resource Provider の全体図" >}}
+{{< figure src="./../../images/2019-03-05-006.png" title="App Service Resource Provider の全体図" >}}
 
 ## まとめ
 
