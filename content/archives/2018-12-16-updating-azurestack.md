@@ -13,7 +13,7 @@ categories:
 
 ## はじめに
 
-本エントリーは[Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の16日目です。
+本エントリーは [Microsoft Azure Stack Advent Calendar 2018](https://qiita.com/advent-calendar/2018/azure-stack)の16日目です。
 
 本日のエントリは、Azure Stack Hub のアップデートをまとめます。
 
