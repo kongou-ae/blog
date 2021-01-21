@@ -1,7 +1,7 @@
 ---
 title: Check the host node where Azure Stack Hub VMs run on
 author: kongou_ae
-date: 2020-12-31
+date: 2021-01-21
 url: /archives/2021/01/check-host-node-where-azure-stach-hub-vms-run-on
 categories:
   - azurestack
