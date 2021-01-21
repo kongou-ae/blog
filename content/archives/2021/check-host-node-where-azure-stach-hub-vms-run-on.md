@@ -45,7 +45,7 @@ ConfigurationData
 | where RegistryKey == "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Virtual Machine\\Guest\\Parameters"
 | where ValueName == "PhysicalHostName"
 | where Computer ==	"azs-win004"
-| project TimeGenerated, Computer, HostNodeValueData
+| project TimeGenerated, Computer, HostNode=ValueData
 | sort by TimeGenerated desc 
 ```
 
