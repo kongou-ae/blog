@@ -16,7 +16,7 @@ Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Virtual Machine\Guest\Parameters
 
 Ref:[Find the Hostname of a Hyper-V VM](https://techcommunity.microsoft.com/t5/itops-talk-blog/find-the-hostname-of-a-hyper-v-vm/ba-p/2074171?WT.mc_id=modinfra-0000-thmaure)
 
-So Azure Stack Hub users can use alternative Resource Health by checking this registry key continuously.
+So Azure Stack Hub users can create alternative Resource Health by checking this registry key continuously.
 
 I think there are many ways to confirm registry keys centralizedly. To realize this, I created the sample project of alternative Resource Health by using Azure Automation inventory. Azure Automation Inventory can collect specific registry keys from many VMs in Azure.
 
