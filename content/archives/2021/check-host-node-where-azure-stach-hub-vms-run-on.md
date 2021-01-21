@@ -36,7 +36,7 @@ ConfigurationData
 | project TimeGenerated, Computer, HostNode=ValueData
 ```
 
-{{< figure src="/images/2021/2021-0121-001.jpg title="HostNodes of every VMs" >}}
+{{< figure src="/images/2021/2021-0121-001.jpg" title="Host Nodes of every VMs" >}}
 
 Of course, you can also search the time series data about specific VM with the following Kusto. Based on this result, we can guess that the host node of azs-win004 encountered a hardware-related issue like a hardware failure or maintenance at about 6:00 on Jan 21th.
 
@@ -49,7 +49,7 @@ ConfigurationData
 | sort by TimeGenerated desc 
 ```
 
-{{< figure src="/images/2021/2021-0121-002.jpg title="HostNodes of specific VMs" >}}
+{{< figure src="/images/2021/2021-0121-002.jpg" title="Host Nodes of specific VMs" >}}
 
 This approach can't inform you of the new host node quickly because Azure Automation Inventory checks the change of a registry key per about 50min.
 
