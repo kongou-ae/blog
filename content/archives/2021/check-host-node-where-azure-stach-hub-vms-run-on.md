@@ -53,4 +53,4 @@ ConfigurationData
 
 This approach can't inform you of the new host node quickly because Azure Automation Inventory checks the change of a registry key per about 50min.
 
-I believe this way is not a good workaround to fix the gap, but it may help someone&s requirement until Microsoft installs Resource Health in Azure Stack Hub.
+I believe this way is not a good workaround to fix the gap, but it may help someone's requirement until Microsoft installs Resource Health in Azure Stack Hub.
