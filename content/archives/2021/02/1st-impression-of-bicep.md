@@ -28,7 +28,7 @@ Bicep とは次世代の ARM テンプレートとして開発されている DS
 
 また、Bicep をサポートする VS Code の拡張機能が用意されています。これをインストールすると、Bicep なファイルが ARM テンプレートと同じようにハイライトされてわかりやすくなります。
 
-{{< figure src="/images/2021/2021-0207-001." title="拡張機能のインストール後の見た目" >}}
+{{< figure src="/images/2021/2021-0207-001.png" title="拡張機能のインストール後の見た目" >}}
 
 参考：[Bicep 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)
 
@@ -92,11 +92,11 @@ bicep build ./main.bicep
 
 ## GitHub Action と連携させる
 
-テンプレートを書く人からすると Bicep はとても楽です。一方で Bicep を使う側からすると Bicep コマンドをインストールしなければならないため面倒です。とはいえ、Bicep ファイルを書いた後に毎回 bicep コマンドでビルドして、bicep ファイルと ARM テンプレートの両方をリポジトリにプッシュするのは少々手間です。もしリポジトリにプッシュした Bicep ファイルが ARM テンプレートに自動的に変換されたら、テンプレートを書く人と使う人の両方が幸せになれます。
+テンプレートを書く人からすると Bicep はとても楽です。一方で誰かが書いたテンプレートを使う側からすると、Bicep で書かれたテンプレートを使うためには Bicep コマンドをインストールしなければならず面倒です。とはいえ、テンプレートを書く側からすると、Bicep ファイルを書いた後に毎回 bicep コマンドでビルドして Bicep ファイルと ARM テンプレートの両方をリポジトリにプッシュするのは少々手間です。もしリポジトリにプッシュした Bicep ファイルが ARM テンプレートに自動的に変換されたら、テンプレートを書く人と使う人の両方が幸せになれます。
 
-この課題を GitHub Action で解決してみます。GitHub Action には、非公式の Bicep ファイルをビルドするアクション（[aliencube
+この課題を GitHub Action で解決してみます。GitHub Action には、Bicep ファイルをビルドする非公式のアクション（[aliencube
 /
-bicep-build-actions](https://github.com/aliencube/bicep-build-actions)）が存在します。これを利用して次のような GitHub Action を設定すると、特定の Bicep ファイルをコミットした場合に、Bicep ファイルがARM テンプレートに自動的に変換されてリポジトリに Push されますので、書く人と使う人の両方が幸せになれます。
+bicep-build-actions](https://github.com/aliencube/bicep-build-actions)）が存在します。これを利用して次のような GitHub Action を設定すると、特定の Bicep ファイルをコミットした場合に、Bicep ファイルがARM テンプレートに自動的に変換されてリポジトリにプッシュされますので、書く人と使う人の両方が幸せになれます。
 
 ```
 name: CI
@@ -137,4 +137,4 @@ jobs:
 
 ## おわりに
 
-今回は bicep を試してみました。Bicep ではARM テンプレートの辛い点が改善されています。一般公開されたら ARM テンプレートから乗り換えようと思います。
+今回は Bicep を試してみました。Bicep ではARM テンプレートの辛い点が改善されています。一般公開されたら ARM テンプレートから乗り換えようと思います。
