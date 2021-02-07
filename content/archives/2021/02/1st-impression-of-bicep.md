@@ -28,7 +28,7 @@ Bicep とは次世代の ARM テンプレートとして開発されている DS
 
 また、Bicep をサポートする VS Code の拡張機能が用意されています。これをインストールすると、Bicep なファイルが ARM テンプレートと同じようにハイライトされてわかりやすくなります。
 
-{{< figure src="/images/2021/2021-0207-001.jpg" title="拡張機能のインストール後の見た目" >}}
+{{< figure src="/images/2021/2021-0207-001." title="拡張機能のインストール後の見た目" >}}
 
 参考：[Bicep 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)
 
