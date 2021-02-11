@@ -2,20 +2,20 @@
 title: Azure リザーブドインスタンスの使用率を PowerShell で確認する
 author: kongou_ae
 date: 2021-02-11
-url: /archives/2021/02/check-utilization-of-ri-by-cli
+url: /archives/2021/02/check-utilization-of-ri-by-powershell
 categories:
   - azure
 ---
 
 ## はじめに
 
-リザーブドインスタンスを使い始めると気になるのが「リザーブドインスタンスが従量課金のインスタンスにもれなく適用されているか」という点です。リザーブドインスタンスとは「リザーブドインスタンスの対象となるサイズのインスタンスが起動している場合、そのインスタンスの従量課金の費用がゼロになる」という仕組みです。そのため、何かしらの理由で従量課金のインスタンスのサイズを変更したり、従量課金のインスタンスを削除してしまうと、従量課金の費用が発生してしまい一括支払いで購入したリザーブドインスタンスが無駄になってしまいます。
+リザーブドインスタンスを使い始めると気になるのが「リザーブドインスタンスが従量課金のインスタンスにもれなく適用されているか」という点です。リザーブドインスタンスとは「リザーブドインスタンスの対象となるサイズのインスタンスが起動している場合、そのインスタンスの従量課金の費用がゼロになる」という仕組みです。そのため、何かしらの理由で従量課金のインスタンスのサイズを変更したり、従量課金のインスタンスを削除してしまうと、従量課金の費用が発生してしまいリザーブドインスタンスが無駄になってしまいます。
 
 この問題を早期に検出するためには、リザーブドインスタンスの使用率を定期的に確認する必要があります。AWS の場合は [AWS Budgets を利用して使用率を監視できる](https://aws.amazon.com/jp/about-aws/whats-new/2018/05/reserved-instance-coverage-alerts-via-aws-budgets/)ようなのですが、2021年2月現在の Azure にはこのような機能がありません。もちろんポータルでは使用率を確認できますので、ポータルを使えば「人間がたまに見る運用」が可能です。ですが、使用率を定期的に自動で監視したい場合、自前の仕組みを構築する必要があります。
 
 ## PowerShell による確認
 
-自前の仕組みを作るためには、CLI や API でリザーブドインスタンスの使用率を取得する必要があります。PowerShell で取得できれば Azure Function を使って自前の仕組みを簡単に作れます。
+自前の仕組みを作るためには、CLI や API でリザーブドインスタンスの使用率を取得する必要があります。PowerShell で取得できれば Azure Function を使って自前の仕組みを簡単に作れそうです。
 
 リザーブドインスタンス用の Az.Reservation モジュールに含まれる [Get-AzReservation](https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservation?view=azps-5.5.0) では使用率を取得できません。
 
@@ -45,9 +45,8 @@ SplitProperties      :
 MergeProperties      :
 ```
 
-リザーブドインスタンスの使用率を取得するためには Get-AzConsumptionReservationSummary を利用します。次のサンプルは2月9日から2月10日までの使用率を取得したものです。maxUtilizationPercentage が100％になっています。MaxUtilizationPercentage が100%かどうかを監視すれば、リザーブドインスタンスが無駄になっているかを確認できます。
+リザーブドインスタンスの使用率を取得するためには、Az.Billing モジュールの [Get-AzConsumptionReservationSummary](https://docs.microsoft.com/en-us/powershell/module/az.billing/get-azconsumptionreservationsummary?view=azps-5.5.0) を利用します。次のサンプルは2月9日から2月10日までの使用率を取得したものです。maxUtilizationPercentage が100％になっています。MaxUtilizationPercentage が100%かどうかを監視すれば、リザーブドインスタンスが無駄になっているかを確認できます。
 
-[Reservations Summaries - List By Reservation Order](https://docs.microsoft.com/en-us/rest/api/consumption/reservationssummaries/listbyreservationorder)
 
 ```powershell
 PS > Get-AzConsumptionReservationSummary -Grain daily -ReservationOrderId f8bede6a-14fe-xxxx-xxxx-xxxxxxxxxxxx -ReservationId 1f200f6e-3ff6-xxxx-xxxx-xxxxxxxxxxxx -StartDate 2021-02-09 -EndDate 2021-02-10
@@ -74,4 +73,4 @@ UsedHour                 : 14
 
 ## まとめ
 
-本エントリでは CLI を利用してリザーブドインスタンスの使用率を確認する方法をまとめました。PowerShell を使えばリザーブドインスタンスの使用率を CLI で取得できますので、自前で使用率を監視する仕組みを作れます。とはいえ自前の仕組みを作らない方が楽なので、リザーブドインスタンスの使用率を監視できるネイティブな仕組みのリリースに期待です。
+本エントリでは PowerShell を利用してリザーブドインスタンスの使用率を確認する方法をまとめました。PowerShell と Azure Function を組み合わせれば、リザーブドインスタンスの使用率を監視する仕組みを自前で作れそうです。とはいえ自前の仕組みを作るのは最後の手段なので、リザーブドインスタンスの使用率を監視できるネイティブな仕組みのリリースに期待です。
