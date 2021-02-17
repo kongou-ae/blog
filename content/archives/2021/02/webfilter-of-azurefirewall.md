@@ -13,7 +13,7 @@ UTM 機能が搭載された Azure Firewall premium がプレビューになり�
 
 参考：[Azure Firewall Premium Preview features](https://docs.microsoft.com/en-us/azure/firewall/premium-features)
 
-Premium SKU と Standard SKU の大きな違いは値段とポリシーの設定方法です。Azure Premium の料金は東日本リージョンの場合 ¥196/時間です。Standard SKU の ¥140/時間よりも高額です。さらに Premium SKU はポリシーの設定に Firewall policy を利用します。そのため、Firewall Policy の利用料金 ¥11,200/ポリシーが追加で発生します。
+Premium SKU はプレミアムだけあって Standard SKU よりも高額です。Azure Premium の料金は東日本リージョンの場合 ¥196/時間です。Standard SKU の ¥140/時間よりも高額です。さらに Premium SKU はポリシーの設定に Firewall policy を利用します。そのため、Firewall Policy の利用料金 ¥11,200/ポリシーが追加で発生します。
 
 今回のエントリでは、プレビューのアナウンスを受けてカテゴリベースのフィルタを試した結果をまとめます。
 
