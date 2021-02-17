@@ -25,7 +25,7 @@ Premium SKU はプレミアムだけあって Standard SKU よりも高額です
 
 ## ルールの設定
 
-Firewall policy から Application policy を設定します。宛先の設定値に Web categories と URL が追加されていますので、web categories と使用したいカテゴリを選びます。今回は Gambling と Goverment をブロックするポリシーを設定します。
+Firewall policy から Application rule を設定します。宛先の設定値に Web categories と URL が追加されていますので、web categories と使用したいカテゴリを選びます。今回は Gambling と Goverment をブロックするポリシーを設定します。
 
 {{< figure src="/images/2021/2021-0217-002.png" title="ルールの設定画面" >}}
 
@@ -35,13 +35,14 @@ Firewall policy から Application policy を設定します。宛先の設定�
 
 ## 動作確認
 
-ギャンブル代表である https://www.jra.go.jp/ にアクセスすると。HTTPS の場合はエラー画面が表示されました。HTTP の場合は Azure Firewall のメッセージが表示されました。
+ギャンブル代表である https://www.jra.go.jp/ と政府代表である http://www.mod.go.jp/ に HTTP でアクセスすると Azure Firewall のメッセージが表示されました。ブロックされたアクセスがどのカテゴリに該当したのかをメッセージから確認できました。
+
+{{< figure src="/images/2021/2021-0217-005.png" title="HTTP のブロック画面" >}}
+
+同様のサイトに HTTPS でアクセスするとブラウザのエラー画面になりました。
 
 {{< figure src="/images/2021/2021-0217-004.png" title="HTTPS のブロック画面" >}}
 
-政府代表である http://www.mod.go.jp/ にアクセスすると、JRA と同様、HTTPS の場合はエラー画面が、HTTP の場合は Azure Firewall のメッセージが表示されました。バッチリです。
-
-{{< figure src="/images/2021/2021-0217-005.png" title="HTTP のブロック画面" >}}
 
 ブラウザからでは HTTPS の通信が Azure Firewall にブロックされたかどうかを明確に判断できませんが、診断ログとして Log Analytics に記録されたログを確認すると、HTTPS 通信がカテゴリベースのポリシーでブロックされたことを示すログが記録されていました。カテゴリベースのフィルタリングはちゃんと機能していそうです。
 
@@ -49,4 +50,4 @@ Firewall policy から Application policy を設定します。宛先の設定�
 
 ## 終わりに
 
-今回のエントリでは Azure Firewall Premium に実装されたカテゴリベースのフィルタを試しました。カテゴリベースのフィルタリングはアクセスする URL や IPアドレスが不明であっても通信を拒否できるので、Windows Virtual Desktop からインターネットへの通信に対してベースラインとなるセキュリティポリシーを適用する際に活用できそうだなと思いました。
+今回のエントリでは Azure Firewall Premium に実装されたカテゴリベースのフィルタを試しました。カテゴリベースのフィルタリングはアクセスする URL や IPアドレスが不明であっても通信を拒否できるので、Windows Virtual Desktop からインターネットへの通信に対してベースラインとなるセキュリティポリシーを適用する際に活用できそうです。Premium SKU は月額15万ほどかかりますが、1st パーティな選択肢が増えたのはよいことです。
