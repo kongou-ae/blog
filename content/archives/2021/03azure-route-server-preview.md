@@ -87,7 +87,7 @@ PeeringsText               : [
 
 10.1.0.5 側が広報する経路に AS-Path を積むと、Route Server はより近い経路のみを VNet 内のルーティングに反映します。
 
-{{< figure src="/images/2021/2021-0303-001.png" title="片方に寄ったなルートテーブル" >}}
+{{< figure src="/images/2021/2021-0303-001.png" title="10.1.0.4に寄ったルートテーブル" >}}
 
 Route Server が学習した経路や広報した経路を確認する方法も用意されています。PowerShell では次のコマンドです。
 
@@ -153,6 +153,7 @@ SourcePeer   :
 Origin       : Igp
 AsPath       : 65515
 Weight       : 0
+
 ```
 
 ## まとめ
