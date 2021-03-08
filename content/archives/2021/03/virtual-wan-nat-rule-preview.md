@@ -10,7 +10,7 @@ categories:
 
 ## はじめに
 
-Azure のドキュメントの差分を確認していたところ、[Configure NAT Rules for your Virtual WAN VPN gateway - Preview](https://docs.microsoft.com/en-us/azure/virtual-wan/nat-rules-vpn-gateway) というドキュメントを見つけました。「Virtual WAN が NAT をサポートした」というリリースは更新情報には流れていないのですが、Ignite に合わせて Video Hub に公開された動画の中で発表されていました。Route Server と同じくらい凄い機能なのだから、更新情報に流してくれませんか。
+Azure のドキュメントの差分を確認していたところ、[Configure NAT Rules for your Virtual WAN VPN gateway - Preview](https://docs.microsoft.com/en-us/azure/virtual-wan/nat-rules-vpn-gateway) というドキュメントを見つけました。「Virtual WAN が NAT をサポートした」というリリースは更新情報に流れていないはずです。アナウンスを探してみたところ、Ignite に合わせて Video Hub に公開された次の動画の中で発表されていました。Route Server と同じくらい凄い機能なのだから、更新情報に流してくれたらいいのに・・・
 
 - [Simplify networking & remote user connectivity with Azure Virtual WAN](https://youtu.be/nP5XntjA7OQ?t=810)
 - [Hybrid Connectivity](https://youtu.be/B_liVbePmAw?t=195)
@@ -19,13 +19,13 @@ Azure のドキュメントの差分を確認していたところ、[Configure 
 
 ## 環境
 
-次の環境で試しました。
+今回の環境は次の通りです。
 
 - Azure
   - VNet のアドレス空間：10.0.0.0/16
     - VNet 内のテストサーバの IP：10.0.0.4/24
   - SNAT 後の VNet のアドレス空間：10.3.0.0/24
-  - VWAN のアドレス空間：10.1.0.0/24
+  - Virtual WAN のアドレス空間：10.1.0.0/24
     - VPN Gateway#1 の BGP IP：10.1.0.12
     - VPN Gateway#2 の BGP IP：10.1.0.13
 - オンプレミス
@@ -36,7 +36,7 @@ Azure のドキュメントの差分を確認していたところ、[Configure 
 
 ## Firewall の設定
 
-次の設定で FortiGate と Virtual WAN と接続します。Virtual WAN は標準で VPN Gateway が Active/Active なので、非対称ルーティングにならないように #2 側の VPN Gateway に対して AS-PATH を多めに積んで経路を広報します。こうすることで、受信送信ともに #1 側の VPN Gateway が利用されます。本当は受信する経路に対しても Local preference を利用して明示的に重みづけをすべきですが、ルータID が小さい #1 側 VPN Gateway から受信した経路がベストパスになるので今回は明示的に設定はしません。
+次の設定で FortiGate を Virtual WAN に接続します。Virtual WAN は標準で VPN Gateway が Active/Active なので、非対称ルーティングにならないように #2 側の VPN Gateway に対して AS-PATH を多めに積んで経路を広報します。こうすることで、受信送信ともに #1 側の VPN Gateway が利用されます。本当は受信する経路に対しても Local preference を利用して明示的に重みづけをすべきですが、ルータID が小さい #1 側 VPN Gateway から受信した経路がベストパスになるので今回は明示的に設定しません。
 
 ```
 # BGP 用のループバック
@@ -147,7 +147,7 @@ end
 
 そこでオンプレミス側の Firewall が BGP で広報するアドレスを NAT 後のアドレス（10.2.0.0/24）に変更します。
 
-```
+```bash
 vwanfg # get router info bgp neighbors 10.1.0.12 advertised-route
 
    Network          Next Hop            Metric LocPrf Weight RouteTag Path
@@ -197,7 +197,7 @@ aimless  pts/0        2021-03-08 12:32 (10.2.0.4)
 
 ただしこの設定だけでは通信できません。Egress SNAT の設定をしても、VPN Gateway が NAT 後の 10.3.0.0/24 のアドレスをオンプレミス側の Firewall に広報してくれないためです。次の通り、戻りの通信に必要となるルーティングがオンプレミス側の Firewall に存在しません。
 
-```
+```bash
 vwanfg # get router info bgp neighbors 10.1.0.12 routes
 
    Network          Next Hop            Metric LocPrf Weight RouteTag Path
@@ -221,7 +221,7 @@ Total number of prefixes 2
 
 すると、オンプレミス側の Firewall に戻りの通信に必要な 10.3.0.0/24が注入されます。なお、Egress SNAT を設定しても、つぎのとおり VPN Gateway は NAT 前のアドレスの広報をやめないようです。本当はオンプレ側の Firewall で受信する経路をフィルタすべきですが、今回は割愛します
 
-```
+```bash
 vwanfg # get router info bgp neighbors 10.1.0.13 routes
 
    Network          Next Hop            Metric LocPrf Weight RouteTag Path
@@ -245,7 +245,7 @@ Total number of prefixes 3
 
 では、Azure 側のテストサーバ（10.0.0.4）からオンプレミス側の Firewall の LAN 側アドレス（192.168.0.4）に SSH で接続してみます。NAT されるのは送信元 IP アドレスですので、宛先は実 IP である 192.168.0.4 で OK です。オンプレミス側の Firewall で SSH のセッションを見てみると、次のとおり SSH 接続の送信元 IP アドレスが 実 IP アドレス（10.0.0.4）ではなく NAT 後の 10.3.0.4 になっています。
 
-```
+```bash
 vwanfg # get system session list 
 PROTO   EXPIRE SOURCE           SOURCE-NAT       DESTINATION      DESTINATION-NAT 
 tcp     3600   10.3.0.4:56712   -                192.168.0.4:22   -               
@@ -287,10 +287,10 @@ ProvisioningState : Succeeded
 VpnSiteLinks      : {link01} # VpnSIteLinks が空ではない。NAT ルールを適用できる
 ```
 
-Ingress SNAT を設定すると Egress DNAT が自動的に有効になります。上記の Ingress SNAT 設定が有効な場合、Azure からオンプレミスに接続する際には実 IP アドレスの 192.168.0.4 ではなく NAT で利用する 10.2.0.4 にアクセスする必要があります。Ingress の片方向だけの SNAT はできないようです。
+Ingress SNAT を設定すると Egress DNAT が自動的に有効になります。上記の Ingress SNAT が有効な場合、Azure からオンプレミスに接続する際にも実 IP アドレスの 192.168.0.4 ではなく NAT で利用する 10.2.0.4 にアクセスする必要があります。
 
-また、Egress SNAT を設定すると Ingress DNAT が自動的に有効になります。上記の Egress SNAT が有効な場合、オンプレミスから Azure に接続する際には 実 IP アドレスの 10.0.0.4 ではなく NAT で利用する 10.3.0.4 にアクセスする必要があります。Egress の片方向だけの SNAT はできないようです。
+また、Egress SNAT を設定すると Ingress DNAT が自動的に有効になります。上記の Egress SNAT が有効な場合、オンプレミスから Azure に接続する際にも実 IP アドレスの 10.0.0.4 ではなく NAT で利用する 10.3.0.4 にアクセスする必要があります。
 
 ## 終わりに
 
-ひっそりとプレビューが始まった NAT ルールを試しました。これまでにどうしても Azure とオンプレミス間の通信を NAT したい場合には NAT 箱として小さめの Linux サーバやネットワーク仮想アプライアンスをデプロイしてきました。ただしこれらのアプローチは運用対象が増える、さらに冗長化しにくいといった課題がありました。マネージドな VPN Gateway が NAT をサポートしてくれれば、オンプレミスと Azure 間におけるアドレス重複の課題をマネージドな仕組みだけで解決できるようになります。素晴らしい。早く GA になーれ。また、普通の VPN Gateway にも NAT ルールが来てくれるともっと素晴らしい。
+ひっそりとプレビューが始まった NAT ルールを試しました。これまでどうしても Azure とオンプレミス間の通信を NAT しなければならない場合には NAT 箱として小さめの Linux サーバやネットワーク仮想アプライアンスをデプロイしてきました。ただしこれらのアプローチは運用対象が増える、さらに冗長化しにくいといった課題がありました。マネージドな VPN Gateway が NAT をサポートしてくれれば、オンプレミスと Azure 間におけるアドレス重複の課題をマネージドな仕組みだけで解決できるようになります。素晴らしい。早く GA になーれ。また、普通の VPN Gateway にも NAT ルールが来てくれるともっと素晴らしい。
