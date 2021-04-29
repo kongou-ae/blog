@@ -89,4 +89,4 @@ Azure ポータルでデータコントローラを作る際に Custom location 
 
 ## まとめ
 
-Custom location を試しました。Custom location とは、Azure Arc に接続している環境に対して Azure 上の名前を付けることで、この環境を他の Azure サービスに対してリージョンのように見せる機能のようです。Azure ポータルから Custom location を指定してリソースを選択するだけで、Kubernetes クラスタにリソースができあがったのが印象的でした。「Azure の管理とサービスをすべての場所に展開する」という Azure Arc のビジョンに適した仕組みだとおもいます。
+Custom location を試しました。Custom location とは、Azure Arc に接続している環境に対して Azure 上の名前を付けることで、この環境を他の Azure サービスに対してリージョンのように見せる機能のようです。Azure ポータルで Custom location を指定してリソースをデプロイするだけで、Kubernetes クラスタにリソースができあがったのが印象的でした。「Azure の管理とサービスをすべての場所に展開する」という Azure Arc のビジョンに適した仕組みだとおもいます。
