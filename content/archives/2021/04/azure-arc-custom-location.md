@@ -81,10 +81,12 @@ Azure ポータルでデータコントローラを作る際に Custom location 
 
 同様に、Azure Arc enabled SQL Managed Instance を作る際にも Custom location を選択できました。
 
-{{< figure src="/images/2021/2021-0430-006.png" title="SQL Managed Instance のデプロイ先" >}}
+{{< figure src="/images/2021/2021-0430-007.png" title="SQL Managed Instance のデプロイ先" >}}
 
 データコントローラと同様、Custom location を作る際に指定した Kubernetes クラスタの arc という namespace に Azure Arc enabled SQL Managed Instance がデプロイされました。本当はクラスタの外部から SQL Managed Instance にアクセスできるようにするために サービスに External IP が割り当たらなければならないのですが、現時点では割り当たらないようです。多分不具合でしょう。
 
+{{< figure src="/images/2021/2021-0430-008.png" title="実際にデプロイされた Service" >}}
+
 ## まとめ
 
-Custom location を試しました。Azure Arc に接続している環境に対して Azure 上の名前を付けることで、この環境を他の Azure サービスに対してリージョンのように見せる機能のようです。Azure ポータルから Custom location を指定してリソースを選択するだけで、Kubernetes クラスタにリソースができあがったのが印象的でした。「Azure の管理とサービスをすべての場所に展開する」という Azure Arc のビジョンに適した仕組みだとおもいます。
+Custom location を試しました。Custom location とは、Azure Arc に接続している環境に対して Azure 上の名前を付けることで、この環境を他の Azure サービスに対してリージョンのように見せる機能のようです。Azure ポータルから Custom location を指定してリソースを選択するだけで、Kubernetes クラスタにリソースができあがったのが印象的でした。「Azure の管理とサービスをすべての場所に展開する」という Azure Arc のビジョンに適した仕組みだとおもいます。
