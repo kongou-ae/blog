@@ -30,13 +30,13 @@ az extension add --name k8s-extension
 az extension add --name customlocation
 ```
 
-さらに Microsoft.ExtendedLocation のリソースプロバイダを登録します。
+さらに Microsoft.ExtendedLocation のリソースプロバイダが必要です。
 
 ```
 az provider register --namespace Microsoft.ExtendedLocation
 ```
 
-Kubernetes cluster を Azure Arc に接続して、Custom location の機能を有効化します。
+最後に、Kubernetes cluster を Azure Arc に接続して、Custom location の機能を有効化します。
 
 ```
 az connectedk8s connect --name aks0427Arc --resource-group arcevaleastus
@@ -49,7 +49,7 @@ az connectedk8s enable-features -n aks0427Arc -g arcevaleastus --features cluste
 
 ## Custom location の作成
 
-Custom location を利用したい Azure のサービスを kubernetes cluster に拡張機能としてインストールします。今回は Azure Arc enabled data service をインストールします。
+Custom location を利用したい Azure のサービスを kubernetes cluster に拡張機能としてインストールします。今回は Azure Arc enabled data service の拡張機能をインストールします。
 
 ```
 az k8s-extension create --name arcdataservices --extension-type microsoft.arcdataservices --version "1.0.015564" --cluster-type connectedClusters -c aks0427Arc -g arcevaleastus --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
@@ -59,8 +59,7 @@ az k8s-extension create --name arcdataservices --extension-type microsoft.arcdat
 
 {{< figure src="/images/2021/2021-0430-003.png" title="拡張機能のために起動した Pod" >}}
 
-
-インストールした拡張機能を指定する形で Custom location を作成します。
+そして、Azure Arc enabled kubernetes のクラスタとインストールした拡張機能を指定する形で Custom location を作成します。
 
 ```
 az customlocation create -n "Japan-DC01" -g arcevaleastus  --namespace arc --host-resource-id "/subscriptions/9c171efd-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/arcevaleastus/providers/Microsoft.Kubernetes/connectedClusters/aks0427Arc" --cluster-extension-ids "/subscriptions/9c171efd-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/arcevaleastus/providers/Microsoft.Kubernetes/connectedClusters/aks0427Arc/providers/Microsoft.KubernetesConfiguration/extensions/arcdataservices"
@@ -76,7 +75,7 @@ Data service を指定して Custom location を作成したので、Data servic
 
 {{< figure src="/images/2021/2021-0430-005.png" title="コントローラのデプロイ先" >}}
 
-Azure ポータルでデータコントローラを作る際に Custom location を選択したので、Custom location を作る際に指定した arc という namespace に Azure Arc enabled data service のコントローラがデプロイされました。
+Azure ポータルでデータコントローラを作る際に Custom location を選択したので、Custom location を作る際に指定した Kubernetes クラスタの arc という namespace に Azure Arc enabled data service のコントローラがデプロイされました。
 
 {{< figure src="/images/2021/2021-0430-006.png" title="実際にデプロイされた Pod" >}}
 
@@ -84,7 +83,7 @@ Azure ポータルでデータコントローラを作る際に Custom location 
 
 {{< figure src="/images/2021/2021-0430-006.png" title="SQL Managed Instance のデプロイ先" >}}
 
-データコントローラと同様、Custom location を作る際に指定した arc という namespace に Azure Arc enabled SQL Managed Instance がデプロイされました。本当はクラスタの外部から SQL Managed Instance にアクセスできるようにするために サービスに External IP が割り当たらなければならないのですが、現時点では割り当たらないようです。多分不具合でしょう。
+データコントローラと同様、Custom location を作る際に指定した Kubernetes クラスタの arc という namespace に Azure Arc enabled SQL Managed Instance がデプロイされました。本当はクラスタの外部から SQL Managed Instance にアクセスできるようにするために サービスに External IP が割り当たらなければならないのですが、現時点では割り当たらないようです。多分不具合でしょう。
 
 ## まとめ
 
