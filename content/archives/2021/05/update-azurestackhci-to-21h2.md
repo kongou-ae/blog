@@ -1,3 +1,4 @@
+---
 title: Azure Stack HCI のプレビューチャンネルに参加する
 author: kongou_ae
 date: 2021-05-29
