@@ -22,7 +22,7 @@ Build 2021 にて、Azure Stack HCI のクラスタを Azure Monitor で監視�
 
 まずは Windows Admin Center を利用して、20H2 に対して最新の Windows Update を適用します。
 
-{{< figure src="/images/2021/2021-0430-001.png" title="WAC でパッチ適用その1" >}}
+{{< figure src="/images/2021/2021-0529-001.png" title="WAC でパッチ適用その1" >}}
 
 {{< figure src="/images/2021/2021-0529-002.png" title="WAC でパッチ適用その2" >}}
 
@@ -30,7 +30,7 @@ Build 2021 にて、Azure Stack HCI のクラスタを Azure Monitor で監視�
 
 プレビューチャンネルに参加するためには KB5003237 を適用する必要があります。私の環境では Windows Admin Center に KB5003237 が表示されなかったので、ノード上で KB5003237 を検索、適用しました。
 
-{{< figure src="/images/2021/2021-0430-003.png" title="Azure Stack HCI OS のメニュー画面" >}}
+{{< figure src="/images/2021/2021-0529-003.png" title="Azure Stack HCI OS のメニュー画面" >}}
 
 {{< figure src="/images/2021/2021-0529-004.png" title="CLI でのパッチ適用" >}}
 
@@ -38,7 +38,7 @@ Build 2021 にて、Azure Stack HCI のクラスタを Azure Monitor で監視�
 
 KB5003237 を適用するとプレビューチャンネルの Get Started が押せるようになります。Get Started を押して言われるがままにプレビューチャンネルに参加します。
 
-{{< figure src="/images/2021/2021-0430-005.png" title="プレビューチャンネルへの参加その1" >}}
+{{< figure src="/images/2021/2021-0529-005.png" title="プレビューチャンネルへの参加その1" >}}
 
 {{< figure src="/images/2021/2021-0529-006.png" title="プレビューチャンネルへの参加その2" >}}
 
@@ -48,7 +48,9 @@ KB5003237 を適用するとプレビューチャンネルの Get Started が押
 
 プレビューチャンネルに参加した状態だと、21H2 が Windows Update の対象に出てきます。20H2 に最新の Windows Update を適用したのと同じ要領で 21H2 を適用します。
 
-{{< figure src="/images/2021/2021-0529-008.png" title="プレビューチャンネルへの参加その8" >}}
+{{< figure src="/images/2021/2021-0529-008.png" title="21H2 の適用その1" >}}
+
+{{< figure src="/images/2021/2021-0529-009.png" title="21H2 の適用その2" >}}
 
 これでクラスタが 21H2 になりました。Windows Admin Center を使うことで、すごく簡単に HCI クラスタに Windows Update を適用できました。これはいいものだ。
 
