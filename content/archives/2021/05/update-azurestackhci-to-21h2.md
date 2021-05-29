@@ -56,7 +56,7 @@ KB5003237 を適用するとプレビューチャンネルの Get Started が押
 
 # その後
 
-HCI クラスタを Azure Monitor で監視するために Azure Stack HCI クラスタを Azure Arc に登録しようとするとエラーになりました。この機能はまだ Azure 側に展開されていないのかもしれません。
+Azure Stack HCI クラスタを Azure Monitor で監視するために、HCI クラスタを Azure Arc enabled servers こみで Azure Arc に登録しようとするとエラーになりました。この機能はまだ Azure 側に展開されていないのかもしれません。
 
 ```
 > Register-AzStackHCI -EnableAzureArcServer:$true -SubscriptionId 9c171efd-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Region eastus
