@@ -1,7 +1,7 @@
 ---
 title: AKS on Azure Stack HCI を試した
 author: kongou_ae
-date: 2021-05-19
+date: 2021-06-05
 url: /archives/2021/06/akshci
 categories:
   - azurestackhci
