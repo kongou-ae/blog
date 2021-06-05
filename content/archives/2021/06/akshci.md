@@ -140,4 +140,4 @@ my-workload-cluster-control-plane-t8gl5-9a3a4780             {192.168.0.12, fe80
 
 ## おわりに
 
-AKS on HCI を試しました。Windows Admin Center からポチポチするだけで Hyper-V や Failover cluster と連携して k8s クラスタができあがり 、さらに k8s クラスタが Azure Arc に登録されるという良くできた仕組みでした。もしオンプレミスに Hyper-V な仮想基盤があるならば、リプレースの時点で Azure Stack HCI OS ベースの仮想基盤にしておくと k8s への挑戦が容易になりますね。
+AKS on HCI を試しました。Windows Admin Center からポチポチするだけで Hyper-V や Failover cluster と連携して k8s クラスタができあがり 、さらに k8s クラスタが Azure Arc に登録されるという良くできた仕組みでした。もしオンプレミスに Hyper-V な仮想基盤があるならば、リプレースの時点で Azure Stack HCI OS ベースの仮想基盤にしておくと オンプレでの k8s への挑戦が容易になりますね。
