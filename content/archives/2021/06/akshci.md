@@ -34,7 +34,7 @@ Build 2021で Azure Arc enabled application services が発表されました。
 
 ## 管理クラスタの構築
 
-まずは HCI 上の AKS 自体を管理する管理クラスタを構築します。このクラスタを構築する際に、管理クラスタとワークロードクラスタが利用するアドレス帯を設定します。管理クラスタを構築した後にアドレス帯を変えられないので、設計は慎重に。
+まずは管理クラスタを構築します。このクラスタを構築する際に、管理クラスタとワークロードクラスタが利用するアドレス帯を設定します。管理クラスタを構築した後にアドレス帯を変えられないので、設計は慎重に。
 
 参考：[Azure Stack HCI において Azure Kubernetes Service (AKS) ノードをデプロイするためのネットワークの概念](https://docs.microsoft.com/ja-jp/azure-stack/aks-hci/concepts-node-networking)
 
@@ -71,7 +71,7 @@ Build 2021で Azure Arc enabled application services が発表されました。
 
 構築が完了すると、HCI 上に仮想マシンが出来上がります。各ノードが「Kubernetes node IP pool start」を順番に利用しているのが見て取れます。また、ワークロードクラスタ用のロードバランサ VM（my-workload-cluster-load-balancer-g0ei1-246c202a）が「Load balancer IP pool start」を順番に利用しているもの見て取れます。
 
-```
+```powershell
 PS C:\Users\labadmin> $cluster = Get-ClusterNode -Cluster azshciclus.azshci.local
 PS C:\Users\labadmin> Get-vm -ComputerName $cluster | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName,IPAddresses | ft -auto
 
@@ -104,9 +104,9 @@ clusters:
   name: my-workload-cluster
 ```
 
-ダウンロードした kubeconfig をワークロードクラスタ用ロードバランサにアクセスできる端末に配置して kubectl で読み込むと、 kubectl で AKS on HCI のワークロード用クラスタを操作できるようになります。試しにノードの状態を確認してみると、Windows Admin Center で指定した通りマスターノード1台、ワーカノード3台のクラスタになっています。
+ダウンロードした kubeconfig をワークロードクラスタ用ロードバランサにアクセスできる端末に配置して kubectl で読み込むと、 kubectl でワークロードクラスタを操作できるようになります。試しにノードの状態を確認してみると、Windows Admin Center で指定した通りマスターノード1台、ワーカノード3台のクラスタになっています。
 
-```
+```powershell
 PS C:\Users\labadmin> .\kubectl.exe get node
 NAME              STATUS   ROLES                  AGE   VERSION
 moc-lk0rlxypusb   Ready    <none>                 19h   v1.20.5
@@ -122,7 +122,7 @@ PS C:\Users\labadmin>
 
 ワークロードクラスタ用ロードバランサに新しい IP アドレス（192.168.0.103）が割り当てられて、k8s のサービスの外部 IP として利用されていることが分かります。
 
-```
+```powershell
 PS C:\Users\labadmin\Downloads\azure-voting-app-redis-master\azure-voting-app-redis-master> Get-vm -ComputerName $cluster | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName,IPAddresses | ft -auto
 
 VMName                                                       IPAddresses
@@ -140,4 +140,4 @@ my-workload-cluster-control-plane-t8gl5-9a3a4780             {192.168.0.12, fe80
 
 ## おわりに
 
-AKS on HCI を試しました。Windows Admin Center からポチポチするだけで Hyper-V や Failover cluster と連携して k8s クラスタができあがり 、さらに k8s クラスタが Azure Arc に登録されるという良くできた仕組みでした。もしオンプレミスに Hyper-V な仮想基盤があるならば、リプレースの時点で Azure Stack HCI OS ベースの仮想基盤にしておくと オンプレでの k8s への挑戦が容易になりますね。
+AKS on HCI を試しました。Windows Admin Center からポチポチするだけで Hyper-V や Failover cluster と連携して k8s クラスタができあがり 、さらに k8s クラスタが Azure Arc に登録されるという良くできた仕組みでした。もしオンプレミスに Hyper-V な仮想基盤があるならば、リプレースの時点で Azure Stack HCI OS ベースの仮想基盤にしておくとオンプレでの k8s への挑戦が容易になりますね。
