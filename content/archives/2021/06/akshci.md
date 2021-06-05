@@ -85,7 +85,7 @@ aks-management-cluster-1-control-plane-0-3d6cfe76            {192.168.0.10, 192.
 my-workload-cluster-control-plane-t8gl5-9a3a4780             {192.168.0.12, fe80::ec:ff:fe05:2}
 ```
 
-なお、作成されたワークロードクラスタの自動的に Azure Arc enabled kubernetes として Azure にも登録されます。
+なお、作成されたワークロードクラスタも自動的に Azure Arc enabled kubernetes として Azure に登録されます。
 
 ## ワークロードクラスタへの接続
 
