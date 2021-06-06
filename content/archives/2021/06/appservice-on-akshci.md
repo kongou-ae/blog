@@ -99,15 +99,15 @@ Azure 上には App Servive Kubernetes environment というリソースが出�
 
 {{< figure src="/images/2021/2021-0606-005.png" title="App Service Kubernetes environment" >}}
 
-## Web Apps の展開
+## Apps Service の展開
 
-App Servive Kubernetes environment ができたので、この実行環境に Web Apps を展開します。普通であれば Location を指定するかわりに、前述のスクリプトで作成した Custom location を指定します。
+App Servive Kubernetes environment ができたので、この上に Apps Service を展開します。Azure 上に Apps Service を展開する際には Location を指定しますが、Arc enabled k8s 上に Apps Service を展開する際には前述のスクリプトで作成した Custom location を指定します。
 
 ```
 az webapp create --resource-group "akshci-eu" --name k8swebapp2 --custom-location $customLocationId  --runtime "NODE|12-lts"
 ```
 
-そうすると Custom location に紐づく App Servive Kubernetes environment 上に Web Apps が展開される形となり、Custom location として設定した Arc enabled k8s クラスタ上に Pod が起動します。
+そうすると Custom location として設定した Arc enabled k8s クラスタ上に Pod が起動します。
 
 ```
 PS C:\Users\labadmin> .\kubectl.exe get pod -n akshci-apps
@@ -116,9 +116,9 @@ NAMESPACE     NAME                                                          READ
 akshci-apps   k8swebapp2-66b465bfbf-m7f4s                                   1/1     Running     0          4h16m
 ```
 
-## Web Apps へのアクセス
+## App Service へのアクセス
 
-ポータル上に作成された Web Apps を見ると、<Web Apps の名前>.<App Servive Kubernetes environment のドメイン名>の URL がついています。このドメイン名を名前解決すると Static IP で指定したアドレスが返ってくるので、ワークロードクラスタにアクセスできる環境でこのドメイン名にアクセスすると Web Apps の初期画面が表示されます。
+ポータル上に作成された App Service を見ると、<App Service の名前>.<App Servive Kubernetes environment のドメイン名>の URL がついています。このドメイン名を名前解決すると Static IP で指定した 192.168.0.102 が返ってくるので、ワークロードクラスタにアクセスできる環境でこのドメイン名にアクセスすると Arc enabled k8s 上に展開された App Service の初期画面が表示されます。
 
 ```
 >nslookup k8swebapp2.scm.askeonhci-wpdc4uztw7ogvz.eastus.k4apps.io
@@ -134,7 +134,7 @@ Address:  192.168.0.102
 
 デプロイできたついでに、Arc enabled App Servive で利用できそうな機能（＝Azure ポータル上にメニューがある）を試してみました。
 
-ポータルから Web Apps をスケールアウトしたら、AKS on HCI 上の Pod が増えました。
+ポータルから App Service をスケールアウトしたら、AKS on HCI 上の Pod が増えました。
 
 ```
 PS C:\Users\labadmin> .\kubectl.exe get pod -n akshci-apps
@@ -152,7 +152,7 @@ az webapp config hostname add --hostname "webapps.akshci.aimless.jp" --webapp-na
 
 {{< figure src="/images/2021/2021-0606-007.jpg" title="カスタムドメインな Web Apps" >}}
 
-カスタムドメインを HTTPS 化することはできませんでした。証明書の登録はできるのですが、ドメインと証明書を紐づけしようとするとエラーになりました。まだ回避策を見つけられていません。
+追加できたカスタムドメインを HTTPS 化することはできませんでした。証明書の登録はできるのですが、ドメインと証明書を紐づけしようとしたらエラーになりました。回避策をまだ見つけられていません。
 
 {{< figure src="/images/2021/2021-0606-008.png" title="登録できた証明書" >}}
 
@@ -162,6 +162,6 @@ The resource 'k8swebapp2' already exists in extended location 'CustomLocation': 
 
 ## おわりに
 
-前回のエントリで作成した AKS on HCI を利用して、オンプレミスな環境で Arc enabled App Servive を実行してみました。利用できる機能は Azure と比較してまだまだ少ないですが、Web Apps 自体の操作は Azure 上の Web Apps と一貫性がありますし、インターネットへの Outbound 通信のみで動作するので、非常に使いやすい仕組みでした。
+前回のエントリで作成した AKS on HCI を利用して、オンプレミスな環境で Arc enabled App Servive を実行してみました。利用できる機能は Azure と比較してまだまだ少ないですが、App Service 自体の操作は Azure 上の App Service と一貫性がありますし、インターネットへの Outbound 通信のみで動作するので、非常に使いやすい仕組みでした。
 
 仕組みとしてはよさげな一方で、「Azure 外に k8s クラスタがある ＆ Azure な PaaS を Azure 外でも使いたい」という前提条件を満たす人がどの程度いるのか？という点が気になります。需要がある、または需要が見込めるので Microsoft は開発を続けているのでしょうが、こと国内に限るとどの程度の需要があるのか不安になります。
