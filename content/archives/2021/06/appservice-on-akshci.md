@@ -28,7 +28,7 @@ Static IP には k8s のロードバランサが利用できる IP アドレス�
 
 {{< figure src="/images/2021/2021-0606-004.png" title="Application services extension のインストール画面その4" >}}
 
-そしてコピペしたスクリプトを AKS on HCI にアクセスできる端末上で実行します。だたし、このスクリプトをそのまま実行したら Custom location を作成するコマンドで次のエラーがでました。今回の AKS on HCI では Azure から k8s クラスタの API サーバへの Inbound 通信ができないため、このエラーが出ていると思われます。
+そしてコピペしたスクリプトを AKS on HCI にアクセスできる端末上で実行します。だたし、このスクリプトをそのまま実行したら Custom location を作成するコマンドで次のエラーがでました。今回の AKS on HCI では Azure から k8s クラスタの API サーバへの Inbound 通信ができないため、このエラーが出たと思われます。
 
 ```
 PS C:\Users\labadmin> $CustomLocationId = az customlocation create -g "akshci-eu" -n "akshci-apps" --host-resource-id "/subscriptions/9c171efd-eab4-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/akshci-eu/providers/Microsoft.Kubernetes/connectedClusters/my-workload-cluster" --namespace "akshci-apps" -c $ExtensionId -l "eastus" --query id -o tsv
